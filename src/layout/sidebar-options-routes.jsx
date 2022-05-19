@@ -1,7 +1,7 @@
 
 import { BiHomeAlt } from 'react-icons/bi';
 
-const iconStyles = {
+export const iconStyles = {
     height: '23px',
 	width: '23px',
 	marginRight: '10px',
