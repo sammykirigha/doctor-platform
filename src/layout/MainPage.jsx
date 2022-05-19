@@ -1,13 +1,14 @@
 import React from "react";
 import logo from "../assets/logo3.jpg";
+import flag from "../assets/Flag-Kenya.jpg";
 import { iconStyles, sidebarOptionRoutes } from "./sidebar-options-routes";
 import { FiAlignJustify } from "react-icons/fi";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 export const Styles = {
-    height: "35px",
-    width: "35px",
-    color: "gray",
+    height: "27px",
+    width: "27px",
+    color: "#0081CF",
     cursor: "pointer",
 };
 
@@ -46,32 +47,58 @@ const MainPage = () => {
                 </div>
             </div>
             <div className=" col-span-4 w-full">
-                <div className=" bg-white-900 py-2 flex justify-between">
+                <div className=" bg-white-900 py-4 flex justify-between border-b border-gray-200 drop-shadow-xl">
                     <div className="flex w-64 justify-between">
-                        <div className="mx-3 bg-gray-100 rounded-xlg h-9 w-9">
-                            <FiAlignJustify style={Styles} />
+                        <div className="mx-4 bg-gray-100 items-center p-1 h-9 rounded-full hover:bg-blue-600 drop-shadow-lg">
+							<FiAlignJustify style={Styles} />
                         </div>
-                        <div className="flex bg-white-800  items-center border border-gray-600 rounded-xl">
+                        <div className="flex bg-white-800 items-center">
                             <input
-                                placeholder="Search Keywords..."
-                                style={{width: '300px', height: '35px', borderRadius: '50px', paddingLeft: '15px'}}
+								placeholder="Search Keywords..."
+								className="h-9 w-64 border border-gray-600 rounded-full pl-8 focus:border-0"
+                                // style={{width: '300px', height: '35px', borderRadius: '50px',border: '1px solid gray', paddingLeft: '15px'}}
                             />
                             <BiSearchAlt2
                                 style={{
                                     color: "black",
                                     height: "25px",
 									width: "25px",
-									marginLeft: '-35px'
+									marginLeft: '-35px',
+									cursor: 'pointer'
                                 }}
                             />
                         </div>
                     </div>
 
-                    <div className="ml-auto">
-                        <span>country</span>
-                        <span>country</span>
-                        <span>country</span>
-                        <span>country</span>
+                    <div className="ml-auto flex mr-3">
+						<div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
+							<img
+								src={flag}
+								alt="logo"
+								className="m-2 w-5 h-5 rounded-full cursor-pointer"
+							/>
+						</div>
+                        <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
+							<img
+								src={flag}
+								alt="logo"
+								className="m-2 w-5 h-5 rounded-full cursor-pointer"
+							/>
+						</div>
+                        <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
+							<img
+								src={flag}
+								alt="logo"
+								className="m-2 w-5 h-5 rounded-full cursor-pointer"
+							/>
+						</div>
+                        <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
+							<img
+								src={flag}
+								alt="logo"
+								className="m-2 w-5 h-5 rounded-full cursor-pointer"
+							/>
+						</div>
                     </div>
                 </div>
                 <div>main</div>
