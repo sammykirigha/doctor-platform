@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import flag from "../assets/Flag-Kenya.jpg";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { NavigationContext } from "../navigation.context";
@@ -6,6 +6,7 @@ import { FiAlignJustify } from "react-icons/fi";
 import { Menu, Transition } from "@headlessui/react";
 import Dropdown from "./common/Dropdown";
 import { MenuItem } from "./common/MenuItem";
+import SettingsModal from "./modals/SettingsModal";
 
 export const Styles = {
     height: "27px",
@@ -14,8 +15,9 @@ export const Styles = {
     cursor: "pointer",
 };
 
-const Navbar = () => {
+const Navbar = ({onClick}) => {
     const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);
+    const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
     return (
         <div
             className={`bg-white-900 py-4 flex justify-between border-b border-gray-200 drop-shadow-xl fixed z-10 right-0 top-0 ${
@@ -60,7 +62,9 @@ const Navbar = () => {
                         
                     ]}
                 />
-                <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
+                <div onClick={() => {
+                    setCreateUserModalOpen(!createUserModalOpen)
+                }} className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
                     <img
                         src={flag}
                         alt="logo"
@@ -106,6 +110,12 @@ const Navbar = () => {
                     ]}
                 />
             </div>
+             <SettingsModal
+                isOpen={createUserModalOpen}
+                closeModal={() => {
+                    setCreateUserModalOpen(false);
+                }}
+            />
         </div>
     );
 };

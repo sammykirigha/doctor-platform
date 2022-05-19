@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Modal from "../components/common/Modal";
 import DashboardCards from "../components/DashboardCards";
 import ConfirmDeleteModal from "../components/modals/ConfirmDeleteModal";
+import SettingsModal from "../components/modals/SettingsModal";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Title from "../components/Title";
@@ -28,8 +29,8 @@ const MainPage = () => {
                     <button
                         onClick={() => {
                             setCreateUserModalOpen(true);
-						}}
-						className="bg-slate-900 text-white px-8 py-2 rounded-md cursor-pointer mt-5"
+                        }}
+                        className="bg-slate-900 text-white px-8 py-2 rounded-md cursor-pointer mt-5"
                     >
                         Open Modal
                     </button>
@@ -39,9 +40,10 @@ const MainPage = () => {
                 isOpen={createUserModalOpen}
                 closeModal={() => {
                     setCreateUserModalOpen(false);
-				}}
-				message="center"
+                }}
+                message="center"
             />
+           
         </div>
     );
 };
