@@ -47,7 +47,7 @@ const DashboardCards = () => {
 		{
 			cardsInfo?.map((item, index) => {
 				return (
-					<div key={index} className='drop-shadow-md bg-white flex pl-5 py-7 overflow-hidden shadow-lg'>
+					<div key={index} className='drop-shadow-md rounded-md bg-white flex pl-5 py-7 overflow-hidden shadow-lg'>
 						<div className="bg-gray-100 p-3 rounded-md" ><span className=" h-8 w-8 text-sky-900" >{item.icon}</span></div>
 						<div className="flex flex-col pl-3">
 							<span className="text-black-900 font-bold">{item.amount}</span>
