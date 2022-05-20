@@ -1,5 +1,10 @@
 import React, { Fragment, useContext, useState } from "react";
 import flag from "../assets/Flag-Kenya.jpg";
+import tanz from "../assets/Tanzania.png";
+import ug from "../assets/Uganda.png";
+import rwad from "../assets/Rwanda.png";
+import setting from "../assets/lg2.png";
+import email from "../assets/email.png";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { NavigationContext } from "../navigation.context";
 import { FiAlignJustify } from "react-icons/fi";
@@ -15,16 +20,16 @@ export const Styles = {
     cursor: "pointer",
 };
 
-const Navbar = ({onClick}) => {
+const Navbar = ({ onClick }) => {
     const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
     return (
         <div
-            className={`bg-white-900 py-4 flex justify-between border-b border-gray-200 drop-shadow-xl fixed z-10 right-0 top-0 ${
+            className={`bg-white-900 py-[13px] flex justify-between border-b border-gray-200 border-l  fixed z-10 right-0 top-0 ${
                 sideBarOpen ? "left-[300px]" : "left-0"
             } bg-white`}
         >
-            <div className="flex w-64 justify-between">
+            <div className="flex w-64 justify-between ml-3">
                 <div
                     onClick={toggleSidebar}
                     className="mx-4 bg-gray-100 items-center p-1 h-9 rounded-full hover:bg-blue-600 drop-shadow-lg"
@@ -36,9 +41,7 @@ const Navbar = ({onClick}) => {
                         placeholder="Search Keywords..."
                         className="h-9 w-64 border border-gray-600 rounded-full pl-8 focus:border-0"
                     />
-                    <BiSearchAlt2
-                        className="text-[black] h-[25px] w-[25px] -ml-[35px] cursor-pointer"
-                    />
+                    <BiSearchAlt2 className="text-[black] h-[25px] w-[25px] -ml-[35px] cursor-pointer" />
                 </div>
             </div>
 
@@ -54,28 +57,22 @@ const Navbar = ({onClick}) => {
                         </div>
                     )}
                     items={[
-                        () => <MenuItem icon={FiAlignJustify} text="Kenya" />,
-                        () => <MenuItem icon={FiAlignJustify} text="Uganda" />,
-                        () => <MenuItem icon={FiAlignJustify} text="Tanzania" />,
-                        () => <MenuItem icon={FiAlignJustify} text="Ethiopia" />,
-                        () => <MenuItem icon={FiAlignJustify} text="Rwanda" />,
-                        
+                        () => <MenuItem image={flag} text="Kenya" />,
+                        () => <MenuItem image={tanz} text="Tanzania" />,
+                        () => <MenuItem image={ug} text="Uganda" />,
+                        () => <MenuItem image={rwad} text="Rwanda" />
                     ]}
                 />
-                <div onClick={() => {
-                    setCreateUserModalOpen(!createUserModalOpen)
-                }} className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
+                <div
+                    onClick={() => {
+                        setCreateUserModalOpen(!createUserModalOpen);
+                    }}
+                    className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2"
+                >
                     <img
-                        src={flag}
+                        src={setting}
                         alt="logo"
-                        className="m-2 w-5 h-5 rounded-full cursor-pointer"
-                    />
-                </div>
-                <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
-                    <img
-                        src={flag}
-                        alt="logo"
-                        className="m-2 w-5 h-5 rounded-full cursor-pointer"
+                        className="m-2 w-5 h-5 text-blue-700 rounded-full cursor-pointer"
                     />
                 </div>
 
@@ -83,15 +80,23 @@ const Navbar = ({onClick}) => {
                     activator={() => (
                         <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
                             <img
-                                src={flag}
+                                src={email}
                                 alt="logo"
-                                className="m-2 w-5 h-5 rounded-full cursor-pointer"
+                                className="m-2 relative w-5 h-5 rounded-full cursor-pointer"
                             />
+                            <div className="top-1 ml-6 absolute h-[20px] w-[20px] rounded-full bg-red-400 ">
+                                <span className="text-gray-900 ml-1">4</span>
+                            </div>
                         </div>
                     )}
-                    items={[
-                        () => <MenuItem icon={FiAlignJustify} text="Notifications" />,
-                    ]}
+                    // items={[
+                    //     () => (
+                    //         <MenuItem
+                    //             icon={FiAlignJustify}
+                    //             text="Notifications"
+                    //         />
+                    //     ),
+                    // ]}
                 />
                 <Dropdown
                     activator={() => (
@@ -103,14 +108,16 @@ const Navbar = ({onClick}) => {
                             />
                         </div>
                     )}
-                    items={[
-                        () => <MenuItem icon={FiAlignJustify} text="Profile" />,
-                        () => <MenuItem icon={FiAlignJustify} text="Settingd" />,
-                        () => <MenuItem icon={FiAlignJustify} text="Edit" />,
-                    ]}
+                    // items={[
+                    //     () => <MenuItem icon={FiAlignJustify} text="Profile" />,
+                    //     () => (
+                    //         <MenuItem icon={FiAlignJustify} text="Settingd" />
+                    //     ),
+                    //     () => <MenuItem icon={FiAlignJustify} text="Edit" />,
+                    // ]}
                 />
             </div>
-             <SettingsModal
+            <SettingsModal
                 isOpen={createUserModalOpen}
                 closeModal={() => {
                     setCreateUserModalOpen(false);
