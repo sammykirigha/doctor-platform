@@ -1,9 +1,9 @@
 import { Menu } from "@headlessui/react";
 import React from "react";
 
-export const MenuItem = ({ img, image, text }) => {
+export const MenuItem = ({ image, children }) => {
     return (
-        <div className="px-1 py-1 ">
+        <div className="px-1 py-1  ">
             <Menu.Item>
                 {({ active }) => (
                     <button
@@ -18,7 +18,7 @@ export const MenuItem = ({ img, image, text }) => {
                         ) : (
                             <img src={image} className="mr-2 h-9 w-9 bg-gray-300 rounded-full" aria-hidden="true" alt="pic" />
                         )}
-                        {text}
+                        {children}
                     </button>
                 )}
             </Menu.Item>

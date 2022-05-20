@@ -3,8 +3,8 @@ import React, { Fragment, useState } from "react";
 
 const Modal = ({ closeModal, isOpen, positionY="center", children, positionX="center" }) => {
     return (
-        <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Transition appear show={isOpen} as={Fragment} >
+            <Dialog as="div" className="relative z-10 w-[550px!]" onClose={closeModal}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"

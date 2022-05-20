@@ -57,10 +57,26 @@ const Navbar = ({ onClick }) => {
                         </div>
                     )}
                     items={[
-                        () => <MenuItem image={flag} text="Kenya" />,
-                        () => <MenuItem image={tanz} text="Tanzania" />,
-                        () => <MenuItem image={ug} text="Uganda" />,
-                        () => <MenuItem image={rwad} text="Rwanda" />
+                        () => (
+                            <MenuItem image={flag}>
+                                <span>Kenya</span>
+                            </MenuItem>
+                        ),
+                        () => (
+                            <MenuItem image={tanz}>
+                                <span>Tanzania</span>
+                            </MenuItem>
+                        ),
+                        () => (
+                            <MenuItem image={ug}>
+                                <span>Uganda</span>
+                            </MenuItem>
+                        ),
+                        () => (
+                            <MenuItem image={rwad}>
+                                <span>Rwanda</span>
+                            </MenuItem>
+                        ),
                     ]}
                 />
                 <div
@@ -89,14 +105,52 @@ const Navbar = ({ onClick }) => {
                             </div>
                         </div>
                     )}
-                    // items={[
-                    //     () => (
-                    //         <MenuItem
-                    //             icon={FiAlignJustify}
-                    //             text="Notifications"
-                    //         />
-                    //     ),
-                    // ]}
+                    items={[
+                        () => (
+                            <MenuItem image={flag}>
+                                <div className="flex flex-col">
+                                    <h5>You have received a new email from</h5>
+                                    <div className="flex items-center justify-start">
+                                        <span className="text-lg text-gray-800 font-bold" >Kenya</span>
+                                        <span className="text-gray-500 ml-1 mt-1">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </MenuItem>
+                        ),
+                        () => (
+                            <MenuItem image={flag}>
+                                <div className="flex flex-col">
+                                    <h5>You have received a new email from</h5>
+                                    <div className="flex items-center justify-start">
+                                        <span className="text-lg text-gray-800 font-bold" >Kenya</span>
+                                        <span className="text-gray-500 ml-1 mt-1">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </MenuItem>
+                        ),
+                        () => (
+                            <MenuItem image={flag}>
+                                <div className="flex flex-col">
+                                    <h5>You have received a new email from</h5>
+                                    <div className="flex items-center justify-start">
+                                        <span className="text-lg text-gray-800 font-bold" >Kenya</span>
+                                        <span className="text-gray-500 ml-1 mt-1">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </MenuItem>
+                        ),
+                        () => (
+                            <MenuItem image={flag}>
+                                <div className="flex flex-col">
+                                    <h5>You have received a new email from</h5>
+                                    <div className="flex items-center justify-start">
+                                        <span className="text-lg text-gray-800 font-bold" >Kenya</span>
+                                        <span className="text-gray-500 ml-1 mt-1">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </MenuItem>
+                        ),
+                    ]}
                 />
                 <Dropdown
                     activator={() => (
