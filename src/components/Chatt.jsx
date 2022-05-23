@@ -8,6 +8,7 @@ import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { BsFillEmojiHeartEyesFill } from "react-icons/bs";
 import {  MdAttachFile, MdSend } from "react-icons/md";
+import UserMessage from "./UserMessage";
 
 const Chatt = () => {
     return (
@@ -66,7 +67,8 @@ const Chatt = () => {
         </div>
         <div className="flex flex-col">
           <div className=" no-scrollbar overflow-y-auto h-52">
-            {[1,2,3,4,5,6,7,8,9,10, 11,12,13,14,15,16,17,18,19].map((item) => {return <h4>sammyyyyyyyyyyy</h4>})}
+            <UserMessage />
+            {/* {[1,2,3,4,5,6,7,8,9,10, 11,12,13,14,15,16,17,18,19].map((item) => {return <h4>sammyyyyyyyyyyy</h4>})} */}
             
           </div>
           <div className="border-t border-gray-400 flex flex-row items-center justify-between mx-3 py-2">
@@ -75,8 +77,7 @@ const Chatt = () => {
               <span className="h-9 w-9 rounded-md bg-blue-700 mr-2  flex items-center justify-center cursor-pointer">
                 <MdSend className="text-white h-6 w-6" />
               </span>
-              <span  className="h-9 w-9 rounded-md bg-blue-700 mr-2 flex items-center justify-center cursor-pointer
-cursor-pointer">
+              <span  className="h-9 w-9 rounded-md bg-blue-700 mr-2 flex items-center justify-center cursor-pointer">
                 <BsFillEmojiHeartEyesFill className="text-white h-6 w-6" />
               </span>
               <span  className="h-9 w-9 rounded-md bg-blue-700 flex items-center justify-center cursor-pointer">
