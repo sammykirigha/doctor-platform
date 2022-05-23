@@ -3,6 +3,7 @@ import Appointment from "../components/Appointment";
 import Chatt from "../components/Chatt";
 import Modal from "../components/common/Modal";
 import DashboardCards from "../components/DashboardCards";
+import Footer from "../components/Footer";
 import ConfirmDeleteModal from "../components/modals/ConfirmDeleteModal";
 import SettingsModal from "../components/modals/SettingsModal";
 import MyChart from "../components/MyChart";
@@ -41,6 +42,7 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
             {/* <ConfirmDeleteModal
                 isOpen={createUserModalOpen}

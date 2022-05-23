@@ -19,7 +19,7 @@ const Appointment = () => {
 				<div className="h-auto">
 					{[1, 2, 3, 4.5].map((item, i) => {
 						return (
-						<div className="flex flex-row items-center justify-between my-3">
+						<div className="flex flex-row items-center justify-between my-4">
 								<div className="flex flex-row items-center justify-start ml-4">
 									<img
 										src={flag}

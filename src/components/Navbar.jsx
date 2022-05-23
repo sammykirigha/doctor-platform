@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, {useContext, useState } from "react";
 import flag from "../assets/Flag-Kenya.jpg";
 import tanz from "../assets/Tanzania.png";
 import ug from "../assets/Uganda.png";
@@ -8,7 +8,6 @@ import email from "../assets/email.png";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { NavigationContext } from "../navigation.context";
 import { FiAlignJustify } from "react-icons/fi";
-import { Menu, Transition } from "@headlessui/react";
 import Dropdown from "./common/Dropdown";
 import { MenuItem } from "./common/MenuItem";
 import SettingsModal from "./modals/SettingsModal";
