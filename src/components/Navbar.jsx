@@ -100,8 +100,8 @@ const Navbar = ({ onClick }) => {
                                 alt="logo"
                                 className="m-2 relative w-5 h-5 rounded-full cursor-pointer"
                             />
-                            <div className="top-1 ml-6 absolute h-[20px] w-[20px] rounded-full bg-red-400 ">
-                                <span className="text-gray-900 ml-1">4</span>
+                            <div className="-top-3 ml-6 absolute h-[20px] w-[25px] rounded-full bg-red-400 ">
+                                <span className="text-gray-900 ml-0">4</span>
                             </div>
                         </div>
                     )}
@@ -162,13 +162,30 @@ const Navbar = ({ onClick }) => {
                             />
                         </div>
                     )}
-                    // items={[
-                    //     () => <MenuItem icon={FiAlignJustify} text="Profile" />,
-                    //     () => (
-                    //         <MenuItem icon={FiAlignJustify} text="Settingd" />
-                    //     ),
-                    //     () => <MenuItem icon={FiAlignJustify} text="Edit" />,
-                    // ]}
+                    items={[
+                        () => (
+                            <MenuItem image={flag}>
+                                <div className="flex flex-col">
+                                    <h5>You have received a new email from</h5>
+                                    <div className="flex items-center justify-start">
+                                        <span className="text-lg text-gray-800 font-bold" >Kenya</span>
+                                        <span className="text-gray-500 ml-1 mt-1">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </MenuItem>
+                        ),
+                         () => (
+                            <MenuItem>
+                                <div className="flex flex-col">
+                                    <h5>You have received a new email from</h5>
+                                    <div className="flex items-center justify-start">
+                                        <span className="text-lg text-gray-800 font-bold" >Kenya</span>
+                                        <span className="text-gray-500 ml-1 mt-1">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </MenuItem>
+                        ),
+                    ]}
                 />
             </div>
             <SettingsModal
