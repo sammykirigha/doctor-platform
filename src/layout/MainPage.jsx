@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Appointment from "../components/Appointment";
+import Chatt from "../components/Chatt";
 import Modal from "../components/common/Modal";
 import DashboardCards from "../components/DashboardCards";
 import ConfirmDeleteModal from "../components/modals/ConfirmDeleteModal";
@@ -27,10 +28,13 @@ const MainPage = () => {
                 >
                     <Title className="mt-8 ml-5" title={"Dashbord"} />
                     <DashboardCards />
-                    <div className="flex flex-row w-full mt-6">
-                        <div className="flex flex-col">
+                    <div className="flex flex-row w-full  mt-6">
+                        <div className="flex flex-col ">
                             <MyChart />
-                            <Appointment />
+                            <div className="flex flex-row w-[100%]">
+                                <Appointment />
+                                <Chatt />
+                            </div>
                         </div>
                         <div className="w-[40%]">
                             <h2>Sammy</h2>
