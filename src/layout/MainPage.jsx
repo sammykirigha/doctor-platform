@@ -18,19 +18,19 @@ const MainPage = () => {
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
     return (
-        <div className="">
+        <div className="h-full">
             <Sidebar />
-            <div className="w-full relative">
+            <div className="w-full h-[100%] relative">
                 <Navbar />
                 <div
-                    className={`bg-gray-200 h-screen pt-6 px-5 mt-16 ${
+                    className={`bg-gray-200 h-screen w-full pt-6 px-5 mt-16 ${
                         sideBarOpen && "ml-[300px]"
                     }`}
                 >
                     <Title className="mt-8 ml-5" title={"Dashbord"} />
                     <DashboardCards />
-                    <div className="flex flex-row w-full  mt-6">
-                        <div className="flex flex-col ">
+                    <div className="flex flex-row mt-6 w-[100%]">
+                        <div className="flex flex-col w-[60%] ">
                             <MyChart />
                             <div className="flex flex-row w-[100%]">
                                 <Appointment />
@@ -42,7 +42,7 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
             {/* <ConfirmDeleteModal
                 isOpen={createUserModalOpen}

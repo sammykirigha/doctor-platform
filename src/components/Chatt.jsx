@@ -32,7 +32,7 @@ const Chatt = () => {
                 </div>
                 <span className="mr-5 text-gray-600 font-semibold">
                     <Dropdown
-                        className="w-[250px]!"
+                        width={'200'}
                         activator={() => (
                             <HiDotsHorizontal className="h-5 w-5 cursor-pointer text-blue-700" />
                         )}
@@ -67,9 +67,12 @@ const Chatt = () => {
         </div>
         <div className="flex flex-col">
           <div className=" no-scrollbar overflow-y-auto h-52">
-            <UserMessage />
-            {/* {[1,2,3,4,5,6,7,8,9,10, 11,12,13,14,15,16,17,18,19].map((item) => {return <h4>sammyyyyyyyyyyy</h4>})} */}
-            
+            {
+              [1, 2, 3, 4, 5].map((message, i) => (
+                
+                <UserMessage key={message} index={i}/>
+              ))
+            }            
           </div>
           <div className="border-t border-gray-400 flex flex-row items-center justify-between mx-3 py-2">
             <input placeholder="Enter Message..." className="border border-gray-600 w-[340px] h-[35px] rounded-md pl-2" />

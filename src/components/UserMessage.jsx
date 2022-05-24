@@ -2,14 +2,14 @@ import React from "react";
 import flag from "../assets/Flag-Kenya.jpg";
 import { GoPrimitiveDot } from "react-icons/go";
 import { MdOutlineAvTimer } from "react-icons/md";
-const UserMessage = () => {
+const UserMessage = ({index}) => {
     return (
-        <div className="flex flex-row  ">
-            <div className=" mt-6 relative h-12 w-12 bg-blue-100 flex items-center justify-center rounded-full">
+        <div className={`flex flex-row ml-3 ${index % 2 === 0 && 'justify-start flex-row-reverse mr-2 gap-2'}`}>
+            <div className=" mt-6 relative h-12 w-12 bg-blue-100 flex items-center justify-center rounded-full ">
                 <img
                     src={flag}
                     alt="logo"
-                    className="m-2 w-9 h-9 rounded-full cursor-pointer "
+                    className="m-2 w-12 h-12 rounded-full cursor-pointer "
                 />
                 <span className="absolute -top-2 right-7">
                     <GoPrimitiveDot className="text-green-700 h-6 w-6 " />{" "}

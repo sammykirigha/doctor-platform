@@ -46,6 +46,7 @@ const Navbar = ({ onClick }) => {
 
             <div className="ml-auto flex mr-3">
                 <Dropdown
+                    width={200}
                     activator={() => (
                         <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
                             <img
@@ -92,8 +93,9 @@ const Navbar = ({ onClick }) => {
                 </div>
 
                 <Dropdown
+                    width={300}
                     activator={() => (
-                        <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
+                        <div className="bg-gray-300 w hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
                             <img
                                 src={email}
                                 alt="logo"
@@ -152,6 +154,7 @@ const Navbar = ({ onClick }) => {
                     ]}
                 />
                 <Dropdown
+                     width={200}
                     activator={() => (
                         <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
                             <img
