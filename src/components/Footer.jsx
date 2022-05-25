@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
+import { NavigationContext } from '../navigation.context';
 
 const Footer = () => {
+	const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);
   return (
-	  <div className='w-full bg-white border-l border-gray-500'>
-		  <p className='text-gray-900'>{ new Date().getFullYear()} @ Dorcis. Design with <AiFillHeart className='text-red-400' /> by SamuelKirigha </p>
+	  <div className={`w-full bg-white-600 border-t border-gray-200 ${sideBarOpen ? "pl-[300px]" : "pl-1"}`}>
+		  <p className='text-gray-900 h-16 px-2 text-lg inline-flex items-center'>{ new Date().getFullYear()} @ Dorcis. Design with <AiFillHeart className='text-green-400 px-3' /> by SamuelKirigha </p>
 	</div>
   )
 }

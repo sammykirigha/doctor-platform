@@ -18,39 +18,36 @@ const MainPage = () => {
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
     return (
-        <div className="h-full">
+        <div className="bg-gray-200 min-h-full">
             <Sidebar />
-            <div className="w-full h-[100%] relative">
+            <div className="w-full relative flex flex-col h-screen">
                 <Navbar />
                 <div
-                    className={`bg-gray-200 h-screen w-full pt-6 px-5 mt-16 ${
+                    className={` pt-6 px-5 mt-16 ${
                         sideBarOpen && "ml-[300px]"
                     }`}
                 >
                     <Title className="mt-8 ml-5" title={"Dashbord"} />
                     <DashboardCards />
-                    <div className="flex flex-row mt-6 w-[100%]">
-                        <div className="flex flex-col w-[60%] ">
-                            <MyChart />
-                            <div className="flex flex-row w-[100%]">
-                                <Appointment />
-                                <Chatt />
+                    <div className="flex flex-row w-full  mt-6">
+                        <div className="flex flex-col min-h-full w-[70%]">
+                            <div className="flex flex-col   ">
+                                <MyChart />
+                                <div className=" bg-red-500 pb-6 flex flex-row w-[100%]">
+                                    <Appointment />
+                                    <Chatt />
+                                </div>
                             </div>
+                            
                         </div>
-                        <div className="w-[40%]">
+                        <div className="w-[30%]">
                             <h2>Sammy</h2>
                         </div>
                     </div>
                 </div>
-                {/* <Footer /> */}
+                    <Footer />
+                
             </div>
-            {/* <ConfirmDeleteModal
-                isOpen={createUserModalOpen}
-                closeModal={() => {
-                    setCreateUserModalOpen(false);
-                }}
-                message="center"
-            /> */}
         </div>
     );
 };
