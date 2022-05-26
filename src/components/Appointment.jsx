@@ -4,9 +4,9 @@ import { HiOutlineCheck } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
 import flag from "../assets/Flag-Kenya.jpg";
 
-const Appointment = () => {
+const Appointment = ({width}) => {
     return (
-        <div className="bg-white rounded-md w-[50%] min-h-80 mt-5">
+        <div className={`bg-white rounded-md w-[${width}%] min-h-80 mt-5`}>
 			<div className="bg-white rounded-md">
 				<div className="flex flex-row items-center justify-between border-b">
                     <div className="flex flex-row items-center my-5 mx-5">

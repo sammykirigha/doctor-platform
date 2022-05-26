@@ -154,7 +154,7 @@ const Navbar = ({ onClick }) => {
                     ]}
                 />
                 <Dropdown
-                     width={200}
+                     width={300}
                     activator={() => (
                         <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
                             <img

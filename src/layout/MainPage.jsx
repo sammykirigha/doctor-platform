@@ -19,29 +19,30 @@ const MainPage = () => {
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
     return (
-        <div className="bg-gray-200 h-[1005px]">
+        <div className="bg-gray-100 ">
             <Sidebar />
-            <div className="w-full relative flex flex-col h-screen">
+            <div className=" relative  flex flex-col  min-h-screen">
                 <Navbar />
                 <div
-                    className={` pt-6 px-5 mt-16 ${
-                        sideBarOpen && "ml-[300px]"
+                    className={` pt-6 pb-6 mt-16 ${
+                        sideBarOpen ? "pl-[300px]" && "px-4":" px-5"
                     }`}
                 >
                     <Title className="mt-8 ml-5" title={"Dashbord"} />
                     <DashboardCards />
-                    <div className="flex flex-row w-full  mt-6">
-                        <div className="flex flex-col min-h-full w-[70%]">
-                            <div className="flex flex-col   ">
+                    <div className="flex flex-row mt-6">
+                        <div className="flex flex-col w-[65%]">
+                            <div className="flex flex-col">
                                 <MyChart />
-                                <div className=" bg-red-500 pb-6 flex flex-row w-[100%]">
-                                    <Appointment />
+                                <div className=" flex flex-row">
+                                    <Appointment width={50} />
                                     <Chatt />
                                 </div>
                             </div>
                         </div>
-                        <div className="w-[30%]">
+                        <div className="w-[35%] ml-5">
                             <Radial />
+                            <Appointment width={100} />
                         </div>
                     </div>
                 </div>
