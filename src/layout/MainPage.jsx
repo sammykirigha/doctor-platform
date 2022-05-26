@@ -8,6 +8,7 @@ import ConfirmDeleteModal from "../components/modals/ConfirmDeleteModal";
 import SettingsModal from "../components/modals/SettingsModal";
 import MyChart from "../components/MyChart";
 import Navbar from "../components/Navbar";
+import Radial from "../components/Radial";
 import Sidebar from "../components/Sidebar";
 import Title from "../components/Title";
 import { NavigationContext } from "../navigation.context";
@@ -18,7 +19,7 @@ const MainPage = () => {
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
     return (
-        <div className="bg-gray-200 min-h-full">
+        <div className="bg-gray-200 h-[1005px]">
             <Sidebar />
             <div className="w-full relative flex flex-col h-screen">
                 <Navbar />
@@ -38,15 +39,13 @@ const MainPage = () => {
                                     <Chatt />
                                 </div>
                             </div>
-                            
                         </div>
                         <div className="w-[30%]">
-                            <h2>Sammy</h2>
+                            <Radial />
                         </div>
                     </div>
                 </div>
-                    <Footer />
-                
+                <Footer />
             </div>
         </div>
     );
