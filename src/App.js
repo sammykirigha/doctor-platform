@@ -3,7 +3,10 @@ import MainPage from './layout/MainPage';
 
 const App = () => {
   return (
+    <div className=''>
+
     <MainPage />
+    </div>
   );
 }
 

@@ -1,32 +1,55 @@
-import React from 'react';
-import logo from '../assets/logo3.jpg';
-import { sidebarOptionRoutes } from './sidebar-options-routes';
-
+import React, { useContext, useState } from "react";
+import Appointment from "../components/Appointment";
+import Chatt from "../components/Chatt";
+import Modal from "../components/common/Modal";
+import DashboardCards from "../components/DashboardCards";
+import Footer from "../components/Footer";
+import ConfirmDeleteModal from "../components/modals/ConfirmDeleteModal";
+import SettingsModal from "../components/modals/SettingsModal";
+import MyChart from "../components/MyChart";
+import Navbar from "../components/Navbar";
+import Radial from "../components/Radial";
+import Sidebar from "../components/Sidebar";
+import Title from "../components/Title";
+import { NavigationContext } from "../navigation.context";
 
 const MainPage = () => {
-  return (
-	  <div className='grid grid-cols-5 grid-flow-row-dense '>
-		  <div className='bg-white-500 h-screen w-75 flex-shrink-0 border-r border-gray-100'>
-			  <div className='bg-white-900 flex  my-1 border-b border-gray-200 h-35'>
-				  <img src={logo} alt='logo' height='54' width='64' className='ml-2 cursor-pointer' />
-				  <h3 className='text-2xl text-gray-800 font-bold pt-3 pl-1 cursor-pointer'>Doctris</h3>
-			  </div>
-			  <div className='pt-5'>
-				  {
-					  sidebarOptionRoutes?.map((option, index) => {
-						  return (
-							  <div key={index} className='ml-5 p-1.5 flex hover:text-blue-600 '>
-								  <span className='h-8 justify-center rounded bg-gray-100 cursor-pointer'>{option.icon}</span>
-								  <h4 className='cursor-pointer ml-2 text-l font-normal'>{ option.text}</h4>
-							  </div>
-						  )
-					  })
-				  }
-			  </div>
-		  </div>
-		  <div className=' col-span-4 w-autoS'>mainpage</div>
-	</div>
-  )
-}
+    const { sideBarOpen } = useContext(NavigationContext);
 
-export default MainPage
+    const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
+
+    return (
+        <div className="bg-gray-100 ">
+            <Sidebar />
+            <div className=" relative  flex flex-col  min-h-screen">
+                <Navbar />
+                <div
+                    className={` pt-6 pb-6 mt-16 ${
+                        sideBarOpen ? "pl-[300px]" && "px-4":" px-5"
+                    }`}
+                >
+                    <Title className="mt-8 ml-5" title={"Dashbord"} />
+                    <DashboardCards />
+                    <div className="flex flex-row mt-6">
+                        <div className="flex flex-col w-[65%]">
+                            <div className="flex flex-col">
+                                <MyChart />
+                                <div className=" flex flex-row">
+                                    <Appointment width={50} />
+                                    <Chatt />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-[35%] ml-5">
+                            <Radial />
+                            <Appointment width={100} />
+                        </div>
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        </div>
+    );
+};
+
+export default MainPage;
