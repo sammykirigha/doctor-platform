@@ -6,7 +6,7 @@ import flag from "../assets/Flag-Kenya.jpg";
 
 const Appointment = ({width}) => {
     return (
-        <div className={`bg-white rounded-md w-[${width}%] min-h-80 mt-5`}>
+        <div className={`bg-white rounded-md w-[${width}%] min-h-[300px] mt-5`}>
 			<div className="bg-white rounded-md">
 				<div className="flex flex-row items-center justify-between border-b">
                     <div className="flex flex-row items-center my-5 mx-5">
@@ -16,8 +16,8 @@ const Appointment = ({width}) => {
                     <span className="mr-5 text-gray-600 font-semibold">55 Patients</span>
 				</div>
                 
-				<div className="no-scrollbar overflow-y-auto h-64">
-					{[1, 2, 3, 4.5].map((item, i) => {
+				<div className=" no-scrollbar overflow-y-auto h-72">
+					{[1, 2, 3, 4, 5, 6, 7].map((item, i) => {
 						return (
 						<div className="flex flex-row items-center justify-between my-4">
 								<div className="flex flex-row items-center justify-start ml-4">

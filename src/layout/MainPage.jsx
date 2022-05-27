@@ -40,7 +40,7 @@ const MainPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-[35%] ml-5">
+                        <div className="w-[35%] ml-5 ">
                             <Radial />
                             <Appointment width={100} />
                         </div>
