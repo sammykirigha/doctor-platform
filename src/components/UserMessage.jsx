@@ -1,5 +1,5 @@
 import React from "react";
-import flag from "../assets/Flag-Kenya.jpg";
+import flag from "../data/images/Flag-Kenya.jpg";
 import { GoPrimitiveDot } from "react-icons/go";
 import { MdOutlineAvTimer } from "react-icons/md";
 const UserMessage = ({index}) => {

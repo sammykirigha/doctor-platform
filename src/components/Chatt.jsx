@@ -1,7 +1,7 @@
 import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
-import flag from "../assets/Flag-Kenya.jpg";
+import flag from "../data/images/Flag-Kenya.jpg";
 import Dropdown from "./common/Dropdown";
 import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 // import { IoSendSharp } from "react-icons/io";

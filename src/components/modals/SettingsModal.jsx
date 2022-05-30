@@ -1,9 +1,9 @@
 import React from "react";
 import Logo from "../common/Logo";
 import Modal from "../common/Modal";
-import image1 from "../../assets/settingImage.png";
-import image2 from "../../assets/settingImage2.png";
-import image3 from "../../assets/settingImage3.png";
+import image1 from "../../data/images/settingImage.png";
+import image2 from "../../data/images/settingImage2.png";
+import image3 from "../../data/images/settingImage3.png";
 import { FaTimes } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { BiGlobe } from "react-icons/bi";

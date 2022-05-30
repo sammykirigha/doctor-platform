@@ -180,7 +180,7 @@ export const links = [
 		link: '/comments'
 	},
 	{
-		icon: <IoTabletLandscapeOutline />,
+		icon: <BiHomeAlt />,
 		name: 'Landing Page',
 		link: '/landing-page'
 	}

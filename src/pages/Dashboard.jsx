@@ -1,11 +1,14 @@
-import React from "react";
-import Appointment from "../components/Appointment";
+import React, { useContext } from "react";
+import Appointment from "../components/common/Appointment";
 import DashboardCards from "../components/DashboardCards";
 import MyChart from "../components/charts/MyChart";
 import Radial from "../components/charts/Radial";
 import Title from "../components/Title";
+import Chatt from "../components/Chatt";
+import { NavigationContext } from "../contexts/navigation.context";
 
 const Dashboard = () => {
+    const { sideBarOpen } = useContext(NavigationContext);
     return (
         <div>
             <Title className="mt-8 ml-5" title={"Dashbord"} />
@@ -16,6 +19,7 @@ const Dashboard = () => {
                         <MyChart />
                         <div className=" flex flex-row">
                             <Appointment />
+                            <Chatt />
                         </div>
                     </div>
                 </div>

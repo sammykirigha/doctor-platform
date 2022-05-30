@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { HiOutlineCheck } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
-import flag from "../assets/Flag-Kenya.jpg";
+import flag from "../../data/images/Flag-Kenya.jpg";
 
 const Appointment = ({width}) => {
     return (
