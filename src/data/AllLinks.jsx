@@ -24,6 +24,7 @@ export const links = [
 	{
 		icon: <AiOutlineUser />,
 		name: 'Doctors',
+		link: 'doctors',
 		childrenLinks: [
 			{
 				name: 'Doctors',
@@ -44,6 +45,7 @@ export const links = [
 	{
 		icon: <FaWheelchair />,
 		name: 'Patients',
+		link: 'patients',
 		childrenLinks: [
 			{
 				name: 'All Patients',
@@ -62,6 +64,7 @@ export const links = [
 	{
 		icon: <AiOutlineAppstore />,
 		name: 'Apps',
+		link: 'apps',
 		childrenLinks: [
 			{
 				name: 'Chat',
@@ -80,6 +83,7 @@ export const links = [
 	{
 		icon: <HiOutlineShoppingCart />,
 		name: 'Pharmacy',
+		link: 'pharmacy',
 		childrenLinks: [
 			{
 				name: 'Shop',
@@ -102,6 +106,7 @@ export const links = [
 	{
 		icon: <FaBlog />,
 		name: 'Blogs',
+		link: 'blogs',
 		childrenLinks: [
 			{
 				name: 'Blogs',
@@ -117,6 +122,7 @@ export const links = [
 	{
 		icon: <MdOutlineRestorePage />,
 		name: 'Pages',
+		link: 'pages',
 		childrenLinks: [
 			{
 				name: 'FAQs',
@@ -155,6 +161,7 @@ export const links = [
 	{
 		icon: <BiLogOutCircle />,
 		name: 'Authentication',
+		link: 'authentication',
 		childrenLinks: [
 			{
 				name: 'Login',
