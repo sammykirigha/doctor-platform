@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { NavigationContext } from '../navigation.context';
+import { NavigationContext } from '../context/navigation.context';
 
 const Footer = () => {
 	const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);

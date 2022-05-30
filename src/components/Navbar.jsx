@@ -6,7 +6,7 @@ import rwad from "../assets/Rwanda.png";
 import setting from "../assets/lg2.png";
 import email from "../assets/email.png";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { NavigationContext } from "../navigation.context";
+import { NavigationContext } from "../context/navigation.context";
 import { FiAlignJustify } from "react-icons/fi";
 import Dropdown from "./common/Dropdown";
 import { MenuItem } from "./common/MenuItem";

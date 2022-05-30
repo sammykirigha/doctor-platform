@@ -1,11 +1,18 @@
+import { Routes } from 'react-router-dom';
 import './App.css';
-import MainPage from './layout/MainPage';
+import Layout from './layout/Layout';
+import { routes } from './routes';
 
 const App = () => {
   return (
     <div className=''>
-
-    <MainPage />
+      <Layout>
+        <Routes>
+          {routes.map((route, index) => {
+            return <>{ route}</>
+          })}
+        </Routes>
+      </Layout>
     </div>
   );
 }

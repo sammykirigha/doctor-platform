@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { sidebarOptionRoutes } from "../layout/sidebar-options-routes";
-import { NavigationContext } from "../navigation.context";
+import { NavigationContext } from "../context/navigation.context";
 import Logo from "./common/Logo";
 import { BiMessageRounded } from 'react-icons/bi';
 
