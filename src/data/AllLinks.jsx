@@ -12,23 +12,23 @@ import { GiAlarmClock } from 'react-icons/gi';
 
 export const links = [
 	{
-		icon: <GiAlarmClock/>,
+		icon: <GiAlarmClock className='h-4.5 w-4.5' />,
 		name: 'Dashboard',
 		link: '/dashboard'
 	},
 	{
-		icon: <FaStethoscope />,
+		icon: <FaStethoscope className='h-4.5 w-4.5' />,
 		name: 'Appointment',
 		link: '/appointment'
 	},
 	{
-		icon: <AiOutlineUser />,
+		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
 		link: 'doctors',
 		childrenLinks: [
 			{
 				name: 'Doctors',
-			    link: '/doctors'
+			    link: '/all-doctors'
 			},
 			{
 				name: 'Add Doctor',
@@ -43,7 +43,7 @@ export const links = [
 		
 	},
 	{
-		icon: <FaWheelchair />,
+		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patients',
 		link: 'patients',
 		childrenLinks: [
@@ -62,7 +62,7 @@ export const links = [
 		]
 	},
 	{
-		icon: <AiOutlineAppstore />,
+		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Apps',
 		link: 'apps',
 		childrenLinks: [
@@ -81,7 +81,7 @@ export const links = [
 		]
 	},
 	{
-		icon: <HiOutlineShoppingCart />,
+		icon: <HiOutlineShoppingCart className='h-4.5 w-4.5' />,
 		name: 'Pharmacy',
 		link: 'pharmacy',
 		childrenLinks: [
@@ -104,7 +104,7 @@ export const links = [
 		]
 	},
 	{
-		icon: <FaBlog />,
+		icon: <FaBlog className='h-4.5 w-4.5' />,
 		name: 'Blogs',
 		link: 'blogs',
 		childrenLinks: [
@@ -120,7 +120,7 @@ export const links = [
 		]
 	},
 	{
-		icon: <MdOutlineRestorePage />,
+		icon: <MdOutlineRestorePage className='h-4.5 w-4.5' />,
 		name: 'Pages',
 		link: 'pages',
 		childrenLinks: [
@@ -159,7 +159,7 @@ export const links = [
 		]
 	},
 	{
-		icon: <BiLogOutCircle />,
+		icon: <BiLogOutCircle className='h-4.5 w-4.5' />,
 		name: 'Authentication',
 		link: 'authentication',
 		childrenLinks: [
@@ -182,12 +182,12 @@ export const links = [
 		]
 	},
 	{
-		icon: <BiCube />,
+		icon: <BiCube className='h-4.5 w-4.5' />,
 		name: 'Components',
 		link: '/comments'
 	},
 	{
-		icon: <BiHomeAlt />,
+		icon: <BiHomeAlt className='h-4.5 w-4.5' />,
 		name: 'Landing Page',
 		link: '/landing-page'
 	}

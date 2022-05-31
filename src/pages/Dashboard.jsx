@@ -10,7 +10,7 @@ import { NavigationContext } from "../contexts/navigation.context";
 const Dashboard = () => {
     const { sideBarOpen } = useContext(NavigationContext);
     return (
-        <div>
+        <div className="mx-5">
             <Title className="mt-8 ml-5" title={"Dashbord"} />
             <DashboardCards />
             <div className="flex flex-row mt-6">
