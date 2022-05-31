@@ -10,7 +10,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 const Sidebar = () => {
     const { sideBarOpen } = useContext(NavigationContext);
     const navigate = useNavigate();
-    const [isActive, setIsActive] = useState(true);
+    const [isActive, setIsActive] = useState("");
     return (
         <div
             className={`fixed w-[250px] bg-white border-r border-gray-200 h-screen top-0 left-0 z-10 ${
@@ -18,7 +18,7 @@ const Sidebar = () => {
             }`}
         >
             <Logo />
-            <div className="pt-2 overflow-hidden hover:overflow-y-auto h-screen bg-white">
+            <div className="pt-2 overflow-hidden hover:overflow-y-auto h-[470px] bg-white">
                 <>
                     {links?.map(({ icon, link, name, childrenLinks }, index) => {
                             if (childrenLinks?.length > 0) {
@@ -33,10 +33,10 @@ const Sidebar = () => {
 
                                                 <div className="flex items-center mt-2.5 cursor-pointer"
                                                     onClick={() =>
-                                                        setIsActive(!isActive)
+                                                        setIsActive(isActive === name?"":name)
                                                     }
                                                 >
-                                                    {isActive ? (
+                                                    {isActive === name ? (
                                                         <RiArrowUpSLine className="text-gray-500" />
                                                     ) : (
                                                         <RiArrowDownSLine className="text-gray-500" />
@@ -45,7 +45,7 @@ const Sidebar = () => {
                                             </div>
 
                                             <div className="bg-white w-full pl-5">
-                                                {isActive &&
+                                                {isActive === name &&
                                                     childrenLinks.map(
                                                         (child, index) => {
                                                             return (
