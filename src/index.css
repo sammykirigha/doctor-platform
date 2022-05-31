@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .slim-scrollbar::-webkit-scrollbar{
-	width: 55px !important;
+	width: 5px !important;
 }

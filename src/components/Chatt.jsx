@@ -69,7 +69,7 @@ const Chatt = () => {
                 </span>
         </div>
         <div className="flex flex-col">
-          <div className=" no-scrollbar overflow-y-auto h-52">
+          <div className=" slim-scrollbar overflow-auto h-52">
             {
               [1, 2, 3, 4, 5].map((message, i) => (
                 

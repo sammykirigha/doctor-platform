@@ -18,7 +18,7 @@ const Dashboard = () => {
                     <div className="flex flex-col">
                         <MyChart />
                         <div className=" flex flex-row">
-                            <Appointment />
+                            <Appointment width={50} />
                             <Chatt />
                         </div>
                     </div>
