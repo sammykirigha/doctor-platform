@@ -18,7 +18,7 @@ const Sidebar = () => {
             }`}
         >
             <Logo />
-            <div className="pt-2 overflow-hidden hover:overflow-y-auto h-[470px] bg-white">
+            <div className="pt-2 slim-scrollbar overflow-auto h-[470px] bg-white">
                 <>
                     {links?.map(({ icon, link, name, childrenLinks }, index) => {
                             if (childrenLinks?.length > 0) {
