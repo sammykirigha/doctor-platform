@@ -1,7 +1,7 @@
 import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
-import flag from "../assets/Flag-Kenya.jpg";
+import flag from "../data/images/Flag-Kenya.jpg";
 import Dropdown from "./common/Dropdown";
 import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 // import { IoSendSharp } from "react-icons/io";
@@ -34,7 +34,10 @@ const Chatt = () => {
                     <Dropdown
                         width={'200'}
                         activator={() => (
-                            <HiDotsHorizontal className="h-5 w-5 cursor-pointer text-blue-700" />
+                            <span className=" mr-2 w-9 h-9 shadow-md rounded-full bg-gray-100 hover:bg-blue-700 hover:text-white group cursor-pointer">
+                                <HiDotsHorizontal className="m-2 h-5 w-5 cursor-pointer group-hover:text-white text-blue-700" />
+                            </span>
+                            
                         )}
                         items={[
                             () => (
@@ -66,7 +69,7 @@ const Chatt = () => {
                 </span>
         </div>
         <div className="flex flex-col">
-          <div className=" no-scrollbar overflow-y-auto h-52">
+          <div className=" slim-scrollbar overflow-auto h-52">
             {
               [1, 2, 3, 4, 5].map((message, i) => (
                 

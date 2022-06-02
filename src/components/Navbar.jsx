@@ -1,12 +1,12 @@
 import React, {useContext, useState } from "react";
-import flag from "../assets/Flag-Kenya.jpg";
-import tanz from "../assets/Tanzania.png";
-import ug from "../assets/Uganda.png";
-import rwad from "../assets/Rwanda.png";
-import setting from "../assets/lg2.png";
-import email from "../assets/email.png";
+import flag from "../data/images/Flag-Kenya.jpg";
+import tanz from "../data/images/Tanzania.png";
+import ug from "../data/images/Uganda.png";
+import rwad from "../data/images/Rwanda.png";
+import setting from "../data/images/lg2.png";
+import email from "../data/images/email.png";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { NavigationContext } from "../navigation.context";
+import { NavigationContext } from "../contexts/navigation.context";
 import { FiAlignJustify } from "react-icons/fi";
 import Dropdown from "./common/Dropdown";
 import { MenuItem } from "./common/MenuItem";
@@ -25,7 +25,7 @@ const Navbar = ({ onClick }) => {
     return (
         <div
             className={`bg-white-900 py-[13px] flex justify-between border-b border-gray-200 border-l  fixed z-10 right-0 top-0 ${
-                sideBarOpen ? "left-[300px]" : "left-0"
+                sideBarOpen ? "left-[250px]" : "left-0"
             } bg-white`}
         >
             <div className="flex w-64 justify-between ml-3">
