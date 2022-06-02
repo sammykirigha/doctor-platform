@@ -16,7 +16,7 @@ const Appointment = ({width}) => {
                     <span className="mr-5 text-gray-600 font-semibold">55 Patients</span>
 				</div>
                 
-				<div className=" slim-scrollbar overflow-auto h-72 pb-3">
+				<div className=" slim-scrollbar overflow-auto h-72 pb-3 ">
 					{[1, 2, 3, 4, 5, 6, 7].map((item, i) => {
 						return (
 						<div className="flex flex-row items-center justify-between my-4 gap-2">

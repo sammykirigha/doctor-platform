@@ -13,8 +13,8 @@ const Dashboard = () => {
         <div className="mx-5">
             <Title className="mt-8 ml-5" title={"Dashbord"} />
             <DashboardCards />
-            <div className="flex flex-row mt-6">
-                <div className="flex flex-col w-[65%]">
+            <div className="flex flex-row sm:flex-col md:flex-row lg:flex-row mt-6">
+                <div className=" w-[65%]">
                     <div className="flex flex-col">
                         <MyChart />
                         <div className=" flex flex-row">
