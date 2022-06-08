@@ -28,15 +28,15 @@ export const links = [
 		childrenLinks: [
 			{
 				name: 'Doctors',
-			    link: '/all-doctors'
+			    link: '/doctors/all-doctors'
 			},
 			{
 				name: 'Add Doctor',
-			    link: '/add-doctor'
+			    link: '/doctors/add-doctor'
 			},
 			{
 				name: 'Profile',
-			    link: '/profile'
+			    link: '/doctors/profile'
 			},
 		]
 			
