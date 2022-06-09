@@ -4,7 +4,6 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import Button from "../components/Button";
 import Select from "react-select";
 import AppointmentModal from "../components/modals/AppointmentModal";
-import { NavigationContext } from "../contexts/navigation.context";
 
 const Appointment = () => {
     const params = useLocation();
