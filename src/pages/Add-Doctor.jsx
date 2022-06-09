@@ -177,7 +177,10 @@ const AddDoctor = () => {
                                         placeholder="Your Bio:"
                                         className="w-full mr-3 h-[100px]  placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
                                     />
-                            </div>
+                </div>
+                <button className="bg-blue-700 text-white w-auto py-3 mx-3 rounded-2xl mt-3 mb-10 font-semibold uppercase">
+                  Add Doctor
+                </button>
                         </form>
                     </div>
                 </div>
