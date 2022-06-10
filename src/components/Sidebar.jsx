@@ -50,7 +50,7 @@ const Sidebar = () => {
                                                         (child, index) => {
                                                             return (
                                                                 <di>
-                                                                    <div key={index} className='' onClick={() =>navigate(`${link}${child.link}`)} >
+                                                                    <div key={index} className='' onClick={() =>navigate(child.link)} >
                                                                         <div className="flex pt-3 mx-3 text-sm text-gray-500 cursor-pointer items-center">
                                                                             <span><IoMdArrowDropright className="text-slate-800" /></span>
                                                                             {child.name }

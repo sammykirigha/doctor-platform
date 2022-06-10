@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Button from "../components/Button";
 import Select from "react-select";
+import AppointmentModal from "../components/modals/AppointmentModal";
 
 const Appointment = () => {
     const params = useLocation();
     const [selectedOption, setSelectedOption] = useState(null);
+    const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
     const pathname = params.pathname.split("/")[1];
 
@@ -43,7 +45,12 @@ const Appointment = () => {
                         value={selectedOption}
                         onChange={handleChange}
                     />
-                    <Button text="Appointment" />
+                    <Button
+                        text="Appointment"
+                        onClick={() => {
+                            setCreateUserModalOpen(!createUserModalOpen);
+                        }}
+                    />
                 </div>
             </div>
             <div className="flex">
@@ -78,6 +85,12 @@ const Appointment = () => {
                     </tbody>
                 </table>
             </div>
+            <AppointmentModal
+                isOpen={createUserModalOpen}
+                closeModal={() => {
+                    setCreateUserModalOpen(false);
+                }}
+            />
         </div>
     );
 };

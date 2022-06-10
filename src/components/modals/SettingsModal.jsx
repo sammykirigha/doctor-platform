@@ -20,6 +20,7 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
             closeModal={closeModal}
             positionY="right"
             positionX="end"
+            width={448}
         >
             <div className="sm:h-[665px] lg:h-[865px] w-[400px ">
                 <div className="flex items-center justify-between w-[300px">

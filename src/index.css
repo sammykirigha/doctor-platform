@@ -5,3 +5,7 @@
 .slim-scrollbar::-webkit-scrollbar{
 	width: 5px !important;
 }
+
+.container{
+  @apply max-w-[1240px] m-auto
+}
