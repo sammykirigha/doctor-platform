@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Button from "../components/Button";
 import image1 from "../data/images/01.jpg"
@@ -69,6 +69,7 @@ const doctorsAvailable = [
 
 const Doctors = () => {
     const params = useLocation();
+    const navigate = useNavigate();
     const pathname = params.pathname.split("/")[2];
     return (
         <div>
@@ -85,7 +86,7 @@ const Doctors = () => {
                         </span>{" "}
                     </p>
                 </div>
-                <Button text="Add A New Doctor" />
+                <Button text="Add A New Doctor" onClick={() => navigate('/doctors/add-doctor')} />
             </div>
             <div className="bg-gray-50 grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 mt-5 mx-4">
                 {doctorsAvailable.map((doc, index) => {

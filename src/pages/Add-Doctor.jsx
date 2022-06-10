@@ -1,6 +1,6 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import image1 from "../data/images/01.jpg";
 import Select from "react-select";
@@ -62,6 +62,7 @@ const genderOptions = [
 ];
 
 const AddDoctor = () => {
+    const navigate = useNavigate();
     const params = useLocation();
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
@@ -216,9 +217,10 @@ const AddDoctor = () => {
                                     className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                 />
                             </div>
-                            <button className="bg-blue-700 text-white w-auto py-3 mx-3 rounded-2xl mt-3 mb-6 font-semibold uppercase">
+                            <Button text="Add Doctor" />
+                            {/* <button className="bg-blue-700 text-white w-auto py-3 mx-3 rounded-2xl mt-3 mb-6 font-semibold uppercase">
                                 Add Doctor
-                            </button>
+                            </button> */}
                         </form>
                     </div>
                 </div>
@@ -227,23 +229,38 @@ const AddDoctor = () => {
                         <h4 className="text-lg text-slate-800 font-semibold">
                             Doctor's List
                         </h4>
-            </div>
-            <div className="">
-              {doctorsAvailable.map((doc, index) => {
-                return (
-                  <div className="flex flex-row">
-                    <div className="h-[100px] w-[100px] rounded-lg drop-shadow-md">
-                      <img src={doc.image} alt="doc" height='100%' width="100%" />
                     </div>
-                    <div className="flex flex-col ">
-                      <h5>{doc.name}</h5>
-                      <span>{doc.department}</span>
-                      <p>{ doc.experirnce}</p>
+                    <div className="slim-scrollbar overflow-auto">
+                        {doctorsAvailable.map((doc, index) => {
+                            return (
+                                <div className="flex flex-row pl-3 mb-5 mt-2">
+                                    <div className="h-[100px] w-[100px] rounded-lg drop-shadow-md">
+                                        <img
+                                            src={doc.image}
+                                            alt="doc"
+                                            height="100%"
+                                            width="100%"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col ml-5 pt-3">
+                                        <h5 className="text-lg text-slate-900 font-semibold">
+                                            {doc.name}
+                                        </h5>
+                                        <span className="text-md text-gray-400">
+                                            {doc.department}
+                                        </span>
+                                        <p className="text-md text-gray-400">
+                                            {doc.experirnce}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
+                    <div className="mt-3 ml-7 mb-3">
+                        <Button text="All Doctors" onClick={() => navigate('/doctors/all-doctors')} />
                     </div>
-                  )
-                })}
-            </div>
+                    
                 </div>
             </div>
         </div>
