@@ -233,7 +233,7 @@ const AddDoctor = () => {
                         {doctorsAvailable.map((doc, index) => {
                             return (
                                 <div key={index} className="flex flex-row items-center pl-3 mb-5 mt-2">
-                                    <div className="h-[150px] w-[150px] rounded-lg drop-shadow-md">
+                                    <div className="h-[150px] w-[150px] rounded-lg drop-shadow-sm">
                                         <img
                                             src={doc.image}
                                             alt="doc"
