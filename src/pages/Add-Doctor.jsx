@@ -2,15 +2,14 @@ import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import image1 from "../data/images/01.jpg";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import image1 from "../data/images/01.jpg";
 import image2 from "../data/images/02.jpg";
 import image3 from "../data/images/03.jpg";
 import image4 from "../data/images/04.jpg";
 import image5 from "../data/images/05.jpg";
 
-const animatedComponents = makeAnimated();
 
 const doctorsAvailable = [
     {
@@ -44,6 +43,7 @@ const doctorsAvailable = [
         experirnce: "2 Years Experienced",
     },
 ];
+const animatedComponents = makeAnimated();
 
 const departmentsOptions = [
     { value: "Eye Care", label: "Eye Care" },
@@ -67,7 +67,7 @@ const AddDoctor = () => {
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
     return (
-        <div className="mx-4">
+        <div className="mx-4 min-h-screen">
             <div className="flex flex-row items-center justify-between mt-3">
                 <h3 className="text-lg text-slate-900 font-bold">
                     Add New Doctor
@@ -113,11 +113,11 @@ const AddDoctor = () => {
                             <Button text="Remove" />
                         </div>
                     </div>
-                    <div className="mx-3 mt-5">
+                    <div className="mx-3 mt-5 mb-5">
                         <form className="flex flex-col">
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>First Name</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">First Name</label>
                                     <input
                                         type="text"
                                         placeholder="First Name:"
@@ -125,7 +125,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Last Name</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Last Name</label>
                                     <input
                                         type="text"
                                         placeholder="Last Name:"
@@ -135,7 +135,7 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Your Email</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Your Email</label>
                                     <input
                                         type="email"
                                         placeholder="Email address:"
@@ -143,7 +143,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Phone no.</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Phone no.</label>
                                     <input
                                         type="text"
                                         placeholder="Phone no:"
@@ -153,18 +153,17 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Departments</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Departments</label>
                                     <Select
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
                                         className="w-[300px]"
-                                        isMulti
                                         defaultValue={departmentsOptions[2]}
                                         options={departmentsOptions}
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Gender</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Gender</label>
                                     <Select
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
@@ -175,7 +174,7 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Twitter</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Twitter</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -183,7 +182,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Facebook</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Facebook</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -193,7 +192,7 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Linkedin</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Linkedin</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -201,7 +200,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Instagram</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Instagram</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -210,7 +209,7 @@ const AddDoctor = () => {
                                 </div>
                             </div>
                             <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
-                                <label>Your Bio</label>
+                                <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Your Bio</label>
                                 <textarea
                                     type="text"
                                     placeholder="Your Bio:"
@@ -224,17 +223,17 @@ const AddDoctor = () => {
                         </form>
                     </div>
                 </div>
-                <div className="w-[40%] bg-white">
+                <div className="w-[40%] bg-white rounded-md pb-5">
                     <div className="mt-4 pl-4 border-b border-gray-400 pb-7 pt-4">
                         <h4 className="text-lg text-slate-800 font-semibold">
                             Doctor's List
                         </h4>
                     </div>
-                    <div className="slim-scrollbar overflow-auto">
+                    <div className="slim-scrollbar overflow-auto h-[700px]  ">
                         {doctorsAvailable.map((doc, index) => {
                             return (
-                                <div className="flex flex-row pl-3 mb-5 mt-2">
-                                    <div className="h-[100px] w-[100px] rounded-lg drop-shadow-md">
+                                <div key={index} className="flex flex-row items-center pl-3 mb-5 mt-2">
+                                    <div className="h-[150px] w-[150px] rounded-lg drop-shadow-sm">
                                         <img
                                             src={doc.image}
                                             alt="doc"
@@ -242,7 +241,7 @@ const AddDoctor = () => {
                                             width="100%"
                                         />
                                     </div>
-                                    <div className="flex flex-col ml-5 pt-3">
+                                    <div className="flex flex-col ml-5 ">
                                         <h5 className="text-lg text-slate-900 font-semibold">
                                             {doc.name}
                                         </h5>
@@ -256,11 +255,10 @@ const AddDoctor = () => {
                                 </div>
                             );
                         })}
-                    </div>
-                    <div className="mt-3 ml-7 mb-3">
+                        <div className="mt-3 ml-7 mb-3">
                         <Button text="All Doctors" onClick={() => navigate('/doctors/all-doctors')} />
                     </div>
-                    
+                    </div>
                 </div>
             </div>
         </div>

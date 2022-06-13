@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react-icons/fi";
 import Button from "../components/Button";
 import image1 from "../data/images/01.jpg"
 import image2 from "../data/images/02.jpg"
@@ -95,14 +96,20 @@ const Doctors = () => {
                             key={index}
                             className="drop-shadow-md rounded-md bg-white flex flex-col overflow-hidden shadow-lg"
                         >
-                            <div className="flex items-center justify-center">
-                                <img src={doc.image} alt="doc" height='100%' width='100%' />
+                            <div className="flex items-center">
+                                <img src={doc.image} alt="doc" height='100%' width='100%' className="relative" />
+                                <div className='flex flex-col absolute left-2 gap-2 visible'>
+                                    <span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiFacebook className="text-blue-500  group-hover:text-white"  /></span>
+										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiLinkedin className="text-blue-500 group-hover:text-white"  /></span>
+										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiGithub className="text-blue-500 group-hover:text-white" /></span>
+										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiTwitter className="text-blue-500 group-hover:text-white" /></span>
+                                </div>
                             </div>
-                            <div className="flex flex-col items-center justify-center px-3 h-24 hover:bg-blue-500 hover:text-white">
-                                <span className="text-black-900 font-bold">
+                            <div className="flex flex-col items-center justify-center px-3 h-24 hover:bg-blue-500 group ">
+                                <span className="text-black-900 font-bold group-hover:bg-blue-500 group-hover:text-white">
                                     {doc.name}
                                 </span>
-                                <span className="text-gray-500">
+                                <span className="text-gray-500 group-hover:bg-blue-500 group-hover:text-gray-200">
                                     {doc.department}
                                 </span>
                             </div>
