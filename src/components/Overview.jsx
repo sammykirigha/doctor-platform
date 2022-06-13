@@ -111,7 +111,7 @@ const Overview = () => {
                                     <span className="text-md text-gray-400">
                                         {doc.qualifications}
                                     </span>
-                                    <div className="flex flex-row items-center justify-between">
+                                    <div className="flex flex-row items-center">
                                         <div className="flex flex-row">
                                             {[1, 2, 3, 4, 5].map((item) => (
                                                 <AiOutlineStar
@@ -121,7 +121,7 @@ const Overview = () => {
                                             ))}
                                         </div>
 
-                                        <span className="text-lg text-gray-500">
+                                        <span className="text-lg text-gray-500 ml-12">
                                             5 star
                                         </span>
                                     </div>
@@ -136,7 +136,7 @@ const Overview = () => {
                                             <HiCurrencyDollar className="text-blue-500 my-100 mr-3" />$ 75 USD/Visit
                                         </span>
 									</div>
-									<div className="flex flex-row mt-4 mr-2 items-center justify-between">
+									<div className="flex flex-row mt-4 mr-4 items-center justify-between">
 										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiFacebook className="text-blue-500  group-hover:text-white"  /></span>
 										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiLinkedin className="text-blue-500 group-hover:text-white"  /></span>
 										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiGithub className="text-blue-500 group-hover:text-white" /></span>

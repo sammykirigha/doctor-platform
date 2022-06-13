@@ -67,7 +67,7 @@ const AddDoctor = () => {
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
     return (
-        <div className="mx-4">
+        <div className="mx-4 min-h-screen">
             <div className="flex flex-row items-center justify-between mt-3">
                 <h3 className="text-lg text-slate-900 font-bold">
                     Add New Doctor
@@ -113,7 +113,7 @@ const AddDoctor = () => {
                             <Button text="Remove" />
                         </div>
                     </div>
-                    <div className="mx-3 mt-5">
+                    <div className="mx-3 mt-5 mb-5">
                         <form className="flex flex-col">
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
@@ -158,7 +158,6 @@ const AddDoctor = () => {
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
                                         className="w-[300px]"
-                                        isMulti
                                         defaultValue={departmentsOptions[2]}
                                         options={departmentsOptions}
                                     />
@@ -224,17 +223,17 @@ const AddDoctor = () => {
                         </form>
                     </div>
                 </div>
-                <div className="w-[40%] bg-white">
+                <div className="w-[40%] bg-white rounded-md pb-5">
                     <div className="mt-4 pl-4 border-b border-gray-400 pb-7 pt-4">
                         <h4 className="text-lg text-slate-800 font-semibold">
                             Doctor's List
                         </h4>
                     </div>
-                    <div className="slim-scrollbar overflow-auto">
+                    <div className="slim-scrollbar overflow-auto h-[700px]  ">
                         {doctorsAvailable.map((doc, index) => {
                             return (
-                                <div key={index} className="flex flex-row pl-3 mb-5 mt-2">
-                                    <div className="h-[100px] w-[100px] rounded-lg drop-shadow-md">
+                                <div key={index} className="flex flex-row items-center pl-3 mb-5 mt-2">
+                                    <div className="h-[150px] w-[150px] rounded-lg drop-shadow-md">
                                         <img
                                             src={doc.image}
                                             alt="doc"
@@ -242,7 +241,7 @@ const AddDoctor = () => {
                                             width="100%"
                                         />
                                     </div>
-                                    <div className="flex flex-col ml-5 pt-3">
+                                    <div className="flex flex-col ml-5 ">
                                         <h5 className="text-lg text-slate-900 font-semibold">
                                             {doc.name}
                                         </h5>
@@ -256,11 +255,10 @@ const AddDoctor = () => {
                                 </div>
                             );
                         })}
-                    </div>
-                    <div className="mt-3 ml-7 mb-3">
+                        <div className="mt-3 ml-7 mb-3">
                         <Button text="All Doctors" onClick={() => navigate('/doctors/all-doctors')} />
                     </div>
-                    
+                    </div>
                 </div>
             </div>
         </div>
