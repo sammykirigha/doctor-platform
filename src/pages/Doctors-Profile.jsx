@@ -1,6 +1,6 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import image1 from "../data/images/01.jpg";
 
 const DoctorsProfile = () => {
@@ -46,36 +46,56 @@ const DoctorsProfile = () => {
                 </div>
                 <div className=" flex flex-col mt-7 mx-5">
                     <div className=" h-[50px] bg-gray-200 rounded-md  flex flex-row items-center justify-between">
-                        <Link
+                        <NavLink
                             to="overview"
-                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 rounded-l-md"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 rounded-l-md"
+                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 rounded-l-md"
+                            }
                         >
                             Overview
-                        </Link>
-                        <Link
+                        </NavLink>
+                        <NavLink
                             to="experience"
-                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 "
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 "
+                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 "
+                            }
                         >
                             Experience
-                        </Link>
-                        <Link
+                        </NavLink>
+                        <NavLink
                             to="reviews"
-                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 "
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 "
+                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 "
+                            }
                         >
                             Reviews
-                        </Link>
-                        <Link
+                        </NavLink>
+                        <NavLink
                             to="time-table"
-                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 "
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-lg text-white cursor-pointer bg-blue-700 h-full w-[20%] text-center py-2 "
+                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 "
+                            }
                         >
                             Time Table
-                        </Link>
-                        <Link
+                        </NavLink>
+                        <NavLink
                             to="settings"
-                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 rounded-r-md"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 rounded-r-md"
+                                    : "text-lg text-slate-500 cursor-pointer w-[20%] text-center py-2 rounded-r-md"
+                            }
                         >
                             Settings
-                        </Link>
+                        </NavLink>
                     </div>
                     <div>
                         <Outlet />
