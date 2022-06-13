@@ -117,7 +117,7 @@ const AddDoctor = () => {
                         <form className="flex flex-col">
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>First Name</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">First Name</label>
                                     <input
                                         type="text"
                                         placeholder="First Name:"
@@ -125,7 +125,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Last Name</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Last Name</label>
                                     <input
                                         type="text"
                                         placeholder="Last Name:"
@@ -135,7 +135,7 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Your Email</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Your Email</label>
                                     <input
                                         type="email"
                                         placeholder="Email address:"
@@ -143,7 +143,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Phone no.</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Phone no.</label>
                                     <input
                                         type="text"
                                         placeholder="Phone no:"
@@ -153,7 +153,7 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Departments</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Departments</label>
                                     <Select
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
@@ -164,7 +164,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Gender</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Gender</label>
                                     <Select
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
@@ -175,7 +175,7 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Twitter</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Twitter</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -183,7 +183,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Facebook</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Facebook</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -193,7 +193,7 @@ const AddDoctor = () => {
                             </div>
                             <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
                                 <div className="flex flex-col ">
-                                    <label>Linkedin</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Linkedin</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -201,7 +201,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col ">
-                                    <label>Instagram</label>
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Instagram</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
@@ -210,7 +210,7 @@ const AddDoctor = () => {
                                 </div>
                             </div>
                             <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
-                                <label>Your Bio</label>
+                                <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Your Bio</label>
                                 <textarea
                                     type="text"
                                     placeholder="Your Bio:"

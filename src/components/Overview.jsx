@@ -1,5 +1,5 @@
 import React from "react";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
 import { BiTime, BiLocationPlus } from "react-icons/bi";
 import {  HiCurrencyDollar } from "react-icons/hi";
@@ -126,16 +126,22 @@ const Overview = () => {
                                         </span>
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className=" inline-flex items-center text-md text-gray-400 my-1">
+                                        <span className=" inline-flex items-center text-sm text-gray-400 my-1">
                                             <BiLocationPlus className="text-blue-500 mr-3" /> 63, PGShustoke, UK
                                         </span>
-                                        <span className=" inline-flex items-center text-md text-gray-400 my-1">
+                                        <span className=" inline-flex items-center text-sm text-gray-400 my-1">
                                             <BiTime className="text-blue-500 mr-3" /> Mon: 2:00PM - 6:00PM
                                         </span>
-                                        <span className=" inline-flex items-center text-md text-gray-400 my-1">
+                                        <span className=" inline-flex items-center text-sm text-gray-400 my-1">
                                             <HiCurrencyDollar className="text-blue-500 my-100 mr-3" />$ 75 USD/Visit
                                         </span>
-                                    </div>
+									</div>
+									<div className="flex flex-row mt-4 mr-2 items-center justify-between">
+										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiFacebook className="text-blue-500  group-hover:text-white"  /></span>
+										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiLinkedin className="text-blue-500 group-hover:text-white"  /></span>
+										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiGithub className="text-blue-500 group-hover:text-white" /></span>
+										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiTwitter className="text-blue-500 group-hover:text-white" /></span>
+									</div>
                                 </div>
                             </div>
                         );
