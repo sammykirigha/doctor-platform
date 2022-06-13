@@ -2,15 +2,14 @@ import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import image1 from "../data/images/01.jpg";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import image1 from "../data/images/01.jpg";
 import image2 from "../data/images/02.jpg";
 import image3 from "../data/images/03.jpg";
 import image4 from "../data/images/04.jpg";
 import image5 from "../data/images/05.jpg";
 
-const animatedComponents = makeAnimated();
 
 const doctorsAvailable = [
     {
@@ -44,6 +43,7 @@ const doctorsAvailable = [
         experirnce: "2 Years Experienced",
     },
 ];
+const animatedComponents = makeAnimated();
 
 const departmentsOptions = [
     { value: "Eye Care", label: "Eye Care" },
@@ -233,7 +233,7 @@ const AddDoctor = () => {
                     <div className="slim-scrollbar overflow-auto">
                         {doctorsAvailable.map((doc, index) => {
                             return (
-                                <div className="flex flex-row pl-3 mb-5 mt-2">
+                                <div key={index} className="flex flex-row pl-3 mb-5 mt-2">
                                     <div className="h-[100px] w-[100px] rounded-lg drop-shadow-md">
                                         <img
                                             src={doc.image}

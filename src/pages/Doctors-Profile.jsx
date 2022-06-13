@@ -27,7 +27,7 @@ const DoctorsProfile = () => {
                     </p>
                 </div>
             </div>
-            <div className="w-full mt-5 h-screen bg-white ">
+            <div className="w-full mt-5  bg-white ">
                 <div className="bg-blue-500 h-[100px] rounded-t-md relative"></div>
                 <div className="ml-5 flex flex-row bt-white absolute top-48">
                     <img
