@@ -1,6 +1,6 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import image1 from "../data/images/01.jpg";
 
 const DoctorsProfile = () => {
@@ -44,12 +44,42 @@ const DoctorsProfile = () => {
                     </h3>
                     <apn className="text-md text-gray-500">Orthopedic</apn>
                 </div>
-          <div className="h-[50px] bg-gray-200 rounded-md mt-5 mx-5 flex flex-row items-center justify-between">
-            <h5 className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 rounded-l-md">Overview</h5>
-            <h5 className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 ">Experience</h5>
-            <h5 className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 ">Reviews</h5>
-            <h5 className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 ">Time Table</h5>
-            <h5 className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 rounded-r-md">Settings</h5>
+                <div className=" flex flex-col mt-7 mx-5">
+                    <div className=" h-[50px] bg-gray-200 rounded-md  flex flex-row items-center justify-between">
+                        <Link
+                            to="overview"
+                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 rounded-l-md"
+                        >
+                            Overview
+                        </Link>
+                        <Link
+                            to="experience"
+                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 "
+                        >
+                            Experience
+                        </Link>
+                        <Link
+                            to="reviews"
+                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 "
+                        >
+                            Reviews
+                        </Link>
+                        <Link
+                            to="time-table"
+                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 "
+                        >
+                            Time Table
+                        </Link>
+                        <Link
+                            to="settings"
+                            className="text-lg text-slate-500 cursor-pointer hover:bg-blue-700 hover:text-white h-full w-[20%] text-center py-2 rounded-r-md"
+                        >
+                            Settings
+                        </Link>
+                    </div>
+                    <div>
+                        <Outlet />
+                    </div>
                 </div>
             </div>
         </div>

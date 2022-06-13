@@ -12,6 +12,11 @@ import Pharmacy from './pages/Pharmacy';
 import AddDoctor from './pages/Add-Doctor';
 import DoctorsProfile from './pages/Doctors-Profile';
 import { routes } from './routes';
+import Overview from './components/Overview';
+import Experience from './components/Experience';
+import Review from './components/Review';
+import TimeTable from './components/TimeTable';
+import Settings from './components/Settings';
 
 const App = () => {
   return (
@@ -27,7 +32,13 @@ const App = () => {
           <Route path='/components' element={<Components />} />,
           <Route path='/doctors/all-doctors' element={<Doctors />} />,
           <Route path='/doctors/add-doctor' element={<AddDoctor />} />,
-          <Route path='/doctors/profile' element={<DoctorsProfile />} />,
+          <Route path='/doctors/profile' element={<DoctorsProfile />}>
+            <Route path='overview' element={<Overview />} />
+            <Route path='experience' element={<Experience />} />
+            <Route path='reviews' element={<Review />} />
+            <Route path='time-table' element={<TimeTable />} />
+            <Route path='settings' element={<Settings />} />
+          </Route>,
           <Route path='/pages' element={<Pages />} />,
           <Route path='/pharmacy' element={<Pharmacy />} />,
         </Routes>
