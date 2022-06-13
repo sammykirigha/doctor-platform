@@ -8,7 +8,7 @@ const DoctorsProfile = () => {
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
     return (
-        <div className="mx-5 min-h-screen">
+        <div className="mx-5 min-h-screen ">
             <div className="flex flex-row items-center justify-between">
                 <h4 className="text-lg text-slate-900 font-semibold">
                     Docto's Profile & Settings
@@ -27,7 +27,7 @@ const DoctorsProfile = () => {
                     </p>
                 </div>
             </div>
-            <div className="w-full mt-5  bg-white ">
+            <div className="w-full mt-5  bg-white rounded-md">
                 <div className="bg-blue-500 h-[100px] rounded-t-md relative"></div>
                 <div className="ml-5 flex flex-row bt-white absolute top-48">
                     <img
@@ -47,10 +47,10 @@ const DoctorsProfile = () => {
                 <div className=" flex flex-col mt-7 mx-5">
                     <div className=" h-[50px] bg-gray-200 rounded-md  flex flex-row items-center justify-between">
                         <NavLink
-                            to="overview"
+                            to=""
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 rounded-l-md"
+                                    ? "text-lg text-slate-500 cursor-pointer  h-full w-[20%] text-center py-2 rounded-l-md"
                                     : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 rounded-l-md"
                             }
                         >
@@ -97,7 +97,7 @@ const DoctorsProfile = () => {
                             Settings
                         </NavLink>
                     </div>
-                    <div>
+                    <div className="mt-5">
                         <Outlet />
                     </div>
                 </div>

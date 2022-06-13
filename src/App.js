@@ -33,11 +33,11 @@ const App = () => {
           <Route path='/doctors/all-doctors' element={<Doctors />} />,
           <Route path='/doctors/add-doctor' element={<AddDoctor />} />,
           <Route path='/doctors/profile' element={<DoctorsProfile />}>
-            <Route path='overview' element={<Overview />} />
-            <Route path='experience' element={<Experience />} />
-            <Route path='reviews' element={<Review />} />
-            <Route path='time-table' element={<TimeTable />} />
-            <Route path='settings' element={<Settings />} />
+            <Route exact index element={<Overview />} />
+            <Route exact path='experience' element={<Experience />} />
+            <Route exact path='reviews' element={<Review />} />
+            <Route exact path='time-table' element={<TimeTable />} />
+            <Route exact path='settings' element={<Settings />} />
           </Route>,
           <Route path='/pages' element={<Pages />} />,
           <Route path='/pharmacy' element={<Pharmacy />} />,
