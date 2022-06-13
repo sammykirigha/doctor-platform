@@ -17,28 +17,28 @@ const Settings = () => {
                             </span>
                         </div>
                         <div className="mt-5 pl-4">
-                            <div className="flex flex-row">
-                                <span className="rounded-full h-24 w-24 flex items-center border border-gray-300 ">
+                            <div className="flex flex-row items-center pr-2">
+                                <span className="rounded-full h-24 w-24  flex items-center border border-gray-300 ">
                                     <img
                                         src={image1}
                                         alt="pic"
-                                        className="h-16 w-16 rounded-2xl ml-2"
+                                        className="h-16 w-16  rounded-2xl ml-2"
                                     />
                                 </span>
 
-                                <div className="flex flex-col ml-5">
+                                <div className="flex flex-col md:w-56 ml-3 mr-auto ">
                                     <h2 className="text-lg text-slate-900 font-semibold mb-2">
                                         Upload Your Picture
                                     </h2>
-                                    <p className="text-md text-gray-500 w-80">
+                                    <p className="text-md text-gray-500">
                                         For best results, use an image at least
                                         600px by 600px in either .jpg or .png
                                         format
                                     </p>
                                 </div>
-                                <div className="flex sm:flex-col md:flex-col lg:flex-col gap-3 items-center">
-                                    <Button text="Upload" />
-                                    <Button text="Remove" />
+                                <div className=" sm:flex-col sm:mr-0 lg:flex-row sm:ml-auto">
+                                    <button className="mr-2 sm:mb-3 border border-gray-400 py-1 px-2 text-white bg-blue-400 cursor-pointer hover:bg-blue-600 rounded-md">Upload</button>
+                                    <button className="button border border-gray-400 py-1 px-2 text-white bg-blue-400 cursor-pointer hover:bg-blue-600 rounded-md">Remove</button>
                                 </div>
                             </div>
                         </div>
