@@ -91,17 +91,16 @@ const Settings = () => {
                                             className="w-[200px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                         />
                                     </div>
-                                   
                                 </div>
-                                 <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
-                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
-                                            Your Bio
-                                        </label>
-                                        <textarea
-                                            type="text"
-                                            placeholder="Your Bio:"
-                                            className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
-                                        />
+                                <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
+                                    <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                        Your Bio
+                                    </label>
+                                    <textarea
+                                        type="text"
+                                        placeholder="Your Bio:"
+                                        className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                    />
                                 </div>
                                 <div className="mb-4 mt-3">
                                     <Button text="Save changes" />
@@ -109,7 +108,53 @@ const Settings = () => {
                             </form>
                         </div>
                     </div>
-                    <div>lower</div>
+                    <div className="flex flex-col border border-gray-300 rounded-md mt-6">
+                        <div className="border-b border-gray-200 pl-5 py-3 ">
+                            <span className="text-lg text-slate-900 font-semibold pb-5">
+                                Account Notifications :
+                            </span>
+                        </div>
+                        <div>
+                            <form className="flex flex-col mt-7 pl-2 pr-7">
+                                <div className="ml-2 mt-3">
+                                    <div className="w-full flex flex-col ">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Old password :
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Old password:"
+                                            className="w-full h-10 mt-1 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                    </div>
+
+                                    <div className=" w-full flex flex-col mt-5">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            New password:
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="New password:"
+                                            className="w-full h-10 mt-1 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                    </div>
+                                    <div className="w-full mb-3 pr-3 flex flex-col mt-5 ">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Re-type New password
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Your Bio:"
+                                            className="w-full mr-3 h-[100px] mt-1  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                    </div>
+                                    <div className="mb-4 mt-3">
+                                        <Button text="Save password" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div className="rounded-md w-[50%] bg-blue-100">
                     notifications
