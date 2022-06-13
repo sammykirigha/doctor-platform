@@ -97,7 +97,7 @@ const DoctorsProfile = () => {
                             Settings
                         </NavLink>
                     </div>
-                    <div>
+                    <div className="mt-5">
                         <Outlet />
                     </div>
                 </div>

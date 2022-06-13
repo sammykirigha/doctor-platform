@@ -9,8 +9,8 @@ const Settings = () => {
                 Settings
             </h4>
             <div className="flex flex-row justify-between w-full mt-7">
-                <div className="rounded-md w-[50%] bg-white border border-gray-100">
-                    <div>
+                <div className="rounded-md w-[50%] bg-white mr-2">
+                    <div className="border border-gray-300 rounded-md">
                         <div className="border-b border-gray-100 pl-5 py-3">
                             <span className="text-lg text-slate-900 font-semibold">
                                 Personal Information :
@@ -37,10 +37,76 @@ const Settings = () => {
                                     </p>
                                 </div>
                                 <div className=" sm:flex-col sm:mr-0 lg:flex-row sm:ml-auto">
-                                    <button className="mr-2 sm:mb-3 border border-gray-400 py-1 px-2 text-white bg-blue-400 cursor-pointer hover:bg-blue-600 rounded-md">Upload</button>
-                                    <button className="button border border-gray-400 py-1 px-2 text-white bg-blue-400 cursor-pointer hover:bg-blue-600 rounded-md">Remove</button>
+                                    <button className="mr-2 sm:mb-3 border border-gray-400 py-1 px-2 text-white bg-blue-400 cursor-pointer hover:bg-blue-600 rounded-md">
+                                        Upload
+                                    </button>
+                                    <button className="button border border-gray-400 py-1 px-2 text-white bg-blue-400 cursor-pointer hover:bg-blue-600 rounded-md">
+                                        Remove
+                                    </button>
                                 </div>
                             </div>
+                        </div>
+                        <div className="">
+                            <form className="flex flex-col mt-7 pl-2 pr-7">
+                                <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
+                                    <div className="flex flex-col ">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            First Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="First Name:"
+                                            className="w-[200px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col ">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Last Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Last Name:"
+                                            className="w-[200px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
+                                    <div className="flex flex-col ">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Your Email:
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Your Email:"
+                                            className="w-[200px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col ">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Phone no
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Phone no:"
+                                            className="w-[200px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                    </div>
+                                   
+                                </div>
+                                 <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
+                                        <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Your Bio
+                                        </label>
+                                        <textarea
+                                            type="text"
+                                            placeholder="Your Bio:"
+                                            className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        />
+                                </div>
+                                <div className="mb-4 mt-3">
+                                    <Button text="Save changes" />
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div>lower</div>
