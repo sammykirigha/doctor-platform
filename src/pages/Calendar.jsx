@@ -1,8 +1,11 @@
 import React from 'react'
+import Editor from '../components/Editor'
 
 const Calendar = () => {
   return (
-	<div>Calendar</div>
+	  <div>
+		  <Editor />
+	</div>
   )
 }
 
