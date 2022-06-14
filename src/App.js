@@ -20,6 +20,13 @@ import Settings from './components/Settings';
 import Chat from './pages/Chat';
 import Email from './pages/Email';
 import Calendar from './pages/Calendar';
+import Inbox from './components/emails/Inbox';
+import Starred from './components/emails/Starred';
+import Spam from './components/emails/Spam';
+import Sent from './components/emails/Sent';
+import Drafts from './components/emails/Drafts';
+import Delete from './components/emails/Delete';
+import Notes from './components/emails/Notes';
 
 const App = () => {
   return (
@@ -33,7 +40,15 @@ const App = () => {
           <Route path='/blogs' element={<Blogs />} />,
           <Route path='/components' element={<Components />} />,
           <Route path='/apps/chat' element={<Chat />} />
-          <Route path='/apps/email' element={<Email />} />
+          <Route path='/apps/email' element={<Email />}>
+            <Route exact index element={<Inbox />} />
+            <Route exact path='starred' element={<Starred />} />
+            <Route exact path='spam' element={<Spam />} />
+            <Route exact path='sent' element={<Sent />} />
+            <Route exact path='drafts' element={<Drafts />} />
+            <Route exact path='delete' element={<Delete />} />
+            <Route exact path='notes' element={<Notes />} />
+          </Route>
           <Route path='/apps/calendar' element={<Calendar />} />
           <Route path='/doctors/all-doctors' element={<Doctors />} />,
           <Route path='/doctors/add-doctor' element={<AddDoctor />} />,
