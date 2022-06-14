@@ -15,7 +15,7 @@ import image9 from "../data/images/09.jpg"
 import image10 from "../data/images/10.jpg"
 
 
-const doctorsAvailable = [
+export const doctorsAvailable = [
     {
         name: "Calvin Carlo",
         department: "Eye Care",

@@ -156,32 +156,97 @@ const Settings = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" w-[50%] bg-white rounded-md ">
+                <div className=" w-[50%] bg-white rounded-md flex flex-col ">
                     <div className="border border-gray-300 rounded-md">
-                    <div className="border-b border-gray-100 pl-5 py-3 ">
-                        <span className="text-lg text-slate-900 font-semibold pb-5">
-                            General Notifications :
-                        </span>
+                        <div className="border-b border-gray-100 pl-5 py-3 ">
+                            <span className="text-lg text-slate-900 font-semibold pb-5">
+                                General Notifications :
+                            </span>
+                        </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                                <span>When someone mentions me</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
+                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                                <span>When someone follows me</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
+                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                                <span>When someone shares my activity</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
+                            <div className="flex flex-row items-center justify-between px-5 py-6 mx-4">
+                                <span>When someone messages me</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
-                            <span>When someone mentions me</span>
-                            <input type='checkbox' className="default:ring-2" />
+                    <div className="border border-gray-300 rounded-md mt-10">
+                        <div className="border-b border-gray-100 pl-5 py-3 ">
+                            <span className="text-lg text-slate-900 font-semibold pb-5">
+                                Marketing Notifications :
+                            </span>
                         </div>
-                        <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
-                            <span>When someone follows me</span>
-                            <input type='checkbox' className="default:ring-2" />
+                        <div className="flex flex-col">
+                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                                <span>There is a sale or promotion</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
+                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                                <span>Company news</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
+                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                                <span>Weekly jobs</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
+                            <div className="flex flex-row items-center justify-between px-5 py-6 mx-4">
+                                <span>Unsubscribe News</span>
+                                <input
+                                    type="checkbox"
+                                    className="default:ring-2"
+                                />
+                            </div>
                         </div>
-                        <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
-                            <span>When someone shares my activity</span>
-                            <input type='checkbox' className="default:ring-2" />
+                    </div>
+                    <div className="border border-gray-300 rounded-md mt-10">
+                        <div className="border-b border-gray-100 pl-5 py-5 ">
+                            <span className="text-lg text-slate-900 font-semibold pb-5">
+                                General Notifications :
+                            </span>
                         </div>
-                        <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
-                            <span>When someone messages me</span>
-                            <input type='checkbox' className="default:ring-2" />
-                       </div>
+                         <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                                <span className="text-xl text-red-500 font-bold">Delete Account :</span>
+                            </div>
+                        <div className="flex flex-col">
+                            <div className="flex flex-col items-start justify-between px-2 py-6 mx-4">
+                                <span className="text-md text-slate-900">Do you want to delete the account? Please press below "Delete" button</span>
+                                <button className="w-auto py-2 px-3 text-lg text-white font-bold bg-red-400 rounded-md mt-5 ">Delete Account</button>
+                            </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

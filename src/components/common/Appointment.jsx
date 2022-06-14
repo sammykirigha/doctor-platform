@@ -6,7 +6,7 @@ import flag from "../../data/images/Flag-Kenya.jpg";
 
 const Appointment = ({width}) => {
     return (
-        <div className={`bg-white rounded-md w-[${width}%] min-h-[300px] mt-5 `}>
+        <div className={`bg-white rounded-md w-[${width}%] min-h-[300px] `}>
 			<div className="bg-white rounded-md">
 				<div className="flex flex-row items-center justify-between border-b">
                     <div className="flex flex-row items-center my-5 mx-5">

@@ -25,17 +25,15 @@ const Sidebar = () => {
                                 return (
                                     <div className="w-full">
                                         <div className=" flex flex-col items-center pl-3">
-                                            <div className="flex justify-between w-full items-center pr-3" >
+                                            <div className="flex justify-between w-full items-center pr-3"  onClick={() =>
+                                                        setIsActive(isActive === name?"":name)
+                                                    } >
                                                 <div className="flex flex-row items-center cursor-pointer pt-3 justify-between ">
                                                     <div className="w-8 h-8 bg-gray-50 flex items-center rounded-md pl-2 mr-2">{icon}</div>
                                                     <div className="text-md text-gray-500 font-semibold">{name}</div>
                                                 </div>
 
-                                                <div className="flex items-center mt-2.5 cursor-pointer"
-                                                    onClick={() =>
-                                                        setIsActive(isActive === name?"":name)
-                                                    }
-                                                >
+                                                <div className="flex items-center mt-2.5 cursor-pointer" >
                                                     {isActive === name ? (
                                                         <RiArrowUpSLine className="text-gray-500" />
                                                     ) : (
