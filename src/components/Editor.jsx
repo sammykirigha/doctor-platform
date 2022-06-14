@@ -32,27 +32,9 @@ const Editor = () => {
                         ["link", "video", "image", "code-block"],
                         ["clean"],
                     ],
+                    
                 }}
-                formats={[
-                    "header",
-                    "font",
-                    "size",
-                    "bold",
-                    "italic",
-                    "underline",
-                    "strike",
-                    "blockquote",
-                    "color",
-                    "background",
-                    "list",
-                    "bullet",
-                    "indent",
-                    "link",
-                    "video",
-                    "image",
-                    "code-block",
-                    "align",
-                ]}
+                
                 // onChange={(val) => {
                 //     setShow(val);
                 // }}
