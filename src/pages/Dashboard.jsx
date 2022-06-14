@@ -17,13 +17,13 @@ const Dashboard = () => {
                 <div className=" w-[65%]">
                     <div className="flex flex-col">
                         <MyChart />
-                        <div className=" flex flex-row">
+                        <div className=" flex flex-row mt-5">
                             <Appointment width={50} />
-                            <ChatMessages />
+                            <ChatMessages width={'50%'}  height={"200px"} />
                         </div>
                     </div>
                 </div>
-                <div className="w-[35%] ml-5 ">
+                <div className="w-[35%] ml-5 gap-5 ">
                     <Radial />
                     <Appointment width={100} />
                 </div>

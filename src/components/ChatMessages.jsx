@@ -1,7 +1,7 @@
 import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
-import flag from "../data/images/Flag-Kenya.jpg";
+import image1 from "../data/images/01.jpg"
 import Dropdown from "./common/Dropdown";
 import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 // import { IoSendSharp } from "react-icons/io";
@@ -10,13 +10,13 @@ import { BsFillEmojiHeartEyesFill } from "react-icons/bs";
 import {  MdAttachFile, MdSend } from "react-icons/md";
 import UserMessage from "./UserMessage";
 
-const ChatMessages = () => {
+const ChatMessages = ({width, height}) => {
     return (
-        <div className="bg-white ml-4 mt-5 rounded-md w-[50%] ">
+        <div className={`bg-white ml-4  rounded-md w-[${width}]`}>
             <div className="flex flex-row items-center justify-between border-b">
                 <div className="flex flex-row items-center my-3 mx-5">
                     <img
-                        src={flag}
+                        src={image1}
                         alt="logo"
                         className="m-2 w-10 h-10 rounded-full cursor-pointer"
                     />
@@ -43,7 +43,7 @@ const ChatMessages = () => {
                             () => (
                                 <div className="flex flex-row my-4 mx-4 hover:text-blue-700 cursor-pointer group">
                                     <AiOutlineUser className="text-gray-700 h-5 w-5 group-hover:text-blue-700" />
-                                    <span className="text-gray-500 ml-2 group-hover:text-blue-700">
+                                    <span className="text-gray-500 text-sm ml-2 group-hover:text-blue-700">
                                         PROFILE
                                     </span>
                                 </div>
@@ -51,7 +51,7 @@ const ChatMessages = () => {
                             () => (
                                 <div className="flex flex-row my-4 mx-4 pt-3 group cursor-pointer">
                                     <AiOutlineSetting className="text-gray-700 h-5 w-5 group-hover:text-blue-700" />
-                                    <span className="text-gray-500 ml-2 group-hover:text-blue-700">
+                                    <span className="text-gray-500 text-sm ml-2 group-hover:text-blue-700">
                                         SETTINGS
                                     </span>
                                 </div>
@@ -59,7 +59,7 @@ const ChatMessages = () => {
                             () => (
                                 <div className="flex flex-row my-4 mx-4 pt-3 group cursor-pointer">
                                     <RiDeleteBin7Line className="text-gray-700 h-5 w-5 group-hover:text-blue-700" />
-                                    <span className="text-gray-500 ml-2 group-hover:text-blue-700">
+                                    <span className="text-gray-500 text-sm ml-2 group-hover:text-blue-700">
                                         DELETE
                                     </span>
                                 </div>
@@ -69,24 +69,24 @@ const ChatMessages = () => {
                 </span>
         </div>
         <div className="flex flex-col">
-          <div className=" slim-scrollbar overflow-auto h-52">
+          <div className={`slim-scrollbar overflow-auto h-[${height}]`}>
             {
-              [1, 2, 3, 4, 5].map((message, i) => (
+              [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((message, i) => (
                 
                 <UserMessage key={message} index={i}/>
               ))
             }            
           </div>
-          <div className="border-t border-gray-400 flex flex-row items-center justify-between mx-3 py-2">
-            <input placeholder="Enter Message..." className="border border-gray-600 w-[340px] h-[35px] rounded-md pl-2" />
+          <div className="border-t border-gray-400 flex flex-row items-center justify-between mx-3 py-5">
+            <input placeholder="Enter Message..." className="border border-gray-600 w-[100%] h-[35px] rounded-md pl-2 focus:outline-none focus:border-blue-500" />
             <div className="flex flex-row items-center justify-between ml-2">
-              <span className="h-9 w-9 rounded-md bg-blue-700 mr-2  flex items-center justify-center cursor-pointer">
+              <span className="h-9 w-9 rounded-full bg-blue-700 mr-2  flex items-center justify-center cursor-pointer">
                 <MdSend className="text-white h-6 w-6" />
               </span>
-              <span  className="h-9 w-9 rounded-md bg-blue-700 mr-2 flex items-center justify-center cursor-pointer">
+              <span  className="h-9 w-9 rounded-full bg-blue-700 mr-2 flex items-center justify-center cursor-pointer">
                 <BsFillEmojiHeartEyesFill className="text-white h-6 w-6" />
               </span>
-              <span  className="h-9 w-9 rounded-md bg-blue-700 flex items-center justify-center cursor-pointer">
+              <span  className="h-9 w-9 rounded-full bg-blue-700 flex items-center justify-center cursor-pointer">
                 <MdAttachFile className="text-white h-6 w-6" />
               </span>
             </div>
