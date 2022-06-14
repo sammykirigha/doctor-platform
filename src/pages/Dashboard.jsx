@@ -4,8 +4,8 @@ import DashboardCards from "../components/DashboardCards";
 import MyChart from "../components/charts/MyChart";
 import Radial from "../components/charts/Radial";
 import Title from "../components/Title";
-import Chatt from "../components/Chatt";
 import { NavigationContext } from "../contexts/navigation.context";
+import ChatMessages from "../components/ChatMessages";
 
 const Dashboard = () => {
     const { sideBarOpen } = useContext(NavigationContext);
@@ -19,7 +19,7 @@ const Dashboard = () => {
                         <MyChart />
                         <div className=" flex flex-row">
                             <Appointment width={50} />
-                            <Chatt />
+                            <ChatMessages />
                         </div>
                     </div>
                 </div>

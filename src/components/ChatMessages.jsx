@@ -10,7 +10,7 @@ import { BsFillEmojiHeartEyesFill } from "react-icons/bs";
 import {  MdAttachFile, MdSend } from "react-icons/md";
 import UserMessage from "./UserMessage";
 
-const Chatt = () => {
+const ChatMessages = () => {
     return (
         <div className="bg-white ml-4 mt-5 rounded-md w-[50%] ">
             <div className="flex flex-row items-center justify-between border-b">
@@ -97,4 +97,4 @@ const Chatt = () => {
     );
 };
 
-export default Chatt;
+export default ChatMessages;

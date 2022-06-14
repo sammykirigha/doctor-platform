@@ -68,15 +68,15 @@ export const links = [
 		childrenLinks: [
 			{
 				name: 'Chat',
-			    link: '/chat'
+			    link: '/apps/chat'
 			},
 			{
 				name: 'Email',
-			    link: '/email'
+			    link: '/apps/email'
 			},
 			{
 				name: 'Calendar',
-			    link: '/calendar'
+			    link: '/apps/calendar'
 			},
 		]
 	},
