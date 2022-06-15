@@ -1,6 +1,7 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
+import CalendarComp from "../components/CalendarComp";
 
 const Calender = () => {
     const params = useLocation();
@@ -25,7 +26,8 @@ const Calender = () => {
                         </span>{" "}
                     </p>
                 </div>
-            </div>
+        </div>
+        <CalendarComp />
         </div>
     );
 };
