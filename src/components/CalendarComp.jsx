@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AddEventContext } from "../contexts/events.context";
 import { MdAdd } from "react-icons/md";
+import AddEventModal from "./modals/AddEventModal";
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -22,7 +23,7 @@ const localizer = dateFnsLocalizer({
 });
 
 function CalendarComp() {
-    const { allEvents, newEvent, handleAddEvent, setNewEvent } =
+    const { allEvents, addEventModalOpen, setAddEventModalOpen, setNewEvent } =
         useContext(AddEventContext);
 
     return (
@@ -32,7 +33,12 @@ function CalendarComp() {
                     <h4 className="text-lg text-slate-900 font-semibold">
                         All Events
                     </h4>
-                    <button className="bg-blue-700 text-white max-w-[150px] mr-3 py-2 px-2 rounded-md cursor-pointer  flex items-center">
+                    <button
+                        onClick={() => {
+                            setAddEventModalOpen(!addEventModalOpen);
+                        }}
+                        className="bg-blue-700 text-white max-w-[150px] mr-3 py-2 px-2 rounded-md cursor-pointer  flex items-center"
+                    >
                         <MdAdd className="mr-4" />
                         Add Event
                     </button>
@@ -70,6 +76,12 @@ function CalendarComp() {
                     style={{ height: 500, margin: "50px" }}
                 />
             </div>
+            <AddEventModal
+                isOpen={addEventModalOpen}
+                closeModal={() => {
+                    setAddEventModalOpen(false);
+                }}
+            />
         </div>
     );
 }

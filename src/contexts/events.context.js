@@ -22,16 +22,22 @@ const events = [
 ];
 
 export const AddEventProvider = ({ children }) => {
-	const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
     const [allEvents, setAllEvents] = useState(events);
-
-     const handleAddEvent = () => {
-        setAllEvents([...allEvents, newEvent]);
-    }
+    const [addEventModalOpen, setAddEventModalOpen] = useState(false);
 
     //
     return (
-        <AddEventContext.Provider value={{ allEvents, newEvent, handleAddEvent, setNewEvent }}>
+        <AddEventContext.Provider
+            value={{
+                allEvents,
+                newEvent,
+                setNewEvent,
+                setAllEvents,
+                addEventModalOpen,
+                setAddEventModalOpen,
+            }}
+        >
             {children}
         </AddEventContext.Provider>
     );
