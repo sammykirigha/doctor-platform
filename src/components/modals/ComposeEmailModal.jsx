@@ -46,11 +46,12 @@ const ComposeEmailModal = ({ closeModal, isOpen, message }) => {
                         <div>
                             <Editor />
                         </div>
-            </div>
-            <div className="">
-              <button className="bg-blue-600 text-white px-3 py-2 w-[150px] rounded-md mt-4">Send Now</button>
-            </div>
-                    
+                    </div>
+                    <div className="">
+                        <button className="bg-blue-600 text-white px-3 py-2 w-[150px] rounded-md mt-4">
+                            Send Now
+                        </button>
+                    </div>
                 </form>
             </div>
         </Modal>
