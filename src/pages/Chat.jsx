@@ -25,7 +25,7 @@ const Chat = () => {
         <div className="mx-5 min-h-screen">
             <div className="flex flex-row items-center justify-between">
                 <h4 className="text-lg text-slate-900 font-semibold">
-                    Docto's Profile & Settings
+                    Chatbox
                 </h4>
                 <div>
                     <p className="paragraph inline-flex items-center justify-between text-md uppercase text-md ">
@@ -94,7 +94,7 @@ const Chat = () => {
                         })}
                     </div>
                 </div>
-                <ChatMessages width={"70%"} height={"500px"} />
+                <ChatMessages width={"100%"} height={"500px"} />
             </div>
         </div>
     );
