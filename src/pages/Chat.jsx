@@ -94,7 +94,7 @@ const Chat = () => {
                         })}
                     </div>
                 </div>
-                <ChatMessages width={"70%"} height={"500px"} />
+                <ChatMessages width={"100%"} height={"500px"} />
             </div>
         </div>
     );
