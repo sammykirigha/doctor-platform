@@ -11,8 +11,9 @@ const AddEventModal = ({ closeModal, isOpen, message }) => {
 	
 	const handleAddEvent = () => {
 		setAllEvents([...allEvents, newEvent]);
-		setAddEventModalOpen(!addEventModalOpen);
-	}
+        setAddEventModalOpen(!addEventModalOpen);
+        setNewEvent({})
+	} 
 	
     return (
         <Modal
