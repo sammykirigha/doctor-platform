@@ -27,6 +27,9 @@ import Sent from './components/emails/Sent';
 import Drafts from './components/emails/Drafts';
 import Delete from './components/emails/Delete';
 import Notes from './components/emails/Notes';
+import Patients from './pages/Patients';
+import AddPatient from './pages/Add-Patient';
+import PatientsProfile from './pages/Patients-Profile';
 
 const App = () => {
   return (
@@ -50,6 +53,9 @@ const App = () => {
             <Route exact path='notes' element={<Notes />} />
           </Route>
           <Route path='/apps/calendar' element={<Calendar />} />
+          <Route path='/patients/all-patients' element={<Patients />} />
+          <Route path='/patients/add-patient' element={<AddPatient />} />
+          <Route path='/patients/profile' element={<PatientsProfile />} />
           <Route path='/doctors/all-doctors' element={<Doctors />} />,
           <Route path='/doctors/add-doctor' element={<AddDoctor />} />,
           <Route path='/doctors/profile' element={<DoctorsProfile />}>

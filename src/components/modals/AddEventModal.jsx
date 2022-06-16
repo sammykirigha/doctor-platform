@@ -45,7 +45,7 @@ const AddEventModal = ({ closeModal, isOpen, message }) => {
                     />
                     <DatePicker
                         placeholderText="Start Date"
-                        className="w-full h-10 mt-4 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                        className="w-full px-2 h-10 mt-4 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                         selected={newEvent.start}
                         onChange={(start) =>
                             setNewEvent({ ...newEvent, start })
@@ -53,7 +53,7 @@ const AddEventModal = ({ closeModal, isOpen, message }) => {
                     />
                     <DatePicker
 						placeholderText="End Date"
-						className="w-full h-10 mt-4 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+						className="w-full px-2 h-10 mt-4 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                         selected={newEvent.end}
                         onChange={(end) => setNewEvent({ ...newEvent, end })}
                     />
