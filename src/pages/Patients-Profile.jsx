@@ -34,7 +34,7 @@ const PatientsProfile = () => {
                 <div className="w-[20%] bg-white">
                     <div className="border-b">
                         <div className="bg-hero-pattern h-[80px] relative"></div>
-                        <div className="ml-16 flex flex-row bt-white absolute top-32">
+                        <div className="ml-16 flex flex-row bt-white absolute top-[155px]">
                             <img
                                 src={image1}
                                 height="100px"
@@ -53,7 +53,10 @@ const PatientsProfile = () => {
                         </div>
                     </div>
                     <div className="my-8 mx-2">
-                        <ProgressBar bgcolor={'blue'} progress={85} height={15} />
+                        {/* <div className="mb-6">
+                           <span className=" text-md text-slate-900">Complete your profile</span>
+                        </div> */}
+                        <ProgressBar bgcolor={'blue'} progress={45} height={15} />
                     </div>
                 </div>
                 <div className="w-[50%] bg-blue-500">center</div>
