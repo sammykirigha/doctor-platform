@@ -71,7 +71,7 @@ const AddPatient = () => {
         <div className="mx-4 min-h-screen">
             <div className="flex flex-row items-center justify-between mt-3">
                 <h3 className="text-lg text-slate-900 font-bold">
-                    Add New Doctor
+                    Add New Patient
                 </h3>
                 <div>
                     <p className="paragraph inline-flex items-center justify-between text-md uppercase text-md ">
@@ -88,7 +88,7 @@ const AddPatient = () => {
                 </div>
             </div>
             <div className="flex flex-row mt-3 w-full gap-3 rounded-md">
-                <div className="w-[60%] bg-white rounded-md h-[550px]">
+                <div className="w-[60%] bg-white rounded-md h-[500px]">
                     <div className="flex flex-row items-center justify-between ml-9 mr-3 mt-7 ">
                         <div className="flex flex-row items-center ">
                             <span className="rounded-full h-28 w-28 flex items-center border border-gray-300 ">
