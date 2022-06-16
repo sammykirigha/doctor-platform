@@ -5,7 +5,6 @@ import startOfWeek from "date-fns/startOfWeek";
 import React, { useContext, useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AddEventContext } from "../contexts/events.context";
 import { MdAdd } from "react-icons/md";

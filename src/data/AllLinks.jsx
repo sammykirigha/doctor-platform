@@ -49,15 +49,15 @@ export const links = [
 		childrenLinks: [
 			{
 				name: 'All Patients',
-			    link: '/patients'
+			    link: '/patients/all-patients'
 			},
 			{
 				name: 'Add Patients',
-			    link: '/add-patients'
+			    link: '/patients/add-patient'
 			},
 			{
 				name: 'Profile',
-			    link: '/profile'
+			    link: '/patients/profile'
 			},
 		]
 	},
