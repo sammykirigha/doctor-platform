@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The suit is to test the body component Snapshot of UserMessage 1`] = `
+<DocumentFragment>
+  <div>
+    <h2
+      class="text-gray-600 text-xl font-semibold"
+    >
+      my header
+    </h2>
+  </div>
+</DocumentFragment>
+`;
