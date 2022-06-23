@@ -10,7 +10,7 @@ describe('The suit is to test the body component', () => {
 	})
 
 	it('should render the UserMessage with the right index', () => {
-				render(<Title title="my header" />)
+		render(<Title title="my header" />)
 		let element = screen.getByText('my header');
 
 		expect(element.textContent).toBe('my header')
