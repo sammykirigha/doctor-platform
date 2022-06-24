@@ -5,7 +5,7 @@ import Button from "../components/Button";
 import Select from "react-select";
 import AppointmentModal from "../components/modals/AppointmentModal";
 
-const Appointment = () => {
+const Appointment = ({onClick}) => {
     const params = useLocation();
     const [selectedOption, setSelectedOption] = useState(null);
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
