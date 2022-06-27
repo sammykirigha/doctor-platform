@@ -54,33 +54,33 @@ const Appointment = ({onClick}) => {
                 </div>
             </div>
             <div className="flex">
-                <table className="table">
+                <table className="table w-full">
                     <thead className="mx-2 bg-blue-300 w-full ">
-                        <tr className="p-2 gap-3">
-                            <th className="mx-3">#</th>
-                            <th className="mx-3">Name</th>
-                            <th className="mx-3">Email</th>
-                            <th className="mx-3">Age</th>
-                            <th className="mx-3">Gender</th>
-                            <th className="mx-3">Date</th>
-                            <th className="mx-3">Time</th>
-                            <th className="mx-3">Department</th>
-                            <th className="mx-3">Doctor</th>
-                            <th className="mx-3">Fees</th>
+                        <tr className="text-left px-2">
+                            <th className="px-2">#</th>
+                            <th className="px-2">Name</th>
+                            <th className="px-2">Email</th>
+                            <th className="px-2">Age</th>
+                            <th className="px-2">Gender</th>
+                            <th className="px-2">Date</th>
+                            <th className="px-2">Time</th>
+                            <th className="px-2">Department</th>
+                            <th className="px-2">Doctor</th>
+                            <th className="px-2">Fees</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="gap-3">
-                            <td>1</td>
-                            <td>Doe</td>
-                            <td>doe@gmail.com</td>
-                            <td>23</td>
-                            <td>Male</td>
-                            <td>20-06-2022</td>
-                            <td>08:30am</td>
-                            <td>Cardiology</td>
-                            <td>Dr. Calvin Carno</td>
-                            <td>$ 200</td>
+                        <tr className="">
+                            <td className="px-2 py-2">1</td>
+                            <td className="px-2 py-2">Doe</td>
+                            <td className="px-2 py-2">doe@gmail.com</td>
+                            <td className="px-2 py-2">23</td>
+                            <td className="px-2 py-2">Male</td>
+                            <td className="px-2 py-2">20-06-2022</td>
+                            <td className="px-2 py-2">08:30am</td>
+                            <td className="px-2 py-2">Cardiology</td>
+                            <td className="px-2 py-2">Dr. Calvin Carno</td>
+                            <td className="px-2 py-2">$ 200</td>
                         </tr>
                     </tbody>
                 </table>
