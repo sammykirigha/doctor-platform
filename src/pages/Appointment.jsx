@@ -25,7 +25,7 @@ const Appointment = ({onClick}) => {
 
     return (
         <div className="flex flex-col mx-3">
-            <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center justify-between mb-6">
                 <div className="flex flex-col">
                     <h4 className="text-lg text-slate-800 font-semibold mb-2">
                         {pathname.toUpperCase()}

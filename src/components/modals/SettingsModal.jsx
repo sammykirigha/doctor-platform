@@ -34,7 +34,7 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
                     </div>
                 </div>
 
-                <div className=" slim-scrollbar overflow-auto h-[450px] mt-3 flex flex-col items-center justify-center border-b ">
+                <div className=" slim-scrollbar overflow-auto sm:h-[450px]  mt-3 flex flex-col items-center justify-center border-b ">
                     <div className="cursor-pointer">
                         <img
                             src={image1}
