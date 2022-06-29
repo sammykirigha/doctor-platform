@@ -33,7 +33,7 @@ import PatientsProfile from './pages/Patients-Profile';
 
 const App = () => {
   return (
-    <div className=''>
+    <div>
       <Layout>
         <Routes>
           <Route path='/' element={<Dashboard />} />,

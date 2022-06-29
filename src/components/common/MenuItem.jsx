@@ -14,9 +14,9 @@ export const MenuItem = ({ image, children }) => {
                         } group flex w-full items-center rounded-md px-2 py-1 text-sm`}
                     >
                         {active ? (
-                            <img src={image} className="mr-2 h-9 w-9 bg-gray-300 rounded-full" aria-hidden="true" alt="pic" />
+                            <img src={image} className="mr-2 h-12 w-12 bg-gray-300 rounded-full" aria-hidden="true" alt="pic" />
                         ) : (
-                            <img src={image} className="mr-2 h-9 w-9 bg-gray-300 rounded-full" aria-hidden="true" alt="pic" />
+                            <img src={image} className="mr-2 h-12 w-12 bg-gray-300 rounded-full" aria-hidden="true" alt="pic" />
                         )}
                         {children}
                     </button>

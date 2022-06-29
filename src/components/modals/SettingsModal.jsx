@@ -18,10 +18,10 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
         <Modal
             isOpen={isOpen}
             closeModal={closeModal}
-            positionY="right"
+            positionY="top"
             positionX="end"
         >
-            <div className="sm:h-[600px]  w-[400px]  ">
+            <div className="sm:h-[600px] md:h-[600px] lg:h-[800px] 2xl:h-[1000px]  w-[400px]  ">
                 <div className="flex items-center justify-between w-full border-b">
                     <Logo />
                     <div className="mt-2">
@@ -29,7 +29,7 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
                             className="inline-flex justify-center rounded-md border border-transparent px-4  font-medium  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                             onClick={closeModal}
                         >
-                            <FaTimes className="text-3xl text-gray-600 cursor-pointer" />
+                            <FaTimes className="text-3xl text-gray-500 hover:text-gray-700 cursor-pointer" />
                         </span>
                     </div>
                 </div>
