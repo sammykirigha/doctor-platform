@@ -4,6 +4,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import Button from "../components/Button";
 import Select from "react-select";
 import AppointmentModal from "../components/modals/AppointmentModal";
+import TableComp from "../components/TableComp";
 
 const Appointment = ({onClick}) => {
     const params = useLocation();
@@ -24,7 +25,7 @@ const Appointment = ({onClick}) => {
 
     return (
         <div className="flex flex-col mx-3">
-            <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center justify-between mb-6">
                 <div className="flex flex-col">
                     <h4 className="text-lg text-slate-800 font-semibold mb-2">
                         {pathname.toUpperCase()}
@@ -53,38 +54,7 @@ const Appointment = ({onClick}) => {
                     />
                 </div>
             </div>
-            <div className="flex">
-                <table className="table">
-                    <thead className="mx-2 bg-blue-300 w-full ">
-                        <tr className="p-2 gap-3">
-                            <th className="mx-3">#</th>
-                            <th className="mx-3">Name</th>
-                            <th className="mx-3">Email</th>
-                            <th className="mx-3">Age</th>
-                            <th className="mx-3">Gender</th>
-                            <th className="mx-3">Date</th>
-                            <th className="mx-3">Time</th>
-                            <th className="mx-3">Department</th>
-                            <th className="mx-3">Doctor</th>
-                            <th className="mx-3">Fees</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="gap-3">
-                            <td>1</td>
-                            <td>Doe</td>
-                            <td>doe@gmail.com</td>
-                            <td>23</td>
-                            <td>Male</td>
-                            <td>20-06-2022</td>
-                            <td>08:30am</td>
-                            <td>Cardiology</td>
-                            <td>Dr. Calvin Carno</td>
-                            <td>$ 200</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+           <TableComp />
             <AppointmentModal
                 isOpen={createUserModalOpen}
                 closeModal={() => {

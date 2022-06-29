@@ -3,7 +3,7 @@ import logo from "../../data/images/logo3.jpg";
 
 const Logo = () => {
   return (
-	<div className="bg-white-900 flex  my-1 border-b border-gray-200 h-35">
+	<div className="bg-white-900 flex  my-1 border-gray-200 h-35">
                 <img
                     src={logo}
                     alt="logo"

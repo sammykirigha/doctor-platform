@@ -43,7 +43,7 @@ const ComposeEmailModal = ({ closeModal, isOpen, message }) => {
                                 className="w-[50%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                             />
                         </div>
-                        <div>
+                        <div className="w-[900px]" >
                             <Editor />
                         </div>
                     </div>
