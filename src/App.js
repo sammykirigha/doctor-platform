@@ -30,6 +30,8 @@ import Notes from './components/emails/Notes';
 import Patients from './pages/Patients';
 import AddPatient from './pages/Add-Patient';
 import PatientsProfile from './pages/Patients-Profile';
+import Profile from './components/Profile';
+import { ProfileSettings } from './components/ProfileSettings';
 
 const App = () => {
   return (
@@ -55,7 +57,10 @@ const App = () => {
           <Route path='/apps/calendar' element={<Calendar />} />
           <Route path='/patients/all-patients' element={<Patients />} />
           <Route path='/patients/add-patient' element={<AddPatient />} />
-          <Route path='/patients/profile' element={<PatientsProfile />} />
+          <Route path='/patients/profile' element={<PatientsProfile />} >
+             <Route exact path='profile' element={<Profile />} />
+            <Route exact path='profile-settings' element={<ProfileSettings />} />
+          </Route>
           <Route path='/doctors/all-doctors' element={<Doctors />} />,
           <Route path='/doctors/add-doctor' element={<AddDoctor />} />,
           <Route path='/doctors/profile' element={<DoctorsProfile />}>

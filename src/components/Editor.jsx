@@ -1,38 +1,66 @@
 import React, { useState } from "react";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
 
-const modules = {
-    toolbar: [
-        [{ font: [] }],
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        ["bold", "italic", "underline", "strike"],
-        [{ color: [] }, { background: [] }],
-        [{ script:  "sub" }, { script:  "super" }],
-        ["blockquote", "code-block"],
-        [{ list:  "ordered" }, { list:  "bullet" }],
-        [{ indent:  "-1" }, { indent:  "+1" }, { align: [] }],
-        ["link", "image", "video"],
-        ["clean"],
-    ]
+function loadSuggestions(text) {
+    return new Promise((accept, reject) => {
+        setTimeout(() => {
+            const suggestions = [
+                {
+                    preview: "Andre",
+                    value: "@andre",
+                },
+                {
+                    preview: "Angela",
+                    value: "@angela",
+                },
+                {
+                    preview: "David",
+                    value: "@david",
+                },
+                {
+                    preview: "Louise",
+                    value: "@louise",
+                },
+            ].filter((i) =>
+                i.preview.toLowerCase().includes(text.toLowerCase())
+            );
+            accept(suggestions);
+        }, 250);
+    });
 }
 
+const converter = new Showdown.Converter({
+    tables: true,
+    simplifiedAutoLink: true,
+    strikethrough: true,
+    tasklists: true,
+});
+
 const Editor = () => {
-    const [show, setShow] = useState("");
+    const [value, setValue] = React.useState("**Hello world!!!**");
+    const [selectedTab, setSelectedTab] = React.useState("write");
 
     return (
         <div className="w-[900px]">
-            <ReactQuill
-                theme="snow"
-                // onChange={...}
-            modules={modules}
-            placeholder="Your text goes here..."
-            
+            <ReactMde
+                value={value}
+                onChange={setValue}
+                selectedTab={selectedTab}
+                onTabChange={setSelectedTab}
+                generateMarkdownPreview={(markdown) =>
+                    Promise.resolve(converter.makeHtml(markdown))
+                }
+                loadSuggestions={loadSuggestions}
+                childProps={{
+                    writeButton: {
+                        tabIndex: -1,
+                    },
+                }}
             />
         </div>
     );
 };
-
-
 
 export default Editor;
