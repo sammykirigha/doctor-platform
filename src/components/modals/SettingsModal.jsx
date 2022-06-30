@@ -21,7 +21,7 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
             positionY="top"
             positionX="end"
         >
-            <div className="sm:h-[600px] md:h-[600px] lg:h-[800px] 2xl:h-[1000px]  w-[400px]  ">
+            <div className=" sm:h-[600px] md:h-[600px] lg:h-[800px] 2xl:h-[1000px]  sm:w-[300px] md:w-[400px] ">
                 <div className="flex items-center justify-between w-full border-b">
                     <Logo />
                     <div className="mt-2">
@@ -34,12 +34,12 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
                     </div>
                 </div>
 
-                <div className=" slim-scrollbar overflow-auto sm:h-[450px]  mt-3 flex flex-col items-center justify-center border-b ">
-                    <div className="cursor-pointer">
+                <div className=" slim-scrollbar overflow-auto sm:h-[350px] md:h-[450px] lg:h-[600px] xl:h-[700px]   mt-3 flex flex-col items-center justify-center border-b ">
+                    <div className="cursor-pointer mt-3">
                         <img
                             src={image1}
                             alt="setting"
-                            className="h-[200px] w-[300px] rounded-md drop-shadow-md"
+                            className="sm:h-[150px] sm:w-[200px] md:h-[200px] md:w-[300px] rounded-md drop-shadow-md"
                         />
                         <div className="mt-1 mb-6 flex items-start justify-center">
                             <h5 className="text-gray-500 font-semibold cursor-pointer text-lg">
@@ -51,7 +51,7 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
                         <img
                             src={image2}
                             alt="setting"
-                            className="h-[200px] w-[300px] rounded-md mb-2"
+                            className="sm:h-[150px] sm:w-[200px] md:h-[200px] md:w-[300px] rounded-md mb-2"
                         />
                         <div className="mt-1 mb-6 flex items-center justify-center">
                             <h5 className="text-gray-500 font-semibold cursor-pointer text-lg">
@@ -63,7 +63,7 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
                         <img
                             src={image3}
                             alt="setting"
-                            className="h-[200px] w-[300px] rounded-md mb-2"
+                            className="sm:h-[150px] sm:w-[200px] md:h-[200px] md:w-[300px] rounded-md mb-2"
                         />
                         <div className="mt-1 mb-6 flex items-center justify-center">
                             <h5 className="text-gray-500 font-semibold cursor-pointer text-lg">
@@ -72,8 +72,8 @@ const SettingsModal = ({ isOpen, closeModal, message }) => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-9! z-10 flex flex-col items-center justify-center">
-                    <div className="flex items-center justify-center mt-8">
+                <div className="mt-9! z-10 flex flex-col items-center justify-center sm:mx-3!">
+                    <div className="flex flex-row items-center justify-center mt-8">
                         <span className="h-[38px] cursor-pointer w-[38px] bg-gray-100 rounded-md flex items-center justify-center mr-3">
                             <HiOutlineShoppingCart className="h-[25px] w-[25px]" />
                         </span>

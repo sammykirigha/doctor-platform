@@ -30,7 +30,7 @@ const Navbar = ({ onClick }) => {
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
     return (
         <div
-            className={`bg-white-900 py-[13px] flex justify-between border-b border-gray-200 border-l  fixed z-10 right-0 top-0 ${
+            className={`bg-white-900 py-[13px] flex flex-row border-b border-gray-200 border-l  fixed z-10 right-0 top-0 ${
                 sideBarOpen ? "left-[250px]" : "left-0"
             } bg-white`}
         >
