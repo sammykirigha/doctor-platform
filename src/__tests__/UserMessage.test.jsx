@@ -14,7 +14,7 @@ describe('The suit is to test the body component', () => {
 		render(<UserMessage />)
 		let element = screen.getByText('Nice to meet you');
 
-		expect(element.textContent).toBe('Nice to meet you')
+		expect(element.textContent).toBe('Nice to you')
 
 	})
 
