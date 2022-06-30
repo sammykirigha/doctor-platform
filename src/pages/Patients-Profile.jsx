@@ -40,7 +40,7 @@ const PatientsProfile = () => {
                 </div>
             </div>
             <div className="flex flex-row w-full gap-4  justify-between">
-                <div className="w-[20%] bg-white rounded-md">
+                <div className="w-[20%] bg-white rounded-md h-[550px]">
                     <div className="border-b rounded-t-md">
                         <div className="bg-hero-pattern h-[80px] relative rounded-t-md"></div>
                         <div className="ml-16 flex flex-row bt-white absolute top-[155px]">
