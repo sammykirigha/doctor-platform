@@ -70,17 +70,17 @@ const Profile = () => {
 							<AiOutlineSend className="h-9 w-9 absolute top-4 left-5 text-blue-600" />
 						</span>
                         <p className="text-md text-slate-900 mt-2">New Messages</p>
-                        <span className="flex items-center mt-2">
-                            Read more <AiOutlineArrowRight className="text-md ml-3 text-blue-600" />
+                        <span className="flex items-center mt-2 text-blue-600 cursor-pointer">
+                            Read more <AiOutlineArrowRight className="text-md ml-3  " />
                         </span>
                     </div>
                     <div className="flex flex-col items-center  bg-white w-[350px] h-[250px] border drop-shadow-md rounded-md">
-						<span className="h-16 w-16 bg-blue-50 rounded-full relative mt-12">
+						<span className="h-16 w-16 bg-blue-50 rounded-full relative mt-12 ">
 							<AiOutlineMail className="h-9 w-9 absolute top-4 left-4 text-blue-600" />
 						</span>
                         <p className="text-md text-slate-900 mt-2">Latest Proposals</p>
-                        <span className="flex items-center mt-2">
-                            View more <AiOutlineArrowRight className="text-md text-blue-600" />
+                        <span className="flex items-center mt-2 text-blue-600 cursor-pointer ">
+                            View more <AiOutlineArrowRight className="text-md ml-3 " />
                         </span>
                     </div>
                 </div>
