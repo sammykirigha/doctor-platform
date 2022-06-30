@@ -132,8 +132,8 @@ const PatientsProfile = () => {
                             to="profile-settings"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-white tracking-wider font-medium flex items-center justify-center bg-blue-600 w-[50%]  cursor-pointer  h-full  text-center rounded-l-md"
-                                    : "text-lg text-slate-500 font-medium flex items-center justify-center w-[50%] cursor-pointer h-full  text-center rounded-l-md"
+                                    ? "text-lg text-white tracking-wider font-medium flex items-center justify-center bg-blue-600 w-[50%]  cursor-pointer  h-full  text-center rounded-r-md"
+                                    : "text-lg text-slate-500 font-medium flex items-center justify-center w-[50%] cursor-pointer h-full  text-center rounded-r-md"
                             }
                         >
                             Profile Settings
