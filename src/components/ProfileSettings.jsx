@@ -81,7 +81,7 @@ export const ProfileSettings = () => {
                                 />
                             </div>
                         </div>
-                        <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
+                        <div className="w-full ml-3 pr-3 flex flex-col mb-5 ">
                             <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
                                 Your Bio
                             </label>
@@ -90,9 +90,47 @@ export const ProfileSettings = () => {
                                 placeholder="Your Bio:"
                                 className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                             />
-              </div>
-              <Button text="Save changes" />
+                        </div>
+                        <Button text="Save Changes" />
                     </form>
+                    <div className="flex flex-col mt-7">
+                        <h4 className="text-slate-900 text-lg font-bold">
+                            Change Password:
+                        </h4>
+                        <div className="flex flex-col mt-5 ">
+                            <label className="after:content-['*'] after:ml-0.5 after:text-red-500 font-semibold">
+                                Old Password:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Old password"
+                                className="w-full h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                            />
+                        </div>
+                        <div className="flex flex-col mt-5 ">
+                            <label className="after:content-['*'] after:ml-0.5 after:text-red-500 font-semibold">
+                                New Password
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="New password"
+                                className="w-full h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                            />
+                        </div>
+                        <div className="flex flex-col mt-5 ">
+                            <label className="after:content-['*'] after:ml-0.5 after:text-red-500 font-semibold">
+                                Re-type New Password
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Re-type New password"
+                                className="w-full h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                            />
+                        </div>
+                        <button className="px-3 py-2 bg-blue-600 text-white w-[200px] mt-10 rounded-md">
+                            Save password
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
