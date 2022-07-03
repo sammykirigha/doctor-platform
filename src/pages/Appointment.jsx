@@ -42,6 +42,7 @@ const Appointment = ({onClick}) => {
                 </div>
                 <div className="flex flex-row items-center gap-3">
                     <Select
+                        on
                         options={options}
                         value={selectedOption}
                         onChange={handleChange}
