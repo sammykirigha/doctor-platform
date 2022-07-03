@@ -131,6 +131,53 @@ export const ProfileSettings = () => {
                             Save password
                         </button>
                     </div>
+                    <div className="flex flex-col mt-7">
+                        <h5 className="mb-4 text-slate-900 font-bold text-xl">
+                            Account Notifications:
+                        </h5>
+                        <div className="flex flex-row items-center justify-between  py-2 ">
+                            <span>When someone mentions me</span>
+                            <input
+                                type="checkbox"
+                                className=" default:ring-2 mr-36"
+                            />
+                        </div>
+                        <div className="flex flex-row items-center justify-between   py-2 ">
+                            <span>When someone follows me</span>
+                            <input
+                                type="checkbox"
+                                className=" default:ring-2 mr-36"
+                            />
+                        </div>
+                        <div className="flex flex-row items-center justify-between   py-2 ">
+                            <span>When someone shares my activity</span>
+                            <input
+                                type="checkbox"
+                                className=" default:ring-2 mr-36"
+                            />
+                        </div>
+                        <div className="flex flex-row items-center justify-between   py-2 ">
+                            <span>When someone messages me</span>
+                            <input
+                                type="checkbox"
+                                className=" default:ring-2 mr-36"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col mt-5">
+                        <h3 className="text-orange-600 font-semibold">
+                            Delete Account :
+                        </h3>
+                        <div>
+                            <p className="text-md">
+                                Do you want to delete the account? Please press
+                                below "Delete" button
+                            </p>
+                            <button className="px-3 py-2 bg-orange-600 text-white w-[200px] mt-8 rounded-md">
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
