@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useEffect } from "react";
+import { createRef } from "react";
 import { useState } from "react";
 import { PageNavigation, Pagination } from "./Pagination";
 
 const data = [
     1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,31, 32, 33, 34, 35, 36, 36, 37, 38, 39, 40
 ];
 
 //add a filter method to filter data using names
@@ -12,6 +14,9 @@ const data = [
 const TableComp = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5)
+
+    const bottomDetector = useRef()
+    
 
     const previousPage = () => {
         setCurrentPage(currentPage - 1);
@@ -21,13 +26,40 @@ const TableComp = () => {
         setCurrentPage(currentPage + 1);
     };
 
-    const myData = new Pagination(data, itemsPerPage);
+    const myData = new Pagination(data, 1);
 
 
     const changeItemsPerPage = (e) => {
         setItemsPerPage(e.target.value)
     }
 
+    const totalPages = myData.getTotalPages()
+    let xyz = myData.getUptoPage(currentPage)
+
+    console.log('hjvgjhfbkjv', xyz);
+
+    useEffect(() => {
+        let options = {
+          threshold: 1.0
+        }
+        
+        const observer = new IntersectionObserver(nextPage, options);
+        console.log('my observer', observer);
+
+        observer.observe(bottomDetector.current)
+
+    }, [])
+    
+    useEffect(() => {
+        const viewbox = bottomDetector.current.getBoundingClientRect();
+        console.log(viewbox);
+
+        if (viewbox.top < window.innerHeight && currentPage < totalPages) {
+            nextPage()
+        }
+    },[])
+
+    console.log('bottomup', bottomDetector.current);
     return (
         <div className="flex flex-col">
             <table className="table w-full">
@@ -46,7 +78,7 @@ const TableComp = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {myData.getPage(currentPage).map((item, index) => {
+                    {myData.getUptoPage(currentPage).map((item, index) => {
                         return (
                             <tr className="" key={index}>
                                 <td className="px-2 py-2">{item}</td>
@@ -64,8 +96,9 @@ const TableComp = () => {
                     })}
                 </tbody>
             </table>
+            <div ref={bottomDetector}></div>
 
-            <div className="bg-white w-[150px] mt-12 px-3 h-[50px] py-2 ">
+            {/* <div className="bg-white w-[150px] mt-12 px-3 h-[50px] py-2 ">
                 <select onChange={changeItemsPerPage} >
                     <option >select size</option>
                     <option value='15'>15</option>
@@ -74,13 +107,13 @@ const TableComp = () => {
                     <option value='40'>40</option>
                     <option value='50'>50</option>
                 </select>
-            </div>
-            <PageNavigation
+            </div> */}
+            {/* <PageNavigation
                 nextPageHandler={nextPage}
                 previousPageHandler={previousPage}
                 currentPage={currentPage}
-                totalPages={myData.getTotalPages()}
-            ></PageNavigation>
+                totalPages={totalPages}
+            ></PageNavigation> */}
         </div>
     );
 };
