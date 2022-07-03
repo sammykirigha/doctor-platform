@@ -34,9 +34,6 @@ const TableComp = () => {
     }
 
     const totalPages = myData.getTotalPages()
-    let xyz = myData.getUptoPage(currentPage)
-
-    console.log('hjvgjhfbkjv', xyz);
 
     useEffect(() => {
         let options = {
@@ -59,7 +56,6 @@ const TableComp = () => {
         }
     },[])
 
-    console.log('bottomup', bottomDetector.current);
     return (
         <div className="flex flex-col">
             <table className="table w-full">
