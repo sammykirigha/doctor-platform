@@ -23,7 +23,7 @@ const Sidebar = () => {
                     {links?.map(({ icon, link, name, childrenLinks }, index) => {
                             if (childrenLinks?.length > 0) {
                                 return (
-                                    <div className="w-full">
+                                    <div className="w-full" key={index}>
                                         <div className=" flex flex-col items-center pl-3">
                                             <div className="flex justify-between w-full items-center pr-3"  onClick={() =>
                                                         setIsActive(isActive === name?"":name)

@@ -22,8 +22,8 @@ const Dropdown = ({ activator: Activator, items = [], width, scrollHeight = 'aut
                     className={`absolute right-0 mt-2 w-[${width}px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
                 >
                     <div className={`slim-scrollbar overflow-auto h-[${scrollHeight}px]`}>
-                        {items.map((Item) => (
-                            <Item />
+                        {items.map((Item, index) => (
+                            <Item key={index} />
                         ))}
                     </div>
                 </Menu.Items>

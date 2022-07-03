@@ -40,7 +40,7 @@ const PatientsProfile = () => {
                 </div>
             </div>
             <div className="flex flex-row w-full gap-4  justify-between">
-                <div className="w-[20%] bg-white rounded-md">
+                <div className="w-[20%] bg-white rounded-md h-[550px]">
                     <div className="border-b rounded-t-md">
                         <div className="bg-hero-pattern h-[80px] relative rounded-t-md"></div>
                         <div className="ml-16 flex flex-row bt-white absolute top-[155px]">
@@ -132,8 +132,8 @@ const PatientsProfile = () => {
                             to="profile-settings"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-white tracking-wider font-medium flex items-center justify-center bg-blue-600 w-[50%]  cursor-pointer  h-full  text-center rounded-l-md"
-                                    : "text-lg text-slate-500 font-medium flex items-center justify-center w-[50%] cursor-pointer h-full  text-center rounded-l-md"
+                                    ? "text-lg text-white tracking-wider font-medium flex items-center justify-center bg-blue-600 w-[50%]  cursor-pointer  h-full  text-center rounded-r-md"
+                                    : "text-lg text-slate-500 font-medium flex items-center justify-center w-[50%] cursor-pointer h-full  text-center rounded-r-md"
                             }
                         >
                             Profile Settings
