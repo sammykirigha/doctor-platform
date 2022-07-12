@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "../common/Modal";
 import { IoMdClose } from "react-icons/io";
-import Editor from "../Editor";
+import Editor from "../others/Editor";
 
 const ComposeEmailModal = ({ closeModal, isOpen, message }) => {
     return (

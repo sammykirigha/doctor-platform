@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
-import Button from "../components/Button";
+import Button from "../components/common/Button";
 import Select from "react-select";
 import AppointmentModal from "../components/modals/AppointmentModal";
-import TableComp from "../components/TableComp";
+import TableComp from "../components/others/TableComp";
 
 const Appointment = ({onClick}) => {
     const params = useLocation();

@@ -11,12 +11,11 @@ import Pages from './pages/Pages';
 import Pharmacy from './pages/Pharmacy';
 import AddDoctor from './pages/Add-Doctor';
 import DoctorsProfile from './pages/Doctors-Profile';
-import { routes } from './routes';
-import Overview from './components/Overview';
-import Experience from './components/Experience';
-import Review from './components/Review';
-import TimeTable from './components/TimeTable';
-import Settings from './components/Settings';
+import Overview from './components/others/Overview';
+import Experience from './components/others/Experience';
+import Review from './components/others/Review';
+import TimeTable from './components/others/TimeTable';
+import Settings from './components/others/Settings';
 import Chat from './pages/Chat';
 import Email from './pages/Email';
 import Calendar from './pages/Calendar';
@@ -30,8 +29,8 @@ import Notes from './components/emails/Notes';
 import Patients from './pages/Patients';
 import AddPatient from './pages/Add-Patient';
 import PatientsProfile from './pages/Patients-Profile';
-import Profile from './components/Profile';
-import { ProfileSettings } from './components/ProfileSettings';
+import Profile from './components/others/Profile';
+import { ProfileSettings } from './components/others/ProfileSettings';
 
 const App = () => {
   return (

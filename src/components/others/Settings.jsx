@@ -1,6 +1,6 @@
 import React from "react";
-import image1 from "../data/images/01.jpg";
-import Button from "./Button";
+import image1 from "../../data//images/01.jpg";
+import Button from "../common/Button";
 
 const Settings = () => {
     return (

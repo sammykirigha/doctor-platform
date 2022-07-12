@@ -1,8 +1,8 @@
 import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
-import image1 from "../data/images/01.jpg"
-import Dropdown from "./common/Dropdown";
+import image1 from "../../data/images/01.jpg"
+import Dropdown from "../common/Dropdown";
 import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 // import { IoSendSharp } from "react-icons/io";
 import { RiDeleteBin7Line } from "react-icons/ri";

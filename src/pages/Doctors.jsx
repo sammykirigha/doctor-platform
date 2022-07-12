@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react-icons/fi";
-import Button from "../components/Button";
+import Button from "../components/common/Button";
 import image1 from "../data/images/01.jpg"
 import image2 from "../data/images/02.jpg"
 import image3 from "../data/images/03.jpg"

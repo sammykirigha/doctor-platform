@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import image1 from "../data/images/01.jpg";
 import { GoPrimitiveDot } from "react-icons/go";
 import { doctorsAvailable } from "./Doctors";
-import ChatMessages from "../components/ChatMessages";
+import ChatMessages from "../components/others/ChatMessages";
 
 const Chat = () => {
     const [user, setUser] = useState({});

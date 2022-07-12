@@ -1,7 +1,7 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+import Button from "../components/common/Button";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import image1 from "../data/images/01.jpg";

@@ -2,23 +2,23 @@ import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-ico
 
 export class Pagination {
 	constructor(data, pageSize) {
-		this.data = data
-		this.pageSize = pageSize
+		this.data = data;
+		this.pageSize = pageSize;
 	}
 
 	getPage(n) {
 		const offSet = n * this.pageSize
-		return this.data.slice(offSet, offSet + this.pageSize)
+		console.log(offSet);
+		const newData = this.data.slice(offSet, offSet + this.pageSize)
+		console.log(newData);
+		return newData
 	}
 
 	getTotalPages() {
 		return Math.ceil(this.data.length / this.pageSize)
 	}
-	
-	getUptoPage(n) {
-		const offSet = n * this.pageSize;
-		return this.data.slice(0, offSet + this.pageSize);
-	}
+
+
 }
 
 export const PageNavigation = ({
