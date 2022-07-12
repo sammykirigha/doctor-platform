@@ -12,7 +12,7 @@ import UserMessage from "./UserMessage";
 
 const ChatMessages = ({width, height}) => {
     return (
-        <div className={`bg-white ml-4 sm:w-[100%] sm:ml-0 sm:mt-5 lg:mt-1  rounded-md w-[${width}]`}>
+        <div className={`bg-white sm:w-[100%] sm:ml-0 sm:mt-5 lg:mt-1  rounded-md w-[${width}]`}>
             <div className="flex flex-row items-center justify-between border-b">
                 <div className="flex flex-row items-center my-3 mx-5">
                     <img
