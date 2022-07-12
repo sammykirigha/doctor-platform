@@ -1,22 +1,17 @@
 import React, { useRef } from "react";
-import { useEffect } from "react";
-import { createRef } from "react";
 import { useState } from "react";
 import { PageNavigation, Pagination } from "./Pagination";
 
 const data = [
-    1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,31, 32, 33, 34, 35, 36, 36, 37, 38, 39, 40
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,31, 32, 33, 34, 35, 36, 37, 38, 39, 40
 ];
 
 //add a filter method to filter data using names
 
 const TableComp = () => {
     const [currentPage, setCurrentPage] = useState(0);
-    const [itemsPerPage, setItemsPerPage] = useState(5)
-
-    const bottomDetector = useRef()
-    
+    const [itemsPerPage, setItemsPerPage] = useState(5);
 
     const previousPage = () => {
         setCurrentPage(currentPage - 1);
@@ -30,31 +25,15 @@ const TableComp = () => {
 
 
     const changeItemsPerPage = (e) => {
-        setItemsPerPage(e.target.value)
+        const num = e.target.value
+        setItemsPerPage(+num)
     }
+
+    console.log(itemsPerPage);
 
     const totalPages = myData.getTotalPages()
 
-    // useEffect(() => {
-    //     let options = {
-    //       threshold: 1.0
-    //     }
-        
-    //     const observer = new IntersectionObserver(nextPage, options);
-    //     console.log('my observer', observer);
-
-    //     observer.observe(bottomDetector.current)
-
-    // }, [])
     
-    // useEffect(() => {
-    //     const viewbox = bottomDetector.current.getBoundingClientRect();
-    //     console.log(viewbox);
-
-    //     if (viewbox.top < window.innerHeight && currentPage < totalPages) {
-    //         nextPage()
-    //     }
-    // },[])
 
     return (
         <div className="flex flex-col">
@@ -74,7 +53,7 @@ const TableComp = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {myData.getUptoPage(currentPage).map((item, index) => {
+                    {myData.getPage(currentPage).map((item, index) => {
                         return (
                             <tr className="" key={index}>
                                 <td className="px-2 py-2">{item}</td>
@@ -92,11 +71,11 @@ const TableComp = () => {
                     })}
                 </tbody>
             </table>
-            <div ref={bottomDetector}></div>
 
             <div className="bg-white w-[150px] mt-12 px-3 h-[50px] py-2 ">
                 <select onChange={changeItemsPerPage} >
                     <option >select size</option>
+                    <option value='10'>10</option>
                     <option value='15'>15</option>
                     <option value='20'>20</option>
                     <option value='30'>30</option>
