@@ -25,7 +25,7 @@ const selectOptions = [
 
 
   return (
-	  <div className='w-full flex flex-col items-center bg-white rounded-md h-[350px] mb-5'>
+	  <div className='w-full flex flex-col items-center bg-white rounded-md h-[350px] mb-5 lg:mt-3'>
 		  <div className='flex flex-row w-[100%] items-center justify-between mt-4 px-2'>
 			  <h4 className='text-gray-800 text-lg font-semibold'>Patients By Department</h4>
 			  <Select options={selectOptions } className="mt-3" />

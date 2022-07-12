@@ -38,7 +38,7 @@ const MyChart = () => {
         },
     ];
     return (
-        <div className=" bg-white h-[350px] md:w-full pt-3 pl-3 rounded-md" >
+        <div className=" bg-blue-900 h-[350px] sm:w-[100%] sm:mt-3 md:w-[100%] lg:w-[100%] rounded-md" >
             <Chart
                 options={options}
                 series={series}
