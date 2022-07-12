@@ -3,11 +3,11 @@ import { FiArrowRight, FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react
 import { AiOutlineStar } from "react-icons/ai";
 import { BiTime, BiLocationPlus } from "react-icons/bi";
 import {  HiCurrencyDollar } from "react-icons/hi";
-import image1 from "../data/images/01.jpg";
-import image2 from "../data/images/02.jpg";
-import image3 from "../data/images/03.jpg";
-import image4 from "../data/images/04.jpg";
-import image5 from "../data/images/05.jpg";
+import image1 from "../../data/images/01.jpg";
+import image2 from "../../data/images/02.jpg";
+import image3 from "../../data/images/03.jpg";
+import image4 from "../../data/images/04.jpg";
+import image5 from "../../data/images/05.jpg";
 
 const doctorsAvailable = [
     {

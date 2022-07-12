@@ -1,7 +1,7 @@
 import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { MdOutlineAvTimer } from "react-icons/md";
-import image1 from "../data/images/01.jpg"
+import image1 from "../../data/images/01.jpg"
 
 const UserMessage = ({index}) => {
     return (

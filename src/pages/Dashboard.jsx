@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import Appointment from "../components/common/Appointment";
-import DashboardCards from "../components/DashboardCards";
+import DashboardCards from "../components/others/DashboardCards";
 import MyChart from "../components/charts/MyChart";
 import Radial from "../components/charts/Radial";
-import Title from "../components/Title";
+import Title from "../components/others/Title";
 import { NavigationContext } from "../contexts/navigation.context";
-import ChatMessages from "../components/ChatMessages";
+import ChatMessages from "../components/others/ChatMessages";
 
 const Dashboard = () => {
     const { sideBarOpen } = useContext(NavigationContext);

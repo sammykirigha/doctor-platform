@@ -26,7 +26,7 @@ const TableComp = () => {
         setCurrentPage(currentPage + 1);
     };
 
-    const myData = new Pagination(data, 1);
+    const myData = new Pagination(data, itemsPerPage);
 
 
     const changeItemsPerPage = (e) => {
@@ -35,26 +35,26 @@ const TableComp = () => {
 
     const totalPages = myData.getTotalPages()
 
-    useEffect(() => {
-        let options = {
-          threshold: 1.0
-        }
+    // useEffect(() => {
+    //     let options = {
+    //       threshold: 1.0
+    //     }
         
-        const observer = new IntersectionObserver(nextPage, options);
-        console.log('my observer', observer);
+    //     const observer = new IntersectionObserver(nextPage, options);
+    //     console.log('my observer', observer);
 
-        observer.observe(bottomDetector.current)
+    //     observer.observe(bottomDetector.current)
 
-    }, [])
+    // }, [])
     
-    useEffect(() => {
-        const viewbox = bottomDetector.current.getBoundingClientRect();
-        console.log(viewbox);
+    // useEffect(() => {
+    //     const viewbox = bottomDetector.current.getBoundingClientRect();
+    //     console.log(viewbox);
 
-        if (viewbox.top < window.innerHeight && currentPage < totalPages) {
-            nextPage()
-        }
-    },[])
+    //     if (viewbox.top < window.innerHeight && currentPage < totalPages) {
+    //         nextPage()
+    //     }
+    // },[])
 
     return (
         <div className="flex flex-col">
@@ -94,7 +94,7 @@ const TableComp = () => {
             </table>
             <div ref={bottomDetector}></div>
 
-            {/* <div className="bg-white w-[150px] mt-12 px-3 h-[50px] py-2 ">
+            <div className="bg-white w-[150px] mt-12 px-3 h-[50px] py-2 ">
                 <select onChange={changeItemsPerPage} >
                     <option >select size</option>
                     <option value='15'>15</option>
@@ -103,13 +103,13 @@ const TableComp = () => {
                     <option value='40'>40</option>
                     <option value='50'>50</option>
                 </select>
-            </div> */}
-            {/* <PageNavigation
+            </div>
+            <PageNavigation
                 nextPageHandler={nextPage}
                 previousPageHandler={previousPage}
                 currentPage={currentPage}
                 totalPages={totalPages}
-            ></PageNavigation> */}
+            ></PageNavigation>
         </div>
     );
 };

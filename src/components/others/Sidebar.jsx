@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { NavigationContext } from "../contexts/navigation.context";
-import Logo from "./common/Logo";
+import { NavigationContext } from "../../contexts/navigation.context";
+import Logo from "../common/Logo";
 import { BiMessageRounded } from "react-icons/bi";
-import { links } from "../data/AllLinks";
+import { links } from "../../data/AllLinks";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { IoMdArrowDropright } from "react-icons/io";
 

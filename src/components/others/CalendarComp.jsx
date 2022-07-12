@@ -6,9 +6,9 @@ import React, { useContext, useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
-import { AddEventContext } from "../contexts/events.context";
+import { AddEventContext } from "../../contexts/events.context";
 import { MdAdd } from "react-icons/md";
-import AddEventModal from "./modals/AddEventModal";
+import AddEventModal from "../modals/AddEventModal";
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),

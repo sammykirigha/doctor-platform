@@ -1,22 +1,22 @@
 import React, { useContext, useState } from "react";
-import flag from "../data/images/Flag-Kenya.jpg";
-import tanz from "../data/images/Tanzania.png";
-import ug from "../data/images/Uganda.png";
-import rwad from "../data/images/Rwanda.png";
-import setting from "../data/images/lg2.png";
-import email from "../data/images/email.png";
+import flag from "../../data/images/Flag-Kenya.jpg";
+import tanz from "../../data/images/Tanzania.png";
+import ug from "../../data/images/Uganda.png";
+import rwad from "../../data/images/Rwanda.png";
+import setting from "../../data/images/lg2.png";
+import email from "../../data/images/email.png";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { NavigationContext } from "../contexts/navigation.context";
+import { NavigationContext } from "../../contexts/navigation.context";
 import { FiAlignJustify } from "react-icons/fi";
 import { MdAvTimer } from "react-icons/md";
 import { RiSettings5Line } from "react-icons/ri";
 import {BiLogInCircle} from 'react-icons/bi'
-import Dropdown from "./common/Dropdown";
-import { MenuItem } from "./common/MenuItem";
-import SettingsModal from "./modals/SettingsModal";
-import image1 from "../data/images/01.jpg";
-import image2 from "../data/images/02.jpg";
-import image3 from "../data/images/03.jpg";
+import Dropdown from "../common/Dropdown";
+import { MenuItem } from "../common/MenuItem";
+import SettingsModal from "../modals/SettingsModal";
+import image1 from "../../data/images/01.jpg";
+import image2 from "../../data/images/02.jpg";
+import image3 from "../../data/images/03.jpg";
 
 export const Styles = {
     height: "27px",

@@ -8,7 +8,7 @@ export class Pagination {
 
 	getPage(n) {
 		const offSet = n * this.pageSize
-		return this.data.slice(offSet, offSet + this.pageSize)
+		return this.data.slice(0, offSet + this.pageSize)
 	}
 
 	getTotalPages() {
