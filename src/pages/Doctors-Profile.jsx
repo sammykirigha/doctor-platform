@@ -9,7 +9,7 @@ const DoctorsProfile = () => {
     const secondName = params.pathname.split("/")[2];
     return (
         <div className="mx-5 min-h-screen ">
-            <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-col sm:flex-col sm:items-center sm:justify-between md:flex-row md:items-center md:justify-between lg:flex-row lg:items-center lg:justify-between">
                 <h4 className="text-lg text-slate-900 font-semibold">
                     Docto's Profile & Settings
                 </h4>
@@ -45,13 +45,13 @@ const DoctorsProfile = () => {
                     <apn className="text-md text-gray-500">Orthopedic</apn>
                 </div>
                 <div className=" flex flex-col mt-7 mx-5">
-                    <div className=" h-[50px] bg-gray-200 rounded-md  flex flex-row items-center justify-between">
+                    <div className=" flex flex-col sm:flex-col sm:items-center sm:justify-between sm:h-[auto] md:flex-row md:items-center md:justify-between md:h-[50px] md:w-[100%] bg-gray-200 rounded-md   ">
                         <NavLink
                             to=""
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-slate-500 cursor-pointer  h-full w-[20%] text-center py-2 rounded-l-md"
-                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 rounded-l-md"
+                                    ? " sm:h-full sm:w-[100%] md:w-[20%] text-lg text-slate-500 cursor-pointer  text-center py-2 rounded-l-md"
+                                    : " sm:h-full sm:w-[100%] md:w-[20%] text-lg text-slate-500 cursor-pointer text-center py-2 rounded-l-md"
                             }
                         >
                             Overview
@@ -60,8 +60,8 @@ const DoctorsProfile = () => {
                             to="experience"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 "
-                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 "
+                                    ? "sm:h-full sm:w-[100%] md:w-[20%] text-lg text-white cursor-pointer bg-blue-700   text-center py-2 "
+                                    : "sm:h-full sm:w-[100%] md:w-[20%] text-lg text-slate-500 cursor-pointer text-center py-2 "
                             }
                         >
                             Experience
@@ -70,8 +70,8 @@ const DoctorsProfile = () => {
                             to="reviews"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 "
-                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 "
+                                    ? "sm:h-full sm:w-[100%] md:w-[20%] text-lg text-white cursor-pointer bg-blue-700   text-center py-2 "
+                                    : "sm:h-full sm:w-[100%] md:w-[20%] text-lg text-slate-500 cursor-pointer  text-center py-2 "
                             }
                         >
                             Reviews
@@ -80,8 +80,8 @@ const DoctorsProfile = () => {
                             to="time-table"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-white cursor-pointer bg-blue-700 h-full w-[20%] text-center py-2 "
-                                    : "text-lg text-slate-500 cursor-pointer h-full w-[20%] text-center py-2 "
+                                    ? "sm:h-full sm:w-[100%] md:w-[20%] text-lg text-white cursor-pointer bg-blue-700  text-center py-2 "
+                                    : "sm:h-full sm:w-[100%] md:w-[20%] text-lg text-slate-500 cursor-pointer  text-center py-2 "
                             }
                         >
                             Time Table
@@ -90,8 +90,8 @@ const DoctorsProfile = () => {
                             to="settings"
                             className={({ isActive }) =>
                                 isActive
-                                    ? "text-lg text-white cursor-pointer bg-blue-700  h-full w-[20%] text-center py-2 rounded-r-md"
-                                    : "text-lg text-slate-500 cursor-pointer w-[20%] text-center py-2 rounded-r-md"
+                                    ? " sm:h-full sm:w-[100%] md:w-[20%] md:rounded-r-md text-lg text-white cursor-pointer bg-blue-700  text-center py-2"
+                                    : " sm:h-full sm:w-[100%] md:w-[20%] md:rounded-r-md text-lg text-slate-500 cursor-pointer  text-center py-2 "
                             }
                         >
                             Settings
