@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Footer from "../components/others/Footer";
+import FooterMain from "../components/others/FooterMain";
 import Navbar from "../components/others/Navbar";
 import Sidebar from "../components/others/Sidebar";
 import { NavigationContext } from "../contexts/navigation.context";
@@ -17,7 +18,7 @@ const Layout = ({children}) => {
                     }`}>
                    {children}
                 </div>
-                <Footer />
+                <FooterMain />
             </div>
         </div>
     );
