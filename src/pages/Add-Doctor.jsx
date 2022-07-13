@@ -68,12 +68,12 @@ const AddDoctor = () => {
     const secondName = params.pathname.split("/")[2];
     return (
         <div className="mx-4 min-h-screen">
-            <div className="flex flex-row items-center justify-between mt-3">
-                <h3 className="text-lg text-slate-900 font-bold">
+            <div className="flex flex-col sm:flex-row items-center justify-between mt-3">
+                <h3 className="sm:text-sm text-slate-900 font-bold">
                     Add New Doctor
                 </h3>
-                <div>
-                    <p className="paragraph inline-flex items-center justify-between text-md uppercase text-md ">
+                <div className="">
+                    <p className="paragraph inline-flex items-center justify-between sm:text-sm uppercase ">
                         Docris{" "}
                         <RiArrowRightSLine className="flex items-center mx-2 mt-0.5" />{" "}
                         <span className="text-blue-700 text-md">
@@ -86,15 +86,15 @@ const AddDoctor = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex sm:flex-col sm:w-[100%] md:flex-col lg:flex-row mt-3  gap-3 rounded-md">
+            <div className="flex flex-col sm:flex-col sm:w-[100%] md:flex-col lg:flex-row mt-3  gap-3 rounded-md">
                 <div className="sm:w-[100%] bg-white rounded-md">
-                    <div className="flex sm:flex-col md:flex-row items-center justify-between sm:ml-5 md:ml-9 mr-3 mt-7 ">
+                    <div className="flex flex-col sm:flex-col md:flex-row items-center justify-between sm:ml-5 md:ml-9 mr-3 mt-7 ">
                         <div className="flex flex-row items-center ">
-                            <span className="rounded-full sm:h-14 sm:w-14 md:h-20 md:w-20 flex items-center border border-gray-300 ">
+                            <span className="rounded-full sm:h-12 sm:w-12 md:h-20 md:w-20 flex items-center border border-gray-300 ">
                                 <img
                                     src={image1}
                                     alt="doc"
-                                    className=" sm:h-10 md:h-16 sm:w-10 md:w-16 rounded-2xl ml-2"
+                                    className=" sm:h-12 md:h-12 sm:w-10 md:w-16 rounded-2xl ml-2"
                                 />
                             </span>
                             <div className="flex flex-col ml-5">
@@ -107,7 +107,7 @@ const AddDoctor = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex sm:flex-row sm:mt-4 md:flex-col lg:flex-col gap-3 items-center">
+                        <div className="flex mt-5 sm:flex-row sm:mt-4 md:flex-col lg:flex-col gap-3 items-center">
                             <Button text="Upload" />
                             <Button text="Remove" />
                         </div>
@@ -231,7 +231,7 @@ const AddDoctor = () => {
                     <div className="slim-scrollbar overflow-auto h-[700px]  ">
                         {doctorsAvailable.map((doc, index) => {
                             return (
-                                <div key={index} className="flex flex-row items-center pl-3 mb-5 mt-2">
+                                <div key={index} className="flex flex-row items-center ml-3 mb-5 mt-2 border rounded-md">
                                     <div className="h-[150px] w-[150px] rounded-lg drop-shadow-sm">
                                         <img
                                             src={doc.image}
