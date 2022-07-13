@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../data/images/logo3.jpg";
 import { IoMdArrowDropright } from "react-icons/io";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
+import { NavigationContext } from "../../contexts/navigation.context";
 
 const FooterMain = () => {
+    const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);
     return (
-        <div className="bg-[#202942]">
-            <div className="bg-[#202942] pl-3 mt-8 pt-5 sm:pt-5 md:pt-5  h-[auto] w-full
-		 grid sm:grid-cols-2 sm:items-start md:grid-cols-3 md:items-start md:justify-evenly lg:pt-5 lg:px-16 lg:grid-cols-4 lg:items-start lg:justify-evenly">
+        <div className={` bg-[#202942] ${sideBarOpen && "ml-[250px]"}`}>
+            <div className="bg-[#202942] pl-3 mt-8 pt-5 sm:pt-5 md:pt-5  h-[auto]
+		 grid sm:grid-cols-2 sm:gap-y-8 sm:items-start md:grid-cols-3 md:items-start md:justify-evenly lg:pt-5 lg:px-16 lg:grid-cols-4 lg:items-start lg:justify-evenly">
             <div className="flex flex-col sm:ml-5 md:ml-10 lg:ml-0 -md:mt-10 ">
                 <div className="flex flex-row items-center mt-3">
                     <img
@@ -84,10 +86,10 @@ const FooterMain = () => {
             <div className=" mx-20 my-10 border-t pt-3 flex flex-col  sm:flex-col sm:items-center sm:justify-between md:flex-row  md:items-center md:justify-between lg:flex-row lg:items-center lg:justify-between ">
                 <p className="text-gray-100 text-lg">2022 @ Dorcis. Designed by Dorcis kirigha</p>
                 <div className="flex flex-row items-center justify-between sm:mt-8 md:flex-row  md:items-center md:justify-between md:mt-0 lg:mt-0">
-                    <span className="text-gray-100 text-lg mr-2">Terms</span>
-                    <span className="text-gray-100 text-lg mr-2">Privacy</span>
-                    <span className="text-gray-100 text-lg mr-2">About</span>
-                    <span className="text-gray-100 text-lg mr-2">Contact</span>
+                    <span className="text-gray-100 text-lg mr-2 cursor-pointer">Terms</span>
+                    <span className="text-gray-100 text-lg mr-2 cursor-pointer">Privacy</span>
+                    <span className="text-gray-100 text-lg mr-2 cursor-pointer">About</span>
+                    <span className="text-gray-100 text-lg mr-2 cursor-pointer">Contact</span>
                 </div>
             </div>
         </div>
