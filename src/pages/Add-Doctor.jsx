@@ -114,7 +114,7 @@ const AddDoctor = () => {
                     </div>
                     <div className="mx-3 mt-5 mb-5">
                         <form className="flex flex-col">
-                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                            <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
                                 <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">First Name</label>
                                     <input
@@ -132,7 +132,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                            <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
                                 <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Your Email</label>
                                     <input
@@ -150,7 +150,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                            <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
                                 <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Departments</label>
                                     <Select
@@ -171,7 +171,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                            <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
                                 <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Twitter</label>
                                     <input
@@ -189,7 +189,7 @@ const AddDoctor = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                            <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
                                 <div className="flex flex-col sm:w-full  ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Linkedin</label>
                                     <input
