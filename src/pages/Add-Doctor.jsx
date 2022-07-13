@@ -86,125 +86,124 @@ const AddDoctor = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-row mt-3 w-full gap-3 rounded-md">
-                <div className="w-[60%] bg-white rounded-md">
-                    <div className="flex flex-row items-center justify-between ml-9 mr-3 mt-7 ">
+            <div className="flex sm:flex-col sm:w-[100%] md:flex-col lg:flex-row mt-3  gap-3 rounded-md">
+                <div className="sm:w-[100%] bg-white rounded-md">
+                    <div className="flex sm:flex-col md:flex-row items-center justify-between sm:ml-5 md:ml-9 mr-3 mt-7 ">
                         <div className="flex flex-row items-center ">
-                            <span className="rounded-full h-28 w-28 flex items-center border border-gray-300 ">
+                            <span className="rounded-full sm:h-14 sm:w-14 md:h-20 md:w-20 flex items-center border border-gray-300 ">
                                 <img
                                     src={image1}
                                     alt="doc"
-                                    className="h-20 w-20 rounded-2xl ml-2"
+                                    className=" sm:h-10 md:h-16 sm:w-10 md:w-16 rounded-2xl ml-2"
                                 />
                             </span>
-
                             <div className="flex flex-col ml-5">
                                 <h2 className="text-lg text-slate-900 font-semibold mb-2">
                                     Upload Your Picture
                                 </h2>
-                                <p className="text-md text-gray-500 w-80">
+                                <p className="text-md text-gray-500 w-auto md:w-80">
                                     For best results, use an image at least
                                     600px by 600px in either .jpg or .png format
                                 </p>
                             </div>
                         </div>
-                        <div className="flex sm:flex-col md:flex-col lg:flex-col gap-3 items-center">
+                        <div className="flex sm:flex-row sm:mt-4 md:flex-col lg:flex-col gap-3 items-center">
                             <Button text="Upload" />
                             <Button text="Remove" />
                         </div>
                     </div>
                     <div className="mx-3 mt-5 mb-5">
                         <form className="flex flex-col">
-                            <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
-                                <div className="flex flex-col ">
+                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">First Name</label>
                                     <input
                                         type="text"
                                         placeholder="First Name:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Last Name</label>
                                     <input
                                         type="text"
                                         placeholder="Last Name:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
                             </div>
-                            <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
-                                <div className="flex flex-col ">
+                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Your Email</label>
                                     <input
                                         type="email"
                                         placeholder="Email address:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col sm:w-full">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Phone no.</label>
                                     <input
                                         type="text"
                                         placeholder="Phone no:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
                             </div>
-                            <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
-                                <div className="flex flex-col ">
+                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Departments</label>
                                     <Select
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
-                                        className="w-[300px]"
+                                        className="sm:w-[100%] md:w-[100%]"
                                         defaultValue={departmentsOptions[2]}
                                         options={departmentsOptions}
                                     />
                                 </div>
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Gender</label>
                                     <Select
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
-                                        className="w-[300px]"
+                                        className="sm:w-[100%] md:w-[100%]"
                                         options={genderOptions}
                                     />
                                 </div>
                             </div>
-                            <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
-                                <div className="flex flex-col ">
+                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Twitter</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col sm:w-full">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Facebook</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
                             </div>
-                            <div className="flex flex-row items-center justify-between ml-3 mb-5 gap-2">
-                                <div className="flex flex-col ">
+                            <div className="flex sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                <div className="flex flex-col sm:w-full  ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Linkedin</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col sm:w-full ">
                                     <label className="after:content-['*'] after:ml-0.5 after:text-red-500">Instagram</label>
                                     <input
                                         type="text"
                                         placeholder="userName:"
-                                        className="w-[300px] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                        className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                     />
                                 </div>
                             </div>
@@ -223,7 +222,7 @@ const AddDoctor = () => {
                         </form>
                     </div>
                 </div>
-                <div className="w-[40%] bg-white rounded-md pb-5">
+                <div className="sm:w-[100%] lg:w-[45%] bg-white rounded-md pb-5">
                     <div className="mt-4 pl-4 border-b border-gray-400 pb-7 pt-4">
                         <h4 className="text-lg text-slate-800 font-semibold">
                             Doctor's List
