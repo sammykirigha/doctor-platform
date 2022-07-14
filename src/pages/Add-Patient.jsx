@@ -69,12 +69,12 @@ const AddPatient = () => {
 
     return (
         <div className="mx-4 min-h-screen">
-            <div className="flex flex-row items-center justify-between mt-3">
+            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row items-center justify-between mt-3">
                 <h3 className="text-lg text-slate-900 font-bold">
                     Add New Patient
                 </h3>
                 <div>
-                    <p className="paragraph inline-flex items-center justify-between text-md uppercase text-md ">
+                    <p className="paragraph inline-flex items-center justify-between uppercase text-sm sm:text-sm md:text-md lg:text-md ">
                         Docris{" "}
                         <RiArrowRightSLine className="flex items-center mx-2 mt-0.5" />{" "}
                         <span className="text-blue-700 text-md">
@@ -87,29 +87,27 @@ const AddPatient = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-row mt-3 w-full gap-3 rounded-md">
-                <div className="w-[60%] bg-white rounded-md h-[500px]">
-                    <div className="flex flex-row items-center justify-between ml-9 mr-3 mt-7 ">
+            <div className="flex flex-col sm:flex-col md:flex-row mt-3 w-full gap-3 rounded-md">
+                <div className="sm:w-[100%] md:w-[60%] bg-white rounded-md h-[500px]">
+                    <div className="flex flex-col sm:flex-col md:flex-row items-center justify-between ml-9 mr-3 mt-7 ">
                         <div className="flex flex-row items-center ">
-                            <span className="rounded-full h-28 w-28 flex items-center border border-gray-300 ">
                                 <img
                                     src={image5}
                                     alt="doc"
-                                    className="h-20 w-20 rounded-2xl ml-2"
+                                    className="h-20 w-20  ml-2 rounded-full"
                                 />
-                            </span>
 
                             <div className="flex flex-col ml-5">
                                 <h2 className="text-lg text-slate-900 font-semibold mb-2">
                                     Upload Your Picture
                                 </h2>
-                                <p className="text-md text-gray-500 w-80">
+                                <p className="text-md text-gray-500 sm:w-auto">
                                     For best results, use an image at least
                                     600px by 600px in either .jpg or .png format
                                 </p>
                             </div>
                         </div>
-                        <div className="flex sm:flex-col md:flex-col lg:flex-col gap-3 items-center">
+                        <div className="flex flex-row mt-5 sm:mt-5 md:mt-0 md:flex-col lg:flex-col gap-3 items-center">
                             <Button text="Upload" />
                             <Button text="Remove" />
                         </div>
