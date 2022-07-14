@@ -69,12 +69,12 @@ const AddPatient = () => {
 
     return (
         <div className="mx-4 min-h-screen">
-            <div className="flex flex-row items-center justify-between mt-3">
+            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row items-center justify-between mt-3">
                 <h3 className="text-lg text-slate-900 font-bold">
                     Add New Patient
                 </h3>
                 <div>
-                    <p className="paragraph inline-flex items-center justify-between text-md uppercase text-md ">
+                    <p className="paragraph inline-flex items-center justify-between uppercase text-sm sm:text-sm md:text-md lg:text-md ">
                         Docris{" "}
                         <RiArrowRightSLine className="flex items-center mx-2 mt-0.5" />{" "}
                         <span className="text-blue-700 text-md">
