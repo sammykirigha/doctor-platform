@@ -77,8 +77,8 @@ const TimeTable = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row justify-between flex-1 mt-5">
-                <div className="ml-5 border flex flex-col py-4 items-center rounded-md">
+            <div className="flex flex-col sm:flex-col sm:gap-y-5 sm:gap-x-5 md:ml-3 md:flex-row lg:flex-row justify-between flex-1 mt-5">
+                <div className="sm:ml-0 border flex flex-col py-4 items-center rounded-md">
                     <div className="flex flex-col sm:ml-10 md:ml-10 ">
                         <span className="h-[60px] w-[60px] bg-blue-100 rounded-md flex items-center justify-center">
                             <BsTelephone className="text-2xl text-blue-800 font-bold" />
@@ -99,7 +99,7 @@ const TimeTable = () => {
                     </div>
                 </div>
 
-                <div className="ml-5 border flex flex-col py-4 items-center rounded-md">
+                <div className="sm:0 mt-3 sm:mt-0 border flex flex-col py-4 items-center rounded-md">
                     <div className="flex flex-col">
                         <span className="h-[60px] w-[60px] bg-blue-100 rounded-md flex items-center justify-center">
                             <HiOutlineMail className="text-2xl text-blue-800 font-bold" />

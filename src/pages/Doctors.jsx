@@ -89,7 +89,7 @@ const Doctors = () => {
                 </div>
                 <Button text="Add A New Doctor" onClick={() => navigate('/doctors/add-doctor')} />
             </div>
-            <div className="bg-gray-50 grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 mt-5 mx-4">
+            <div className="bg-gray-50 grid  sm:grid-cols-2 gap-y-16 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 mt-5 mx-4">
                 {doctorsAvailable.map((doc, index) => {
                     return (
                         <div
