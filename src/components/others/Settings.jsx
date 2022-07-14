@@ -157,36 +157,36 @@ const Settings = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" sm:w-[100%] w-[50%] bg-white rounded-md flex flex-col ">
-                    <div className="border border-gray-300 rounded-md">
+                <div className=" sm:w-[100%] sm:mt-10 md:w-[100%] bg-white rounded-md flex flex-col ">
+                    <div className="border  border-gray-300 rounded-md">
                         <div className="border-b border-gray-100 pl-5 py-3 ">
                             <span className="text-lg text-slate-900 font-semibold pb-5">
                                 General Notifications :
                             </span>
                         </div>
                         <div className="flex flex-col">
-                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                            <div className="flex flex-row items-center justify-between sm:px-5 px-0 py-6 border-b border-gray-200 mx-4">
                                 <span>When someone mentions me</span>
                                 <input
                                     type="checkbox"
                                     className="default:ring-2"
                                 />
                             </div>
-                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
+                            <div className="flex flex-row items-center justify-between sm:px-5 px-0 py-6 border-b border-gray-200 mx-4">
                                 <span>When someone follows me</span>
                                 <input
                                     type="checkbox"
                                     className="default:ring-2"
                                 />
                             </div>
-                            <div className="flex flex-row items-center justify-between px-5 py-6 border-b border-gray-200 mx-4">
-                                <span>When someone shares my activity</span>
+                            <div className="flex flex-row items-center justify-between sm:px-5 px-0 py-6 border-b border-gray-200 mx-4">
+                                <span className="">When someone shares my activity</span>
                                 <input
                                     type="checkbox"
                                     className="default:ring-2"
                                 />
                             </div>
-                            <div className="flex flex-row items-center justify-between px-5 py-6 mx-4">
+                            <div className="flex flex-row items-center justify-between sm:px-5 px-0 py-6 mx-4">
                                 <span>When someone messages me</span>
                                 <input
                                     type="checkbox"
