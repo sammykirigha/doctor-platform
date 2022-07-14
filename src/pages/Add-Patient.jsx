@@ -98,16 +98,16 @@ const AddPatient = () => {
                                 />
 
                             <div className="flex flex-col ml-5">
-                                <h2 className="hidden sm:hidden md:display text-lg text-slate-900 font-semibold mb-2">
+                                <h2 className=" text-lg text-slate-900 font-semibold mb-2">
                                     Upload Your Picture
                                 </h2>
-                                <p className="hidden sm:hidden md:display text-md text-gray-500 sm:w-auto">
+                                <p className=" text-md text-gray-500 sm:w-auto">
                                     For best results, use an image at least
                                     600px by 600px in either .jpg or .png format
                                 </p>
                             </div>
                         </div>
-                        <div className="flex flex-col sm:flex-col md:flex-row mt-5 sm:mt-5 md:mt-0  lg:flex-col gap-3 items-center">
+                        <div className="flex flex-row sm:flex-row md:flex-row mt-5 sm:mt-5 md:mt-0  lg:flex-col gap-3 items-center">
                             <Button text="Upload" />
                             <Button text="Remove" />
                         </div>
