@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, useField } from 'formik';
 import React from 'react';
 
-const EmailField = ({ label, ...props }) => {
+const InputField = ({ label, ...props }) => {
 
 	const [field, meta] = useField(props)
 
@@ -17,4 +17,4 @@ const EmailField = ({ label, ...props }) => {
   )
 }
 
-export default EmailField
+export default InputField

@@ -1,7 +1,10 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import React, { createRef, useRef, useState } from "react";
 import * as Yup from "yup";
-import EmailField from "./EmailField";
+import InputField from "./EmailField";
+import { FcGoogle } from 'react-icons/fc'
+import {FaFacebook} from 'react-icons/fa'
+import logo from "../../data/images/logo3.jpg";
 
 const LoginForm = (props) => {
     const fileInput = createRef();
@@ -47,10 +50,19 @@ const LoginForm = (props) => {
 
     return (
         <div className="flex flex-col mt-[10%] ">
-            <div className="mx-auto">
-                <h3>Doctris</h3>
+            <div className="mx-auto flex">
+                <img
+                    src={logo}
+                    alt="logo"
+                    height="54"
+                    width="64"
+                    className="ml-2 cursor-pointer rounded-full"
+                />
+                <h3 className="text-2xl text-gray-800 font-bold pt-3 pl-1 cursor-pointer ml-3">
+                    Doctris
+                </h3>
             </div>
-            <div className="mt-5 bg-white border mx-auto rounded-md p-3 w-[500px]">
+            <div className="mt-5 bg-white border mx-auto rounded-md p-3 w-[600px]">
                 <Formik
                     initialValues={{
                         email: "",
@@ -70,15 +82,17 @@ const LoginForm = (props) => {
                         handleSubmit,
                         isSubmitting,
                     }) => (
-                        <Form>
-                            <div className="my-12 w-full bg-red-500 flex justify-center ">
-                                <h3 className="px-auto text-2xl font-bold">Sign In</h3>
+                        <Form className="pb-5 px-10">
+                            <div className="my-12 w-full flex justify-center ">
+                                <h3 className="px-auto text-2xl font-bold">
+                                    Sign In
+                                </h3>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <EmailField
+                                <InputField
                                     name="email"
                                     type="email"
-                                    label="Enter email"
+                                    label="Enter email:"
                                 />
                                 <ErrorMessage name="email">
                                     {(error) => (
@@ -89,11 +103,11 @@ const LoginForm = (props) => {
                                 </ErrorMessage>
                             </div>
                             <div className="flex flex-col gap-2 mt-4">
-                                <EmailField
+                                <InputField
                                     name="password"
                                     validate={validatePassword}
                                     type="password"
-                                    label="Password"
+                                    label="Password:"
                                 />
                                 <ErrorMessage name="password">
                                     {(error) => (
@@ -104,35 +118,46 @@ const LoginForm = (props) => {
                                     )}
                                 </ErrorMessage>
                             </div>
-                            <div className="flex flex-col gap-2 mt-4">
-                                <label>Confirm Password</label>
-                                <Field
-                                    name="confirmPassword"
-                                    className="outline outline-gray-50 rounded-md "
-                                    validate={validatePassword}
-                                    type="password"
-                                />
-                                <ErrorMessage name="confirmPassword">
-                                    {(error) => (
-                                        <p className="text-md text-red-600">
-                                            {error}
-                                        </p>
-                                    )}
-                                </ErrorMessage>
+                            <div className="flex justify-between">
+                                <div className="flex flex-row gap-3 items-center mt-5">
+                                    <Field name="rememberMe" type="checkbox" />
+                                    <span className="text-lg text-slate-900">
+                                        Remember me
+                                    </span>
+                                </div>
+                                <div className="flex flex-row gap-3 items-center mt-5">
+                                    <span className="text-lg text-slate-900 cursor-pointer font-medium">
+                                        Forgot your passsword?
+                                    </span>
+                                </div>
                             </div>
-                            <div className="flex flex-row gap-3 items-center mt-5">
-                                <Field name="rememberMe" type="checkbox" />
-                                <span className="text-md text-slate-900">
-                                    Remember me
-                                </span>
-                            </div>
+
                             <button
-                                className="mt-5 bg-blue-600 py-2 px-2 rounded-md cursor-pointer"
+                                className="mt-5 w-full bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer"
                                 disabled={isSubmitting}
                                 type="submit"
                             >
                                 Submit
                             </button>
+                            <div className=" flex justify-center mt-2">
+                                <span className="mx-auto text-lg font-semibold">
+                                    or
+                                </span>
+                            </div>
+                            <div className="flex justify-between mt-4 w-full gap-x-5">
+                                <div className="border bg-blue-100 rounded-md flex items-center justify-center w-[50%] h-[50px] cursor-pointer">
+                                    <FaFacebook className="h-6 w-6" />
+                                    <span className="ml-5">Facebook</span>
+                                </div>
+                                <div className="border bg-blue-100 rounded-md flex items-center justify-center w-[50%] h-[50px] cursor-pointer">
+                                    <FcGoogle className="h-6 w-6" />
+                                    <span className="ml-5">Google</span>
+                                </div>
+                            </div>
+
+                            <div className="mt-5 flex justify-center">
+                                <h3 className="text-md">Don't have an account? <strong className="cursor-pointer">Sign Up</strong></h3>
+                            </div>
                         </Form>
                     )}
                 </Formik>
