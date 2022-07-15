@@ -31,7 +31,7 @@ const Navbar = ({ onClick }) => {
     return (
         <div
             className={`bg-white-900 py-[13px] flex flex-row border-b border-gray-200 border-l  fixed z-10 right-0 top-0 ${
-                sideBarOpen ? "left-[250px]" : "left-0"
+                sideBarOpen ? "left-0 lg:left-[250px]" : "left-0"
             } bg-white`}
         >
             <div className="flex w-64 justify-between ml-3">
@@ -41,7 +41,7 @@ const Navbar = ({ onClick }) => {
                 >
                     <FiAlignJustify style={Styles} />
                 </div>
-                <div className="flex bg-white-800 items-center">
+                <div className="hidden sm:flex bg-white-800 items-center">
                     <input
                         placeholder="Search Keywords..."
                         className="h-9 w-64 border border-gray-600 rounded-full pl-8 focus:border-0"
