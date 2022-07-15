@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import React, { createRef, useRef, useState } from "react";
 import * as Yup from "yup";
-import InputField from "./EmailField";
+import InputField from "./InputField";
 import { FcGoogle } from 'react-icons/fc'
 import {FaFacebook} from 'react-icons/fa'
 import logo from "../../data/images/logo3.jpg";

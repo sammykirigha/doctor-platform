@@ -32,6 +32,7 @@ import PatientsProfile from './pages/Patients-Profile';
 import Profile from './components/others/Profile';
 import { ProfileSettings } from './components/others/ProfileSettings';
 import LoginForm from './components/Authentication/Login';
+import SignupForm from './components/Authentication/Signup';
 
 const App = () => {
   return (
@@ -40,7 +41,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Dashboard />} />,
           <Route path='/dashboard' element={<Dashboard />} />,
-          <Route path='/appointment' element={<LoginForm />} />,
+          <Route path='/appointment' element={<SignupForm />} />,
           <Route path='/authentication' element={<Authentication />} />,
           <Route path='/blogs' element={<Blogs />} />,
           <Route path='/components' element={<Components />} />,
