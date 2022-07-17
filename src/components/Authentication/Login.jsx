@@ -1,27 +1,37 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import React, { createRef, useRef, useState } from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import InputField from "./InputField";
-import { FcGoogle } from 'react-icons/fc'
-import {FaFacebook} from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc';
+import { FaFacebook } from 'react-icons/fa';
+import {useMutation } from '@apollo/client';
 import logo from "../../data/images/logo3.jpg";
+import { useNavigate } from "react-router-dom";
+import { LOGIN_USER } from "../../queries/auth";
+
 
 const LoginForm = (props) => {
-    const fileInput = createRef();
+    let navigate = useNavigate();
 
-    const onSubmit = (values, actions) => {
-        return new Promise((resolve, reject) => {
-            resolve();
-        });
-    };
+    const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
+    const [respondError, setRespondError] = useState(null);
 
-    const handleValidation = (values) => {
-        const errors = {};
+    const onSubmit = async (values) => {
 
-        if (!values.email) {
-            errors.email = "Email can't be empty";
+        const inputValues = {
+            email: values.email,
+            password: values.password,
+        };
+
+        loginUser({ variables: { input: inputValues } });
+        if (error) {
+            setRespondError(error);
         }
-        return errors;
+        setTimeout(() => {
+            setRespondError(null);
+        }, 2000);
+
+        navigate("../layout", { replace: true });
     };
 
     const SignUpSchema = Yup.object().shape({
@@ -48,6 +58,8 @@ const LoginForm = (props) => {
         return error;
     };
 
+    console.log('$$$$$$$$$$$$$$$$$$$$$', data);
+
     return (
         <div className="flex flex-col mt-[10%] ">
             <div className="mx-auto flex">
@@ -62,13 +74,12 @@ const LoginForm = (props) => {
                     Doctris
                 </h3>
             </div>
-            <div className="mt-5 bg-white border mx-auto rounded-md p-3 w-[600px]">
+            <div className="mt-5 bg-white border sm:mx-auto md:mx-auto rounded-md p-3  w-[100%] max-w-[600px]">
                 <Formik
                     initialValues={{
                         email: "",
                         password: "",
                         rememberMe: false,
-                        confirmPassword: "",
                     }}
                     onSubmit={onSubmit}
                     validationSchema={SignUpSchema}
@@ -83,6 +94,11 @@ const LoginForm = (props) => {
                         isSubmitting,
                     }) => (
                         <Form className="pb-5 px-10">
+                          {/* {errr && (
+                                    <div className="bg-red-300 flex justify-center rounded-md">
+                                        <h3 className="py-2">{errr.message}</h3>
+                                    </div>
+                                )} */}
                             <div className="my-12 w-full flex justify-center ">
                                 <h3 className="px-auto text-2xl font-bold">
                                     Sign In

@@ -1,11 +1,15 @@
 import { gql } from "@apollo/client";
 
-export const loginQuery = `
-mutation RegisterUser($input: CreateUserInput!) {
-  registerUser(input: $input) {
+export const LOGIN_USER = gql`
+mutation LoginUser($input: LoginUserInput!) {
+  loginUser(input: $input) {
+    id
     username
     email
     password
+    role
+    token
+    confirmed
   }
 }
 `
