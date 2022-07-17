@@ -2,16 +2,30 @@ import { ErrorMessage, Field, Formik, Form } from "formik";
 import React, { createRef, useRef, useState } from "react";
 import * as Yup from "yup";
 import InputField from "./InputField";
-import { FcGoogle } from 'react-icons/fc'
-import {FaFacebook} from 'react-icons/fa'
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
 import logo from "../../data/images/logo3.jpg";
+import { signinUserAction } from "../../state/actions/auth.action";
+import { signupQuery } from "../../queries/auth";
 
-const SignupForm = (props) => {
+const SignupForm = () => {
+    const [signupData, setSignupData] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
 
-    const onSubmit = (values, actions) => {
-        return new Promise((resolve, reject) => {
-            resolve();
-        });
+   
+
+    const onSubmit = async (values) => {
+         const details = {
+        signupQuery: signupQuery,
+        input: {values}
+    }
+        await signinUserAction(details)
+        console.log("==============");
+        console.log(values);
+        console.log("==============");
     };
 
     const handleValidation = (values) => {
@@ -20,10 +34,16 @@ const SignupForm = (props) => {
         if (!values.email) {
             errors.email = "Email can't be empty";
         }
+
+          if (!values.username) {
+            errors.username = "username can't be empty";
+        }
+
         return errors;
     };
 
     const SignUpSchema = Yup.object().shape({
+        username: Yup.string().required("username cant be empty"),
         email: Yup.string()
             .email("invalid email")
             .required("Email cant be empty"),
@@ -64,10 +84,10 @@ const SignupForm = (props) => {
             <div className="mt-5 bg-white border mx-auto rounded-md p-3 w-[600px]">
                 <Formik
                     initialValues={{
+                        username: "",
                         email: "",
                         password: "",
                         rememberMe: false,
-                        confirmPassword: "",
                     }}
                     onSubmit={onSubmit}
                     validationSchema={SignUpSchema}
@@ -86,14 +106,14 @@ const SignupForm = (props) => {
                                 <h3 className="px-auto text-2xl font-bold">
                                     Sign Up
                                 </h3>
-							</div>
-							<div className="flex flex-col gap-2">
+                            </div>
+                            <div className="flex flex-col gap-2">
                                 <InputField
-                                    name="email"
+                                    name="username"
                                     type="name"
                                     label="Your Username:"
                                 />
-                                <ErrorMessage name="email">
+                                <ErrorMessage name="username">
                                     {(error) => (
                                         <p className="text-md text-red-600">
                                             {error}
@@ -133,9 +153,16 @@ const SignupForm = (props) => {
                             </div>
                             <div className="flex justify-between">
                                 <div className="flex flex-row gap-3 items-center mt-5">
-                                    <Field name="rememberMe" type="checkbox" className="h-10" />
+                                    <Field
+                                        name="rememberMe"
+                                        type="checkbox"
+                                        className="h-10"
+                                    />
                                     <span className="text-lg text-slate-900">
-                                        I Accept <strong className="text-blue-400 cursor-pointer">Terms & Condition</strong>
+                                        I Accept{" "}
+                                        <strong className="text-blue-400 cursor-pointer">
+                                            Terms & Condition
+                                        </strong>
                                     </span>
                                 </div>
                             </div>
@@ -164,7 +191,12 @@ const SignupForm = (props) => {
                             </div>
 
                             <div className="mt-5 flex justify-center">
-                                <h3 className="text-md">Already have an account? <strong className="cursor-pointer">Sign In</strong></h3>
+                                <h3 className="text-md">
+                                    Already have an account?{" "}
+                                    <strong className="cursor-pointer">
+                                        Sign In
+                                    </strong>
+                                </h3>
                             </div>
                         </Form>
                     )}
