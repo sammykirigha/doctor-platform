@@ -5,10 +5,10 @@ import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { NavigationContext } from "../../contexts/navigation.context";
 
-const FooterMain = () => {
+const FooterMain = ({width}) => {
     const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);
     return (
-        <div className={` bg-[#202942] ${sideBarOpen && "ml-[250px]"}`}>
+        <div className={` bg-[#202942] ml-[${width}px] ${sideBarOpen && "ml-[250px]"}`}>
             <div className="bg-[#202942] pl-3 mt-8 pt-5 sm:pt-5 md:pt-5  h-[auto]
 		 grid sm:grid-cols-2 sm:gap-y-8 sm:items-start md:grid-cols-3 md:items-start md:justify-evenly lg:pt-5 lg:px-16 lg:grid-cols-4 lg:items-start lg:justify-evenly">
             <div className="flex flex-col sm:ml-5 md:ml-10 lg:ml-0 -md:mt-10 ">

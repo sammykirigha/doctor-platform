@@ -14,29 +14,29 @@ export const links = [
 	{
 		icon: <GiAlarmClock className='h-4.5 w-4.5' />,
 		name: 'Dashboard',
-		link: '/dashboard'
+		link: '/layout/dashboard'
 	},
 	{
 		icon: <FaStethoscope className='h-4.5 w-4.5' />,
 		name: 'Appointment',
-		link: '/appointment'
+		link: '/layout/appointment'
 	},
 	{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
-		link: 'doctors',
+		link: '/layout/doctors',
 		childrenLinks: [
 			{
 				name: 'Doctors',
-			    link: '/doctors/all-doctors'
+			    link: '/layout/doctors/all-doctors'
 			},
 			{
 				name: 'Add Doctor',
-			    link: '/doctors/add-doctor'
+			    link: '/layout/doctors/add-doctor'
 			},
 			{
 				name: 'Profile',
-			    link: '/doctors/profile'
+			    link: '/layout/doctors/profile'
 			},
 		]
 			
@@ -45,76 +45,76 @@ export const links = [
 	{
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patients',
-		link: 'patients',
+		link: '/layout/patients',
 		childrenLinks: [
 			{
 				name: 'All Patients',
-			    link: '/patients/all-patients'
+			    link: '/layout/patients/all-patients'
 			},
 			{
 				name: 'Add Patients',
-			    link: '/patients/add-patient'
+			    link: '/layout/patients/add-patient'
 			},
 			{
 				name: 'Profile',
-			    link: '/patients/profile'
+			    link: '/layout/patients/profile'
 			},
 		]
 	},
 	{
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Apps',
-		link: 'apps',
+		link: '/layout/apps',
 		childrenLinks: [
 			{
 				name: 'Chat',
-			    link: '/apps/chat'
+			    link: '/layout/apps/chat'
 			},
 			{
 				name: 'Email',
-			    link: '/apps/email'
+			    link: '/layout/apps/email'
 			},
 			{
 				name: 'Calendar',
-			    link: '/apps/calendar'
+			    link: '/layout/apps/calendar'
 			},
 		]
 	},
 	{
 		icon: <HiOutlineShoppingCart className='h-4.5 w-4.5' />,
 		name: 'Pharmacy',
-		link: 'pharmacy',
+		link: '/layout/pharmacy',
 		childrenLinks: [
 			{
 				name: 'Shop',
-			    link: '/shop'
+			    link: '/layout/shop'
 			},
 			{
 				name: 'Shop Detail',
-			    link: '/shopdetail'
+			    link: '/layout/shopdetail'
 			},
 			{
 				name: 'Shopcart',
-			    link: '/shopcart'
+			    link: '/layout/shopcart'
 			},
 			{
 				name: 'Checkout',
-			    link: '/checkout'
+			    link: '/layout/checkout'
 			},
 		]
 	},
 	{
 		icon: <FaBlog className='h-4.5 w-4.5' />,
 		name: 'Blogs',
-		link: 'blogs',
+		link: '/layout/blogs',
 		childrenLinks: [
 			{
 				name: 'Blogs',
-			    link: '/blogs'
+			    link: '/layout/blogs'
 			},
 			{
 				name: 'Blog Detail',
-			    link: '/blog-detail'
+			    link: '/layout/blog-detail'
 			},
 			
 		]
@@ -122,63 +122,40 @@ export const links = [
 	{
 		icon: <MdOutlineRestorePage className='h-4.5 w-4.5' />,
 		name: 'Pages',
-		link: 'pages',
+		link: '/layout/pages',
 		childrenLinks: [
 			{
 				name: 'FAQs',
-			    link: '/faq'
+			    link: '/layout/faq'
 			},
 			{
 				name: 'Reviews',
-			    link: '/reviews'
+			    link: '/layout/reviews'
 			},
 			{
 				name: 'Invoice List',
-			    link: '/invoice-list'
+			    link: '/layout/invoice-list'
 			},
 			{
 				name: 'Invoice',
-			    link: '/invoice'
+			    link: '/layout/invoice'
 			},
 			{
 				name: 'Terms & Policy',
-			    link: '/terms-and-policy'
+			    link: '/layout/terms-and-policy'
 			},
 			{
 				name: 'Privacy Policy',
-			    link: '/privacy-policy'
+			    link: '/layout/privacy-policy'
 			},
 			{
 				name: '404 !',
-			    link: '/404'
+			    link: '/layout/404'
 			},
 			{
 				name: 'Blank Page',
-			    link: '/blank-page'
+			    link: '/layout/blank-page'
 			},
-		]
-	},
-	{
-		icon: <BiLogOutCircle className='h-4.5 w-4.5' />,
-		name: 'Authentication',
-		link: 'authentication',
-		childrenLinks: [
-			{
-				name: 'Login',
-			    link: '/login'
-			},
-			{
-				name: 'Signup',
-			    link: '/signup'
-			},
-			{
-				name: 'Forgot Password',
-			    link: '/Lock Screen'
-			},
-			{
-				name: 'Thank you !',
-			    link: '/thank-you'
-			}
 		]
 	},
 	{
