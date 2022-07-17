@@ -1,46 +1,44 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import React, { createRef, useRef, useState } from "react";
-import * as Yup from "yup";
-import InputField from "./InputField";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+import * as Yup from "yup";
+import InputField from "./InputField";
 import logo from "../../data/images/logo3.jpg";
 import { signinUserAction } from "../../state/actions/auth.action";
-import { signupQuery } from "../../queries/auth";
+import { signupQuery, SIGNUP_USER } from "../../queries/auth";
+import { gql, useMutation } from "@apollo/client";
+
+
 
 const SignupForm = () => {
-    const [signupData, setSignupData] = useState({
-        username: "",
-        email: "",
-        password: "",
-    });
-
-   
+    const [registerUser, { data, loading, error }] = useMutation(SIGNUP_USER);
 
     const onSubmit = async (values) => {
-         const details = {
-        signupQuery: signupQuery,
-        input: {values}
-    }
-        await signinUserAction(details)
+        const inputValues = {
+            username: values.username,
+            email: values.email,
+            password: values.password,
+        };
+        registerUser({ variables: { input: inputValues } });
         console.log("==============");
         console.log(values);
         console.log("==============");
     };
 
-    const handleValidation = (values) => {
-        const errors = {};
+    // const handleValidation = (values) => {
+    //     const errors = {};
 
-        if (!values.email) {
-            errors.email = "Email can't be empty";
-        }
+    //     if (!values.email) {
+    //         errors.email = "Email can't be empty";
+    //     }
 
-          if (!values.username) {
-            errors.username = "username can't be empty";
-        }
+    //     if (!values.username) {
+    //         errors.username = "username can't be empty";
+    //     }
 
-        return errors;
-    };
+    //     return errors;
+    // };
 
     const SignUpSchema = Yup.object().shape({
         username: Yup.string().required("username cant be empty"),
@@ -66,6 +64,8 @@ const SignupForm = () => {
 
         return error;
     };
+
+    if (error) return <h3>{ error.message}</h3>
 
     return (
         <div className="flex flex-col mt-[10%] ">

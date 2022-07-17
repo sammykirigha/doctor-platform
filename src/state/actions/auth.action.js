@@ -9,6 +9,7 @@ export const signinUserAction = createAsyncThunk(
         try {
             thunkAPI.dispatch(resetMessageNotification());
             const res = await apiPost(data);
+            console.log('$$$$$$$$$$$$$$$$$$', res);
             return res.data;
 		} catch (error) {
 			thunkAPI.dispatch(setMessageNotification({message: error}))
