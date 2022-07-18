@@ -3,7 +3,7 @@ import logo from "../data/images/logo3.jpg";
 import { BsFillPersonFill, BsArrowRightShort, BsArrowRight } from "react-icons/bs";
 const LandingPage = () => {
     return (
-        <div>
+        <div className="w-full">
             <div className="bg-blue-400 w-[100%] h-[750px] relative pt-56 pl-10">
                 <img
                     src={logo}
@@ -12,10 +12,10 @@ const LandingPage = () => {
                     width="54"
                     className="ml-2 cursor-pointer rounded-full"
                 />
-                <h2 className="w-[300px] text-white text-4xl font-bold uppercase tracking-widest">
+                <h2 className="sm:w-[100%] md:w-[300px] text-white text-4xl font-bold uppercase tracking-widest">
                     Meet The Best Doctor
                 </h2>
-                <p className="w-[650px] text-white text-xl mt-6">
+                <p className="sm:w-[100%]   md:w-[650px] text-white text-xl mt-6">
                     Great doctor if you need your family member to get effective
                     immediate assistance, emergency treatment or a simple
                     consultation.
@@ -65,8 +65,8 @@ const LandingPage = () => {
                     <BsFillPersonFill className="text-2xl cursor-pointer text-gray-700" />
                 </div>
             </div>
-            <div className="flex flex-row relative bg-white mx-auto -mt-20 w-[70%]">
-                <div className="flex flex-col gap-y-2 bg-gray-100 px-5 py-5 rounded-md">
+            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row relative bg-white mx-auto sm:mt-0 sm:w-[100%]  md:-mt-20 sm:px-2 rounded-md md:w-[80%] justify-between">
+                <div className="flex flex-col gap-y-2 bg-gray-100 px-5  py-5 rounded-md">
                     <img
                         src={logo}
                         alt="logo"
@@ -75,7 +75,7 @@ const LandingPage = () => {
                         className="ml-2 cursor-pointer rounded-full"
                     />
                     <h3 className="text-gray-900 font mt-5 text-2xl">Emergency Cases</h3>
-                    <p className="text-gray-400 w-[300px]">
+                    <p className="text-gray-400 w-auto">
                         This is required when, for example, the is not yet
                         available. Dummy text is also known as 'fill text'.
                     </p>
@@ -83,7 +83,7 @@ const LandingPage = () => {
                         Read More <BsArrowRight className="text-blue-600 ml-1" />{" "}
                     </span>
                 </div>
-                <div className="flex flex-col gap-y-2 bg-white px-5 py-5 rounded-md">
+                <div className="flex flex-col gap-y-2 bg-white px-5 py-5  rounded-md">
                     <img
                         src={logo}
                         alt="logo"
@@ -92,7 +92,7 @@ const LandingPage = () => {
                         className="ml-2 cursor-pointer rounded-full"
                     />
                     <h3 className="text-gray-900 font mt-5 text-2xl">Doctors Timetable</h3>
-                    <p className="text-gray-400 w-[300px]">
+                    <p className="text-gray-400 w-auto">
                         This is required when, for example, the is not yet
                         available. Dummy text is also known as 'fill text'.
                     </p>
@@ -100,7 +100,7 @@ const LandingPage = () => {
                         Read More <BsArrowRight className="text-blue-600 ml-1" />{" "}
                     </span>
                 </div>
-                <div className="flex flex-col gap-y-2 bg-gray-100 px-5 py-5 rounded-md">
+                <div className="flex flex-col gap-y-2 bg-gray-100 px-5 py-5  rounded-md">
                     <img
                         src={logo}
                         alt="logo"
@@ -109,7 +109,7 @@ const LandingPage = () => {
                         className="ml-2 cursor-pointer rounded-full"
                     />
                     <h3 className="text-gray-900 font mt-5 text-2xl">Opening Hours</h3>
-                    <p className="text-gray-400 w-[300px]">
+                    <p className="text-gray-400 w-auto">
                         This is required when, for example, the is not yet
                         available. Dummy text is also known as 'fill text'.
                     </p>
