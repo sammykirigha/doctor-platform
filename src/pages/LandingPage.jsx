@@ -1,21 +1,25 @@
 import React from "react";
 import logo from "../data/images/logo3.jpg";
 import aboutTreatmentImage from "../data/images/about-2.png";
-
-import { BsFillPersonFill, BsArrowRight, BsEyeFill } from "react-icons/bs";
-import {
-    RiMentalHealthFill,
-    RiCapsuleFill,
-    RiMicroscopeFill,
-    RiHeartPulseFill,
-} from "react-icons/ri";
+import image1 from "../data/images/01.jpg";
+import image2 from "../data/images/new-2.jpg";
+import image3 from "../data/images/new-3.jpg";
+import image4 from '../data/images/new-3.jpg';
+import { AiOutlineMail } from 'react-icons/ai';
+import {BsFillPersonFill,BsArrowRight,BsEyeFill,BsFillStarFill,BsCalendarDay,BsHeart} from "react-icons/bs";
+import {RiMentalHealthFill,RiCapsuleFill,RiMicroscopeFill,RiHeartPulseFill,} from "react-icons/ri";
 import { FaStethoscope } from "react-icons/fa";
-import { MdOutlineAutoGraph, MdOutlineBloodtype } from "react-icons/md";
-import FooterMain, { FooterContent } from "../components/others/FooterMain";
+import { MdOutlineAutoGraph, MdOutlineBloodtype, MdArrowRight } from "react-icons/md";
+import { BiTime } from 'react-icons/bi';
+import { FooterContent } from "../components/others/FooterMain";
 import DoctorsList from "./doctors/DoctorsList";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+
 const LandingPage = () => {
     return (
         <div className="w-full">
+            {/* start */}
             <div
                 className="bg-hero-pattern bg-no-repeat w-[100%] h-[750px] relative pt-56 pl-10 opacity-15"
                 style={{
@@ -54,6 +58,9 @@ const LandingPage = () => {
                     </button>
                 </div>
             </div>
+            {/* end  */}
+
+            {/* start */}
             <div className="fixed bg-white px-8 w-full top-0 flex flex-row items-center justify-between">
                 <div className="flex justify-center">
                     <img
@@ -92,6 +99,9 @@ const LandingPage = () => {
                     <BsFillPersonFill className="text-2xl cursor-pointer text-gray-700" />
                 </div>
             </div>
+            {/* end  */}
+
+            {/* start  */}
             <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row relative bg-white mx-auto sm:mt-0 sm:w-[100%]  md:-mt-20 sm:x-2 rounded-md md:w-[80%] justify-between">
                 <div className="flex flex-col gap-y-2 bg-gray-100 px-5  py-5 rounded-md">
                     <img
@@ -154,6 +164,9 @@ const LandingPage = () => {
                     </span>
                 </div>
             </div>
+            {/* end  */}
+
+            {/* start  */}
             <div className="flex flex-col sm:flex-col md:flex-row mt-20 items-center px-10">
                 <img src={aboutTreatmentImage} alt="about page" />
                 <div className="ml-10 px-5">
@@ -178,6 +191,9 @@ const LandingPage = () => {
                     </button>
                 </div>
             </div>
+            {/* end  */}
+
+            {/* start  */}
             <div className="mt-20 w-full ">
                 <div className="mx-auto flex flex-col items-center justify-center">
                     <button className="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-sm">
@@ -322,6 +338,9 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
+            {/* end  */}
+
+            {/* start doctors */}
             <div className="mt-20 w-full ">
                 <div className="mx-auto flex flex-col items-center justify-center">
                     <h3 className="text-2xl text-slate-900 font-semibold uppercase my-5">
@@ -334,6 +353,206 @@ const LandingPage = () => {
                     </p>
                 </div>
                 <DoctorsList />
+            </div>
+            {/* end doctors */}
+
+            {/* start reviews */}
+            <div className="mt-20 w-full ">
+                <div className="mx-auto flex flex-col items-center justify-center mb-10">
+                    <h3 className="text-2xl text-slate-900 font-semibold uppercase my-5">
+                        Patients Says
+                    </h3>
+                    <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                        Great doctor if you need your family member to get
+                        effective immediate assistance, emergency treatment or a
+                        simple consultation.
+                    </p>
+                </div>
+
+                <Splide
+                    options={{
+                        rewind: true,
+                        width: 800,
+                        gap: "1rem",
+                    }}
+                    aria-label="My Favorite Images"
+                    className="flex flex-row items-center justify-center mx-auto"
+                >
+                    <SplideSlide>
+                        <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                            The advantage of its Latin origin and the relative
+                            meaninglessness of Lorum Ipsum is that the text does
+                            not attract attention to itself or distract the
+                            viewer's attention from the layout. "
+                        </p>
+                        <div className="flex flex-col items-center justify-center mt-3">
+                            <img
+                                src={image1}
+                                className="h-14 w-14 rounded-full"
+                                alt=""
+                            />
+                            <span className="flex flex-row mt-2">
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                            </span>
+                            <span className="text-gray-500 text-xl mb-6">
+                                <strong className="text-blue-600">
+                                    -Software Engineer
+                                </strong>{" "}
+                                Samuel Kirigha{" "}
+                            </span>
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                            The advantage of its Latin origin and the relative
+                            meaninglessness of Lorum Ipsum is that the text does
+                            not attract attention to itself or distract the
+                            viewer's attention from the layout. "
+                        </p>
+                        <div className="flex flex-col items-center justify-center mt-3">
+                            <img
+                                src={image1}
+                                className="h-14 w-14 rounded-full"
+                                alt=""
+                            />
+                            <span className="flex flex-row mt-2">
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                            </span>
+                            <span className="text-gray-500 text-xl mb-6">
+                                <strong className="text-blue-600">
+                                    -Software Engineer
+                                </strong>{" "}
+                                Samuel Kirigha{" "}
+                            </span>
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                            The advantage of its Latin origin and the relative
+                            meaninglessness of Lorum Ipsum is that the text does
+                            not attract attention to itself or distract the
+                            viewer's attention from the layout. "
+                        </p>
+                        <div className="flex flex-col items-center justify-center mt-3">
+                            <img
+                                src={image1}
+                                className="h-14 w-14 rounded-full"
+                                alt=""
+                            />
+                            <span className="flex flex-row mt-2">
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                            </span>
+                            <span className="text-gray-500 text-xl mb-6">
+                                <strong className="text-blue-600">
+                                    -Software Engineer
+                                </strong>{" "}
+                                Samuel Kirigha{" "}
+                            </span>
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                            The advantage of its Latin origin and the relative
+                            meaninglessness of Lorum Ipsum is that the text does
+                            not attract attention to itself or distract the
+                            viewer's attention from the layout. "
+                        </p>
+                        <div className="flex flex-col items-center justify-center mt-3">
+                            <img
+                                src={image1}
+                                className="h-14 w-14 rounded-full"
+                                alt=""
+                            />
+                            <span className="flex flex-row mt-2">
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                            </span>
+                            <span className="text-gray-500 text-xl mb-6">
+                                <strong className="text-blue-600">
+                                    -Software Engineer
+                                </strong>{" "}
+                                Samuel Kirigha{" "}
+                            </span>
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                            The advantage of its Latin origin and the relative
+                            meaninglessness of Lorum Ipsum is that the text does
+                            not attract attention to itself or distract the
+                            viewer's attention from the layout. "
+                        </p>
+                        <div className="flex flex-col items-center justify-center mt-3">
+                            <img
+                                src={image1}
+                                className="h-14 w-14 rounded-full"
+                                alt=""
+                            />
+                            <span className="flex flex-row mt-2">
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                                <BsFillStarFill className="text-orange-500" />
+                            </span>
+                            <span className="text-gray-500 text-xl mb-6">
+                                <strong className="text-blue-600">
+                                    -Software Engineer
+                                </strong>{" "}
+                                Samuel Kirigha{" "}
+                            </span>
+                        </div>
+                    </SplideSlide>
+                </Splide>
+            </div>
+            {/*  end of reviews*/}
+            <div className="mt-20 w-full ">
+                <div className="mx-auto flex flex-col items-center justify-center mb-10">
+                    <h3 className="text-2xl text-slate-900 font-semibold uppercase my-5">
+                        Latest News & Blogs
+                    </h3>
+                    <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                        Great doctor if you need your family member to get
+                        effective immediate assistance, emergency treatment or a
+                        simple consultation.
+                    </p>
+                </div>
+                <div className="">
+                    <div>
+                        <img src={image2} alt='' className="h-[]" />
+                        <div>
+                            <div>
+                                <span><BsCalendarDay /> 20th November, 2020</span>
+                                <span><BiTime /> 5 min read</span>
+                            </div>
+                            <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                                You can easily connect to doctor and make a treatment
+                            </p>
+                            <div>
+                                <div>
+                                   <span><BsHeart /> 33 </span>
+                                   <span><AiOutlineMail /> 33 </span>
+                                </div>
+                                <span>Read More <MdArrowRight /></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <FooterContent />
         </div>
