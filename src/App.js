@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import LoginForm from './components/Authentication/Login';
-import SignupForm from './components/Authentication/Signup';
-import DashboardRoutes from './layout/DashboardRoutes';
-import LandingPage from './layout/LandingPage';
+import LoginForm from './pages/auth/Login';
+import SignupForm from './pages/auth/Signup';
+import DashboardRoutes from './routes/DashboardRoutes';
+import LandingPage from './pages/LandingPage';
 
 const App = () => {
   return (

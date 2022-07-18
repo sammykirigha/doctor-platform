@@ -3,9 +3,16 @@ import logo from "../data/images/logo3.jpg";
 import aboutTreatmentImage from "../data/images/about-2.png";
 
 import { BsFillPersonFill, BsArrowRight, BsEyeFill } from "react-icons/bs";
-import { RiMentalHealthFill, RiCapsuleFill, RiMicroscopeFill, RiHeartPulseFill } from 'react-icons/ri';
-import { FaStethoscope } from 'react-icons/fa';
-import { MdOutlineAutoGraph, MdOutlineBloodtype } from 'react-icons/md';
+import {
+    RiMentalHealthFill,
+    RiCapsuleFill,
+    RiMicroscopeFill,
+    RiHeartPulseFill,
+} from "react-icons/ri";
+import { FaStethoscope } from "react-icons/fa";
+import { MdOutlineAutoGraph, MdOutlineBloodtype } from "react-icons/md";
+import FooterMain, { FooterContent } from "../components/others/FooterMain";
+import DoctorsList from "./doctors/DoctorsList";
 const LandingPage = () => {
     return (
         <div className="w-full">
@@ -147,7 +154,7 @@ const LandingPage = () => {
                     </span>
                 </div>
             </div>
-            <div className="flex flex-row mt-20 items-center px-10">
+            <div className="flex flex-col sm:flex-col md:flex-row mt-20 items-center px-10">
                 <img src={aboutTreatmentImage} alt="about page" />
                 <div className="ml-10 px-5">
                     <h3 className="text-2xl text-slate-900 font-bold uppercase mb-8 ">
@@ -179,14 +186,14 @@ const LandingPage = () => {
                     <h3 className="text-2xl text-slate-900 font-semibold uppercase my-5">
                         Our Medical Services
                     </h3>
-                    <p className="text-gray-500 text-lg mx-20 w-[600px] text-center ">
+                    <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
                         Great doctor if you need your family member to get
                         effective immediate assistance, emergency treatment or a
                         simple consultation.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-4 gap-16 mx-10 mb-5 mt-8">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mx-10 mb-5 mt-8">
                     <div>
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <BsEyeFill className="text-blue-600 h-12 w-12" />
@@ -201,11 +208,13 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                   <div>
+                    <div>
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiMentalHealthFill className="text-blue-600 h-12 w-12" />
                         </div>
-                        <h3 className="text-gray-700 text-xl my-4">Psychotherapy</h3>
+                        <h3 className="text-gray-700 text-xl my-4">
+                            Psychotherapy
+                        </h3>
                         <p className="text-gray-500">
                             There is now an abundance of readable dummy texts
                             required purely to fill a space.
@@ -215,11 +224,13 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                   <div>
+                    <div>
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <FaStethoscope className="text-blue-600 h-12 w-12" />
                         </div>
-                        <h3 className="text-gray-700 text-xl my-4">Primary Care</h3>
+                        <h3 className="text-gray-700 text-xl my-4">
+                            Primary Care
+                        </h3>
                         <p className="text-gray-500">
                             There is now an abundance of readable dummy texts
                             required purely to fill a space.
@@ -233,7 +244,9 @@ const LandingPage = () => {
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiCapsuleFill className="text-blue-600 h-12 w-12" />
                         </div>
-                        <h3 className="text-gray-700 text-xl my-4">Dental Care</h3>
+                        <h3 className="text-gray-700 text-xl my-4">
+                            Dental Care
+                        </h3>
                         <p className="text-gray-500">
                             There is now an abundance of readable dummy texts
                             required purely to fill a space.
@@ -247,7 +260,9 @@ const LandingPage = () => {
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiMicroscopeFill className="text-blue-600 h-12 w-12" />
                         </div>
-                        <h3 className="text-gray-700 text-xl my-4">Orthopedic</h3>
+                        <h3 className="text-gray-700 text-xl my-4">
+                            Orthopedic
+                        </h3>
                         <p className="text-gray-500">
                             There is now an abundance of readable dummy texts
                             required purely to fill a space.
@@ -261,7 +276,9 @@ const LandingPage = () => {
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <MdOutlineAutoGraph className="text-blue-600 h-12 w-12" />
                         </div>
-                        <h3 className="text-gray-700 text-xl my-4">Cardiology</h3>
+                        <h3 className="text-gray-700 text-xl my-4">
+                            Cardiology
+                        </h3>
                         <p className="text-gray-500">
                             There is now an abundance of readable dummy texts
                             required purely to fill a space.
@@ -275,7 +292,9 @@ const LandingPage = () => {
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiHeartPulseFill className="text-blue-600 h-12 w-12" />
                         </div>
-                        <h3 className="text-gray-700 text-xl my-4">Gynecology</h3>
+                        <h3 className="text-gray-700 text-xl my-4">
+                            Gynecology
+                        </h3>
                         <p className="text-gray-500">
                             There is now an abundance of readable dummy texts
                             required purely to fill a space.
@@ -289,7 +308,9 @@ const LandingPage = () => {
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <MdOutlineBloodtype className="text-blue-600 h-12 w-12" />
                         </div>
-                        <h3 className="text-gray-700 text-xl my-4">Neurology</h3>
+                        <h3 className="text-gray-700 text-xl my-4">
+                            Neurology
+                        </h3>
                         <p className="text-gray-500">
                             There is now an abundance of readable dummy texts
                             required purely to fill a space.
@@ -301,6 +322,20 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
+            <div className="mt-20 w-full ">
+                <div className="mx-auto flex flex-col items-center justify-center">
+                    <h3 className="text-2xl text-slate-900 font-semibold uppercase my-5">
+                        Doctors
+                    </h3>
+                    <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                        Great doctor if you need your family member to get
+                        effective immediate assistance, emergency treatment or a
+                        simple consultation.
+                    </p>
+                </div>
+                <DoctorsList />
+            </div>
+            <FooterContent />
         </div>
     );
 };

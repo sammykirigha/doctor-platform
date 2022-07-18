@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
-import image1 from "../data/images/01.jpg";
+import image1 from "../../data/images/01.jpg";
 import { GoPrimitiveDot } from "react-icons/go";
-import { doctorsAvailable } from "./Doctors";
-import ChatMessages from "../components/others/ChatMessages";
+import  AvailableDoctors  from "../doctors/Doctors";
+import ChatMessages from "../../components/others/ChatMessages";
 
 const Chat = () => {
     const [user, setUser] = useState({});
@@ -63,7 +63,7 @@ const Chat = () => {
                         </div>
                     </div>
                     <div className="slim-scrollbar overflow-y-auto h-[400px] w-full pt-3 pr-3">
-                        {doctorsAvailable.map((doc) => {
+                        {AvailableDoctors.map((doc) => {
                             return (
                                 <div className="flex flex-row items-center mx-3 w-full border mb-3 rounded-md bg-blue-50 pb-3 cursor-pointer">
                                     <div className=" mt-3 ml-4 relative h-12 w-12 bg-blue-100 flex items-center justify-center rounded-full ">

@@ -1,7 +1,7 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
-import CalendarComp from "../components/others/CalendarComp";
+import CalendarComp from "../../components/others/CalendarComp";
 
 const Calender = () => {
     const params = useLocation();

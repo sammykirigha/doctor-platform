@@ -3,49 +3,8 @@ import { FiArrowRight, FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react
 import { AiOutlineStar } from "react-icons/ai";
 import { BiTime, BiLocationPlus } from "react-icons/bi";
 import {  HiCurrencyDollar } from "react-icons/hi";
-import image1 from "../../data/images/01.jpg";
-import image2 from "../../data/images/02.jpg";
-import image3 from "../../data/images/03.jpg";
-import image4 from "../../data/images/04.jpg";
-import image5 from "../../data/images/05.jpg";
+import { AvailableDoctors } from "../../pages/doctors/DoctorsList";
 
-const doctorsAvailable = [
-    {
-        name: "Calvin Carlo",
-        department: "Eye Care",
-        image: image1,
-        experirnce: "1 Years Experienced",
-        qualifications: "M.B.B.S, Eye Care",
-    },
-    {
-        name: "Cristino Murphy",
-        department: "Gynecology",
-        image: image2,
-        experirnce: "1 Years Experienced",
-        qualifications: "M.B.B.S, Gynecology",
-    },
-    {
-        name: "Alia Reddy",
-        department: "Psychotherapy",
-        image: image3,
-        experirnce: "5 Years Experienced",
-        qualifications: "M.B.B.S, Psychotherapy",
-    },
-    {
-        name: "Toni Kovar",
-        department: "Orthopedic",
-        image: image4,
-        experirnce: "3 Years Experienced",
-        qualifications: "M.B.B.S, Orthopedic",
-    },
-    {
-        name: "Jessica McFarlane",
-        department: "Dentist",
-        image: image5,
-        experirnce: "2 Years Experienced",
-        qualifications: "M.B.B.S, Dentist",
-    },
-];
 
 const Overview = () => {
     return (
@@ -90,7 +49,7 @@ const Overview = () => {
                     My Team:
                 </span>
                 <div className="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-1 ">
-                    {doctorsAvailable.map((doc, index) => {
+                    {AvailableDoctors.map((doc, index) => {
                         return (
                             <div
                                 key={index}

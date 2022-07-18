@@ -1,7 +1,7 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import image1 from "../data/images/01.jpg";
+import {  NavLink, Outlet, useLocation } from "react-router-dom";
+import image1 from "../../data/images/01.jpg";
 
 const DoctorsProfile = () => {
     const params = useLocation();

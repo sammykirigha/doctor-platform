@@ -1,14 +1,13 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
-import InputField from "./InputField";
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
 import {useMutation } from '@apollo/client';
 import logo from "../../data/images/logo3.jpg";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_USER } from "../../queries/auth";
-
+import InputField from '../../components/Authentication/InputField'
 
 const LoginForm = (props) => {
     let navigate = useNavigate();

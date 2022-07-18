@@ -1,49 +1,18 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
-import Button from "../components/common/Button";
+import Button from "../../components/common/Button";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import image1 from "../data/images/01.jpg";
-import image2 from "../data/images/02.jpg";
-import image3 from "../data/images/03.jpg";
-import image4 from "../data/images/04.jpg";
-import image5 from "../data/images/05.jpg";
+import image1 from "../../data/images/01.jpg";
+import image2 from "../../data/images/02.jpg";
+import image3 from "../../data/images/03.jpg";
+import image4 from "../../data/images/04.jpg";
+import image5 from "../../data/images/05.jpg";
+import { AvailableDoctors } from "../doctors/DoctorsList";
 
 const animatedComponents = makeAnimated();
 
-const doctorsAvailable = [
-    {
-        name: "Calvin Carlo",
-        department: "Eye Care",
-        image: image1,
-        experirnce: "1 Years Experienced",
-    },
-    {
-        name: "Cristino Murphy",
-        department: "Gynecology",
-        image: image2,
-        experirnce: "1 Years Experienced",
-    },
-    {
-        name: "Alia Reddy",
-        department: "Psychotherapy",
-        image: image3,
-        experirnce: "5 Years Experienced",
-    },
-    {
-        name: "Toni Kovar",
-        department: "Orthopedic",
-        image: image4,
-        experirnce: "3 Years Experienced",
-    },
-    {
-        name: "Jessica McFarlane",
-        department: "Dentist",
-        image: image5,
-        experirnce: "2 Years Experienced",
-    },
-];
 
 const genderOptions = [
     { value: "Male", label: "Male" },
@@ -199,7 +168,7 @@ const AddPatient = () => {
                         </h4>
                     </div>
                     <div className="slim-scrollbar overflow-auto h-[700px]  ">
-                        {doctorsAvailable.map((doc, index) => {
+                        {AvailableDoctors?.map((doc, index) => {
                             return (
                                 <div
                                     key={index}

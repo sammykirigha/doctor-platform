@@ -1,7 +1,6 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import {
-    Link,
     NavLink,
     Outlet,
     useLocation,
@@ -11,8 +10,8 @@ import { BsPerson, BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa";
 import { GiMedicalDrip } from "react-icons/gi";
-import ProgressBar from "../components/common/ProgressBar";
-import image1 from "../data/images/01.jpg";
+import ProgressBar from "../../components/common/ProgressBar";
+import image1 from "../../data/images/01.jpg";
 
 const PatientsProfile = () => {
     const params = useLocation();
