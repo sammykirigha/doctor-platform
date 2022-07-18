@@ -1,13 +1,12 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import React, { createRef, useRef, useState } from "react";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import * as Yup from "yup";
-import InputField from "./InputField";
 import logo from "../../data/images/logo3.jpg";
 import { SIGNUP_USER } from "../../queries/auth";
 import { useMutation } from "@apollo/client";
-import FooterMain from "../others/FooterMain";
+import InputField from '../../components/Authentication/InputField'
 
 const SignupForm = () => {
     const [registerUser, { data, loading, error }] = useMutation(SIGNUP_USER);

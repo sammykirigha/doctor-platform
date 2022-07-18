@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
-import Header from '../components/common/Header'
-import TableComp from '../components/others/TableComp';
+import Header from '../../components/common/Header'
+import TableComp from '../../components/others/TableComp';
 
 const Patients = () => {
   const params = useLocation()

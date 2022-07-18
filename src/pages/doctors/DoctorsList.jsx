@@ -1,21 +1,19 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { RiArrowRightSLine } from "react-icons/ri";
+import React from 'react'
 import { FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react-icons/fi";
-import Button from "../components/common/Button";
-import image1 from "../data/images/01.jpg"
-import image2 from "../data/images/02.jpg"
-import image3 from "../data/images/03.jpg"
-import image4 from "../data/images/04.jpg"
-import image5 from "../data/images/05.jpg"
-import image6 from "../data/images/06.jpg"
-import image7 from "../data/images/07.jpg"
-import image8 from "../data/images/08.jpg"
-import image9 from "../data/images/09.jpg"
-import image10 from "../data/images/10.jpg"
+
+import image1 from "../../data/images/01.jpg"
+import image2 from "../../data/images/02.jpg"
+import image3 from "../../data/images/03.jpg"
+import image4 from "../../data/images/04.jpg"
+import image5 from "../../data/images/05.jpg"
+import image6 from "../../data/images/06.jpg"
+import image7 from "../../data/images/07.jpg"
+import image8 from "../../data/images/08.jpg"
+import image9 from "../../data/images/09.jpg"
+import image10 from "../../data/images/10.jpg"
 
 
-export const doctorsAvailable = [
+ export const AvailableDoctors = [
     {
         name: "Calvin Carlo",
         department: "Eye Care",
@@ -68,29 +66,10 @@ export const doctorsAvailable = [
     },
 ];
 
-const Doctors = () => {
-    const params = useLocation();
-    const navigate = useNavigate();
-    const pathname = params.pathname.split("/")[2];
-    return (
-        <div>
-            <div className="flex flex-row items-center justify-between mx-4">
-                <div>
-                    <h4 className="text-lg text-slate-900 font-bold">
-                        Doctors
-                    </h4>
-                    <p className="paragraph inline-flex items-center justify-between text-md uppercase text-md ">
-                        Docris{" "}
-                        <RiArrowRightSLine className="flex items-center mx-2 mt-0.5" />{" "}
-                        <span className="text-blue-700 text-md">
-                            {pathname.toUpperCase()}
-                        </span>{" "}
-                    </p>
-                </div>
-                <Button text="Add A New Doctor" onClick={() => navigate('/doctors/add-doctor')} />
-            </div>
-            <div className="bg-gray-50 grid  sm:grid-cols-2 gap-y-16 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 mt-5 mx-4">
-                {doctorsAvailable.map((doc, index) => {
+const DoctorsList = () => {
+  return (
+	<div className="bg-gray-50 grid  sm:grid-cols-2 gap-y-16 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 mt-5 mx-4">
+                {AvailableDoctors?.map((doc, index) => {
                     return (
                         <div
                             key={index}
@@ -117,8 +96,7 @@ const Doctors = () => {
                     );
                 })}
             </div>
-        </div>
-    );
-};
+  )
+}
 
-export default Doctors;
+export default DoctorsList

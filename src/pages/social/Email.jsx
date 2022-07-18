@@ -10,8 +10,7 @@ import {
     MdOutlineEventNote,
 } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
-import { GrNotes } from "react-icons/gr";
-import ComposeEmailModal from "../components/modals/ComposeEmailModal";
+import ComposeEmailModal from "../../components/modals/ComposeEmailModal";
 
 const Email = () => {
     const params = useLocation();
