@@ -533,22 +533,22 @@ const LandingPage = () => {
                     </p>
                 </div>
                 <div className="">
-                    <div>
-                        <img src={image2} alt='' className="h-[]" />
+                    <div className="">
+                        <img src={image2} alt='' className="h-[250px]" />
                         <div>
-                            <div>
-                                <span><BsCalendarDay /> 20th November, 2020</span>
-                                <span><BiTime /> 5 min read</span>
+                            <div className="">
+                                <span className="inline-flex items-center justify-center"><BsCalendarDay /> 20th November, 2020</span>
+                                <span className="inline-flex items-center justify-center"><BiTime /> 5 min read</span>
                             </div>
-                            <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                            <p className="text-gray-500 text-lg sm:w-[100%] md:w-[600px]">
                                 You can easily connect to doctor and make a treatment
                             </p>
-                            <div>
-                                <div>
-                                   <span><BsHeart /> 33 </span>
-                                   <span><AiOutlineMail /> 33 </span>
+                            <div className="flex flex-row items-center justify-between">
+                                <div className="flex flex-row">
+                                   <span className="inline-flex items-center justify-center"><BsHeart /> 33 </span>
+                                   <span className="inline-flex items-center justify-center"><AiOutlineMail /> 33 </span>
                                 </div>
-                                <span>Read More <MdArrowRight /></span>
+                                <span className="inline-flex items-center justify-center">Read More <MdArrowRight /></span>
                             </div>
                         </div>
                     </div>

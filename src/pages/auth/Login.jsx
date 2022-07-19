@@ -23,6 +23,7 @@ const LoginForm = (props) => {
         };
 
         loginUser({ variables: { input: inputValues } });
+        
         if (error) {
             setRespondError(error);
         }
