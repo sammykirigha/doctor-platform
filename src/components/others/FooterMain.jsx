@@ -90,7 +90,8 @@ export const FooterContent = () => {
                     </div>
                 </div>
             </div>
-            <div className="   px-20 pb-10 border-t pt-3 mt-4 flex flex-col  sm:flex-col sm:items-center sm:justify-between md:flex-row  md:items-center md:justify-between lg:flex-row lg:items-center lg:justify-between ">
+            <div className="mx-60 border text-gray-500 mt-3"></div>
+            <div className="   px-20 pb-10 pt-3 mt-4 flex flex-col  sm:flex-col sm:items-center sm:justify-between md:flex-row  md:items-center md:justify-between lg:flex-row lg:items-center lg:justify-between ">
                 <p className="text-gray-100 text-lg">
                     2022 @ Dorcis. Designed by Dorcis kirigha
                 </p>
@@ -114,7 +115,7 @@ export const FooterContent = () => {
 };
 
 const FooterMain = () => {
-    const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);
+    const { sideBarOpen } = useContext(NavigationContext);
     return (
         <div className={` bg-[#202942] ${sideBarOpen && "ml-[250px]"}`}>
             <FooterContent />
