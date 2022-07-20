@@ -1,36 +1,49 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook } from 'react-icons/fa';
-import {useMutation } from '@apollo/client';
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import { useMutation } from "@apollo/client";
 import logo from "../../data/images/logo3.jpg";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_USER } from "../../queries/auth";
-import InputField from '../../components/Authentication/InputField'
+import InputField from "../../components/Authentication/InputField";
+import { useDispatch } from "react-redux";
+import { signinUserAction } from "../../state/actions/auth.action";
+
 
 const LoginForm = (props) => {
+    const dispatch = useDispatch()
     let navigate = useNavigate();
 
-    const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
+    // const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
     const [respondError, setRespondError] = useState(null);
 
     const onSubmit = async (values) => {
-
         const inputValues = {
             email: values.email,
             password: values.password,
         };
 
-        loginUser({ variables: { input: inputValues } });
-        if (error) {
-            setRespondError(error);
-        }
-        setTimeout(() => {
-            setRespondError(null);
-        }, 2000);
+        const details = {
+            query: LOGIN_USER,
+            variables: {
+                input: inputValues,
+            },
+        };
 
-        navigate("../layout", { replace: true });
+        // loginUser({ variables: { input: inputValues } });
+        const results = await dispatch(signinUserAction(details))
+        console.log('#######################################',results);
+
+        // if (error) {
+        //     setRespondError(error);
+        // }
+        // setTimeout(() => {
+        //     setRespondError(null);
+        // }, 2000);
+
+    //     navigate("../layout", { replace: true });
     };
 
     const SignUpSchema = Yup.object().shape({
@@ -57,7 +70,7 @@ const LoginForm = (props) => {
         return error;
     };
 
-    console.log('$$$$$$$$$$$$$$$$$$$$$', data);
+    // console.log("$$$$$$$$$$$$$$$$$$$$$", data);
 
     return (
         <div className="flex flex-col mt-[10%] ">
@@ -93,7 +106,7 @@ const LoginForm = (props) => {
                         isSubmitting,
                     }) => (
                         <Form className="pb-5 px-10">
-                          {/* {errr && (
+                            {/* {errr && (
                                     <div className="bg-red-300 flex justify-center rounded-md">
                                         <h3 className="py-2">{errr.message}</h3>
                                     </div>
@@ -171,7 +184,12 @@ const LoginForm = (props) => {
                             </div>
 
                             <div className="mt-5 flex justify-center">
-                                <h3 className="text-md">Don't have an account? <strong className="cursor-pointer">Sign Up</strong></h3>
+                                <h3 className="text-md">
+                                    Don't have an account?{" "}
+                                    <strong className="cursor-pointer">
+                                        Sign Up
+                                    </strong>
+                                </h3>
                             </div>
                         </Form>
                     )}

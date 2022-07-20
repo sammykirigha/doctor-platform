@@ -6,23 +6,27 @@ import "./index.css";
 import App from "./App";
 import { NavigationProvider } from "./contexts/navigation.context";
 import { AddEventProvider } from "./contexts/events.context";
+import { Provider } from "react-redux";
+import store from "./state/store";
 
 const client = new ApolloClient({
     uri: "http://localhost:4000/graphql",
     cache: new InMemoryCache(),
 });
 
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <ApolloProvider client={client}>
-                <NavigationProvider>
-                    <AddEventProvider>
-                        <App />
-                    </AddEventProvider>
-                </NavigationProvider>
-            </ApolloProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+        <Provider store={store}>
+            {/* <ApolloProvider client={client}> */}
+            <NavigationProvider>
+                <AddEventProvider>
+                    <App />
+                </AddEventProvider>
+            </NavigationProvider>
+            {/* </ApolloProvider> */}
+        </Provider>
+    </BrowserRouter>
 );

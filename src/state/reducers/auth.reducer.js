@@ -23,7 +23,7 @@ export const authSlice = createSlice({
         });
         builder.addCase(signinUserAction.fulfilled, (state, action) => {
             state.loading = false;
-            state.user = action.payload;
+            state.user = action.payload.user;
         });
         builder.addCase(signinUserAction.rejected, (state, action) => {
             state.loading = false;
@@ -33,5 +33,6 @@ export const authSlice = createSlice({
 });
 
 export const { logoutUserSuccess } = authSlice.actions
+const { reducer } = authSlice;
 
-export default authSlice.reducer
+export default reducer

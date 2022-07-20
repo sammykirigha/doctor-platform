@@ -2,8 +2,8 @@ import React from "react";
 import logo from "../data/images/logo3.jpg";
 import aboutTreatmentImage from "../data/images/about-2.png";
 import image1 from "../data/images/01.jpg";
-import image2 from "../data/images/new-2.jpg";
-import image3 from "../data/images/new-3.jpg";
+import image2 from "../data/images/new-1.jpg";
+import image3 from "../data/images/new-2.jpg";
 import image4 from '../data/images/new-3.jpg';
 import { AiOutlineMail } from 'react-icons/ai';
 import {BsFillPersonFill,BsArrowRight,BsEyeFill,BsFillStarFill,BsCalendarDay,BsHeart} from "react-icons/bs";
@@ -532,23 +532,61 @@ const LandingPage = () => {
                         simple consultation.
                     </p>
                 </div>
-                <div className="">
-                    <div>
-                        <img src={image2} alt='' className="h-[]" />
-                        <div>
-                            <div>
-                                <span><BsCalendarDay /> 20th November, 2020</span>
-                                <span><BiTime /> 5 min read</span>
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-0 sm:mx-0 md:mx-0 lg:mx-60 gap-5">
+                    <div className="border">
+                        <img src={image2} alt='' className="h-[250px] w-[100%]" />
+                        <div className="mx-2">
+                            <div className="mt-5 text-gray-500 flex items-center justify-between">
+                                <span className="inline-flex items-center justify-center "><BsCalendarDay className="mr-3"  /> 20th November, 2020</span>
+                                <span className="inline-flex items-center justify-center"><BiTime className="mr-3" /> 5 min read</span>
                             </div>
-                            <p className="text-gray-500 text-lg mx-20 sm:w-[100%] md:w-[600px] text-center ">
+                            <p className="text-gray-900 text-2xl sm:w-auto my-2">
                                 You can easily connect to doctor and make a treatment
                             </p>
-                            <div>
-                                <div>
-                                   <span><BsHeart /> 33 </span>
-                                   <span><AiOutlineMail /> 33 </span>
+                            <div className="flex flex-row items-center justify-between mb-3">
+                                <div className="flex flex-row">
+                                   <span className="inline-flex items-center justify-center"><BsHeart className="mr-3" /> 33 </span>
+                                   <span className="inline-flex items-center justify-center ml-4"><AiOutlineMail className="mr-3"/> 33 </span>
                                 </div>
-                                <span>Read More <MdArrowRight /></span>
+                                <span className="inline-flex items-center justify-center text-blue-700  cursor-pointer">Read More <MdArrowRight className="mr-3" /></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="border">
+                        <img src={image3} alt='' className="h-[250px] w-[100%]" />
+                        <div className="mx-2">
+                            <div className="mt-5 text-gray-500 flex items-center justify-between">
+                                <span className="inline-flex items-center justify-center "><BsCalendarDay className="mr-3"  /> 20th November, 2020</span>
+                                <span className="inline-flex items-center justify-center"><BiTime className="mr-3" /> 5 min read</span>
+                            </div>
+                            <p className="text-gray-900 text-2xl sm:w-auto my-2">
+                                You can easily connect to doctor and make a treatment
+                            </p>
+                            <div className="flex flex-row items-center justify-between mb-3">
+                                <div className="flex flex-row">
+                                   <span className="inline-flex items-center justify-center"><BsHeart className="mr-3" /> 33 </span>
+                                   <span className="inline-flex items-center justify-center ml-4"><AiOutlineMail className="mr-3"/> 33 </span>
+                                </div>
+                                <span className="inline-flex items-center justify-center text-blue-700  cursor-pointer">Read More <MdArrowRight className="mr-3" /></span>
+                            </div>
+                        </div>
+                    </div>
+                     <div className="border">
+                        <img src={image4} alt='' className="h-[250px] w-[100%]" />
+                        <div className="mx-2">
+                            <div className="mt-5 text-gray-500 flex items-center justify-between">
+                                <span className="inline-flex items-center justify-center "><BsCalendarDay className="mr-3"  /> 20th November, 2020</span>
+                                <span className="inline-flex items-center justify-center"><BiTime className="mr-3" /> 5 min read</span>
+                            </div>
+                            <p className="text-gray-900 text-2xl sm:w-auto my-2">
+                                You can easily connect to doctor and make a treatment
+                            </p>
+                            <div className="flex flex-row items-center justify-between mb-3">
+                                <div className="flex flex-row">
+                                   <span className="inline-flex items-center justify-center"><BsHeart className="mr-3" /> 33 </span>
+                                   <span className="inline-flex items-center justify-center ml-4"><AiOutlineMail className="mr-3"/> 33 </span>
+                                </div>
+                                <span className="inline-flex items-center justify-center text-blue-700 cursor-pointer">Read More <MdArrowRight className="mr-3" /></span>
                             </div>
                         </div>
                     </div>
