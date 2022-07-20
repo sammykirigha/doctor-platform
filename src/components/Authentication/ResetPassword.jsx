@@ -9,8 +9,6 @@ import InputField from "../../components/Authentication/InputField";
 
 const ResetPassword = () => {
     let navigate = useNavigate();
-
-    const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
     const [setRespondError] = useState(null);
 
     const onSubmit = async (values) => {
@@ -19,19 +17,10 @@ const ResetPassword = () => {
             password: values.password,
         };
 
-        loginUser({ variables: { input: inputValues } });
-
-        if (error) {
-            setRespondError(error);
-        }
-        setTimeout(() => {
-            setRespondError(null);
-        }, 2000);
-
-        navigate("../layout", { replace: true });
+      
     };
 
-    const PasswordSchema = Yup.object().shape({
+    const OldPasswordSchema = Yup.object().shape({
         oldPassword: Yup.string()
             .required("Password cant be empty")
             .test("len", "Very weak", (val) => val.length > 5)
@@ -52,10 +41,10 @@ const ResetPassword = () => {
             .test("len", "Weak", (val) => val.length > 8),
     });
 
-    const validatePassword = (value) => {
+    const validatOlePassword = (value) => {
         let error = undefined;
         try {
-            PasswordSchema.validateSync({
+            OldPasswordSchema.validateSync({
                 password: value,
             });
         } catch (validationError) {
@@ -96,7 +85,7 @@ const ResetPassword = () => {
             <div className="mt-5 bg-white border sm:mx-auto md:mx-auto rounded-md p-3  w-[100%] max-w-[600px]">
                 <Formik
                     initialValues={{
-                        password: "",
+                        oldPassword: "",
                         newPassword: "",
                         confirmNewPassword: "",
                     }}
@@ -121,7 +110,7 @@ const ResetPassword = () => {
                                 <InputField
                                     name="oldPassword"
 									type="password"
-									validate={validatePassword}
+									validate={validatOlePassword}
                                     label="Old Password:"
                                 />
                                 <ErrorMessage name="oldPassword">

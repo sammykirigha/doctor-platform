@@ -9,24 +9,24 @@ import { useMutation } from "@apollo/client";
 import InputField from '../../components/Authentication/InputField'
 
 const SignupForm = () => {
-    const [registerUser, { data, loading, error }] = useMutation(SIGNUP_USER);
+    // const [registerUser, { data, loading, error }] = useMutation(SIGNUP_USER);
     const [errr, setErrr] = useState(null);
 
-    const onSubmit = async (values) => {
-        const inputValues = {
-            username: values.username,
-            email: values.email,
-            password: values.password,
-        };
-        registerUser({ variables: { input: inputValues } });
-        console.log(values);
-        if (error) {
-            setErrr(error);
-        }
-        setTimeout(() => {
-            setErrr(null);
-        }, 2000);
-    };
+    // const onSubmit = async (values) => {
+    //     const inputValues = {
+    //         username: values.username,
+    //         email: values.email,
+    //         password: values.password,
+    //     };
+    //     registerUser({ variables: { input: inputValues } });
+    //     console.log(values);
+    //     if (error) {
+    //         setErrr(error);
+    //     }
+    //     setTimeout(() => {
+    //         setErrr(null);
+    //     }, 2000);
+    // };
 
 
     const SignUpSchema = Yup.object().shape({
@@ -77,7 +77,7 @@ const SignupForm = () => {
                             confirmPassword: "",
                             rememberMe: false,
                         }}
-                        onSubmit={onSubmit}
+                        // onSubmit={onSubmit}
                         validationSchema={SignUpSchema}
                     >
                         {({

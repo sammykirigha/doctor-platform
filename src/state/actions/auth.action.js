@@ -1,6 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import apiPost from "../../utils/https";
-import { resetMessageNotification, setMessageNotification } from "../reducers/error.reducer";
+import {
+    resetMessageNotification,
+    setMessageNotification,
+} from "../reducers/error.reducer";
 import { logoutUserSuccess } from "../reducers/auth.reducer";
 
 export const signinUserAction = createAsyncThunk(
@@ -8,20 +11,37 @@ export const signinUserAction = createAsyncThunk(
     async (data, thunkAPI) => {
         try {
             thunkAPI.dispatch(resetMessageNotification());
-            const res = await apiPost(data);
-            return res.data;
-		} catch (error) {
-			thunkAPI.dispatch(setMessageNotification({message: error}))
-		}
+            const response = await apiPost(data);
+            localStorage.setItem("auth-token", response.data.loginUser.token);
+            return {
+                user: response.data.loginUser,
+                success: true,
+            };
+        } catch (err) {
+            console.log("LOGIN ERROR: ", { err });
+
+            thunkAPI.dispatch(setMessageNotification(err));
+
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
     }
 );
 
 ///////
-export const logoutUser = () => async (dispatch) => {
+export const logoutUserAction = () => async (dispatch) => {
+
     try {
+
         localStorage.clear();
-        return dispatch(logoutUserSuccess);
-    } catch (error) {
-        return console.error(error.message);
+
+        return dispatch(logoutUserSuccess());
+
+    } catch (e) {
+
+        return console.error(e.message);
+
     }
+
 };
