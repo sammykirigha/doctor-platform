@@ -15,16 +15,22 @@ export const authSlice = createSlice({
             state.user = null;
         },
     },
+
     extraReducers: (builder) => {
+        
         //builders
         builder.addCase(signinUserAction.pending, (state, action) => {
             state.loading = true;
             state.user = null;
         });
+
+        //fullfilled
         builder.addCase(signinUserAction.fulfilled, (state, action) => {
             state.loading = false;
             state.user = action.payload.user;
         });
+
+        //rejected
         builder.addCase(signinUserAction.rejected, (state, action) => {
             state.loading = false;
             state.user = null;
@@ -32,7 +38,7 @@ export const authSlice = createSlice({
     },
 });
 
-export const { logoutUserSuccess } = authSlice.actions
+export const { logoutUserSuccess } = authSlice.actions;
 const { reducer } = authSlice;
 
-export default reducer
+export default reducer;

@@ -5,7 +5,8 @@ import {
     setMessageNotification,
 } from "../reducers/error.reducer";
 import { logoutUserSuccess } from "../reducers/auth.reducer";
-
+import LoginForm from "../../pages/auth/Login";
+    
 export const signinUserAction = createAsyncThunk(
     "user/login",
     async (data, thunkAPI) => {
@@ -15,6 +16,28 @@ export const signinUserAction = createAsyncThunk(
             localStorage.setItem("auth-token", response.data.loginUser.token);
             return {
                 user: response.data.loginUser,
+                success: true,
+            };
+        } catch (err) {
+            console.log("LOGIN ERROR: ", { err });
+
+            thunkAPI.dispatch(setMessageNotification(err));
+
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
+    }
+);
+
+export const signUpUserAction = createAsyncThunk(
+    "user/login",
+    async (data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetMessageNotification());
+            const response = await apiPost(data);
+            return {
+                user: response.data.registerUser,
                 success: true,
             };
         } catch (err) {
