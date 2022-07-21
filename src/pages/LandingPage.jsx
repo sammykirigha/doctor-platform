@@ -532,7 +532,7 @@ const LandingPage = () => {
                         simple consultation.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-0 sm:mx-0 md:mx-0 lg:mx-60 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-0 sm:mx-0 md:mx-0 lg:mx-40 gap-5">
                     <div className="border">
                         <img src={image2} alt='' className="h-[250px] w-[100%]" />
                         <div className="mx-2">

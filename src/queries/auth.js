@@ -6,7 +6,6 @@ mutation LoginUser($input: LoginUserInput!) {
     id
     username
     email
-    password
     role
     token
     confirmed
@@ -14,12 +13,16 @@ mutation LoginUser($input: LoginUserInput!) {
 }
 `
 
-// export const SIGNUP_USER = gql`
-//     mutation RegisterUser($input: CreateUserInput!) {
-//         registerUser(input: $input) {
-//             username
-//             email
-//             password
-//         }
-//     }
-// `;
+
+export const SIGNUP_USER = `
+    mutation RegisterUser($input: CreateUserInput!) {
+  registerUser(input: $input) {
+    username
+    email
+    role
+    token
+    confirmed
+  }
+}
+`;
+

@@ -17,6 +17,7 @@ const LoginForm = (props) => {
     let navigate = useNavigate();
 
     // const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
+    
     const [respondError, setRespondError] = useState(null);
 
     const onSubmit = async (values) => {
@@ -42,8 +43,17 @@ const LoginForm = (props) => {
         // setTimeout(() => {
         //     setRespondError(null);
         // }, 2000);
+        const user = results.data
 
+        if (user.role === 'patient') {
     //     navigate("../layout", { replace: true });
+        }
+        if (user.role === 'doctor') {
+     //     navigate("../layout", { replace: true });
+        }
+        if (user.role === 'admin') {
+     //     navigate("../layout", { replace: true });
+        }
     };
 
     const SignUpSchema = Yup.object().shape({
