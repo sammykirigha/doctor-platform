@@ -14,7 +14,8 @@ export const links = [
 	{
 		icon: <GiAlarmClock className='h-4.5 w-4.5' />,
 		name: 'Dashboard',
-		link: '/layout/dashboard'
+		link: '/layout/dashboard',
+		access: ["admin", "doctor", "secretary"]
 	},
 	{
 		icon: <FaStethoscope className='h-4.5 w-4.5' />,
@@ -25,6 +26,7 @@ export const links = [
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
 		link: '/layout/doctors',
+		access:["admin"],
 		childrenLinks: [
 			{
 				name: 'Doctors',
@@ -46,6 +48,7 @@ export const links = [
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patients',
 		link: '/layout/patients',
+		access: ["secretary"],
 		childrenLinks: [
 			{
 				name: 'All Patients',

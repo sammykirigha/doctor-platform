@@ -4,5 +4,5 @@ import errorReducer from "./error.reducer";
 
 export const rootReducer = combineReducers({
 	notifications: errorReducer,
-    login: reducer
+    auth: reducer
 })
