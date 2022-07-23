@@ -8,37 +8,36 @@ import { IoTabletLandscapeOutline } from 'react-icons/io';
 import { GiAlarmClock } from 'react-icons/gi';
 
 
-
-
 export const links = [
 	{
 		icon: <GiAlarmClock className='h-4.5 w-4.5' />,
 		name: 'Dashboard',
-		link: '/layout/dashboard',
-		access: ["admin", "doctor", "secretary"]
+		link: '/admin/dashboard',
+		access: ["admin", "doctor", "patient","secretary"]
 	},
 	{
 		icon: <FaStethoscope className='h-4.5 w-4.5' />,
 		name: 'Appointment',
-		link: '/layout/appointment'
+		link: '/admin/appointment',
+		access: ["admin", "doctor", "patient","secretary"]
 	},
 	{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
-		link: '/layout/doctors',
-		access:["admin"],
+		link: '/admin/doctors',
+		access: ["admin", "doctor","secretary"],
 		childrenLinks: [
 			{
 				name: 'Doctors',
-			    link: '/layout/doctors/all-doctors'
+			    link: '/admin/doctors/'
 			},
 			{
 				name: 'Add Doctor',
-			    link: '/layout/doctors/add-doctor'
+			    link: '/admin/doctors/new'
 			},
 			{
 				name: 'Profile',
-			    link: '/layout/doctors/profile'
+			    link: '/admin/doctors/:id'
 			},
 		]
 			
@@ -47,20 +46,20 @@ export const links = [
 	{
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patients',
-		link: '/layout/patients',
-		access: ["secretary"],
+		link: '/admin/patients',
+		access: ["admin", "doctor", "secretary"],
 		childrenLinks: [
 			{
 				name: 'All Patients',
-			    link: '/layout/patients/all-patients'
+			    link: '/admin/patients/'
 			},
 			{
 				name: 'Add Patients',
-			    link: '/layout/patients/add-patient'
+			    link: '/admin/patients/new/'
 			},
 			{
 				name: 'Profile',
-			    link: '/layout/patients/profile'
+			    link: '/admin/patients/:id'
 			},
 		]
 	},
@@ -68,6 +67,7 @@ export const links = [
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Apps',
 		link: '/layout/apps',
+		access: ["admin", "doctor", "patient","secretary"],
 		childrenLinks: [
 			{
 				name: 'Chat',
@@ -87,6 +87,7 @@ export const links = [
 		icon: <HiOutlineShoppingCart className='h-4.5 w-4.5' />,
 		name: 'Pharmacy',
 		link: '/layout/pharmacy',
+		access: ["admin", "doctor", "patient","secretary"],
 		childrenLinks: [
 			{
 				name: 'Shop',

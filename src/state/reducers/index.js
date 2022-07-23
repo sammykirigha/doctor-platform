@@ -6,3 +6,5 @@ export const rootReducer = combineReducers({
 	notifications: errorReducer,
     auth: reducer
 })
+
+

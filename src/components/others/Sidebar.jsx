@@ -11,6 +11,8 @@ const Sidebar = () => {
     const { sideBarOpen } = useContext(NavigationContext);
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState("");
+
+
     return (
         <div
             className={`fixed w-[250px] top-[68px] bg-white border-r border-gray-200 h-screen lg:top-0 left-0 z-10 ${
@@ -65,7 +67,7 @@ const Sidebar = () => {
                             );
                         } else {
                             return (
-                                <div key={index} className="ml-3 mt-3" >
+                                <div key={index} className="ml-3 mt-3">
                                     <div  onClick={() => navigate(link)} className='flex items-center cursor-pointer' >
                                         <div className="w-7 h-7 bg-gray-50 flex items-center rounded-md pl-2 mr-2">{icon}</div>
                                         <div className="text-md text-gray-500 font-semibold">{name}</div>
