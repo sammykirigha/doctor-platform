@@ -128,7 +128,7 @@ const PatientsProfile = () => {
                             Profile
                         </NavLink>
                         <NavLink
-                            to="profile-settings"
+                            to="settings"
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-lg text-white tracking-wider font-medium flex items-center justify-center bg-blue-600 w-[50%]  cursor-pointer  h-full  text-center rounded-r-md"

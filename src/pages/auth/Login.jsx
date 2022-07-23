@@ -10,14 +10,16 @@ import { LOGIN_USER } from "../../queries/auth";
 import InputField from "../../components/Authentication/InputField";
 import { useDispatch } from "react-redux";
 import { signinUserAction } from "../../state/actions/auth.action";
-
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const LoginForm = (props) => {
-    const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
     let navigate = useNavigate();
 
     // const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
-    
+
     const [respondError, setRespondError] = useState(null);
 
     const onSubmit = async (values) => {
@@ -32,28 +34,10 @@ const LoginForm = (props) => {
                 input: inputValues,
             },
         };
-
         // loginUser({ variables: { input: inputValues } });
-        const results = await dispatch(signinUserAction(details))
-        console.log('#######################################',results);
-
-        // if (error) {
-        //     setRespondError(error);
-        // }
-        // setTimeout(() => {
-        //     setRespondError(null);
-        // }, 2000);
-        const user = results.data
-
-        if (user.role === 'patient') {
-    //     navigate("../layout", { replace: true });
-        }
-        if (user.role === 'doctor') {
-     //     navigate("../layout", { replace: true });
-        }
-        if (user.role === 'admin') {
-     //     navigate("../layout", { replace: true });
-        }
+        const results = await dispatch(signinUserAction(details));
+        console.log("#######################################", results);
+        const user = results.data;
     };
 
     const SignUpSchema = Yup.object().shape({
@@ -82,6 +66,17 @@ const LoginForm = (props) => {
 
     // console.log("$$$$$$$$$$$$$$$$$$$$$", data);
 
+    useEffect(() => {
+        if (user.role === "patient") {
+            //     navigate("../layout", { replace: true });
+        }
+        if (user.role === "doctor") {
+            //     navigate("../layout", { replace: true });
+        }
+        if (user.role === "admin") {
+            //     navigate("../layout", { replace: true });
+        }
+    }, [user.role]);
     return (
         <div className="flex flex-col mt-[10%] ">
             <div className="mx-auto flex">

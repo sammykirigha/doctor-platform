@@ -8,35 +8,36 @@ import { IoTabletLandscapeOutline } from 'react-icons/io';
 import { GiAlarmClock } from 'react-icons/gi';
 
 
-
-
 export const links = [
 	{
 		icon: <GiAlarmClock className='h-4.5 w-4.5' />,
 		name: 'Dashboard',
-		link: '/layout/dashboard'
+		link: '/dashboard',
+		access: ["admin", "doctor", "patient","secretary"]
 	},
 	{
 		icon: <FaStethoscope className='h-4.5 w-4.5' />,
 		name: 'Appointment',
-		link: '/layout/appointment'
+		link: '/appointment',
+		access: ["admin", "doctor", "patient","secretary"]
 	},
 	{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
-		link: '/layout/doctors',
+		link: '/doctors',
+		access: ["admin", "doctor","secretary"],
 		childrenLinks: [
 			{
 				name: 'Doctors',
-			    link: '/layout/doctors/all-doctors'
+			    link: '/doctors/'
 			},
 			{
 				name: 'Add Doctor',
-			    link: '/layout/doctors/add-doctor'
+			    link: '/doctors/new'
 			},
 			{
 				name: 'Profile',
-			    link: '/layout/doctors/profile'
+			    link: '/doctors/:id'
 			},
 		]
 			
@@ -45,19 +46,20 @@ export const links = [
 	{
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patients',
-		link: '/layout/patients',
+		link: '/patients',
+		access: ["admin", "doctor", "patient", "secretary"],
 		childrenLinks: [
 			{
 				name: 'All Patients',
-			    link: '/layout/patients/all-patients'
+			    link: '/patients/'
 			},
 			{
 				name: 'Add Patients',
-			    link: '/layout/patients/add-patient'
+			    link: '/patients/new/'
 			},
 			{
 				name: 'Profile',
-			    link: '/layout/patients/profile'
+			    link: '/patients/:id'
 			},
 		]
 	},
@@ -65,6 +67,7 @@ export const links = [
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Apps',
 		link: '/layout/apps',
+		access: ["admin", "doctor", "patient","secretary"],
 		childrenLinks: [
 			{
 				name: 'Chat',
@@ -84,6 +87,7 @@ export const links = [
 		icon: <HiOutlineShoppingCart className='h-4.5 w-4.5' />,
 		name: 'Pharmacy',
 		link: '/layout/pharmacy',
+		access: ["admin", "patient","secretary"],
 		childrenLinks: [
 			{
 				name: 'Shop',

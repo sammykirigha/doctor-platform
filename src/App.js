@@ -1,21 +1,36 @@
 import { Route, Routes } from 'react-router-dom';
-import LoginForm from './pages/auth/Login';
-import SignupForm from './pages/auth/Signup';
-import DashboardRoutes from './routes/DashboardRoutes';
-import LandingPage from './pages/LandingPage';
-import ForgotPassword from './components/Authentication/ForgotPassword';
-import ResetPassword from './components/Authentication/ResetPassword';
+import { admin_routes } from './routes/admin';
+import { doctor_routes } from './routes/doctors';
+import { shared_routes } from './routes/shared';
 
 const App = () => {
+
+
+  const renderRoute = ({ path, exact, component: Component, children }) => {
+    return (
+      <Route path={path} exact={exact} element={<Component />} >
+        {
+          children?.length > 0 && 
+            children?.map(route => {
+              return renderRoute(route)
+            })
+        }
+      </Route>
+    )
+  }
+
   return (
     <div>
       <Routes>
-        <Route path='/signup' element={<SignupForm />} />
-        <Route path='/forgot-password' element={<ForgotPassword />} />
-        <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/login' element={<LoginForm />} />
-        <Route path='/landing-page' element={<LandingPage />} />
-        <Route path='/layout' exact element={<DashboardRoutes />} />
+        {
+          shared_routes?.map(route => renderRoute(route))
+        }
+        {
+          admin_routes?.map(route => renderRoute(route))
+        }
+         {
+          doctor_routes?.map(route => renderRoute(route))
+        }
       </Routes>
     </div>
   );
