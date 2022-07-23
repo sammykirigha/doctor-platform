@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { admin_routes } from './routes/admin';
+import { doctor_routes } from './routes/doctors';
 import { shared_routes } from './routes/shared';
 
 const App = () => {
@@ -26,6 +27,9 @@ const App = () => {
         }
         {
           admin_routes?.map(route => renderRoute(route))
+        }
+         {
+          doctor_routes?.map(route => renderRoute(route))
         }
       </Routes>
     </div>

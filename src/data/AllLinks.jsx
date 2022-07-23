@@ -12,32 +12,32 @@ export const links = [
 	{
 		icon: <GiAlarmClock className='h-4.5 w-4.5' />,
 		name: 'Dashboard',
-		link: '/admin/dashboard',
+		link: '/dashboard',
 		access: ["admin", "doctor", "patient","secretary"]
 	},
 	{
 		icon: <FaStethoscope className='h-4.5 w-4.5' />,
 		name: 'Appointment',
-		link: '/admin/appointment',
+		link: '/appointment',
 		access: ["admin", "doctor", "patient","secretary"]
 	},
 	{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
-		link: '/admin/doctors',
+		link: '/doctors',
 		access: ["admin", "doctor","secretary"],
 		childrenLinks: [
 			{
 				name: 'Doctors',
-			    link: '/admin/doctors/'
+			    link: '/doctors/'
 			},
 			{
 				name: 'Add Doctor',
-			    link: '/admin/doctors/new'
+			    link: '/doctors/new'
 			},
 			{
 				name: 'Profile',
-			    link: '/admin/doctors/:id'
+			    link: '/doctors/:id'
 			},
 		]
 			
@@ -46,20 +46,20 @@ export const links = [
 	{
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patients',
-		link: '/admin/patients',
-		access: ["admin", "doctor", "secretary"],
+		link: '/patients',
+		access: ["admin", "doctor", "patient", "secretary"],
 		childrenLinks: [
 			{
 				name: 'All Patients',
-			    link: '/admin/patients/'
+			    link: '/patients/'
 			},
 			{
 				name: 'Add Patients',
-			    link: '/admin/patients/new/'
+			    link: '/patients/new/'
 			},
 			{
 				name: 'Profile',
-			    link: '/admin/patients/:id'
+			    link: '/patients/:id'
 			},
 		]
 	},
@@ -87,7 +87,7 @@ export const links = [
 		icon: <HiOutlineShoppingCart className='h-4.5 w-4.5' />,
 		name: 'Pharmacy',
 		link: '/layout/pharmacy',
-		access: ["admin", "doctor", "patient","secretary"],
+		access: ["admin", "patient","secretary"],
 		childrenLinks: [
 			{
 				name: 'Shop',

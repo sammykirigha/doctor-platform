@@ -1,18 +1,38 @@
+import Experience from "../components/others/Experience";
+import Overview from "../components/others/Overview";
+import Profile from "../components/others/Profile";
+import Review from "../components/others/Review";
+import Settings from "../components/others/Settings";
+import TimeTable from "../components/others/TimeTable";
 import Appointment from "../pages/Appointment";
-import Doctors from "../pages/doctors/Doctors";
+import Dashboard from "../pages/Dashboard";
+import DoctorsProfile from "../pages/doctors/Doctors-Profile";
 import Patients from "../pages/patients/Patients";
-import AdminDashboardRoutes from "./DashboardRoutes";
+import DashboardRoutes from "./DashboardRoutes";
 
 export const doctor_routes = [
     {
-        path: "admin",
+        path: "doctor",
         exact: true,
-        component: AdminDashboardRoutes,
+        component: DashboardRoutes,
 		children: [
-			{ path: "", component: ()=><div>Hey from layout</div> },
-            { path: "appointments", exact: true, component: Appointment },
+            { path: "", component: () => <div>Hey from doctors</div> },
+             { path: "dashboard", exact: true, component: Dashboard },
+            { path: "appointment", exact: true, component: Appointment },
             { path: "patients", exact: true, component: Patients },
-            { path: "doctors", exact: true, component: Doctors },
+            {
+                path: "/doctor/doctors/:id",
+                exact: true,
+                component: DoctorsProfile,
+                children: [
+                    { path: "", component: Profile },
+                    { path: "overview", exact: true, component: Overview },
+                    { path: "experience", exact: true, component: Experience },
+                    { path: "reviews", exact: true, component: Review },
+                    { path: "time-table", exact: true, component: TimeTable },
+                    { path: "settings", exact: true, component: Settings },
+                ],
+            },
         ],
     },
 
