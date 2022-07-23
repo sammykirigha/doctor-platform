@@ -7,6 +7,7 @@ import TimeTable from "../components/others/TimeTable";
 import Appointment from "../pages/Appointment";
 import Dashboard from "../pages/Dashboard";
 import DoctorsProfile from "../pages/doctors/Doctors-Profile";
+import AddPatient from "../pages/patients/Add-Patient";
 import Patients from "../pages/patients/Patients";
 import DashboardRoutes from "./DashboardRoutes";
 
@@ -16,12 +17,13 @@ export const doctor_routes = [
         exact: true,
         component: DashboardRoutes,
 		children: [
-            { path: "", component: () => <div>Hey from doctors</div> },
-             { path: "dashboard", exact: true, component: Dashboard },
+            { path: "", component: Dashboard },
+            { path: "dashboard", exact: true, component: Dashboard },
             { path: "appointment", exact: true, component: Appointment },
             { path: "patients", exact: true, component: Patients },
+            { path: "patients/new/", exact: true, component: AddPatient },
             {
-                path: "/doctor/doctors/:id",
+                path: "doctors/:id",
                 exact: true,
                 component: DoctorsProfile,
                 children: [

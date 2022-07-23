@@ -25,21 +25,23 @@ export const links = [
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
 		link: '/doctors',
+		access: ["admin", "patient","secretary"],
+			
+		
+	},
+	{
+		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
+		name: 'Add Doctor',
+		link: '/doctors/new',
+		access: ["admin","secretary"],
+			
+		
+	},
+		{
+		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
+		name: 'Profile',
+		link: '/doctors/:id',
 		access: ["admin", "doctor","secretary"],
-		childrenLinks: [
-			{
-				name: 'Doctors',
-			    link: '/doctors/'
-			},
-			{
-				name: 'Add Doctor',
-			    link: '/doctors/new'
-			},
-			{
-				name: 'Profile',
-			    link: '/doctors/:id'
-			},
-		]
 			
 		
 	},
@@ -47,36 +49,32 @@ export const links = [
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patients',
 		link: '/patients',
-		access: ["admin", "doctor", "patient", "secretary"],
-		childrenLinks: [
-			{
-				name: 'All Patients',
-			    link: '/patients/'
-			},
-			{
-				name: 'Add Patients',
-			    link: '/patients/new/'
-			},
-			{
-				name: 'Profile',
-			    link: '/patients/:id'
-			},
-		]
+		access: ["admin", "doctor", "secretary"],
+	},
+	{
+		icon: <FaWheelchair className='h-4.5 w-4.5' />,
+		name: 'Add New Patient',
+		link: '/patients/new/',
+		access: ["admin", "doctor", "secretary"],
+	},
+	{
+		icon: <FaWheelchair className='h-4.5 w-4.5' />,
+		name: 'Patient Profile',
+		link: '/patients/:id',
+		access: ["admin", "patient", "secretary"],
 	},
 	{
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
-		name: 'Apps',
-		link: '/layout/apps',
+		name: 'Messages',
+		link: '/:id/chats',
+		access: ["admin", "doctor", "patient","secretary"],
+	},
+	{
+		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
+		name: 'Emails',
+		link: '/:id/email',
 		access: ["admin", "doctor", "patient","secretary"],
 		childrenLinks: [
-			{
-				name: 'Chat',
-			    link: '/layout/apps/chat'
-			},
-			{
-				name: 'Email',
-			    link: '/layout/apps/email'
-			},
 			{
 				name: 'Calendar',
 			    link: '/layout/apps/calendar'
@@ -84,10 +82,16 @@ export const links = [
 		]
 	},
 	{
+		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
+		name: 'Calendar',
+		link: '/:id/calender',
+		access: ["admin", "doctor", "patient","secretary"],
+	},
+	{
 		icon: <HiOutlineShoppingCart className='h-4.5 w-4.5' />,
 		name: 'Pharmacy',
 		link: '/layout/pharmacy',
-		access: ["admin", "patient","secretary"],
+		// access: ["admin", "patient","secretary"],
 		childrenLinks: [
 			{
 				name: 'Shop',
