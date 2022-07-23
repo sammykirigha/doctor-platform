@@ -66,25 +66,19 @@ export const links = [
 	{
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Messages',
-		link: '/:id/chats',
+		link: '/chat',
 		access: ["admin", "doctor", "patient","secretary"],
 	},
 	{
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Emails',
-		link: '/:id/email',
+		link: '/email/:id',
 		access: ["admin", "doctor", "patient","secretary"],
-		childrenLinks: [
-			{
-				name: 'Calendar',
-			    link: '/layout/apps/calendar'
-			},
-		]
 	},
 	{
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Calendar',
-		link: '/:id/calender',
+		link: "/calender",
 		access: ["admin", "doctor", "patient","secretary"],
 	},
 	{
