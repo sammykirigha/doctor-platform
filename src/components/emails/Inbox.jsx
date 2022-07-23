@@ -1,6 +1,8 @@
 import React from "react";
 import { MdOutlineRefresh } from "react-icons/md";
 import Emails from "./Emails";
+
+
 const Inbox = () => {
     return (
         <div className=" flex flex-col mt-5">
