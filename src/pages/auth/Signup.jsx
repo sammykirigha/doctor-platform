@@ -7,6 +7,7 @@ import logo from "../../data/images/logo3.jpg";
 import { SIGNUP_USER } from "../../queries/auth";
 import { useMutation } from "@apollo/client";
 import InputField from '../../components/Authentication/InputField'
+import { Link } from "react-router-dom";
 
 const SignupForm = () => {
     // const [registerUser, { data, loading, error }] = useMutation(SIGNUP_USER);
@@ -190,7 +191,7 @@ const SignupForm = () => {
                                     <h3 className="text-md">
                                         Already have an account?{" "}
                                         <strong className="cursor-pointer">
-                                            Sign In
+                                           <Link to="/login">Sign In</Link> 
                                         </strong>
                                     </h3>
                                 </div>

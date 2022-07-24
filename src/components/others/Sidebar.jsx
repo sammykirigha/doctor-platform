@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { NavigationContext } from "../../contexts/navigation.context";
 import Logo from "../common/Logo";
 import { BiMessageRounded } from "react-icons/bi";
@@ -8,11 +9,10 @@ import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { IoMdArrowDropright } from "react-icons/io";
 
 const Sidebar = () => {
+    const { user } = useSelector((state) => state.auth);
     const { sideBarOpen } = useContext(NavigationContext);
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState("");
-
-    const role = "doctor"
 
 
     return (
@@ -25,7 +25,7 @@ const Sidebar = () => {
             <div className="pt-2 slim-scrollbar overflow-auto h-[470px] bg-white">
                 <>
                     {links?.map(({ icon, link, name, childrenLinks, access =[] }, index) => {
-                        if(!access.includes(role)) return null
+                        if(!access.includes(user.role)) return null
                         if (childrenLinks?.length > 0) {
                             return (
                                 <div className="w-full" key={index}>
@@ -53,7 +53,7 @@ const Sidebar = () => {
                                                     (child, index) => {
                                                         return (
                                                             <div>
-                                                                <div key={index} className='' onClick={() =>navigate("/"+role+child.link)} >
+                                                                <div key={index} className='' onClick={() =>navigate("/"+user.role+child.link)} >
                                                                     <div className="flex pt-3 mx-3 text-sm text-gray-500 cursor-pointer items-center">
                                                                         <span><IoMdArrowDropright className="text-slate-800" /></span>
                                                                         {child.name }
@@ -70,7 +70,7 @@ const Sidebar = () => {
                         } else {
                             return (
                                 <div key={index} className="ml-3 mt-3">
-                                    <div  onClick={() => navigate("/"+role+link)} className='flex items-center cursor-pointer' >
+                                    <div  onClick={() => navigate("/"+user.role+link)} className='flex items-center cursor-pointer' >
                                         <div className="w-7 h-7 bg-gray-50 flex items-center rounded-md pl-2 mr-2">{icon}</div>
                                         <div className="text-md text-gray-500 font-semibold">{name}</div>
                                     </div>

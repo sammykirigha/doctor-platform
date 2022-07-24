@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { useMutation } from "@apollo/client";
 import logo from "../../data/images/logo3.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LOGIN_USER } from "../../queries/auth";
 import InputField from "../../components/Authentication/InputField";
 import { useDispatch } from "react-redux";
@@ -17,10 +17,6 @@ const LoginForm = (props) => {
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     let navigate = useNavigate();
-
-    // const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
-
-    const [respondError, setRespondError] = useState(null);
 
     const onSubmit = async (values) => {
         const inputValues = {
@@ -34,11 +30,11 @@ const LoginForm = (props) => {
                 input: inputValues,
             },
         };
-        // loginUser({ variables: { input: inputValues } });
-        const results = await dispatch(signinUserAction(details));
-        console.log("#######################################", results);
-        const user = results.data;
+
+         await dispatch(signinUserAction(details));
     };
+
+    console.log('<<<<<<<<<<<>>>>>>>>', user);
 
     const SignUpSchema = Yup.object().shape({
         email: Yup.string()
@@ -64,19 +60,21 @@ const LoginForm = (props) => {
         return error;
     };
 
-    // console.log("$$$$$$$$$$$$$$$$$$$$$", data);
+    
 
     useEffect(() => {
-        if (user.role === "patient") {
-            //     navigate("../layout", { replace: true });
+        if (user.role === "user") {
+                navigate("/landing-page", { replace: true });
         }
-        if (user.role === "doctor") {
-            //     navigate("../layout", { replace: true });
-        }
-        if (user.role === "admin") {
-            //     navigate("../layout", { replace: true });
-        }
-    }, [user.role]);
+        // if (user.role === "doctor") {
+        //         navigate("../layout", { replace: true });
+        // }
+        // if (user.role === "admin") {
+        //         navigate("../layout", { replace: true });
+        // }
+    }, [user, navigate]);
+
+
     return (
         <div className="flex flex-col mt-[10%] ">
             <div className="mx-auto flex">
@@ -159,7 +157,7 @@ const LoginForm = (props) => {
                                     </span>
                                 </div>
                                 <div className="flex flex-row gap-3 items-center mt-5">
-                                    <span className="text-lg text-slate-900 cursor-pointer font-medium">
+                                    <span className="text-lg text-slate-900 cursor-pointer font-medium hover:text-bluee-700">
                                         Forgot your passsword?
                                     </span>
                                 </div>
@@ -192,7 +190,7 @@ const LoginForm = (props) => {
                                 <h3 className="text-md">
                                     Don't have an account?{" "}
                                     <strong className="cursor-pointer">
-                                        Sign Up
+                                        <Link to="/">Sign Up</Link>
                                     </strong>
                                 </h3>
                             </div>
