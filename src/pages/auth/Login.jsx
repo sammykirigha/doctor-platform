@@ -14,7 +14,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const LoginForm = (props) => {
-    const { user } = useSelector((state) => state.auth);
+     const  {user, loading}  = useSelector((state) => state.auth);
+    const { message } = useSelector((state) => state.notifications);
+    const [error, setError] = useState("")
+
     const dispatch = useDispatch();
     let navigate = useNavigate();
 
@@ -60,10 +63,13 @@ const LoginForm = (props) => {
         return error;
     };
 
-    
-
     useEffect(() => {
-        if (user.role === "user") {
+         setError(message) 
+        setTimeout(() => {
+            setError("")
+        }, 3000)
+
+        if (user?.role === "user") {
                 navigate("/landing-page", { replace: true });
         }
         // if (user.role === "doctor") {
@@ -72,7 +78,7 @@ const LoginForm = (props) => {
         // if (user.role === "admin") {
         //         navigate("../layout", { replace: true });
         // }
-    }, [user, navigate]);
+    }, [user, navigate, message]);
 
 
     return (
@@ -109,14 +115,14 @@ const LoginForm = (props) => {
                         isSubmitting,
                     }) => (
                         <Form className="pb-5 px-10">
-                            {/* {errr && (
+                           {error && (
                                     <div className="bg-red-300 flex justify-center rounded-md">
-                                        <h3 className="py-2">{errr.message}</h3>
+                                        <h3 className="py-2">{error}</h3>
                                     </div>
-                                )} */}
+                                )}
                             <div className="my-12 w-full flex justify-center ">
                                 <h3 className="px-auto text-2xl font-bold">
-                                    Sign In
+                                    Welcome Back
                                 </h3>
                             </div>
                             <div className="flex flex-col gap-2">

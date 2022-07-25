@@ -1,34 +1,40 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import * as Yup from "yup";
 import logo from "../../data/images/logo3.jpg";
 import { SIGNUP_USER } from "../../queries/auth";
-import { useMutation } from "@apollo/client";
 import InputField from '../../components/Authentication/InputField'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signUpUserAction } from "../../state/actions/auth.action";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignupForm = () => {
-    // const [registerUser, { data, loading, error }] = useMutation(SIGNUP_USER);
-    const [errr, setErrr] = useState(null);
+    const  {user, loading}  = useSelector((state) => state.auth);
+    const { message } = useSelector((state) => state.notifications);
+    const [error, setError] = useState("")
 
-    // const onSubmit = async (values) => {
-    //     const inputValues = {
-    //         username: values.username,
-    //         email: values.email,
-    //         password: values.password,
-    //     };
-    //     registerUser({ variables: { input: inputValues } });
-    //     console.log(values);
-    //     if (error) {
-    //         setErrr(error);
-    //     }
-    //     setTimeout(() => {
-    //         setErrr(null);
-    //     }, 2000);
-    // };
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
 
+ const onSubmit = async (values) => {
+     const inputValues = {
+            username: values.username,
+            email: values.email,
+            password: values.password,
+        };
+
+        const details = {
+            query: SIGNUP_USER,
+            variables: {
+                input: inputValues,
+            },
+        };
+
+     await dispatch(signUpUserAction(details));
+     
+    };
 
     const SignUpSchema = Yup.object().shape({
         username: Yup.string().required("username cant be empty"),
@@ -55,6 +61,28 @@ const SignupForm = () => {
         return error;
     };
 
+
+    useEffect(() => {
+        setError(message) 
+        setTimeout(() => {
+            setError("")
+        }, 3000)
+
+        if (user) {
+                navigate("/login", { replace: true });
+        }
+    }, [user, navigate, message]);
+
+   
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center mt-20">
+                <p className="text-2xl text-gray-700">Signing you up...</p>
+            </div>
+        )
+    }
+
     return (
           <div className="flex flex-col mt-20 ">
                 <div className="mx-auto flex">
@@ -78,7 +106,7 @@ const SignupForm = () => {
                             confirmPassword: "",
                             rememberMe: false,
                         }}
-                        // onSubmit={onSubmit}
+                        onSubmit={onSubmit}
                         validationSchema={SignUpSchema}
                     >
                         {({
@@ -91,9 +119,9 @@ const SignupForm = () => {
                             isSubmitting,
                         }) => (
                             <Form className="pb-5 px-10">
-                                {errr && (
+                                {error && (
                                     <div className="bg-red-300 flex justify-center rounded-md">
-                                        <h3 className="py-2">{errr.message}</h3>
+                                        <h3 className="py-2">{error}</h3>
                                     </div>
                                 )}
                                 <div className="my-12 w-full flex justify-center ">
