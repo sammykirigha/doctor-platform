@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { PageNavigation, Pagination } from "./Pagination";
 
 const data = [
@@ -10,6 +12,7 @@ const data = [
 //add a filter method to filter data using names
 
 const TableComp = () => {
+    // const {doctor, loading} = useSelector((state) => state.doctor)
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
 
@@ -33,7 +36,9 @@ const TableComp = () => {
 
     const totalPages = myData.getTotalPages()
 
-    
+    useEffect(() => {
+        // dispatchEvent()
+    })
 
     return (
         <div className="flex flex-col">
