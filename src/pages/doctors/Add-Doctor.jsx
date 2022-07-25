@@ -70,6 +70,7 @@ const AddDoctor = () => {
     };
 
     console.log(user);
+
     return (
         <div className="mx-4 min-h-screen">
             <div className="flex flex-col sm:flex-row items-center justify-between mt-10">
@@ -109,7 +110,7 @@ const AddDoctor = () => {
                             experience: "",
                         }}
                         onSubmit={onSubmit}
-                        validationSchema={createDoctorSchema()}
+                        validationSchema={createDoctorSchema}
                     >
                         {({
                             values,

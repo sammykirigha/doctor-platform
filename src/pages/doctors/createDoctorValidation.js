@@ -1,7 +1,6 @@
 import * as Yup from "yup";
 
-const createDoctorSchema = () => {
-	Yup.object().shape({
+const createDoctorSchema = Yup.object().shape({
     firstname: Yup.string().required("firstname cant be empty"),
     lastname: Yup.string().required("lastname cant be empty"),
     email: Yup.string().email("invalid email").required("Email cant be empty"),
@@ -15,7 +14,6 @@ const createDoctorSchema = () => {
     linkedinlLink: Yup.string().required("linkedinlLink cant be empty"),
     instagramlLink: Yup.string().required("instagramlLink cant be empty"),
     experience: Yup.string().required("experience cant be empty"),
-   });
+});
 
-} 
 export default createDoctorSchema;

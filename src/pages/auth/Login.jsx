@@ -170,7 +170,7 @@ const LoginForm = (props) => {
                             </div>
 
                             <button
-                                className="mt-5 w-full bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer"
+                                className={`mt-5 w-full bg-blue-500 text-white py-2 px-8 rounded-md ${loading ? 'cursor-not-allowed' : 'cursor-pointer'} `}
                                 disabled={isSubmitting}
                                 type="submit"
                             >

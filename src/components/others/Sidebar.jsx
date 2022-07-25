@@ -29,7 +29,7 @@ const Sidebar = () => {
             <div className="pt-2 slim-scrollbar overflow-auto h-[470px] bg-white">
                 <>
                     {links?.map(({ icon, link, name, childrenLinks, access =[] }, index) => {
-                        if(!access.includes(user.role)) return null
+                        if(!access.includes(user?.role)) return null
                         if (childrenLinks?.length > 0) {
                             return (
                                 <div className="w-full" key={index}>
@@ -57,7 +57,7 @@ const Sidebar = () => {
                                                     (child, index) => {
                                                         return (
                                                             <div>
-                                                                <div key={index} className='' onClick={() =>navigate("/"+user.role+child.link)} >
+                                                                <div key={index} className='' onClick={() =>navigate("/"+user?.role+child.link)} >
                                                                     <div className="flex pt-3 mx-3 text-sm text-gray-500 cursor-pointer items-center">
                                                                         <span><IoMdArrowDropright className="text-slate-800" /></span>
                                                                         {child.name }
@@ -74,7 +74,7 @@ const Sidebar = () => {
                         } else {
                             return (
                                 <div key={index} className="ml-3 mt-3">
-                                    <div  onClick={() => navigate("/"+user.role+link)} className='flex items-center cursor-pointer' >
+                                    <div  onClick={() => navigate("/"+user?.role+link)} className='flex items-center cursor-pointer' >
                                         <div className="w-7 h-7 bg-gray-50 flex items-center rounded-md pl-2 mr-2">{icon}</div>
                                         <div className="text-md text-gray-500 font-semibold">{name}</div>
                                     </div>
@@ -86,11 +86,6 @@ const Sidebar = () => {
                     )}
                 </>
             </div>
-            {/* <div className="py-4 pl-6 border-t border-gray-200">
-                <span className="h-6 w-6 bg-red-400 rounded-full">
-                    <BiMessageRounded className="h-6 w-6 text-red-400" />
-                </span>
-            </div> */}
         </div>
     );
 };
