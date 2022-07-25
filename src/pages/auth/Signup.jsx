@@ -71,6 +71,7 @@ const SignupForm = () => {
         if (user) {
                 navigate("/login", { replace: true });
         }
+        
     }, [user, navigate, message]);
 
    

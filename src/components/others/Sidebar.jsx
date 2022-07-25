@@ -7,6 +7,7 @@ import { BiMessageRounded } from "react-icons/bi";
 import { links } from "../../data/AllLinks";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { IoMdArrowDropright } from "react-icons/io";
+import { useEffect } from "react";
 
 const Sidebar = () => {
     const { user } = useSelector((state) => state.auth);
@@ -14,6 +15,9 @@ const Sidebar = () => {
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState("");
 
+    useEffect(() => {
+       console.log(user);
+    },[user])
 
     return (
         <div
