@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signinUserAction } from "../actions/auth.action";
+import { signinUserAction, signUpUserAction } from "../actions/auth.action";
 
 const initialState = {
     user: null,
@@ -24,14 +24,29 @@ export const authSlice = createSlice({
             state.user = null;
         });
 
+         builder.addCase(signUpUserAction.pending, (state, action) => {
+            state.loading = true;
+            state.user = null;
+        });
+
         //fullfilled
         builder.addCase(signinUserAction.fulfilled, (state, action) => {
             state.loading = false;
             state.user = action.payload.user;
         });
 
+         builder.addCase(signUpUserAction.fulfilled, (state, action) => {
+            state.loading = false;
+            state.user = action.payload.user;
+        });
+
         //rejected
         builder.addCase(signinUserAction.rejected, (state, action) => {
+            state.loading = false;
+            state.user = null;
+        });
+
+         builder.addCase(signUpUserAction.rejected, (state, action) => {
             state.loading = false;
             state.user = null;
         });

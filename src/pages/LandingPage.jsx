@@ -15,6 +15,7 @@ import { FooterContent } from "../components/others/FooterMain";
 import DoctorsList from "./doctors/DoctorsList";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
     return (
@@ -47,21 +48,21 @@ const LandingPage = () => {
                     Create your profile to continue
                 </h3>
                 <div className="flex items-center mt-5">
-                    <button className="bg-blue-700 px-6 text-white py-1 rounded-md">
+                    <Link to="add-patient" className="bg-white px-16 text-blue-700 hover:bg-blue-700 hover:text-white py-3 rounded-full text-xl font-semibold">
                         Patient?
-                    </button>
+                    </Link>
                     <span className="text-white bg-gray-500 rounded-full px-3">
                         Or
                     </span>
-                    <button className="bg-blue-700 px-6 text-white py-1 rounded-md">
+                    <Link to="add-doctor" className="bg-white px-16 text-blue-700 hover:bg-blue-700 hover:text-white py-3 rounded-full text-xl font-semibold">
                         Doctor?
-                    </button>
+                    </Link>
                 </div>
             </div>
             {/* end  */}
 
             {/* start */}
-            <div className="fixed bg-white px-8 w-full top-0 flex flex-row items-center justify-between">
+            <div className="fixed bg-white px-8 w-full top-0 flex flex-row items-center justify-between z-50">
                 <div className="flex justify-center">
                     <img
                         src={logo}
@@ -102,7 +103,7 @@ const LandingPage = () => {
             {/* end  */}
 
             {/* start  */}
-            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row relative bg-white mx-auto sm:mt-0 sm:w-[100%]  md:-mt-20 sm:x-2 rounded-md md:w-[80%] justify-between">
+            <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row relative bg-white mx-auto sm:mt-0 sm:w-[100%]  md:-mt-20 sm:x-2 rounded-md md:w-[80%] justify-between">
                 <div className="flex flex-col gap-y-2 bg-gray-100 px-5  py-5 rounded-md">
                     <img
                         src={logo}
@@ -167,7 +168,7 @@ const LandingPage = () => {
             {/* end  */}
 
             {/* start  */}
-            <div className="flex flex-col sm:flex-col md:flex-row mt-20 items-center px-10">
+            <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row mt-20 items-center px-10">
                 <img src={aboutTreatmentImage} alt="about page" />
                 <div className="ml-10 px-5">
                     <h3 className="text-2xl text-slate-900 font-bold uppercase mb-8 ">
@@ -209,8 +210,8 @@ const LandingPage = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mx-10 mb-5 mt-8">
-                    <div>
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-10 mb-5 mt-8">
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <BsEyeFill className="text-blue-600 h-12 w-12" />
                         </div>
@@ -224,7 +225,7 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiMentalHealthFill className="text-blue-600 h-12 w-12" />
                         </div>
@@ -240,7 +241,7 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <FaStethoscope className="text-blue-600 h-12 w-12" />
                         </div>
@@ -256,7 +257,7 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiCapsuleFill className="text-blue-600 h-12 w-12" />
                         </div>
@@ -272,7 +273,7 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiMicroscopeFill className="text-blue-600 h-12 w-12" />
                         </div>
@@ -288,7 +289,7 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <MdOutlineAutoGraph className="text-blue-600 h-12 w-12" />
                         </div>
@@ -304,7 +305,7 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <RiHeartPulseFill className="text-blue-600 h-12 w-12" />
                         </div>
@@ -320,7 +321,7 @@ const LandingPage = () => {
                             <BsArrowRight className="text-blue-600  ml-3" />
                         </span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center border rounded-md py-3 px-5">
                         <div className="h-20 w-20 bg-gray-100 rounded-lg flex justify-center items-center">
                             <MdOutlineBloodtype className="text-blue-600 h-12 w-12" />
                         </div>

@@ -26,16 +26,12 @@ export const links = [
 		name: 'Doctors',
 		link: '/doctors',
 		access: ["admin", "patient","secretary"],
-			
-		
 	},
 	{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Add Doctor',
 		link: '/doctors/new',
 		access: ["admin","secretary"],
-			
-		
 	},
 		{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
@@ -67,7 +63,7 @@ export const links = [
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
 		name: 'Messages',
 		link: '/chat',
-		access: ["admin", "doctor", "patient","secretary"],
+		access: ["admin", "doctor", "patient", "secretary"],
 	},
 	{
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,
