@@ -72,9 +72,9 @@ const LoginForm = (props) => {
         if (user?.role === "user") {
                 navigate("/landing-page", { replace: true });
         }
-        // if (user.role === "doctor") {
-        //         navigate("../layout", { replace: true });
-        // }
+        if (user?.role === "doctor") {
+                navigate("/doctor", { replace: true });
+        }
         // if (user.role === "admin") {
         //         navigate("../layout", { replace: true });
         // }

@@ -4,8 +4,12 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import InputField from "../../components/Authentication/InputField";
+import { CREATE_DOCTOR } from "../../queries/doctors";
+import { useDispatch, useSelector } from "react-redux";
+import { createDoctorAction } from "../../state/actions/doctors.action";
+import createDoctorSchema  from "./createDoctorValidation";
 
 const animatedComponents = makeAnimated();
 
@@ -26,11 +30,46 @@ const genderOptions = [
 ];
 
 const AddDoctor = () => {
-    const navigate = useNavigate();
+    const { user } = useSelector((state) => state.auth);
     const params = useLocation();
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const onSubmit = async (values) => {
+        // event.preventDefault();
+
+        const inputValues = {
+            firstname: values.firstname,
+            lastname: values.lastname,
+            email: values.email,
+            phone: values.phone,
+            address: values.address,
+            specialization: values.specialization,
+            department: values.department,
+            gender: values.gender,
+            twitterlLink: values.twitterlLink,
+            facebooklLink: values.facebooklLink,
+            linkedinlLink: values.linkedinlLink,
+            instagramlLink: values.instagramlLink,
+            experience: values.experience,
+        };
+
+        const details = {
+            query: CREATE_DOCTOR,
+            variables: {
+                input: inputValues,
+            },
+        };
+
+        await dispatch(createDoctorAction(details));
+
+        console.log(values);
+    };
+
+    console.log(user);
     return (
         <div className="mx-4 min-h-screen">
             <div className="flex flex-col sm:flex-row items-center justify-between mt-10">
@@ -55,12 +94,22 @@ const AddDoctor = () => {
                 <div className="sm:w-[100%] bg-white rounded-md">
                     <Formik
                         initialValues={{
+                            firstname: "",
+                            lastname: "",
                             email: "",
-                            password: "",
-                            rememberMe: false,
+                            phone: "",
+                            address: "",
+                            specialization: "",
+                            department: "",
+                            gender: "",
+                            twitterlLink: "",
+                            facebooklLink: "",
+                            linkedinlLink: "",
+                            instagramlLink: "",
+                            experience: "",
                         }}
-                        // onSubmit={onSubmit}
-                        // validationSchema={SignUpSchema}
+                        onSubmit={onSubmit}
+                        validationSchema={createDoctorSchema()}
                     >
                         {({
                             values,
@@ -71,188 +120,183 @@ const AddDoctor = () => {
                             handleSubmit,
                             isSubmitting,
                         }) => (
-                            <div className="mx-3 mt-5 mb-5">
-                                <form className="flex flex-col">
-                                    <div className="flex flex-col sm:flex-col md:flex-row items-center justify-between sm:ml-5 md:ml-9 mr-3 mt-7 ">
-                                        <div className="flex flex-row items-center ">
-                                            <span className="rounded-full sm:h-12 sm:w-12 md:h-20 md:w-20 flex items-center border border-gray-300 ">
-                                                
-                                                <img
-                                                    src= "https://nellions.co.ug/wp-content/uploads/2018/06/male-placeholder-image.jpeg"
-                                                    alt="doc"
-                                                    className=" sm:h-12 md:h-12 sm:w-10 md:w-16 rounded-2xl ml-2"
-                                                />
-                                            </span>
-                                            <div className="flex flex-col ml-5">
-                                                <h2 className="text-lg text-slate-900 font-semibold mb-2">
-                                                    Upload Your Picture
-                                                </h2>
-                                                <p className="text-md text-gray-500 w-auto md:w-80">
-                                                    Use an image at least 600px
-                                                    by 600px in either .jpg or
-                                                    .png format
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="flex mt-5 sm:flex-row sm:mt-4 md:flex-col lg:flex-col gap-3 items-center">
-                                            <Button text="Upload" />
-                                            <Button text="Remove" />
+                            // <div className="mx-3 mt-5 mb-5">
+                            <Form className="flex flex-col">
+                                <div className="flex flex-col sm:flex-col md:flex-row items-center justify-between sm:ml-5 md:ml-9 mr-3 mt-7 ">
+                                    <div className="flex flex-row items-center ">
+                                        <span className="rounded-full sm:h-12 sm:w-12 md:h-20 md:w-20 flex items-center border border-gray-300 ">
+                                            <img
+                                                src="https://nellions.co.ug/wp-content/uploads/2018/06/male-placeholder-image.jpeg"
+                                                alt="doc"
+                                                className=" sm:h-12 md:h-12 sm:w-10 md:w-16 rounded-2xl ml-2"
+                                            />
+                                        </span>
+                                        <div className="flex flex-col ml-5">
+                                            <h2 className="text-lg text-slate-900 font-semibold mb-2">
+                                                Upload Your Picture
+                                            </h2>
+                                            <p className="text-md text-gray-500 w-auto md:w-80">
+                                                Use an image at least 600px by
+                                                600px in either .jpg or .png
+                                                format
+                                            </p>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
-                                        <div className="flex flex-col sm:w-full ">
-                                            <InputField
-                                                name="firstname"
-                                                validate=""
-                                                type="text"
-                                                label="First Name"
-                                                placeholder="First Name:"
-                                            />
-                                           
-                                        </div>
-                                        <div className="flex flex-col sm:w-full ">
-                                             <InputField
-                                                name="lastname"
-                                                validate=""
-                                                type="text"
-                                                label="Last Name"
-                                                placeholder="Last Name:"
-                                            />
-                                        </div>
+                                    <div className="flex mt-5 sm:flex-row sm:mt-4 md:flex-col lg:flex-col gap-3 items-center">
+                                        <Button text="Upload" />
+                                        <Button text="Remove" />
                                     </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
-                                        <div className="flex flex-col sm:w-full ">
-                                             <InputField
-                                                name="email"
-                                                validate=""
-                                                type="email"
-                                                label="Email address:"
-                                                placeholder="Email address:"
-                                            />
-                                            
-                                        </div>
-                                        <div className="flex flex-col sm:w-full">
-                                             <InputField
-                                                name="phone"
-                                                validate=""
-                                                type="text"
-                                                label="Phone Num:"
-                                                placeholder="Phone Num:"
-                                            />
-                                           
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
-                                        <div className="flex flex-col sm:w-full ">
-                                             <InputField
-                                                name="address"
-                                                validate=""
-                                                type="text"
-                                                label="Address:"
-                                                placeholder="Address:"
-                                            />
-                                            
-                                        </div>
-                                       <div className="flex flex-col sm:w-full ">
-                                            <InputField
-                                                name="specialization"
-                                                validate=""
-                                                type="text"
-                                                label="Specialization:"
-                                                placeholder="Specialization:"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
-                                        <div className="flex flex-col sm:w-full ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Departments
-                                            </label>
-                                            <Select
-                                                name="department"
-                                                closeMenuOnSelect={false}
-                                                components={animatedComponents}
-                                                className="sm:w-[100%] md:w-[100%]"
-                                                defaultValue={
-                                                    departmentsOptions[2]
-                                                }
-                                                options={departmentsOptions}
-                                            />
-                                        </div>
-                                         <div className="flex flex-col sm:w-full">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Gender
-                                            </label>
-                                            <Select
-                                                closeMenuOnSelect={false}
-                                                components={animatedComponents}
-                                                className="sm:w-[100%] md:w-[100%]"
-                                                options={genderOptions}
-                                            />
-                                             
-                                           
-                                        </div>
-                                        
-                                    </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
-                                        <div className="flex flex-col sm:w-full ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Twitter
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="userName:"
-                                                className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
-                                            />
-                                        </div>
-                                        <div className="flex flex-col sm:w-full">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Facebook
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="userName:"
-                                                className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
-                                        <div className="flex flex-col sm:w-full  ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Linkedin
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="userName:"
-                                                className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
-                                            />
-                                        </div>
-                                        <div className="flex flex-col sm:w-full ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Instagram
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="userName:"
-                                                className="sm:w-[100%] md:w-[100%] h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
-                                        <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                            Your Experience
-                                        </label>
-                                        <textarea
+                                </div>
+                                <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col sm:w-full ">
+                                        <InputField
+                                            name="firstname"
+                                            validate=""
                                             type="text"
-                                            placeholder="Your Experience:"
-                                            className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                            label="First Name"
+                                            placeholder="First Name:"
                                         />
                                     </div>
-                                    <div className=" ml-3 ">
-                                    <Button type="submit" text="Add Doctor" />
+                                    <div className="flex flex-col sm:w-full ">
+                                        <InputField
+                                            name="lastname"
+                                            validate=""
+                                            type="text"
+                                            label="Last Name"
+                                            placeholder="Last Name:"
+                                        />
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col sm:w-full ">
+                                        <InputField
+                                            name="email"
+                                            validate=""
+                                            type="email"
+                                            label="Email address:"
+                                            placeholder="Email address:"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col sm:w-full">
+                                        <InputField
+                                            name="phone"
+                                            validate=""
+                                            type="text"
+                                            label="Phone Num:"
+                                            placeholder="Phone Num:"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col sm:w-full ">
+                                        <InputField
+                                            name="address"
+                                            validate=""
+                                            type="text"
+                                            label="Address:"
+                                            placeholder="Address:"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col sm:w-full ">
+                                        <InputField
+                                            name="specialization"
+                                            validate=""
+                                            type="text"
+                                            label="Specialization:"
+                                            placeholder="Specialization:"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col sm:w-full ">
+                                        <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Departments
+                                        </label>
+                                        <Select
+                                            name="department"
+                                            closeMenuOnSelect={false}
+                                            components={animatedComponents}
+                                            className="sm:w-[100%] md:w-[100%]"
+                                            defaultValue={departmentsOptions[2]}
+                                            options={departmentsOptions}
+                                        />
+                                    </div>
+                                    <div className="flex flex-col sm:w-full">
+                                        <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Gender
+                                        </label>
+                                        <Select
+                                            name="gender"
+                                            closeMenuOnSelect={false}
+                                            components={animatedComponents}
+                                            className="sm:w-[100%] md:w-[100%]"
+                                            options={genderOptions}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col sm:w-full ">
+                                        <InputField
+                                            name="twitterlLink"
+                                            validate=""
+                                            type="text"
+                                            label="Twitter:"
+                                            placeholder="userName:"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col sm:w-full">
+                                        <InputField
+                                            name="facebooklLink"
+                                            validate=""
+                                            type="text"
+                                            label="Facebook:"
+                                            placeholder="Facebook:"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col sm:w-full  ">
+                                        <InputField
+                                            name="linkedinlLink"
+                                            validate=""
+                                            type="text"
+                                            label="Linkedin:"
+                                            placeholder="Linkedin:"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col sm:w-full ">
+                                        <InputField
+                                            name="instagramlLink"
+                                            validate=""
+                                            type="text"
+                                            label="Instagram:"
+                                            placeholder="Instagram:"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
+                                    <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
+                                        Your Experience
+                                    </label>
+                                    <Field
+                                        name="experience"
+                                        type="text"
+                                        placeholder="Your Experience:"
+                                        className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                    />
+                                    
+                                </div>
+                                <div className=" ml-3 ">
+                                    <button
+                                        className={`mt-5 w-[200px] bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer`}
+                                        disabled={isSubmitting}
+                                        type="submit"
+                                    >
+                                        Create Account
+                                    </button>
+                                </div>
+                            </Form>
+                            // </div>
                         )}
                     </Formik>
                 </div>
