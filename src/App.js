@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import Notifications from './components/common/Notifications';
 import { admin_routes } from './routes/admin';
 import { doctor_routes } from './routes/doctors';
 import { shared_routes } from './routes/shared';
@@ -21,6 +22,7 @@ const App = () => {
 
   return (
     <div>
+      <Notifications />
       <Routes>
         {
           shared_routes?.map(route => renderRoute(route))

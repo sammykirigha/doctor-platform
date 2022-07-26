@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavigationContext } from "../../contexts/navigation.context";
 import Logo from "../common/Logo";
 import { BiMessageRounded } from "react-icons/bi";
@@ -8,16 +8,37 @@ import { links } from "../../data/AllLinks";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useEffect } from "react";
+import { GET_DOCTOR } from "../../queries/doctors";
+import { getDoctorAction } from "../../state/actions/doctors.action";
 
 const Sidebar = () => {
     const { user } = useSelector((state) => state.auth);
+    const { doctor, loading } = useSelector((state) => state.doctor);
     const { sideBarOpen } = useContext(NavigationContext);
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState("");
 
-    useEffect(() => {
-       console.log(user);
-    },[user])
+    useEffect( () => {
+
+        const inputValues = {
+            email: user.email,
+        };
+
+        const details = {
+            query: GET_DOCTOR,
+            variables: {
+                input: inputValues,
+            },
+        };
+
+        dispatch(getDoctorAction(details));
+        console.log(user);
+        
+    }, [user, dispatch])
+    
+    console.log(doctor);
 
     return (
         <div

@@ -9,6 +9,7 @@ import InputField from '../../components/Authentication/InputField'
 import { Link, useNavigate } from "react-router-dom";
 import { signUpUserAction } from "../../state/actions/auth.action";
 import { useDispatch, useSelector } from "react-redux";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const SignupForm = () => {
     const  {user, loading}  = useSelector((state) => state.auth);
@@ -75,6 +76,9 @@ const SignupForm = () => {
     }, [user, navigate, message]);
 
    
+     useEffect(() => {
+         return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     if (loading) {
         return (

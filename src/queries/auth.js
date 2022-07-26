@@ -11,8 +11,7 @@ mutation LoginUser($input: LoginUserInput!) {
     confirmed
   }
 }
-`
-
+`;
 
 export const SIGNUP_USER = `
     mutation RegisterUser($input: CreateUserInput!) {
@@ -26,3 +25,14 @@ export const SIGNUP_USER = `
 }
 `;
 
+export const FORGET_PASSWORD = `
+  mutation ForgotUserPasssword($email: ForgotPasswordInput!) {
+  forgotUserPasssword(email: $email)
+}
+`;
+
+export const RESET_PASSWORD = `
+  mutation ResetUsersPassword($input: PasswordResetInput!) {
+  resetUsersPassword(input: $input)
+}
+`

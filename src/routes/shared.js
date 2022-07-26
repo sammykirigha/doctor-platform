@@ -9,7 +9,7 @@ import AddPatient from "../pages/patients/Add-Patient";
 export const shared_routes = [
     { path: "login", component: LoginForm },
     { path: "/", component: SignupForm },
-    { path: "reset-password", component: ResetPassword },
+    { path: "reset-password/:resetToken", component: ResetPassword },
     { path: "forgot-password", component: ForgotPassword },
     { path: "landing-page/add-doctor", component: AddDoctor },
     { path: "landing-page/add-patient", component: AddPatient },

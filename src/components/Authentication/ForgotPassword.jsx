@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { ErrorMessage, Field, Formik, Form } from "formik";
+import { ErrorMessage, Formik, Form } from "formik";
 import InputField from './InputField';
 import * as Yup from "yup";
+import { useNavigate } from 'react-router-dom';
+import { FORGET_PASSWORD } from '../../queries/auth';
+import { useDispatch} from 'react-redux';
+import { forgotPasswordAction } from '../../state/actions/auth.action';
+import {FaSpinner} from 'react-icons/fa'
 
 const ForgotPassword = () => {
-	  
-    const [respondError, setRespondError] = useState(null);
+	
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onSubmit = async (values) => {
 
@@ -13,8 +20,20 @@ const ForgotPassword = () => {
             email: values.email,
         };
         
+        const details = {
+            query: FORGET_PASSWORD,
+            variables: {
+                email: inputValues,
+            },
+        };
+
+        let { payload} = await dispatch(forgotPasswordAction(details));
        
+        if (payload.success) {
+            navigate('/login')
+        }
     };
+
 
     const SignUpSchema = Yup.object().shape({
         email: Yup.string()
@@ -30,8 +49,6 @@ const ForgotPassword = () => {
                 <Formik
                     initialValues={{
                         email: "",
-                        password: "",
-                        rememberMe: false,
                     }}
                     onSubmit={onSubmit}
                     validationSchema={SignUpSchema}
@@ -66,16 +83,12 @@ const ForgotPassword = () => {
                                 </ErrorMessage>
                             </div>
                             <button
-                                className="mt-5 w-full bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer"
+                                className={`mt-5 w-full flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${isSubmitting ? "cursor-not-allowed" : "cursor-pointer"} `}
                                 disabled={isSubmitting}
                                 type="submit"
                             >
-                                Submit
+                                {isSubmitting && <FaSpinner className='animate-spin' /> } {" "}Submit
                             </button>
-                            
-                            <div className="mt-5 flex justify-center">
-                                <h3 className="text-md">Don't have an account? <strong className="cursor-pointer">Send your email</strong></h3>
-                            </div>
                         </Form>
                     )}
                 </Formik>
