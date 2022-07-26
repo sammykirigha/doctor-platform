@@ -64,7 +64,7 @@ const LoginForm = (props) => {
     };
 
     useEffect(() => {
-         setError(message) 
+        setError(message) 
         setTimeout(() => {
             setError("")
         }, 3000)
@@ -163,7 +163,7 @@ const LoginForm = (props) => {
                                     </span>
                                 </div>
                                 <div className="flex flex-row gap-3 items-center mt-5">
-                                    <span className="text-lg text-slate-900 cursor-pointer font-medium hover:text-bluee-700">
+                                    <span onClick={() => navigate('/forgot-password')} className="text-lg text-slate-900 cursor-pointer font-medium hover:text-bluee-700 hover:text-blue-800">
                                         Forgot your passsword?
                                     </span>
                                 </div>

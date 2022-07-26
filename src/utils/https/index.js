@@ -26,7 +26,6 @@ export const apiPost = async (data = {}) => {
 }
 
 export const apiGet = async (data = {}) => {
-	
 	try {
 		const res = await axios.get(ENDPOINT, data);
 

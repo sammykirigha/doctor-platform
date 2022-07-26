@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createDoctorAction } from "../actions/doctors.action";
+import { createDoctorAction, getDoctorAction } from "../actions/doctors.action";
 
 const initialState = {
     doctor: null,
@@ -9,9 +9,14 @@ const initialState = {
 export const authSlice = createSlice({
     name: "doctor",
     initialState,
-    extraReducers: (builder) => {
+    extraReducers: (builder) => { 
         //builders
         builder.addCase(createDoctorAction.pending, (state, action) => {
+            state.loading = true;
+            state.doctor = null;
+        });
+
+        builder.addCase(getDoctorAction.pending, (state, action) => {
             state.loading = true;
             state.doctor = null;
         });
@@ -22,8 +27,18 @@ export const authSlice = createSlice({
             state.doctor = action.payload.doctor;
         });
 
+        builder.addCase(getDoctorAction.fulfilled, (state, action) => {
+            state.loading = true;
+            state.doctor = null;
+        });
+
         //rejected
         builder.addCase(createDoctorAction.rejected, (state, action) => {
+            state.loading = false;
+            state.doctor = null;
+        });
+
+        builder.addCase(getDoctorAction.rejected, (state, action) => {
             state.loading = false;
             state.doctor = null;
         });
