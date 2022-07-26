@@ -17,15 +17,13 @@ const errorsSlice = createSlice({
 		setMessageNotification: (state, action) => {
 			state.message = action.payload
 		},
-		resetErrorNotification: (state, action) => {
+		resetNotifications: (state, action) => {
 			state.message = null
+			state.error = null
 		},
-		resetMessageNotification: (state, action) => {
-			state.message = null
-		}
 	},
 });
 
-export const { setErrorNotification, setMessageNotification, resetErrorNotification, resetMessageNotification  } = errorsSlice.actions
+export const { setErrorNotification, setMessageNotification, resetNotifications  } = errorsSlice.actions
 const {reducer} = errorsSlice
 export default reducer

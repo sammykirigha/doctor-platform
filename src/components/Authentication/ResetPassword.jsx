@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ErrorMessage, Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import InputField from "../../components/Authentication/InputField";
 import { RESET_PASSWORD } from "../../queries/auth";
 import { resetPasswordAction } from "../../state/actions/auth.action";
 import { useDispatch, useSelector } from 'react-redux';
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 
 const ResetPassword = () => {
@@ -14,7 +15,7 @@ const ResetPassword = () => {
     const { resetToken } = useParams()
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const {error, message: mssg} = useSelector((state) => state.message)
+    const {error, message: mssg} = useSelector((state) => state.notifications)
     const {message, loading} = useSelector((state) => state.resetPasssword)
     
     const onSubmit = async (values) => {
@@ -31,12 +32,13 @@ const ResetPassword = () => {
             },
         };
 
-        console.log(values);
         await dispatch(resetPasswordAction(details));
         
-        // if (!loading) {
-        //     navigate('/login')
-        // }
+        if (!loading && error === null) {
+            navigate('/login', {replace: true})
+        }
+
+       console.log('"""""""', error);
     }
         
     console.log('%%%%%%%', message, error);
@@ -82,6 +84,10 @@ const ResetPassword = () => {
 
         return error;
     };
+
+     useEffect(() => {
+         return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     return (
         <div className="flex flex-col mt-[10%] ">

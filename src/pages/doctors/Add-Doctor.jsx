@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
@@ -10,6 +10,7 @@ import { CREATE_DOCTOR } from "../../queries/doctors";
 import { useDispatch, useSelector } from "react-redux";
 import { createDoctorAction } from "../../state/actions/doctors.action";
 import createDoctorSchema  from "./createDoctorValidation";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const animatedComponents = makeAnimated();
 
@@ -70,6 +71,10 @@ const AddDoctor = () => {
     };
 
     console.log(user);
+
+     useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     return (
         <div className="mx-4 min-h-screen">

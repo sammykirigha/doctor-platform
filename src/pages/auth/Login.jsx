@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { signinUserAction } from "../../state/actions/auth.action";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const LoginForm = (props) => {
      const  {user, loading}  = useSelector((state) => state.auth);
@@ -81,6 +82,10 @@ const LoginForm = (props) => {
     }, [user, navigate, message]);
 
 
+    useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
+
     return (
         <div className="flex flex-col mt-[10%] ">
             <div className="mx-auto flex">
@@ -115,11 +120,6 @@ const LoginForm = (props) => {
                         isSubmitting,
                     }) => (
                         <Form className="pb-5 px-10">
-                           {error && (
-                                    <div className="bg-red-300 flex justify-center rounded-md">
-                                        <h3 className="py-2">{error}</h3>
-                                    </div>
-                                )}
                             <div className="my-12 w-full flex justify-center ">
                                 <h3 className="px-auto text-2xl font-bold">
                                     Welcome Back

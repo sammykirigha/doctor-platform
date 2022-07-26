@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { ErrorMessage, Formik, Form } from "formik";
 import InputField from './InputField';
 import * as Yup from "yup";
+import { useNavigate } from 'react-router-dom';
 import { FORGET_PASSWORD } from '../../queries/auth';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { forgotPasswordAction } from '../../state/actions/auth.action';
+import {FaSpinner} from 'react-icons/fa'
 
 const ForgotPassword = () => {
 	
-    const {message, loading} = useSelector((state) => state.forgotPassword)
-    const [respondError, setRespondError] = useState(null);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onSubmit = async (values) => {
 
@@ -26,9 +27,13 @@ const ForgotPassword = () => {
             },
         };
 
-         await dispatch(forgotPasswordAction(details));
+        let { payload} = await dispatch(forgotPasswordAction(details));
        
+        if (payload.success) {
+            navigate('/login')
+        }
     };
+
 
     const SignUpSchema = Yup.object().shape({
         email: Yup.string()
@@ -78,11 +83,11 @@ const ForgotPassword = () => {
                                 </ErrorMessage>
                             </div>
                             <button
-                                className={`mt-5 w-full bg-blue-500 text-white py-2 px-8 rounded-md ${isSubmitting ? "cursor-not-allowed" : "cursor-pointer"} `}
+                                className={`mt-5 w-full flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${isSubmitting ? "cursor-not-allowed" : "cursor-pointer"} `}
                                 disabled={isSubmitting}
                                 type="submit"
                             >
-                                Submit
+                                {isSubmitting && <FaSpinner className='animate-spin' /> } {" "}Submit
                             </button>
                         </Form>
                     )}
