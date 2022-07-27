@@ -16,6 +16,7 @@ mutation LoginUser($input: LoginUserInput!) {
 export const SIGNUP_USER = `
     mutation RegisterUser($input: CreateUserInput!) {
   registerUser(input: $input) {
+    id
     username
     email
     role
@@ -34,5 +35,18 @@ export const FORGET_PASSWORD = `
 export const RESET_PASSWORD = `
   mutation ResetUsersPassword($input: PasswordResetInput!) {
   resetUsersPassword(input: $input)
+}
+`
+
+export const ME_QUERY = `
+ query CurrentUser {
+  currentUser {
+    id
+    username
+    email
+    role
+    token
+    confirmed
+  }
 }
 `

@@ -7,6 +7,7 @@ import {
 } from "../reducers/error.reducer";
 import { logoutUserSuccess } from "../reducers/auth.reducer";
 import { parseError } from "../../utils/parseError";
+import { ME_QUERY } from "../../queries/auth";
 
 //login user action
 export const signinUserAction = createAsyncThunk(
@@ -30,7 +31,6 @@ export const signinUserAction = createAsyncThunk(
     }
 );
 
-
 //register user action
 export const signUpUserAction = createAsyncThunk(
     "user/signup",
@@ -51,7 +51,6 @@ export const signUpUserAction = createAsyncThunk(
         }
     }
 );
-
 
 //forgotpassword
 export const forgotPasswordAction = createAsyncThunk(
@@ -75,7 +74,6 @@ export const forgotPasswordAction = createAsyncThunk(
     }
 );
 
-
 //resetpassord action
 export const resetPasswordAction = createAsyncThunk(
     "user/resetPassord",
@@ -98,7 +96,7 @@ export const resetPasswordAction = createAsyncThunk(
     }
 );
 
-///////
+//getcurrent user
 export const logoutUserAction = () => async (dispatch) => {
     try {
         localStorage.clear();
@@ -109,3 +107,25 @@ export const logoutUserAction = () => async (dispatch) => {
     }
 
 };
+
+//getcurrent user
+export const getCurrentUserAction = createAsyncThunk(
+    "user/current",
+    async (_data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost({ query: ME_QUERY });
+            const { token, ...rest } = response.data.currentUser;
+            localStorage.setItem("auth-token", token)
+            return {
+                user: rest,
+                success: true,
+            };
+        } catch (err) {
+            localStorage.clear()
+            return {
+                success: false
+            }
+        }
+    }
+);

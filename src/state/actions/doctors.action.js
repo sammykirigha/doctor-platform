@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import apiPost, { apiGet } from "../../utils/https";
-import {  resetNotifications, setErrorNotification, setMessageNotification } from "../reducers/error.reducer";
+import apiPost from "../../utils/https";
+import {  resetNotifications, setErrorNotification } from "../reducers/error.reducer";
 
 export const createDoctorAction = createAsyncThunk(
     "doctors/new",
@@ -22,15 +22,14 @@ export const createDoctorAction = createAsyncThunk(
     }
 );
 
-
 export const getDoctorAction = createAsyncThunk(
     "doctors/get",
     async (data, thunkAPI) => {
         try {
             thunkAPI.dispatch(resetNotifications());
-            const response = await apiGet(data);
+            const response = await apiPost(data);
             return {
-                doctor: response.data.createDoctor,
+                doctor: response.data.getOneDoctor,
                 success: true,
             };
         } catch (err) {

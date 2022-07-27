@@ -2,11 +2,47 @@ import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import {  NavLink, Outlet, useLocation } from "react-router-dom";
 import image1 from "../../data/images/01.jpg";
+import { useSelector, useDispatch } from "react-redux/";
+import { useEffect } from "react";
+import { GET_DOCTOR_QUERY } from "../../queries/doctors";
+import { getDoctorAction } from "../../state/actions/doctors.action";
+import { useState } from "react";
 
 const DoctorsProfile = () => {
+    const { user } = useSelector((state) => state.auth);
+    const [doctor, setDoctor] = useState({})
+
     const params = useLocation();
+    const dispatch = useDispatch()
+
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
+
+    useEffect(() => {
+        if (user?.email) {
+            const inputValues = {
+                email: user?.email,
+            };
+
+            const details = {
+                query: GET_DOCTOR_QUERY,
+                variables: {
+                    input: inputValues,
+                },
+            };
+
+            const getDoctor = async () => {
+                const { payload } = await dispatch(getDoctorAction(details));
+                setDoctor(payload.doctor)
+                return payload
+            };
+            getDoctor();
+
+            
+        }
+    }, [user?.email, dispatch, setDoctor]);
+
+    console.log('<<<<>>>>', doctor);
     return (
         <div className="mx-5 min-h-screen ">
             <div className="flex flex-col sm:flex-col sm:items-center sm:justify-between md:flex-row md:items-center md:justify-between lg:flex-row lg:items-center lg:justify-between">
@@ -31,7 +67,7 @@ const DoctorsProfile = () => {
                 <div className="bg-blue-500 h-[100px] rounded-t-md relative"></div>
                 <div className="ml-5 flex flex-row bt-white absolute top-48">
                     <img
-                        src={image1}
+                        src={doctor.image}
                         height="100px"
                         width="100px"
                         className="rounded-full drop-shadow-lg"

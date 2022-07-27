@@ -4,15 +4,9 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { PageNavigation, Pagination } from "./Pagination";
 
-const data = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,31, 32, 33, 34, 35, 36, 37, 38, 39, 40
-];
-
 //add a filter method to filter data using names
 
-const TableComp = () => {
-    // const {doctor, loading} = useSelector((state) => state.doctor)
+const TableComp = ({data}) => {
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
 
@@ -36,41 +30,36 @@ const TableComp = () => {
 
     const totalPages = myData.getTotalPages()
 
-    useEffect(() => {
-        // dispatchEvent()
-    })
 
     return (
         <div className="flex flex-col">
             <table className="table w-full">
                 <thead className="mx-2 bg-blue-300 w-full ">
                     <tr className="text-left px-2">
-                        <th className="px-2">#</th>
-                        <th className="px-2">Name</th>
-                        <th className="px-2">Email</th>
-                        <th className="px-2">Age</th>
-                        <th className="px-2">Gender</th>
-                        <th className="px-2">Date</th>
+                        <th className="px-2">Patient Name</th>
+                        <th className="px-2">Patient Email</th>
+                        <th className="px-2">Patient Phone</th>
                         <th className="px-2">Time</th>
+                        <th className="px-2">Date</th>
                         <th className="px-2">Department</th>
-                        <th className="px-2">Doctor</th>
+                        <th className="px-2">Status</th>
                         <th className="px-2">Fees</th>
+                        <th className="px-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {myData.getPage(currentPage).map((item, index) => {
+                    {data?.getPage(currentPage).map((appnt, index) => {
                         return (
                             <tr className="" key={index}>
-                                <td className="px-2 py-2">{item}</td>
-                                <td className="px-2 py-2">Doe</td>
-                                <td className="px-2 py-2">doe@gmail.com</td>
-                                <td className="px-2 py-2">23</td>
-                                <td className="px-2 py-2">Male</td>
-                                <td className="px-2 py-2">20-06-2022</td>
-                                <td className="px-2 py-2">08:30am</td>
-                                <td className="px-2 py-2">Cardiology</td>
-                                <td className="px-2 py-2">Dr. Calvin Carno</td>
-                                <td className="px-2 py-2">$ 200</td>
+                                <td className="px-2 py-2">{`${appnt.name} ${appnt.name}`}</td>
+                                <td className="px-2 py-2">{appnt.email}</td>
+                                <td className="px-2 py-2">{appnt.phone}</td>
+                                <td className="px-2 py-2">{appnt.time}</td>
+                                <td className="px-2 py-2">{appnt.date}</td>
+                                <td className="px-2 py-2">{appnt.Department}</td>
+                                <td className="px-2 py-2">{appnt.status}</td>
+                                <td className="px-2 py-2">{appnt.Fees}</td>
+                                <td className="px-2 py-2">{appnt.Action}</td>
                             </tr>
                         );
                     })}

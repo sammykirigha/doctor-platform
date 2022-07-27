@@ -42,7 +42,6 @@ const ForgotPassword = () => {
     });
 
 
-
     return (
         <div className="flex flex-col mt-[10%] ">
             <div className="mt-5 bg-white border sm:mx-auto md:mx-auto rounded-md p-3  w-[100%] max-w-[600px]">

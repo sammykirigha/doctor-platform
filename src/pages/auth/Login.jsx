@@ -13,6 +13,7 @@ import { signinUserAction } from "../../state/actions/auth.action";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { resetNotifications } from "../../state/reducers/error.reducer";
+import { FaSpinner } from 'react-icons/fa'
 
 const LoginForm = (props) => {
      const  {user, loading}  = useSelector((state) => state.auth);
@@ -170,11 +171,11 @@ const LoginForm = (props) => {
                             </div>
 
                             <button
-                                className={`mt-5 w-full bg-blue-500 text-white py-2 px-8 rounded-md ${loading ? 'cursor-not-allowed' : 'cursor-pointer'} `}
+                                className={`mt-5 w-full flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${isSubmitting ? 'cursor-not-allowed' : 'cursor-pointer'} `}
                                 disabled={isSubmitting}
                                 type="submit"
                             >
-                                Submit
+                               {isSubmitting && <FaSpinner className='animate-spin' /> } {" "}Submit
                             </button>
                             <div className=" flex justify-center mt-2">
                                 <span className="mx-auto text-lg font-semibold">
