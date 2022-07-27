@@ -22,7 +22,6 @@ export const createDoctorAction = createAsyncThunk(
     }
 );
 
-
 export const getDoctorAction = createAsyncThunk(
     "doctors/get",
     async (data, thunkAPI) => {

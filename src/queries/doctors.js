@@ -45,7 +45,6 @@ export const GET_DOCTOR_QUERY = `
     gender
     address
     department
-    token
     rating
     specialization
     experience

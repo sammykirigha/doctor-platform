@@ -16,8 +16,6 @@ const Appointment = ({ onClick }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { doctor, loading } = useSelector((state) => state.doctor);
-    // const [doctor, setDoctor] = useState({});
-    // const [loading, setLoading] = useState(true)
     const [selectedOption, setSelectedOption] = useState(null);
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
@@ -47,12 +45,12 @@ const Appointment = ({ onClick }) => {
             };
 
             const getDoctor = async () => {
-                const results = await dispatch(getDoctorAction(details));
-                // setDoctor(results.payload.doctor);
-                // setLoading(false)
-                console.log("resultssssssss", results.payload.doctor);
+                const { payload } = await dispatch(getDoctorAction(details));
+                // setDoctor(payload.doctor)
+                return payload
             };
             getDoctor();
+
         }
     }, [user?.email, dispatch]);
 
