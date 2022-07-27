@@ -9,11 +9,15 @@ import TableComp from "../components/others/TableComp";
 import { useEffect } from "react";
 import { getDoctorAction } from "../state/actions/doctors.action";
 import { GET_DOCTOR_QUERY } from "../queries/doctors";
+import { FaSpinner } from "react-icons/fa";
 
 const Appointment = ({ onClick }) => {
     const params = useLocation();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
+    const { doctor, loading } = useSelector((state) => state.doctor);
+    // const [doctor, setDoctor] = useState({});
+    // const [loading, setLoading] = useState(true)
     const [selectedOption, setSelectedOption] = useState(null);
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
@@ -43,13 +47,16 @@ const Appointment = ({ onClick }) => {
             };
 
             const getDoctor = async () => {
-                
-            const results = await dispatch(getDoctorAction(details));
-            console.log('results', results);
-            }
-            getDoctor()
+                const results = await dispatch(getDoctorAction(details));
+                // setDoctor(results.payload.doctor);
+                // setLoading(false)
+                console.log("resultssssssss", results.payload.doctor);
+            };
+            getDoctor();
         }
     }, [user?.email, dispatch]);
+
+    console.log(doctor, loading);
 
     return (
         <div className="flex flex-col mx-3">
@@ -86,7 +93,22 @@ const Appointment = ({ onClick }) => {
                     )}
                 </div>
             </div>
-            <TableComp data={"data"} />
+            {loading ? (
+                <div className="flex items-center justify-center mt-5">
+                    <FaSpinner className="h-24 w-24 bg-white text-blue-600 animate-spin" />
+                </div>
+            ) : doctor?.appointments?.length > 0 ? (
+                <TableComp data={doctor?.appointments} />
+            ) : (
+                <div className="flex items-center justify-center">
+                    <div className="bg-white border h-auto  rounded-md flex items-center justify-center w-auto py-3 sm:w-auto sm:py-auto md:w-[500px] lg:w-[500px] mx-autho">
+                        <h1 className="text-xl text-gray-700 px-10">
+                            You do not have any appointments for now
+                        </h1>
+                    </div>
+                </div>
+            )}
+
             <AppointmentModal
                 isOpen={createUserModalOpen}
                 closeModal={() => {

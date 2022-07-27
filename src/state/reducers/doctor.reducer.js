@@ -28,7 +28,7 @@ export const authSlice = createSlice({
         });
 
         builder.addCase(getDoctorAction.fulfilled, (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.doctor = null;
         });
 
