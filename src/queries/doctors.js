@@ -34,7 +34,7 @@ mutation CreateDoctor($input: CreateDoctorInput!) {
 }
 `
 
-export const GET_DOCTOR = `
+export const GET_DOCTOR_QUERY = `
  query GetOneDoctor($input: GetSingleDoctorInputByEmail!) {
   getOneDoctor(input: $input) {
     id
@@ -55,6 +55,7 @@ export const GET_DOCTOR = `
     instagramlLink
     twitterlLink
     appointments {
+      id
       patientId
       patient_email
       patient_phone

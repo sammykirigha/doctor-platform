@@ -1,13 +1,19 @@
 import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Button from "../components/common/Button";
 import Select from "react-select";
 import AppointmentModal from "../components/modals/AppointmentModal";
 import TableComp from "../components/others/TableComp";
+import { useEffect } from "react";
+import { getDoctorAction } from "../state/actions/doctors.action";
+import { GET_DOCTOR_QUERY } from "../queries/doctors";
 
-const Appointment = ({onClick}) => {
+const Appointment = ({ onClick }) => {
     const params = useLocation();
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth);
     const [selectedOption, setSelectedOption] = useState(null);
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
@@ -22,6 +28,28 @@ const Appointment = ({onClick}) => {
     const handleChange = () => {
         setSelectedOption(selectedOption);
     };
+
+    useEffect(() => {
+        if (user?.email) {
+            const inputValues = {
+                email: user?.email,
+            };
+
+            const details = {
+                query: GET_DOCTOR_QUERY,
+                variables: {
+                    input: inputValues,
+                },
+            };
+
+            const getDoctor = async () => {
+                
+            const results = await dispatch(getDoctorAction(details));
+            console.log('results', results);
+            }
+            getDoctor()
+        }
+    }, [user?.email, dispatch]);
 
     return (
         <div className="flex flex-col mx-3">
@@ -47,15 +75,18 @@ const Appointment = ({onClick}) => {
                         value={selectedOption}
                         onChange={handleChange}
                     />
-                    <Button
-                        text="Appointment"
-                        onClick={() => {
-                            setCreateUserModalOpen(!createUserModalOpen);
-                        }}
-                    />
+
+                    {user?.role === "doctor" ? null : (
+                        <Button
+                            text="Appointment"
+                            onClick={() => {
+                                setCreateUserModalOpen(!createUserModalOpen);
+                            }}
+                        />
+                    )}
                 </div>
             </div>
-           <TableComp />
+            <TableComp data={"data"} />
             <AppointmentModal
                 isOpen={createUserModalOpen}
                 closeModal={() => {

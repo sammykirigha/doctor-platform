@@ -25,18 +25,4 @@ export const apiPost = async (data = {}) => {
 	}
 }
 
-export const apiGet = async (data = {}) => {
-	try {
-		const res = await axios.get(ENDPOINT, data);
-
-		if (res.data.errors?.length > 0) {
-			throw res.data.errors[0].message
-		}
-
-		return res.data
-	} catch (error) {
-		throw error
-	}
-}
-
 export default apiPost;
