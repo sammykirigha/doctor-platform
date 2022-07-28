@@ -1,8 +1,14 @@
 import React from "react";
 import { BsFillClockFill, BsTelephone } from "react-icons/bs";
 import {HiOutlineMail} from 'react-icons/hi'
+import useFetchDoctor from "../../hooks/useFetchDoctor";
+import { useSelector } from "react-redux";
 
 const TimeTable = () => {
+     const { doctor } = useSelector((state) => state.doctor);
+
+    useFetchDoctor()
+
     return (
         <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row mb-5">
             <div className="sm:w-[100%] sm:mt-5 md:w-[100%] lg:w-[40%] border shadow-sm rounded-md  pt-3">
@@ -94,7 +100,7 @@ const TimeTable = () => {
                             effective immediate assistance
                         </p>
                         <span className="text-md text-blue-500 mx-auto mt-5">
-                            +152 534-468-854
+                           {doctor?.phone}
                         </span>
                     </div>
                 </div>
@@ -114,7 +120,7 @@ const TimeTable = () => {
                             Great doctor if you need your family member to get effective immediate assistance
                         </p>
                         <span className="text-md text-blue-500 mx-auto mt-5">
-                            contact@example.com
+                            {doctor?.email}
                         </span>
                     </div>
                 </div>

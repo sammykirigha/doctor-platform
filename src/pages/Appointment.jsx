@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { getDoctorAction } from "../state/actions/doctors.action";
 import { GET_DOCTOR_QUERY } from "../queries/doctors";
 import { FaSpinner } from "react-icons/fa";
+import useFetchDoctor from "../hooks/useFetchDoctor";
 
 const Appointment = ({ onClick }) => {
     const params = useLocation();
@@ -31,28 +32,30 @@ const Appointment = ({ onClick }) => {
         setSelectedOption(selectedOption);
     };
 
-    useEffect(() => {
-        if (user?.email) {
-            const inputValues = {
-                email: user?.email,
-            };
+    useFetchDoctor()
 
-            const details = {
-                query: GET_DOCTOR_QUERY,
-                variables: {
-                    input: inputValues,
-                },
-            };
+    // useEffect(() => {
+    //     if (user?.email) {
+    //         const inputValues = {
+    //             email: user?.email,
+    //         };
 
-            const getDoctor = async () => {
-                const { payload } = await dispatch(getDoctorAction(details));
-                // setDoctor(payload.doctor)
-                return payload
-            };
-            getDoctor();
+    //         const details = {
+    //             query: GET_DOCTOR_QUERY,
+    //             variables: {
+    //                 input: inputValues,
+    //             },
+    //         };
 
-        }
-    }, [user?.email, dispatch]);
+    //         const getDoctor = async () => {
+    //             const { payload } = await dispatch(getDoctorAction(details));
+    //             // setDoctor(payload.doctor)
+    //             return payload
+    //         };
+    //         getDoctor();
+
+    //     }
+    // }, [user?.email, dispatch]);
 
     console.log(doctor, loading);
 

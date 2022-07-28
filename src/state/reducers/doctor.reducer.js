@@ -13,12 +13,10 @@ export const authSlice = createSlice({
         //builders
         builder.addCase(createDoctorAction.pending, (state, action) => {
             state.loading = true;
-            state.doctor = null;
         });
 
         builder.addCase(getDoctorAction.pending, (state, action) => {
             state.loading = true;
-            state.doctor = null;
         });
 
         //fullfilled
@@ -29,7 +27,7 @@ export const authSlice = createSlice({
 
         builder.addCase(getDoctorAction.fulfilled, (state, action) => {
             state.loading = false;
-            state.doctor = null;
+            state.doctor = action.payload.doctor;
         });
 
         //rejected
