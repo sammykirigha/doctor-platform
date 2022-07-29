@@ -40,7 +40,6 @@ const AddDoctor = () => {
     const firstPathName = params.pathname.split("/")[1];
     const secondPathName = params.pathname.split("/")[2];
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleExperience = (event) => {

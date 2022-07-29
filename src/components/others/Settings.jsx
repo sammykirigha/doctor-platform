@@ -25,13 +25,25 @@ const departmentsOptions = [
 ];
 
 const Settings = () => {
+
     const { doctor } = useSelector((state) => state.doctor);
+    const [profileImage, setProfileImage] = useState("");
+    const [experience, setExperience] = useState("");
+    const [department, setDepartment] = useState(null);
+    const [uploading, setUploading] = useState(false);
+
     const dispatch = useDispatch();
     const imageUploadRef = useRef(null);
 
-    const [profileImage, setProfileImage] = useState("");
+     const handleExperience = (event) => {
+        setExperience(event.target.value);
+    }
 
-    const [uploading, setUploading] = useState(false);
+    console.log('department', department)
+
+    const handleDepartment = (event) => {
+        setDepartment(event.target.value)
+    }
 
     const handleImageChange = async (e) => {
         console.log(e.target.files);
@@ -53,8 +65,8 @@ const Settings = () => {
         //url
     };
 
+    
     const onSubmit = async (values) => {
-        // event.preventDefault();
         const inputValues = {
             firstname: values.firstname,
             lastname: values.lastname,
@@ -62,13 +74,15 @@ const Settings = () => {
             phone: values.phone,
             address: values.address,
             specialization: values.specialization,
-            department: values.department,
+            department: department,
             twitterlLink: values.twitterlLink,
             facebooklLink: values.facebooklLink,
             linkedinlLink: values.linkedinlLink,
             instagramlLink: values.instagramlLink,
-            experience: values.experience,
+            experience: experience,
         };
+
+        console.log('inputValues', inputValues);
 
         const details = {
             query: CREATE_DOCTOR,
@@ -76,6 +90,7 @@ const Settings = () => {
                 input: inputValues,
             },
         };
+
     };
 
     console.log(doctor);
@@ -104,8 +119,8 @@ const Settings = () => {
                         {doctor?.id && (
                             <Formik
                                 initialValues={doctor}
-                                // onSubmit={onSubmit}
-                                validationSchema={createDoctorSchema}
+                                onSubmit={onSubmit}
+                                // validationSchema={createDoctorSchema}
                             >
                                 {({
                                     values,
@@ -221,22 +236,11 @@ const Settings = () => {
                                                     <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
                                                         Departments
                                                     </label>
-                                                    <Select
-                                                        name="department"
-                                                        closeMenuOnSelect={
-                                                            false
-                                                        }
-                                                        components={
-                                                            animatedComponents
-                                                        }
-                                                        className="sm:w-[100%] md:w-[100%]"
-                                                        defaultValue={
-                                                            departmentsOptions[2]
-                                                        }
-                                                        options={
-                                                            departmentsOptions
-                                                        }
-                                                    />
+                                                    <select className="outline px-2 placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600" value={department} onChange={handleDepartment}>
+                                                        {departmentsOptions?.map((depart) => (
+                                                            <option value={depart.value}>{ depart.label}</option>
+                                                        ))}
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div className="gap-x-5 flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5 gap-2">
@@ -285,12 +289,14 @@ const Settings = () => {
                                                 </label>
                                                 <Field
                                                     name="experience"
+                                                    onChange={handleExperience}
+                                                    value={experience}
                                                     type="text"
                                                     placeholder="Your Experience:"
                                                     className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                                 />
                                             </div>
-                                            <div className="  ">
+                                            <div className="">
                                                 <button
                                                     className={`mt-5 w-[200px] bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer`}
                                                     disabled={isSubmitting}
@@ -301,7 +307,6 @@ const Settings = () => {
                                             </div>
                                         </div>
                                     </Form>
-                                    // </div>
                                 )}
                             </Formik>
                         )}
