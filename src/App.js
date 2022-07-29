@@ -36,11 +36,13 @@ const App = () => {
     return (
         <div>
             <Notifications />
-            <Routes>
-                {shared_routes?.map((route) => renderRoute(route))}
-                {admin_routes?.map((route) => renderRoute(route))}
-                {doctor_routes?.map((route) => renderRoute(route))}
-            </Routes>
+            <div>
+                <Routes>
+                    {shared_routes?.map((route) => renderRoute(route))}
+                    {admin_routes?.map((route) => renderRoute(route))}
+                    {doctor_routes?.map((route) => renderRoute(route))}
+                </Routes>
+            </div>
         </div>
     );
 };

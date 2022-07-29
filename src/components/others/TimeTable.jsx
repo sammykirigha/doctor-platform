@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsFillClockFill, BsTelephone } from "react-icons/bs";
 import {HiOutlineMail} from 'react-icons/hi'
 import useFetchDoctor from "../../hooks/useFetchDoctor";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const TimeTable = () => {
      const { doctor } = useSelector((state) => state.doctor);
 
     useFetchDoctor()
+
+     const dispatch = useDispatch()
+
+    useEffect(() => {
+      return ()=>dispatch(resetNotifications())
+    }, [dispatch])
 
     return (
         <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row mb-5">

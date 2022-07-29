@@ -54,7 +54,7 @@ export const updateDoctorAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-            console.log("GET DOCTOR ERROR: ", { err });
+            console.log("Update doctor: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,

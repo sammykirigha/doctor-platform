@@ -38,8 +38,6 @@ export const links = [
 		name: 'Profile',
 		link: '/doctors/:id',
 		access: ["admin", "doctor","secretary"],
-			
-		
 	},
 	{
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,

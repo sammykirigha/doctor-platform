@@ -129,7 +129,7 @@ const Sidebar = () => {
                                         <div
                                             onClick={() =>
                                                 navigate(
-                                                    "/" + user?.role + link
+                                                    "/" + user?.role + link.toString().replace('/doctors/:id',`/doctors/${doctor?.id}` )
                                                 )
                                             }
                                             className="flex items-center cursor-pointer"
