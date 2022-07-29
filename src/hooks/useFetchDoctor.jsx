@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { GET_DOCTOR_QUERY } from '../queries/doctors';
 import { getDoctorAction } from '../state/actions/doctors.action';

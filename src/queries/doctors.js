@@ -70,3 +70,9 @@ export const GET_DOCTOR_QUERY = `
   }
 }
 `
+
+export const UPDATE_DOCTOR = `
+mutation UpdateDoctor($input: UpdateDoctorInput!) {
+  updateDoctor(input: $input)
+}
+`

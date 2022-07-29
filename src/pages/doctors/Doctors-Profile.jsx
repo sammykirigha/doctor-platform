@@ -1,14 +1,18 @@
 import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import {  NavLink, Outlet, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import useFetchDoctor from "../../hooks/useFetchDoctor";
-
 const DoctorsProfile = () => {
-    const [doctor] = useFetchDoctor()
+ const { doctor } = useSelector((state) => state.doctor);
+
     const params = useLocation();
+    useFetchDoctor()
+
 
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
+    
 
     return (
         <div className="mx-5 min-h-screen ">
@@ -34,7 +38,7 @@ const DoctorsProfile = () => {
                 <div className="bg-blue-500 h-[100px] rounded-t-md relative"></div>
                 <div className="ml-5 flex flex-row bt-white absolute top-48">
                     <img
-                        src={doctor.image}
+                        src={doctor?.image}
                         height="100px"
                         width="100px"
                         className="rounded-full drop-shadow-lg"
@@ -43,9 +47,9 @@ const DoctorsProfile = () => {
                 </div>
                 <div className="flex flex-col ml-[140px]">
                     <h3 className="text-lg text-slate-900 font-semibold">
-                        Dr. {doctor.firstname} {doctor.lastname}
+                        Dr. {doctor?.firstname} {doctor?.lastname}
                     </h3>
-                    <span className="text-md text-gray-500">{ doctor.specialization}</span>
+                    <span className="text-md text-gray-500">{ doctor?.specialization}</span>
                 </div>
                 <div className=" flex flex-col mt-7 mx-5">
                     <div className=" flex flex-col sm:flex-col sm:items-center sm:justify-between sm:h-[auto] md:flex-row md:items-center md:justify-between md:h-[50px] md:w-[100%] bg-gray-200 rounded-md   ">

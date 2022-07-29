@@ -1,14 +1,15 @@
 import React from "react";
-import { BsHeart } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
-const Profile = ({ experience, appointments }) => {
+const Profile = () => {
+    const { doctor } = useSelector((state) => state.doctor);
     return (
         <div className="mx-4">
             <div className="flex flex-col mt-7 ">
                 <div className="text-slate-900 text-lg font-semibold ">
                     Introduction:
                 </div>
-                <p className="pt-8 text-gray-500  font-medium">{experience}</p>
+                <p className="pt-8 text-gray-500  font-medium">{doctor?.experience}</p>
             </div>
 
             <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row justify-between gap-x-20 mt-5">
@@ -16,8 +17,8 @@ const Profile = ({ experience, appointments }) => {
                     <div className="text-lg text-slate-800 font-bold my-3">
                         Appointment List
                     </div>
-                    {appointments?.length > 0 ? (
-                        appointments?.map((appnt) => {
+                    {doctor?.appointments?.length > 0 ? (
+                        doctor?.appointments?.map((appnt) => {
                             return (
                                 <div className="gap-6 cursor-pointer">
                                     <div className="flex flex-row mb-3 items-center justify-between px-4 py-2 border drop-shadow-md bg-white w-full">
@@ -34,7 +35,7 @@ const Profile = ({ experience, appointments }) => {
                                                 Department
                                             </span>
                                             <span className="text-md text-slate-500">
-                                                Cardiogram
+                                                {appnt.department}
                                             </span>
                                         </div>
                                         <div className="flex flex-col mx-2 py-3">
@@ -42,7 +43,7 @@ const Profile = ({ experience, appointments }) => {
                                                 Date
                                             </span>
                                             <span className="text-md text-slate-500">
-                                                10 Dec
+                                                {appnt.date}
                                             </span>
                                         </div>
                                         <div className="flex flex-col mx-2 py-3">
@@ -50,7 +51,7 @@ const Profile = ({ experience, appointments }) => {
                                                 Status
                                             </span>
                                             <span className="text-md text-slate-500">
-                                                complete
+                                                {appnt.status}
                                             </span>
                                         </div>
                                     </div>
@@ -67,33 +68,6 @@ const Profile = ({ experience, appointments }) => {
                         </div>
                     )}
                 </div>
-
-                {/* payment */}
-                {/* <div className="w-full">
-                    <div className="text-lg text-slate-800 font-bold my-3">
-                        Payment List
-                    </div>
-                    {[1, 2, 3, 4, 5, 6].map((x) => {
-                        return (
-                            <div className="flex gap-10">
-                                <div className="flex flex-row mb-3 items-center justify-evenly px-4 py-2 border drop-shadow-md bg-white w-full">
-                                    <BsHeart className="h-7 w-7 text-blue-600" />
-                                    <div className="flex flex-col mx-2 py-3">
-                                        <span className="text-lg text-slate-900 font-bold">
-                                            Cardiogram
-                                        </span>
-                                        <span className="text-md text-slate-500">
-                                            Dr.Calvin Carlo
-                                        </span>
-                                    </div>
-                                    <span className="text-md text-slate-900">
-                                        10 Dec
-                                    </span>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div> */}
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
@@ -32,12 +32,27 @@ const genderOptions = [
 
 const AddDoctor = () => {
     const { user } = useSelector((state) => state.auth);
-    const params = useLocation();
-    const firstName = params.pathname.split("/")[1];
-    const secondName = params.pathname.split("/")[2];
+    const [experience, setExperience] = useState("")
+    const [department, setDepartment] = useState("")
+    const [gender, setGender] = useState("")
 
-    const navigate = useNavigate();
+    const params = useLocation();
+    const firstPathName = params.pathname.split("/")[1];
+    const secondPathName = params.pathname.split("/")[2];
+
     const dispatch = useDispatch();
+
+    const handleExperience = (event) => {
+        setExperience(event.target.value)
+    }
+
+    const handleDepartment = (event) => {
+        setDepartment(event.target.value)
+    }
+
+     const handleGender = (event) => {
+        setGender(event.target.value)
+    }
 
     const onSubmit = async (values) => {
         // event.preventDefault();
@@ -49,13 +64,13 @@ const AddDoctor = () => {
             phone: values.phone,
             address: values.address,
             specialization: values.specialization,
-            department: values.department,
-            gender: values.gender,
+            department: department,
+            gender: gender,
             twitterlLink: values.twitterlLink,
             facebooklLink: values.facebooklLink,
             linkedinlLink: values.linkedinlLink,
             instagramlLink: values.instagramlLink,
-            experience: values.experience,
+            experience: experience,
         };
 
         const details = {
@@ -87,11 +102,11 @@ const AddDoctor = () => {
                         Docris{" "}
                         <RiArrowRightSLine className="flex items-center mx-2 mt-0.5" />{" "}
                         <span className="text-blue-700 text-md">
-                            {firstName.toUpperCase()}
+                            {firstPathName.toUpperCase()}
                         </span>{" "}
                         <RiArrowRightSLine className="flex items-center mx-2 mt-0.5" />{" "}
                         <span className="text-blue-700 text-md">
-                            {secondName.toUpperCase()}
+                            {secondPathName.toUpperCase()}
                         </span>{" "}
                     </p>
                 </div>
@@ -220,6 +235,8 @@ const AddDoctor = () => {
                                         </label>
                                         <Select
                                             name="department"
+                                            value={department}
+                                            onChange={handleDepartment}
                                             closeMenuOnSelect={false}
                                             components={animatedComponents}
                                             className="sm:w-[100%] md:w-[100%]"
@@ -233,6 +250,8 @@ const AddDoctor = () => {
                                         </label>
                                         <Select
                                             name="gender"
+                                            value={gender}
+                                            onChange={handleGender}
                                             closeMenuOnSelect={false}
                                             components={animatedComponents}
                                             className="sm:w-[100%] md:w-[100%]"
@@ -286,6 +305,8 @@ const AddDoctor = () => {
                                     </label>
                                     <Field
                                         name="experience"
+                                        value={experience}
+                                        onChange={handleExperience}
                                         type="text"
                                         placeholder="Your Experience:"
                                         className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
