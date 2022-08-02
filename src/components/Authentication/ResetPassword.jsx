@@ -8,6 +8,7 @@ import { RESET_PASSWORD } from "../../queries/auth";
 import { resetPasswordAction } from "../../state/actions/auth.action";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetNotifications } from "../../state/reducers/error.reducer";
+import { NewPasswordSchema, validateConfirmPassword, validateNewPassword } from "../../utils/validationhelper";
 
 
 const ResetPassword = () => {
@@ -37,53 +38,9 @@ const ResetPassword = () => {
         if (!loading && error === null) {
             navigate('/login', {replace: true})
         }
-
-       console.log('"""""""', error);
     }
-        
-    console.log('%%%%%%%', message, error);
-
-    const NewPasswordSchema = Yup.object().shape({
-        newPassword: Yup.string()
-            .test("len", "Very weak", (val) => val.length > 5)
-            .test("len", "Weak", (val) => val.length > 8)
-            .required("new Password cant be empty"),
-    });
-
-    const ConfirmNewPasswordSchema = Yup.object().shape({
-        confirmNewPassword: Yup.string()
-            .test("len", "Very weak", (val) => val.length > 5)
-            .test("len", "Weak", (val) => val.length > 8)
-            .required("confirm password cant be empty"),
-    });
 
 
-
-    const validateNewPassword = (value) => {
-        let error = undefined;
-        try {
-            NewPasswordSchema.validateSync({
-                newPassword: value,
-            });
-        } catch (validationError) {
-            error = validationError.errors[0];
-        }
-
-        return error;
-	};
-	
-	 const validateConfirmPassword = (value) => {
-        let error = undefined;
-        try {
-            ConfirmNewPasswordSchema.validateSync({
-                confirmNewPassword: value,
-            });
-        } catch (validationError) {
-            error = validationError.errors[0];
-        }
-
-        return error;
-    };
 
      useEffect(() => {
          return ()=>dispatch(resetNotifications())

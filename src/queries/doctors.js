@@ -76,3 +76,47 @@ mutation UpdateDoctor($input: UpdateDoctorInput!) {
   updateDoctor(input: $input)
 }
 `
+
+export const CHANGE_DOCTOR_PASSWORD_QUERY = `
+ mutation ChangeDoctorsPassword($input: ChangePasswordInput!) {
+  changeDoctorsPassword(input: $input)
+}
+`
+
+export const FETCH_ALL_DOCTORS_QUERY = `
+query GetDoctors {
+  getDoctors {
+    id
+    firstname
+    lastname
+    email
+    phone
+    gender
+    address
+    department
+    token
+    rating
+    specialization
+    experience
+    image
+    facebooklLink
+    linkedinlLink
+    instagramlLink
+    twitterlLink
+    appointments {
+      id
+      patientId
+      patient_email
+      patient_phone
+      department
+      doctorId
+      date
+      time
+      comments
+      fees
+      status
+      description
+    }
+  }
+}
+`

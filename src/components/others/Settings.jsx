@@ -1,14 +1,27 @@
-import { Form, Field, Formik } from "formik";
+import { Form, Field, Formik, ErrorMessage } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_DOCTOR } from "../../queries/doctors";
+import {
+    CHANGE_DOCTOR_PASSWORD_QUERY,
+    UPDATE_DOCTOR,
+} from "../../queries/doctors";
 import { resetNotifications } from "../../state/reducers/error.reducer";
 import Button from "../common/Button";
 import InputField from "../Authentication/InputField";
 import fileUploader from "../../utils/file-uploader";
 import { useRef } from "react";
-import { updateDoctorAction } from "../../state/actions/doctors.action";
-import { FaArrowCircleUp, FaArrowUp } from "react-icons/fa";
+import {
+    changePasswordAction,
+    updateDoctorAction,
+} from "../../state/actions/doctors.action";
+import { FaArrowUp, FaRegEyeSlash } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import {
+    NewPasswordSchema,
+    validateConfirmPassword,
+    validateNewPassword,
+    validatePassword,
+} from "../../utils/validationhelper";
 
 const departmentsOptions = [
     { value: "Eye Care", label: "Eye Care" },
@@ -31,7 +44,7 @@ const Settings = () => {
 
     const dispatch = useDispatch();
     const imageUploadRef = useRef(null);
-
+    const params = useParams();
     const handleScrollHandleBar = () => {
         if (
             document.body.scrollTop > 20 ||
@@ -55,7 +68,6 @@ const Settings = () => {
     };
 
     const handleImageChange = async (e) => {
-        console.log(e.target.files);
         if (e.target.files?.length === 0) return;
 
         const file = e.target.files[0];
@@ -102,7 +114,25 @@ const Settings = () => {
         topScrollHandler();
     };
 
-    console.log(doctor);
+    const handlePasswordSubmit = async (values, { resetForm }) => {
+        const inputValues = {
+            id: doctor?.id,
+            password: values.password,
+            newPassword: values.newPassword,
+        };
+
+        const details = {
+            query: CHANGE_DOCTOR_PASSWORD_QUERY,
+            variables: {
+                input: inputValues,
+            },
+        };
+
+        await dispatch(changePasswordAction(details));
+        topScrollHandler();
+
+        resetForm({ values: "" });
+    };
 
     useEffect(() => {
         return () => dispatch(resetNotifications());
@@ -346,48 +376,89 @@ const Settings = () => {
                             Change your password:
                         </span>
                     </div>
-                    <form className="flex flex-col mt-7 px-5">
-                        <div className="ml-2 mt-3">
-                            <div className="w-full flex flex-col ">
-                                <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
-                                    Old password :
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Old password:"
-                                    className="w-full h-10 mt-1 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
-                                />
-                            </div>
+                    <Formik
+                        initialValues={{
+                            password: "",
+                            newPassword: "",
+                        }}
+                        onSubmit={handlePasswordSubmit}
+                        // validationSchema={NewPasswordSchema}
+                    >
+                        {({
+                            values,
+                            errors,
+                            touched,
+                            handleChange,
+                            handleBlur,
+                            handleSubmit,
+                            isSubmitting,
+                        }) => (
+                            <Form className="flex flex-col mt-7 px-5">
+                                <div className="flex flex-col gap-2 mt-4">
+                                    <InputField
+                                        name="password"
+                                        validate={validatePassword}
+                                        type="password"
+                                        label="Enter Old Password:"
+                                    />
+                                    <ErrorMessage name="password">
+                                        {(error) => (
+                                            <p className="text-md text-red-600">
+                                                {" "}
+                                                {error}
+                                            </p>
+                                        )}
+                                    </ErrorMessage>
+                                </div>
+                                <div className="flex flex-col gap-2 mt-4 w-full mb-5 relative">
+                                    <InputField
+                                        name="newPassword"
+                                        validate={validateNewPassword}
+                                        type="password"
+                                        label=" New Password:"
+                                    />
 
-                            <div className=" w-full flex flex-col mt-5">
-                                <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
-                                    New password:
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="New password:"
-                                    className="w-full h-10 mt-1 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
+                                    <ErrorMessage name="confirmnewPassword">
+                                        {(error) => (
+                                            <p className="text-md text-red-600">
+                                                {" "}
+                                                {error}
+                                            </p>
+                                        )}
+                                    </ErrorMessage>
+                                </div>
+
+                                <div className="flex flex-col gap-2 mt-4 w-full mb-5 relative">
+                                    <InputField
+                                        name="confirmnewPassword"
+                                        validate={validateNewPassword}
+                                        type="password"
+                                        label="Confirm New Password:"
+                                    />
+
+                                    <ErrorMessage name="confirmnewPassword">
+                                        {(error) => (
+                                            <p className="text-md text-red-600">
+                                                {" "}
+                                                {error}
+                                            </p>
+                                        )}
+                                    </ErrorMessage>
+                                </div>
+
+
+                                <Button
+                                    type="submit"
+                                    text="Save Changes"
+                                    loading={isSubmitting}
                                 />
-                            </div>
-                            <div className="w-full mb-3 flex flex-col mt-5 ">
-                                <label className="after:content-['*'] after:ml-0.5 after:text-red-500">
-                                    Re-type New password
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Your Bio:"
-                                    className="w-full mr-3 h-[100px] mt-1  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
-                                />
-                            </div>
-                            <div className="mb-4 mt-3">
-                                <Button text="Save password" />
-                            </div>
-                        </div>
-                    </form>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
             </div>
 
-            <div className=" flex items-center justify-end mr-5">
+            <div className=" flex items-center justify-end mr-5 mt-5">
                 {showScrollButton && (
                     <button
                         onClick={topScrollHandler}

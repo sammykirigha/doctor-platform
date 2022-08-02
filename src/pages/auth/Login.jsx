@@ -39,8 +39,6 @@ const LoginForm = (props) => {
          await dispatch(signinUserAction(details));
     };
 
-    console.log('<<<<<<<<<<<>>>>>>>>', user);
-
     const SignUpSchema = Yup.object().shape({
         email: Yup.string()
             .email("invalid email")
