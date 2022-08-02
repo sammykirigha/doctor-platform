@@ -211,6 +211,26 @@ const AddPatient = () => {
                                         </div>
                                     </div>
                                     <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                        <div className="flex flex-col sm:w-full ">
+                                            <InputField
+                                                name="county"
+                                                validate=""
+                                                type="text"
+                                                label="County:"
+                                                placeholder="County of Residence:"
+                                            />
+                                        </div>
+                                        <div className="flex flex-col sm:w-full">
+                                            <InputField
+                                                name="bloodGroup"
+                                                validate=""
+                                                type="text"
+                                                label="Blood Group:"
+                                                placeholder="Blood Group:"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
                                         <div className="flex flex-col sm:w-full  ">
                                             <InputField
                                                 name="nationality"
