@@ -7,7 +7,7 @@ import {
 } from "../reducers/error.reducer";
 import { logoutUserSuccess } from "../reducers/auth.reducer";
 import { parseError } from "../../utils/parseError";
-import { ME_QUERY } from "../../queries/auth";
+import { CONFIRM_TOKEN_QUERY, ME_QUERY } from "../../queries/auth";
 
 //login user action
 export const signinUserAction = createAsyncThunk(
@@ -117,6 +117,27 @@ export const getCurrentUserAction = createAsyncThunk(
             const response = await apiPost({ query: ME_QUERY });
             const { token, ...rest } = response.data.currentUser;
             localStorage.setItem("auth-token", token)
+            return {
+                user: rest,
+                success: true,
+            };
+        } catch (err) {
+            localStorage.clear()
+            return {
+                success: false
+            }
+        }
+    }
+);
+
+//confirm email
+export const confirmEmailrAction = createAsyncThunk(
+    "user/confirm-email",
+    async (_data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost({ query: CONFIRM_TOKEN_QUERY });
+            const { token, ...rest } = response.data.currentUser;
             return {
                 user: rest,
                 success: true,

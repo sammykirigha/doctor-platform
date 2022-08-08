@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { FORGET_PASSWORD } from '../../queries/auth';
 import { useDispatch} from 'react-redux';
 import { forgotPasswordAction } from '../../state/actions/auth.action';
-import {FaSpinner} from 'react-icons/fa'
+import { FaSpinner } from 'react-icons/fa';
 
 const ForgotPassword = () => {
 	

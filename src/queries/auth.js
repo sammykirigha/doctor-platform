@@ -50,3 +50,10 @@ export const ME_QUERY = `
   }
 }
 `
+
+
+export const CONFIRM_TOKEN_QUERY = `
+mutation ConfirmPassword($input: ConfirmEmailInput!) {
+  confirmPassword(input: $input)
+}
+`
