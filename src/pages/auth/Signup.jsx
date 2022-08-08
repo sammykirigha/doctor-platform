@@ -69,6 +69,8 @@ const SignupForm = () => {
             setError("")
         }, 3000)
 
+        // && user?.confirmed
+
         if (user) {
                 navigate("/login", { replace: true });
         }

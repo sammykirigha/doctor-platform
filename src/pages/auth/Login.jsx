@@ -63,6 +63,8 @@ const LoginForm = (props) => {
         return error;
     };
 
+    console.log('<<<<<>>>>', user);
+
     useEffect(() => {
         setError(message) 
         setTimeout(() => {
