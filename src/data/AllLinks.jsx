@@ -55,7 +55,7 @@ export const links = [
 		icon: <FaWheelchair className='h-4.5 w-4.5' />,
 		name: 'Patient Profile',
 		link: '/patients/:id',
-		access: ["admin", "patient", "secretary"],
+		access: ["admin", "patient", "doctor", "secretary"],
 	},
 	{
 		icon: <AiOutlineAppstore className='h-4.5 w-4.5' />,

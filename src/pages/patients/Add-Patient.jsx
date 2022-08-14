@@ -1,15 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputField from "../../components/Authentication/InputField";
 import { Field, Form, Formik, useFormik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useFetchDoctor from "../../hooks/useFetchDoctor";
 import useFetchAllDoctor from "../../hooks/useFetchAllDoctors";
 import fileUploader from "../../utils/file-uploader";
 import FormSelect from "../../components/others/Select";
 import DatePickerField from "../../components/others/DatePicker";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const genderOptions = [
     { value: "Male", label: "Male" },
@@ -30,6 +31,7 @@ const AddPatient = () => {
 
     const params = useLocation();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const imageUploadRef = useRef(null);
 
     const firstName = params.pathname.split("/")[1];
@@ -47,6 +49,9 @@ const AddPatient = () => {
 
     useFetchAllDoctor();
 
+     useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
     return (
         <div className="mx-4 min-h-screen bg-gray-100 pb-8">
             <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row items-center justify-between pb-8 border">
