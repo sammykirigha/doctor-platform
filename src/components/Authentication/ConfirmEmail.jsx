@@ -1,77 +1,64 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { FaSpinner } from 'react-icons/fa';
-import InputField from './InputField';
-import { Form, Formik } from 'formik';
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { FaSpinner } from "react-icons/fa";
+import InputField from "./InputField";
+import { Form, Formik } from "formik";
+import { CONFIRM_TOKEN_QUERY } from "../../queries/auth";
+import { useDispatch } from "react-redux";
+import { confirmEmailrAction } from "../../state/actions/auth.action";
+import { useState } from "react";
 
 export const ConfirmEmail = () => {
-	const params = useParams();
-    const navigate = useNavigate(); 
+    const params = useParams();
+    const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const [isSubmitting, setIsSubmittingv] =useState(false)
 
-	 const onSubmit = async (values) => {
+    console.log(params.authToken);
 
-        const inputValues = {
-            email: values.email,
-        };
-        
+	const onhandleSubmit = async () => {
+		const inputValue = {
+			token: params.authToken
+		}
         const details = {
-            query: params,
+            query: CONFIRM_TOKEN_QUERY,
             variables: {
-                email: params,
+                input: inputValue,
             },
         };
 
-        // let { payload} = await dispatch(forgotPasswordAction(details));
-       
-        // if (payload.success) {
-        //     navigate('/login')
-        // }
+		let { payload } = await dispatch(confirmEmailrAction(details));
+		console.log('payload',payload);
+		setIsSubmittingv(true)
+		if (payload.success) {
+			setIsSubmittingv(false)
+            navigate("/login");
+		}
+
+		if (!payload.success) {
+			setIsSubmittingv(false)
+            navigate("/");
+		}
+		
+
     };
 
-  return (
-	  <div>
-		   <div className="flex flex-col mt-[10%] ">
-            <div className="mt-5 bg-white border sm:mx-auto md:mx-auto rounded-md p-3  w-[100%] max-w-[600px]">
-                <Formik
-                    initialValues={{
-                        token: "",
-                    }}
-                    onSubmit={onSubmit}
-                >
-                    {({
-                        values,
-                        errors,
-                        touched,
-                        handleChange,
-                        handleBlur,
-                        handleSubmit,
-                        isSubmitting,
-                    }) => (
-						<Form className="pb-5 px-10">
-							 <div className="my-10 w-full flex justify-center ">
-                                <h3 className="px-auto text-2xl font-bold">
-                                    Send Your Email
-                                </h3>
-                            </div>
-                            <div className="flex flex-col gap-2">
-                                <InputField
-                                    name="token"
-                                    type="text"
-                                    label="Enter email:"
-                                />
-                            </div>
-                            <button
-                                className={`mt-5 w-full flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${isSubmitting ? "cursor-not-allowed" : "cursor-pointer"} `}
-                                disabled={isSubmitting}
-                                type="submit"
-                            >
-                                {isSubmitting && <FaSpinner className='animate-spin' /> } {" "}Submit
-                            </button>
-                        </Form>
-                    )}
-                </Formik>
+    return (
+        <div className="mt-5 bg-white border mx-5 sm:mx-auto md:mx-auto rounded-md p-3  w-[100%] max-w-[600px]">
+            <div className="my-10 w-full flex justify-center ">
+                <h3 className="px-auto text-2xl font-bold">
+                    Confirm Your Email
+                </h3>
             </div>
+            <div className="gap-2 hidden">
+                <input name="token" type="text" label="Enter token:" />
+            </div>
+            <button
+				className={`mt-5 w-full flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer`}
+				onClick={onhandleSubmit}
+            >
+                {isSubmitting && <FaSpinner className='animate-spin' /> } {" "}Verify
+            </button>
         </div>
-	</div>
-  )
-}
+    );
+};

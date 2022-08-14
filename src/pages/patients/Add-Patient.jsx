@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputField from "../../components/Authentication/InputField";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik, useFormik } from "formik";
 import { useSelector } from "react-redux";
 import useFetchDoctor from "../../hooks/useFetchDoctor";
 import useFetchAllDoctor from "../../hooks/useFetchAllDoctors";
+import fileUploader from "../../utils/file-uploader";
+import FormSelect from "../../components/others/Select";
+import DatePickerField from "../../components/others/DatePicker";
 
 const genderOptions = [
     { value: "Male", label: "Male" },
@@ -19,33 +22,36 @@ const maritalStatusOptions = [
 ];
 
 const AddPatient = () => {
-    const [gender, setGender] = useState("");
-    const [status, setStatus] = useState("");
+    const [uploading, setUploading] = useState(false);
+    const [profileImage, setProfileImage] = useState("");
 
-    const { user } = useSelector((status) => status.auth);
-    const { doctor, doctors } = useSelector((status) => status.doctor);
+    const { user } = useSelector((state) => state.auth);
+    const { doctor, doctors } = useSelector((state) => state.doctor);
 
     const params = useLocation();
     const navigate = useNavigate();
+    const imageUploadRef = useRef(null);
 
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
 
-    const handleGender = (event) => {
-        setGender(event.target.value);
-    };
 
-    const handleStatus = (event) => {
-        setStatus(event.target.value);
-    };
 
-    useFetchAllDoctor()
+    const onSubmit = async (values) => {
+       console.log('my values', JSON.parse(JSON.stringify(values)) );
+        console.log('my image', profileImage);
+    }
+
+    console.log("add patient page");
+
+
+    useFetchAllDoctor();
 
     return (
-        <div className="mx-4 min-h-screen">
-            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row items-center justify-between mt-3">
+        <div className="mx-4 min-h-screen bg-gray-100 pb-8">
+            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row items-center justify-between pb-8 border">
                 <h3 className="text-lg text-slate-900 font-bold">
-                    Add New Patient
+                    Create A New Patient Account
                 </h3>
                 <div>
                     <p className="paragraph inline-flex items-center justify-between uppercase text-sm sm:text-sm md:text-md lg:text-md ">
@@ -61,7 +67,7 @@ const AddPatient = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row mt-3 w-full gap-3 rounded-md">
+            <div className="flex flex-col justify-center sm:flex-col md:flex-col lg:flex-row mt-3 w-full gap-3 rounded-md">
                 <div className="sm:w-[100%] md:w-[100%] lg:w-[60%] bg-white rounded-md sm:h-auto">
                     <div className="mx-3 mt-5 mb-5">
                         <Formik
@@ -70,17 +76,17 @@ const AddPatient = () => {
                                 lastname: "",
                                 email: "",
                                 phone: "",
+                                image: "",
                                 address: "",
-                                specialization: "",
-                                department: "",
+                                county: "",
+                                bloodGroup: "",
+                                nationality: "",
                                 gender: "",
-                                twitterlLink: "",
-                                facebooklLink: "",
-                                linkedinlLink: "",
-                                instagramlLink: "",
-                                experience: "",
+                                dateOfBirth: "",
+                                maritalStatus: "",
+                                disability: false
                             }}
-                            // onSubmit={onSubmit}
+                            onSubmit={onSubmit}
                             // validationSchema={createDoctorSchema}
                         >
                             {({
@@ -91,18 +97,23 @@ const AddPatient = () => {
                                 handleBlur,
                                 handleSubmit,
                                 isSubmitting,
+                                setFieldValue
                             }) => (
                                 // <div className="mx-3 mt-5 mb-5">
                                 <Form className="flex flex-col">
-                                    <div className="flex flex-col sm:flex-col md:flex-row items-center justify-between sm:ml-5 md:ml-9 mr-3 mt-7 ">
-                                        <div className="flex flex-row items-center ">
-                                            <span className="rounded-full sm:h-12 sm:w-12 md:h-20 md:w-20 flex items-center border border-gray-300 ">
+                                    <div className="flex flex-col  sm:flex-col md:flex-row items-center justify-between sm:ml-5 md:ml-9 mr-3 mt-7 ">
+                                        <div className="flex flex-col justify-center sm:flex-col md:flex-row lg:flex-row items-center ">
                                                 <img
-                                                    src="https://nellions.co.ug/wp-content/uploads/2018/06/male-placeholder-image.jpeg"
+                                                    src={
+                                                        profileImage === ""
+                                                            ? "https://nellions.co.ug/wp-content/uploads/2018/06/male-placeholder-image.jpeg"
+                                                            : profileImage
+                                                    }
+                                                    value={values.image}
+                                                    name="image"
                                                     alt="doc"
-                                                    className=" sm:h-12 md:h-12 sm:w-10 md:w-16 rounded-2xl ml-2"
+                                                    className=" h-[4.5rem] w-[4.5rem] sm:h-[4.5rem] sm:w-[4.5rem] md:h-16 md:w-16 lg:h-20 lg:w-20 rounded-full ml-2"
                                                 />
-                                            </span>
                                             <div className="flex flex-col ml-5">
                                                 <h2 className="text-lg text-slate-900 font-semibold mb-2">
                                                     Upload Your Picture
@@ -114,14 +125,47 @@ const AddPatient = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="flex mt-5 sm:flex-row sm:mt-4 md:flex-col lg:flex-col gap-3 items-center">
-                                            <Button text="Upload" />
+                                        <div className=" mb-3 flex mt-5 sm:flex-row sm:mt-4 md:flex-col lg:flex-col gap-3 items-center">
+                                            <Button
+                                                onClick={() =>
+                                                    imageUploadRef?.current?.click()
+                                                }
+                                                type="button"
+                                                text="Upload"
+                                                loading={uploading}
+                                            />
+                                            
+                                            <input
+                                                ref={imageUploadRef}
+                                                onChange={
+                                                   async (e) => {
+                                                        if (e.target.files?.length === 0) return;
+
+                                                        const file = e.target.files[0];
+
+                                                        try {
+                                                            setUploading(true);
+                                                            const url = await fileUploader(file);
+                                                            setUploading(false);
+                                                            setProfileImage(url);
+                                                            setFieldValue("image", url)
+                                                        } catch (error) {
+                                                            setUploading(false);
+                                                            console.log(error);
+                                                        }
+                                                    }
+                                                    }
+                                                className="hidden"
+                                                type="file"
+                                                id=""
+                                            />
                                         </div>
                                     </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex  flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full ">
                                             <InputField
                                                 name="firstname"
+                                                value={values.firstname}
                                                 validate=""
                                                 type="text"
                                                 label="First Name"
@@ -131,6 +175,7 @@ const AddPatient = () => {
                                         <div className="flex flex-col sm:w-full ">
                                             <InputField
                                                 name="lastname"
+                                                value={values.lastname}
                                                 validate=""
                                                 type="text"
                                                 label="Last Name"
@@ -138,10 +183,11 @@ const AddPatient = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full ">
                                             <InputField
                                                 name="email"
+                                                value={values.email}
                                                 validate=""
                                                 type="email"
                                                 label="Email address:"
@@ -151,6 +197,7 @@ const AddPatient = () => {
                                         <div className="flex flex-col sm:w-full">
                                             <InputField
                                                 name="phone"
+                                                value={values.phone}
                                                 validate=""
                                                 type="text"
                                                 label="Phone Num:"
@@ -158,10 +205,11 @@ const AddPatient = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full ">
                                             <InputField
                                                 name="address"
+                                                value={values.address}
                                                 validate=""
                                                 type="text"
                                                 label="Address:"
@@ -172,48 +220,45 @@ const AddPatient = () => {
                                             <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
                                                 Gender
                                             </label>
-                                            <select
-                                                className="outline px-2 placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
-                                                value={gender}
-                                                onChange={handleGender}
-                                            >
-                                                {genderOptions?.map(
-                                                    (depart) => (
-                                                        <option
-                                                            value={depart.value}
-                                                        >
-                                                            {depart.label}
-                                                        </option>
-                                                    )
-                                                )}
-                                            </select>
+                                            <FormSelect name="gender" options={genderOptions} />
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full ">
-                                            <InputField
-                                                name="dateOfBirth"
-                                                validate=""
-                                                type="date"
-                                                label="DOB:"
-                                                placeholder="date of birth:"
-                                            />
+                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
+                                                DOB
+                                            </label>
+                                            <DatePickerField name="dateOfBirth" />
                                         </div>
                                         <div className="flex flex-col sm:w-full">
-                                            <InputField
-                                                name="disabled"
-                                                validate=""
-                                                type="text"
-                                                label="Disability:"
-                                                placeholder="Facebook:"
-                                            />
+                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-3 ">
+                                                Disability
+                                            </label>
+                                            <div className="flex justify-between mt-0">
+                                                <div className="flex flex-row gap-3 items-center ">
+                                                    <input
+                                                        name="disability"
+                                                        onChange={(event) => {
+                                                            const value = event.target.checked ? true : false
+                                                            setFieldValue('disability', value)
+                                                            }}
+                                                        type="checkbox"
+                                                        class="w-6 h-6"
+                                                    />
+                                                    <span className="text-xl text-slate-900">
+                                                        Do you have any
+                                                        disability?
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full ">
                                             <InputField
                                                 name="county"
+                                                value={values.county}
                                                 validate=""
                                                 type="text"
                                                 label="County:"
@@ -223,6 +268,7 @@ const AddPatient = () => {
                                         <div className="flex flex-col sm:w-full">
                                             <InputField
                                                 name="bloodGroup"
+                                                value={values.bloodGroup}
                                                 validate=""
                                                 type="text"
                                                 label="Blood Group:"
@@ -230,10 +276,11 @@ const AddPatient = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5 gap-2 lg:gap-5">
+                                    <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full  ">
                                             <InputField
                                                 name="nationality"
+                                                value={values.nationality}
                                                 validate=""
                                                 type="text"
                                                 label="Nationality:"
@@ -244,31 +291,18 @@ const AddPatient = () => {
                                             <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
                                                 Marital Status
                                             </label>
-                                            <select
-                                                className="outline px-2 placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
-                                                value={status}
-                                                onChange={handleStatus}
-                                            >
-                                                {maritalStatusOptions?.map(
-                                                    (depart) => (
-                                                        <option
-                                                            value={depart.value}
-                                                        >
-                                                            {depart.label}
-                                                        </option>
-                                                    )
-                                                )}
-                                            </select>
+                                             <FormSelect name="maritalStatus" options={maritalStatusOptions} />
+                                            
                                         </div>
                                     </div>
                                     <div className=" ml-3 ">
-                                        <button
+                                        <Button
+                                            onClick={() => console.log("logging")}
                                             className={`mt-5 w-[200px] bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer`}
                                             disabled={isSubmitting}
                                             type="submit"
-                                        >
-                                            Create Account
-                                        </button>
+                                            text="Create Account"
+                                        />
                                     </div>
                                 </Form>
                                 // </div>
@@ -276,7 +310,7 @@ const AddPatient = () => {
                         </Formik>
                     </div>
                 </div>
-                {user?.role === "doctor" ? null : (
+                {user?.role === "doctor" || user?.role === "user" ? null : (
                     <div className="sm:w-[100%] md:w-[100%] lg:w-[40%] bg-white rounded-md pb-5">
                         <div className="mt-4 pl-4 border-b border-gray-400 pb-7 pt-4">
                             <h4 className="text-lg text-slate-800 font-semibold">
@@ -284,35 +318,37 @@ const AddPatient = () => {
                             </h4>
                         </div>
                         <div className="slim-scrollbar overflow-auto h-[700px]  ">
-                            {doctors && doctors?.map((doc, index) => {
-                                return (
-                                    <div
-                                        key={index}
-                                        className="flex flex-row  pl-3 mb-5 mt-2 mx-2 rounded-md border"
-                                    >
-                                        <div className="h-[100px] w-[100px] border my-3 rounded-lg drop-shadow-sm">
-                                            <img
-                                                src={doc?.image}
-                                                alt="doc"
-                                                height="100%"
-                                                width="100%"
-                                            />
+                            {doctors &&
+                                doctors?.map((doc, index) => {
+                                    return (
+                                        <div
+                                            key={index}
+                                            className="flex flex-row  pl-3 mb-5 mt-2 mx-2 rounded-md border"
+                                        >
+                                            <div className="h-[100px] w-[100px] border my-3 rounded-lg drop-shadow-sm">
+                                                <img
+                                                    src={doc?.image}
+                                                    alt="doc"
+                                                    height="100%"
+                                                    width="100%"
+                                                />
+                                            </div>
+                                            <div className="flex flex-col ml-5 mt-3">
+                                                <h5 className="text-lg text-slate-900 font-semibold">
+                                                    {doc.firstname}{" "}
+                                                    {doc.lastname}
+                                                </h5>
+                                                <span className="text-md text-gray-400">
+                                                    {doc.specialization}
+                                                </span>
+                                                <p className="text-md text-gray-400">
+                                                    {/* //TODO:show rating */}
+                                                    {/* {doc.experirnce} */}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div className="flex flex-col ml-5 mt-3">
-                                            <h5 className="text-lg text-slate-900 font-semibold">
-                                                {doc.firstname} {doc.lastname}
-                                            </h5>
-                                            <span className="text-md text-gray-400">
-                                                {doc.specialization}
-                                            </span>
-                                            <p className="text-md text-gray-400">
-                                                {/* //TODO:show rating */}
-                                                {/* {doc.experirnce} */}
-                                            </p>
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })}
                             <div className="mt-3 ml-7 mb-3">
                                 <Button
                                     text="All Doctors"
@@ -321,9 +357,7 @@ const AddPatient = () => {
                             </div>
                         </div>
                     </div>
-                    
-                )
-                }
+                )}
             </div>
         </div>
     );

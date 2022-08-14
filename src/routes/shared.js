@@ -1,3 +1,4 @@
+import { ConfirmEmail } from "../components/Authentication/ConfirmEmail";
 import ForgotPassword from "../components/Authentication/ForgotPassword";
 import ResetPassword from "../components/Authentication/ResetPassword";
 import LoginForm from "../pages/auth/Login";
@@ -10,6 +11,7 @@ export const shared_routes = [
     { path: "login", component: LoginForm },
     { path: "/", component: SignupForm },
     { path: "reset-password/:resetToken", component: ResetPassword },
+    { path: "confirm-email/:authToken", component: ConfirmEmail },
     { path: "forgot-password", component: ForgotPassword },
     { path: "landing-page/add-doctor", component: AddDoctor },
     { path: "landing-page/add-patient", component: AddPatient },

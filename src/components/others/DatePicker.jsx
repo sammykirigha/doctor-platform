@@ -1,0 +1,23 @@
+import React from "react";
+import {  useField, useFormikContext } from "formik";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+const DatePickerField = ({ ...props }) => {
+    const { setFieldValue } = useFormikContext();
+	const [field] = useField(props);
+	
+  return (
+    <DatePicker
+      {...field}
+      {...props}
+      selected={(field.value && new Date(field.value) ) || null}
+      onChange={(value) => {
+        setFieldValue(field.name, value);
+      }}
+      className="outline px-2 w-full placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
+    />
+  );
+};
+
+export default DatePickerField
