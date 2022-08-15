@@ -17,6 +17,7 @@ import Dashboard from "../pages/Dashboard";
 import Doctors from "../pages/doctors/Doctors";
 import DoctorsProfile from "../pages/doctors/Doctors-Profile";
 import AddPatient from "../pages/patients/Add-Patient";
+import PatientDashboard from "../pages/patients/PatientDashboard";
 import Patients from "../pages/patients/Patients";
 import PatientsProfile from "../pages/patients/Patients-Profile";
 import Calender from "../pages/social/Calendar";
@@ -30,8 +31,8 @@ export const patient_routes = [
         exact: true,
         component: DashboardRoutes,
 		children: [
-            { path: "", component: Dashboard },
-            { path: "dashboard", exact: true, component: Dashboard },
+            { path: "", component: PatientDashboard },
+            { path: "dashboard", exact: true, component: PatientDashboard },
             { path: "appointment", exact: true, component: Appointment },
             { path: "doctors", exact: true, component: Doctors },
             {
@@ -39,8 +40,8 @@ export const patient_routes = [
                 exact: true,
                 component: PatientsProfile,
                 children: [
-                    { path: "", component: Profile },
-                    { path: "profile-setting", exact: true, component: ProfileSettings },
+                    { path: "profile", exact: true, component: Profile },
+                    { path: "settings", exact: true, component: ProfileSettings },
                 ],
             },
             {
@@ -59,7 +60,7 @@ export const patient_routes = [
                 ],
             },
             { path: "calender", exact: true, component: Calender },
-            { path: "chat", exact: true, component: Chat },
+            { path: "chatt", exact: true, component: Chat },
         ],
     },
 

@@ -77,6 +77,10 @@ const LoginForm = (props) => {
         if (user?.role === "doctor") {
                 navigate("/doctor", { replace: true });
         }
+
+         if (user?.role === "patient") {
+                navigate("/patient", { replace: true });
+        }
         // if (user.role === "admin") {
         //         navigate("../layout", { replace: true });
         // }

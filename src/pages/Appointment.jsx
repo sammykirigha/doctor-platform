@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -8,6 +8,8 @@ import AppointmentModal from "../components/modals/AppointmentModal";
 import { FaSpinner } from "react-icons/fa";
 import useFetchDoctor from "../hooks/useFetchDoctor";
 import AppointmentTable from "../components/others/AppointmentTable";
+import { resetNotifications } from "../state/reducers/error.reducer";
+import useFetchPatient from "../hooks/useFetchPatients";
 
 const Appointment = ({ onClick }) => {
     const params = useLocation();
@@ -30,6 +32,7 @@ const Appointment = ({ onClick }) => {
     };
 
     useFetchDoctor()
+    useFetchPatient()
 
     // useEffect(() => {
     //     if (user?.email) {
@@ -55,6 +58,10 @@ const Appointment = ({ onClick }) => {
     // }, [user?.email, dispatch]);
 
     console.log(doctor, loading);
+    
+     useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     return (
         <div className="flex flex-col mx-3">

@@ -11,6 +11,8 @@ import fileUploader from "../../utils/file-uploader";
 import FormSelect from "../../components/others/Select";
 import DatePickerField from "../../components/others/DatePicker";
 import { resetNotifications } from "../../state/reducers/error.reducer";
+import { CREATE_PATIENT_QUERY } from "../../queries/patient";
+import { createNewPatientAccountAction } from "../../state/actions/patient.action";
 
 const genderOptions = [
     { value: "Male", label: "Male" },
@@ -40,18 +42,46 @@ const AddPatient = () => {
 
 
     const onSubmit = async (values) => {
-       console.log('my values', JSON.parse(JSON.stringify(values)) );
-        console.log('my image', profileImage);
+        let myValues = JSON.parse(JSON.stringify(values))
+
+        const inputValues = {
+            firstname: myValues.firstname,
+            lastname: myValues.lastname,
+            email: myValues.email,
+            phone: myValues.phone,
+            address: myValues.address,
+            dateOfBirth: myValues.dateOfBirth,
+            gender: myValues.gender,
+            bloodGroup: myValues.bloodGroup,
+            county: myValues.county,
+            nationality: myValues.nationality,
+            maritalStatus: myValues.maritalStatus,
+            image: myValues.image,
+            disability: myValues.disability
+        }
+
+        const details = {
+            query: CREATE_PATIENT_QUERY,
+            variables: {
+                input: inputValues
+            }
+        }
+
+        console.log('details',details);
+
+        const res = await dispatch(createNewPatientAccountAction(details))
+        if (res.payload.success) {
+            navigate("/patient", { replace: true });
+        } 
     }
 
-    console.log("add patient page");
 
-
-    useFetchAllDoctor();
+    // useFetchAllDoctor();
 
      useEffect(() => {
         return ()=>dispatch(resetNotifications())
-    },[dispatch])
+     }, [dispatch])
+    
     return (
         <div className="mx-4 min-h-screen bg-gray-100 pb-8">
             <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row items-center justify-between pb-8 border">
@@ -302,7 +332,6 @@ const AddPatient = () => {
                                     </div>
                                     <div className=" ml-3 ">
                                         <Button
-                                            onClick={() => console.log("logging")}
                                             className={`mt-5 w-[200px] bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer`}
                                             disabled={isSubmitting}
                                             type="submit"

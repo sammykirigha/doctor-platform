@@ -1,40 +1,41 @@
-import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { GET_DOCTOR_QUERY } from '../queries/doctors';
-import { getDoctorAction } from '../state/actions/doctors.action';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { GET_DOCTOR_QUERY } from "../queries/doctors";
+import { getDoctorAction } from "../state/actions/doctors.action";
 
 const useFetchDoctor = () => {
-	const { user } = useSelector((state) => state.auth);
-	const [doctor, setDoctor] = useState({})
+    const { user } = useSelector((state) => state.auth);
+    const [doctor, setDoctor] = useState({});
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-	useEffect(() => {
-        if (user?.email) {
-            const inputValues = {
-                email: user?.email,
-            };
+    useEffect(() => {
+        // if (user?.role === "doctor") {
+            if (user?.role === "doctor" && user?.email) {
+                const inputValues = {
+                    email: user?.email,
+                };
 
-            const details = {
-                query: GET_DOCTOR_QUERY,
-                variables: {
-                    input: inputValues,
-                },
-            };
+                const details = {
+                    query: GET_DOCTOR_QUERY,
+                    variables: {
+                        input: inputValues,
+                    },
+                };
 
-            const getDoctor = async () => {
-                const { payload } = await dispatch(getDoctorAction(details));
-                setDoctor(payload.doctor)
-                return payload
-            };
-            getDoctor();
+                const getDoctor = async () => {
+                    const { payload } = await dispatch(
+                        getDoctorAction(details)
+                    );
+                    setDoctor(payload.doctor);
+                    return payload;
+                };
+                getDoctor();
+            }
+        // }
+    }, [user?.email, dispatch, setDoctor, user?.role]);
 
-            
-        }
-	}, [user?.email, dispatch, setDoctor]);
-	
-  return [doctor]
+    return [doctor];
+};
 
-}
-
-export default useFetchDoctor
+export default useFetchDoctor;

@@ -13,7 +13,7 @@ const Layout = ({children}) => {
             <Sidebar />
             <div className=" relative  flex flex-col  min-h-screen">
                 <Navbar />
-                <div  className={` min-h-screen pt-6 pb-6 mt-16 ${
+                <div  className={` min-h-screen pt-8 pb-6 ${
                         sideBarOpen && "lg:ml-[250px]"
                     }`}>
                    {children}

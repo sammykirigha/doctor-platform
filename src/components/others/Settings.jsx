@@ -45,6 +45,7 @@ const Settings = () => {
     const dispatch = useDispatch();
     const imageUploadRef = useRef(null);
     const params = useParams();
+    
     const handleScrollHandleBar = () => {
         if (
             document.body.scrollTop > 20 ||

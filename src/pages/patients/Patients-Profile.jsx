@@ -12,12 +12,16 @@ import { FaRegAddressCard } from "react-icons/fa";
 import { GiMedicalDrip } from "react-icons/gi";
 import ProgressBar from "../../components/common/ProgressBar";
 import image1 from "../../data/images/01.jpg";
+import useFetchPatient from "../../hooks/useFetchPatients";
 
 const PatientsProfile = () => {
     const params = useLocation();
     const navigate = useNavigate();
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
+
+    useFetchPatient()
+
     return (
         <div className="mx-4 min-h-screen">
             <div className="flex flex-row items-center justify-between mt-3">
@@ -38,10 +42,10 @@ const PatientsProfile = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-row w-full gap-4  justify-between">
-                <div className="w-[20%] bg-white rounded-md h-[550px]">
+            <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row w-full gap-4  justify-between">
+                <div className="w-[100%] sm:w-[100%] md:w-[30%] bg-white rounded-md flex-none grow-0 h-[650px]">
                     <div className="border-b rounded-t-md">
-                        <div className="bg-hero-pattern h-[80px] relative rounded-t-md"></div>
+                        <div className="bg-blue-600 h-[80px] relative rounded-t-md"></div>
                         <div className="ml-16 flex flex-row bt-white absolute top-[155px]">
                             <img
                                 src={image1}
@@ -51,7 +55,7 @@ const PatientsProfile = () => {
                                 alt="doc"
                             />
                         </div>
-                        <div className="flex flex-col mt-10 ml-16">
+                        <div className="flex flex-col mt-[110px] ml-16">
                             <h3 className="text-lg text-slate-900 font-semibold">
                                 Dr. Calvin Carlo
                             </h3>
@@ -62,7 +66,7 @@ const PatientsProfile = () => {
                     </div>
                     <div className="my-8 mx-2">
                         <ProgressBar
-                            bgcolor={"blue"}
+                            bgcolor={"#2074fa"}
                             progress={85}
                             height={15}
                         />
@@ -112,10 +116,19 @@ const PatientsProfile = () => {
                                     B +
                                 </span>
                             </div>
+                             <div className="flex flex-row items-center  ">
+                                <GiMedicalDrip className="text-lg text-blue-600 " />
+                                <span className="text-md uppercase text-slate-900 font-bold opacity-90 mx-3">
+                                    Age
+                                </span>
+                                <span className="text-md text-gray-600">
+                                    30
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="w-[50%] bg-white rounded-md">
+                <div className="w-[100%] sm:w-[100%] md:w-[70%] bg-white flex-grow rounded-md">
                     <div className="flex flex-row items-center w-full justify-between border-b h-[60px]">
                         <NavLink
                             to="profile"
@@ -140,7 +153,6 @@ const PatientsProfile = () => {
                     </div>
                     <Outlet />
                 </div>
-                <div className="bg-red-500 w-[30%]">right</div>
             </div>
         </div>
     );

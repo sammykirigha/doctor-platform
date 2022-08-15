@@ -1,12 +1,18 @@
 import React from "react";
-import { FiArrowRight, FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react-icons/fi";
+import {
+    FiArrowRight,
+    FiTwitter,
+    FiGithub,
+    FiLinkedin,
+    FiFacebook,
+} from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
 import { BiTime, BiLocationPlus } from "react-icons/bi";
-import {  HiCurrencyDollar } from "react-icons/hi";
-import { AvailableDoctors } from "../../pages/doctors/DoctorsList";
-
+import { HiCurrencyDollar } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 const Overview = () => {
+    const { doctors } = useSelector((state) => state.doctors);
     return (
         <div className="mt-4 flex flex-col">
             <p className="text-lg text-gray-400 ">
@@ -49,62 +55,77 @@ const Overview = () => {
                     My Team:
                 </span>
                 <div className="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-1 ">
-                    {AvailableDoctors.map((doc, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className="bg-white rounded-md drop-shadow-md  mt-5  mb-5"
-                            >
-                                <div className="h-[200px] w-[200px] ">
-                                    <img
-                                        src={doc.image}
-                                        alt="doc"
-                                        height="100%"
-                                        width="100%"
-                                    />
-                                </div>
-                                <div className="flex flex-col mx-3 pt-3 pb-5 ">
-                                    <h5 className="text-lg text-slate-900 font-semibold">
-                                        {doc.name}
-                                    </h5>
-                                    <span className="text-md text-gray-400">
-                                        {doc.qualifications}
-                                    </span>
-                                    <div className="flex flex-row items-center">
-                                        <div className="flex flex-row">
-                                            {[1, 2, 3, 4, 5].map((item) => (
-                                                <AiOutlineStar
-                                                    color="orange"
-                                                    className="text-orange-600"
-                                                />
-                                            ))}
-                                        </div>
+                    {doctors?.length === 0 ? (
+                        <h2>no doctors</h2>
+                    ) : (
+                        doctors?.map((doc, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className="bg-white rounded-md drop-shadow-md  mt-5  mb-5"
+                                >
+                                    {/* <div className="h-[200px] w-[200px] ">
+                                        <img
+                                            src={doc.image}
+                                            alt="doc"
+                                            height="100%"
+                                            width="100%"
+                                        />
+                                    </div> */}
+                                    <div className="flex flex-col mx-3 pt-3 pb-5 ">
+                                        {/* <h5 className="text-lg text-slate-900 font-semibold">
+                                            {doc.name}
+                                        </h5>
+                                        <span className="text-md text-gray-400">
+                                            {doc.qualifications}
+                                        </span> */}
+                                        <div className="flex flex-row items-center">
+                                            <div className="flex flex-row">
+                                                {[1, 2, 3, 4, 5].map((item) => (
+                                                    <AiOutlineStar
+                                                        color="orange"
+                                                        className="text-orange-600"
+                                                    />
+                                                ))}
+                                            </div>
 
-                                        <span className="text-lg text-gray-500 ml-12">
-                                            5 star
-                                        </span>
+                                            <span className="text-lg text-gray-500 ml-12">
+                                                5 star
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className=" inline-flex items-center text-sm text-gray-400 my-1">
+                                                <BiLocationPlus className="text-blue-500 mr-3" />{" "}
+                                                63, PGShustoke, UK
+                                            </span>
+                                            <span className=" inline-flex items-center text-sm text-gray-400 my-1">
+                                                <BiTime className="text-blue-500 mr-3" />{" "}
+                                                Mon: 2:00PM - 6:00PM
+                                            </span>
+                                            <span className=" inline-flex items-center text-sm text-gray-400 my-1">
+                                                <HiCurrencyDollar className="text-blue-500 my-100 mr-3" />
+                                                $ 75 USD/Visit
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-row mt-4 mr-4 items-center justify-between">
+                                            <span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 ">
+                                                <FiFacebook className="text-blue-500  group-hover:text-white" />
+                                            </span>
+                                            <span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 ">
+                                                <FiLinkedin className="text-blue-500 group-hover:text-white" />
+                                            </span>
+                                            <span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 ">
+                                                <FiGithub className="text-blue-500 group-hover:text-white" />
+                                            </span>
+                                            <span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 ">
+                                                <FiTwitter className="text-blue-500 group-hover:text-white" />
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div className="flex flex-col">
-                                        <span className=" inline-flex items-center text-sm text-gray-400 my-1">
-                                            <BiLocationPlus className="text-blue-500 mr-3" /> 63, PGShustoke, UK
-                                        </span>
-                                        <span className=" inline-flex items-center text-sm text-gray-400 my-1">
-                                            <BiTime className="text-blue-500 mr-3" /> Mon: 2:00PM - 6:00PM
-                                        </span>
-                                        <span className=" inline-flex items-center text-sm text-gray-400 my-1">
-                                            <HiCurrencyDollar className="text-blue-500 my-100 mr-3" />$ 75 USD/Visit
-                                        </span>
-									</div>
-									<div className="flex flex-row mt-4 mr-4 items-center justify-between">
-										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiFacebook className="text-blue-500  group-hover:text-white"  /></span>
-										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiLinkedin className="text-blue-500 group-hover:text-white"  /></span>
-										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiGithub className="text-blue-500 group-hover:text-white" /></span>
-										<span className="h-10 w-10 drop-shadow-md rounded-full bg-blue-50 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><FiTwitter className="text-blue-500 group-hover:text-white" /></span>
-									</div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })
+                    )}
                 </div>
             </div>
         </div>

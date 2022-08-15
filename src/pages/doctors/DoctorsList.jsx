@@ -1,72 +1,8 @@
 import React from 'react'
 import { FiTwitter, FiGithub, FiLinkedin, FiFacebook } from "react-icons/fi";
 
-import image1 from "../../data/images/01.jpg"
-import image2 from "../../data/images/02.jpg"
-import image3 from "../../data/images/03.jpg"
-import image4 from "../../data/images/04.jpg"
-import image5 from "../../data/images/05.jpg"
-import image6 from "../../data/images/06.jpg"
-import image7 from "../../data/images/07.jpg"
-import image8 from "../../data/images/08.jpg"
-import image9 from "../../data/images/09.jpg"
-import image10 from "../../data/images/10.jpg"
 
-
- export const AvailableDoctors = [
-    {
-        name: "Calvin Carlo",
-        department: "Eye Care",
-        image: image1,
-    },
-    {
-        name: "Cristino Murphy",
-        department: "Gynecology",
-        image: image2,
-    },
-    {
-        name: "Alia Reddy",
-        department: "Psychotherapy",
-        image: image3,
-    },
-    {
-        name: "Toni Kovar",
-        department: "Orthopedic",
-        image: image4,
-    },
-    {
-        name: "Jessica McFarlane",
-        department: "Dentist",
-        image: image5,
-    },
-    {
-        name: "Elsie Sherman",
-        department: "Gastrologist",
-        image: image6,
-    },
-    {
-        name: "Bertha Magers",
-        department: "Urologist",
-        image: image7,
-    },
-    {
-        name: "Louis Batey",
-        department: "Neurologist",
-        image: image8,
-    },
-    {
-        name: "Julie Rosario",
-        department: "Psychotherapy",
-        image:image9,
-    },
-    {
-        name: "Scott Guzman",
-        department: "Nutritionists",
-        image: image10,
-    },
-];
-
-const DoctorsList = () => {
+const DoctorsList = ({AvailableDoctors}) => {
   return (
 	<div className="bg-gray-50 grid  sm:grid-cols-2 gap-y-16 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 mt-5 mx-4">
                 {AvailableDoctors?.map((doc, index) => {

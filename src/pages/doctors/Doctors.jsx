@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Button from "../../components/common/Button";
 import DoctorsList from "./DoctorsList";
+import { useDispatch, useSelector } from "react-redux";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const Doctors = () => {
     const params = useLocation();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const pathname = params.pathname.split("/")[2];
+
+    const { doctors } = useSelector(state => state.doctor)
+    
+    
+     useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+     }, [dispatch])
+    
     return (
         <div>
             <div className="flex flex-row items-center justify-between mx-4">
@@ -26,7 +38,9 @@ const Doctors = () => {
                 <Button text="Add A New Doctor" onClick={() => navigate('/doctors/add-doctor')} />
             </div>
             <div className="bg-gray-50 grid  sm:grid-cols-2 gap-y-16 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 mt-5 mx-4">
-                <DoctorsList />
+                {
+                    doctors?.length === 0 ? (<h1>No Doctors yet</h1>) : <DoctorsList AvailableDoctors={doctors} />
+               }
             </div>
         </div>
     );
