@@ -39,8 +39,6 @@ const LoginForm = (props) => {
          await dispatch(signinUserAction(details));
     };
 
-    console.log('<<<<<<<<<<<>>>>>>>>', user);
-
     const SignUpSchema = Yup.object().shape({
         email: Yup.string()
             .email("invalid email")
@@ -65,6 +63,8 @@ const LoginForm = (props) => {
         return error;
     };
 
+    console.log('<<<<<>>>>', user);
+
     useEffect(() => {
         setError(message) 
         setTimeout(() => {
@@ -76,6 +76,10 @@ const LoginForm = (props) => {
         }
         if (user?.role === "doctor") {
                 navigate("/doctor", { replace: true });
+        }
+
+         if (user?.role === "patient") {
+                navigate("/patient", { replace: true });
         }
         // if (user.role === "admin") {
         //         navigate("../layout", { replace: true });

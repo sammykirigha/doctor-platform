@@ -1,12 +1,8 @@
-import React, { useRef } from "react";
-import { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { PageNavigation, Pagination } from "./Pagination";
 
-//add a filter method to filter data using names
-
-const TableComp = ({data}) => {
+const PatientsTable = ({data}) => {
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
 
@@ -39,27 +35,19 @@ const TableComp = ({data}) => {
                         <th className="px-2">Patient Name</th>
                         <th className="px-2">Patient Email</th>
                         <th className="px-2">Patient Phone</th>
-                        <th className="px-2">Time</th>
-                        <th className="px-2">Date</th>
-                        <th className="px-2">Department</th>
-                        <th className="px-2">Status</th>
-                        <th className="px-2">Fees</th>
-                        <th className="px-2">Action</th>
+                        <th className="px-2">gender</th>
+                        <th className="px-2">address</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data?.getPage(currentPage).map((appnt, index) => {
+                    {data?.getPage(currentPage).map((patient, index) => {
                         return (
                             <tr className="" key={index}>
-                                <td className="px-2 py-2">{`${appnt.name} ${appnt.name}`}</td>
-                                <td className="px-2 py-2">{appnt.email}</td>
-                                <td className="px-2 py-2">{appnt.phone}</td>
-                                <td className="px-2 py-2">{appnt.time}</td>
-                                <td className="px-2 py-2">{appnt.date}</td>
-                                <td className="px-2 py-2">{appnt.Department}</td>
-                                <td className="px-2 py-2">{appnt.status}</td>
-                                <td className="px-2 py-2">{appnt.Fees}</td>
-                                <td className="px-2 py-2">{appnt.Action}</td>
+                                <td className="px-2 py-2">{`${patient.name} ${patient.name}`}</td>
+                                <td className="px-2 py-2">{patient.email}</td>
+                                <td className="px-2 py-2">{patient.phone}</td>
+                                <td className="px-2 py-2">{patient.gender}</td>
+                                <td className="px-2 py-2">{patient.address}</td>
                             </tr>
                         );
                     })}
@@ -87,4 +75,4 @@ const TableComp = ({data}) => {
     );
 };
 
-export default TableComp;
+export default PatientsTable;

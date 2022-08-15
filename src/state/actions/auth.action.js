@@ -7,7 +7,7 @@ import {
 } from "../reducers/error.reducer";
 import { logoutUserSuccess } from "../reducers/auth.reducer";
 import { parseError } from "../../utils/parseError";
-import { ME_QUERY } from "../../queries/auth";
+import {  ME_QUERY } from "../../queries/auth";
 
 //login user action
 export const signinUserAction = createAsyncThunk(
@@ -81,7 +81,6 @@ export const resetPasswordAction = createAsyncThunk(
         try {
             thunkAPI.dispatch(resetNotifications());
             const response = await apiPost(data);
-            thunkAPI.dispatch(setMessageNotification(response.data.resetUsersPassword));
             return {
                 message: response.data.resetUsersPassword,
                 success: true,
@@ -126,6 +125,27 @@ export const getCurrentUserAction = createAsyncThunk(
             return {
                 success: false
             }
+        }
+    }
+);
+
+//confirm email
+export const confirmEmailrAction = createAsyncThunk(
+    "user/confirm-email",
+    async (data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost(data);
+            thunkAPI.dispatch(setMessageNotification(response.data.resetUsersPassword));
+            return {
+                message: response.data.resetUsersPassword,
+                success: true,
+            };
+        } catch (err) {
+             thunkAPI.dispatch(setErrorNotification(err));
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
         }
     }
 );

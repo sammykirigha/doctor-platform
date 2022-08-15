@@ -1,8 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const Experience = () => {
     const { doctor } = useSelector((state) => state.doctor);
+
+     const dispatch = useDispatch()
+
+    useEffect(() => {
+      return ()=>dispatch(resetNotifications())
+    }, [dispatch])
 
     return (
         <div className="flex flex-col">

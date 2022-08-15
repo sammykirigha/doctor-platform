@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Button from "../components/common/Button";
 import Select from "react-select";
 import AppointmentModal from "../components/modals/AppointmentModal";
-import TableComp from "../components/others/TableComp";
-import { useEffect } from "react";
-import { getDoctorAction } from "../state/actions/doctors.action";
-import { GET_DOCTOR_QUERY } from "../queries/doctors";
 import { FaSpinner } from "react-icons/fa";
 import useFetchDoctor from "../hooks/useFetchDoctor";
+import AppointmentTable from "../components/others/AppointmentTable";
+import { resetNotifications } from "../state/reducers/error.reducer";
+import useFetchPatient from "../hooks/useFetchPatients";
 
 const Appointment = ({ onClick }) => {
     const params = useLocation();
@@ -33,6 +32,7 @@ const Appointment = ({ onClick }) => {
     };
 
     useFetchDoctor()
+    useFetchPatient()
 
     // useEffect(() => {
     //     if (user?.email) {
@@ -58,6 +58,10 @@ const Appointment = ({ onClick }) => {
     // }, [user?.email, dispatch]);
 
     console.log(doctor, loading);
+    
+     useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     return (
         <div className="flex flex-col mx-3">
@@ -99,7 +103,7 @@ const Appointment = ({ onClick }) => {
                     <FaSpinner className="h-24 w-24 bg-white text-blue-600 animate-spin" />
                 </div>
             ) : doctor?.appointments?.length > 0 ? (
-                <TableComp data={doctor?.appointments} />
+                <AppointmentTable data={doctor?.appointments} />
             ) : (
                 <div className="flex items-center justify-center">
                     <div className="bg-white border h-auto  rounded-md flex items-center justify-center w-auto py-3 sm:w-auto sm:py-auto md:w-[500px] lg:w-[500px] mx-autho">

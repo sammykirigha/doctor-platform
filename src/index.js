@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 import "./index.css";
 import App from "./App";
 import { NavigationProvider } from "./contexts/navigation.context";
@@ -20,13 +20,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
         <Provider store={store}>
-            {/* <ApolloProvider client={client}> */}
             <NavigationProvider>
                 <AddEventProvider>
                     <App />
                 </AddEventProvider>
             </NavigationProvider>
-            {/* </ApolloProvider> */}
         </Provider>
     </BrowserRouter>
 );

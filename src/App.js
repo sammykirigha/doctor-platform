@@ -6,14 +6,15 @@ import { doctor_routes } from "./routes/doctors";
 import { shared_routes } from "./routes/shared";
 import { useDispatch } from "react-redux";
 import { getCurrentUserAction } from "./state/actions/auth.action";
+import { patient_routes } from "./routes/patient";
 
 const App = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     useEffect(() => {
         const getUser = async () => {
             const { payload } = await dispatch(getCurrentUserAction());
-            console.log({ payload });
             if (!payload.success) navigate("/login", { replace: true });
         };
 
@@ -36,11 +37,14 @@ const App = () => {
     return (
         <div>
             <Notifications />
-            <Routes>
-                {shared_routes?.map((route) => renderRoute(route))}
-                {admin_routes?.map((route) => renderRoute(route))}
-                {doctor_routes?.map((route) => renderRoute(route))}
-            </Routes>
+            <div>
+                <Routes>
+                    {shared_routes?.map((route) => renderRoute(route))}
+                    {admin_routes?.map((route) => renderRoute(route))}
+                    {doctor_routes?.map((route) => renderRoute(route))}
+                    {patient_routes?.map((route) => renderRoute(route))}
+                </Routes>
+            </div>
         </div>
     );
 };

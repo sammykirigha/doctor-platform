@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createDoctorAction, getDoctorAction, updateDoctorAction } from "../actions/doctors.action";
+import { changePasswordAction, createDoctorAction, getAllDoctorsdAction, getDoctorAction, updateDoctorAction } from "../actions/doctors.action";
 
 const initialState = {
+    doctors: [],
     doctor: null,
     loading: false,
 };
@@ -19,8 +20,16 @@ export const authSlice = createSlice({
             state.loading = true;
         });
 
+         builder.addCase(changePasswordAction.pending, (state, action) => {
+            state.loading = true;
+         });
+        
         builder.addCase(updateDoctorAction.pending, (state, action) => {
             state.loading = true;
+        });
+        
+         builder.addCase(getAllDoctorsdAction.pending, (state, action) => {
+         state.loading = true;
          });
 
         //fullfilled
@@ -37,6 +46,16 @@ export const authSlice = createSlice({
          builder.addCase(updateDoctorAction.fulfilled, (state, action) => {
             state.loading = false;
          });
+        
+        builder.addCase(changePasswordAction.fulfilled, (state, action) => {
+            state.loading = false;
+        });
+        
+         builder.addCase(getAllDoctorsdAction.fulfilled, (state, action) => {
+             state.loading = false;
+             state.doctors = action.payload.doctors
+         });
+
 
         //rejected
         builder.addCase(createDoctorAction.rejected, (state, action) => {
@@ -52,6 +71,15 @@ export const authSlice = createSlice({
         builder.addCase(updateDoctorAction.rejected, (state, action) => {
             state.loading = false;
         });
+
+        builder.addCase(changePasswordAction.rejected, (state, action) => {
+            state.loading = false;
+        });
+        
+         builder.addCase(getAllDoctorsdAction.rejected, (state, action) => {
+             state.loading = false;
+         });
+
     },
 });
 

@@ -69,7 +69,9 @@ const SignupForm = () => {
             setError("")
         }, 3000)
 
-        if (user) {
+        
+
+        if (user && user?.confirmed===true) {
                 navigate("/login", { replace: true });
         }
         
@@ -82,8 +84,8 @@ const SignupForm = () => {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center mt-20">
-                <p className="text-2xl text-gray-700">Signing you up...</p>
+            <div className="flex items-center justify-center mt-20 bg-green-400 w-full">
+                <p className="text-2xl text-gray-700">Signing you up. Please chaeck your email to confirm it is you...</p>
             </div>
         )
     }

@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { FETCH_ALL_DOCTORS_QUERY } from "../../queries/doctors";
 import apiPost from "../../utils/https";
 import {  resetNotifications, setErrorNotification, setMessageNotification } from "../reducers/error.reducer";
 
@@ -54,7 +55,7 @@ export const updateDoctorAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-            console.log("GET DOCTOR ERROR: ", { err });
+            console.log("Update doctor: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,
@@ -62,3 +63,47 @@ export const updateDoctorAction = createAsyncThunk(
         }
     }
 );
+
+
+export const changePasswordAction = createAsyncThunk(
+    "doctors/change-password",
+    async (data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost(data);
+            thunkAPI.dispatch(setMessageNotification(response.data.changeDoctorsPassword));
+            return {
+                message: response.data.changeDoctorsPassword,
+                success: true,
+            };
+        } catch (err) {
+            console.log("change password doctor: ", { err });
+            thunkAPI.dispatch(setErrorNotification(err));
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
+    }
+);
+
+export const getAllDoctorsdAction = createAsyncThunk(
+    "doctors/all",
+    async (_, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost({query: FETCH_ALL_DOCTORS_QUERY});
+            return {
+                doctors: response.data.getDoctors,
+                success: true,
+            };
+        } catch (err) {
+            console.log("get doctors: ", { err });
+            thunkAPI.dispatch(setErrorNotification(err));
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
+    }
+);
+
+

@@ -1,6 +1,6 @@
 
 import { createSlice } from "@reduxjs/toolkit";
-import { resetPasswordAction } from "../actions/auth.action";
+import { confirmEmailrAction } from "../actions/auth.action";
 
 
 const initialState = {
@@ -8,35 +8,32 @@ const initialState = {
     loading: false,
 };
 
-
-
-export const resetPasswordSlice = createSlice({
-    name: "reset-password",
+export const confirmEmailSlice = createSlice({
+    name: "confirm-email",
     initialState,
     extraReducers: (builder) => {
-        //builders/pending
-        builder.addCase(resetPasswordAction.pending, (state, action) => {
+        //builders
+        builder.addCase(confirmEmailrAction.pending, (state, action) => {
             state.loading = true;
             state.message = null;
         });
 
         //fullfilled
-        builder.addCase(resetPasswordAction.fulfilled, (state, action) => {
+        builder.addCase(confirmEmailrAction.fulfilled, (state, action) => {
             state.loading = false;
             state.message = action.payload.message;
         });
 
         //rejected
-        builder.addCase(resetPasswordAction.rejected, (state, action) => {
+        builder.addCase(confirmEmailrAction.rejected, (state, action) => {
             state.loading = false;
             state.message = null;
         });
 
-    
     },
 });
 
 
-const { reducer } = resetPasswordSlice;
+const { reducer } = confirmEmailSlice;
 
 export default reducer;

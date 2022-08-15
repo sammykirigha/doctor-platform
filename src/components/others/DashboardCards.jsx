@@ -28,22 +28,13 @@ const cardsInfo = [
         amount: "16",
         category: "Vehicles",
     },
-    {
-        icon: <BiHomeAlt style={iconStyles} />,
-        amount: "558",
-        category: "Appointments",
-    },
-    {
-        icon: <BiHomeAlt style={iconStyles} />,
-        amount: "558",
-        category: "Operations",
-    },
+
 ];
 
 
 
 const DashboardCards = () => {
-	return <div className="bg-gray-50 grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-3 mt-5 rounded-md">
+	return <div className="bg-gray-50 grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-3 mt-5 rounded-md">
 		{
 			cardsInfo?.map((item, index) => {
 				return (
