@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import ProgressBar from "../../components/common/ProgressBar";
 import image1 from "../../data/images/01.jpg";
 import useFetchPatient from "../../hooks/useFetchPatients";
+import { FormatDateToDDMMYYYY } from "../../utils/formatDate";
 
 const PatientsProfile = () => {
  const { patient } = useSelector((state) => state.patient)
@@ -21,6 +22,10 @@ const PatientsProfile = () => {
 
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
+
+    const date = new Date(patient?.dateOfBirth.split('T')[0]) 
+    console.log(typeof date);
+
 
     useFetchPatient()
 
@@ -78,7 +83,7 @@ const PatientsProfile = () => {
                                     Gender
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    Female
+                                    {patient?.gender}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -87,7 +92,7 @@ const PatientsProfile = () => {
                                     Birthday
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    19th January 1995
+                                    {FormatDateToDDMMYYYY(date)}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -96,7 +101,7 @@ const PatientsProfile = () => {
                                     Phone No.
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    +(254) 707256013
+                                     {patient?.phone}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -105,7 +110,7 @@ const PatientsProfile = () => {
                                     Address
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    Nyeri, Kenya
+                                    {patient?.address}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -114,7 +119,7 @@ const PatientsProfile = () => {
                                     Blood Group
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    B +
+                                    {patient?.bloodGroup}
                                 </span>
                             </div>
                              <div className="flex flex-row items-center  ">
@@ -123,7 +128,8 @@ const PatientsProfile = () => {
                                     Age
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    30
+                                    {/* provide the age property */}
+                                    25
                                 </span>
                             </div>
                         </div>
