@@ -1,22 +1,24 @@
-import React from "react";
-import { RiArrowRightSLine } from "react-icons/ri";
-import {
-    NavLink,
-    Outlet,
-    useLocation,
-    useNavigate,
-} from "react-router-dom";
+//Dependencies
 import { BsPerson, BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa";
-import { GiMedicalDrip } from "react-icons/gi";
+import { GiMedicalDrip } from "react-icons/gi"
+import React from "react";
+import { RiArrowRightSLine } from "react-icons/ri";
+import { NavLink, Outlet, useLocation, useNavigate, } from "react-router-dom";
+import { useSelector } from "react-redux";
+//Components
 import ProgressBar from "../../components/common/ProgressBar";
 import image1 from "../../data/images/01.jpg";
 import useFetchPatient from "../../hooks/useFetchPatients";
 
 const PatientsProfile = () => {
+ const { patient } = useSelector((state) => state.patient)
+
     const params = useLocation();
     const navigate = useNavigate();
+
+
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
 
@@ -48,18 +50,17 @@ const PatientsProfile = () => {
                         <div className="bg-blue-600 h-[80px] relative rounded-t-md"></div>
                         <div className="ml-16 flex flex-row bt-white absolute top-[155px]">
                             <img
-                                src={image1}
-                                height="100px"
-                                width="100px"
-                                className="rounded-full drop-shadow-lg"
+                                src={patient?.image}
+                                className="h-24 w-24 rounded-full drop-shadow-lg"
                                 alt="doc"
                             />
                         </div>
                         <div className="flex flex-col mt-[110px] ml-16">
                             <h3 className="text-lg text-slate-900 font-semibold">
-                                Dr. Calvin Carlo
+                                 {patient?.firstname} {patient?.lastname}
                             </h3>
                             <apn className="text-md text-gray-500">
+                                {/* provide the age property */}
                                 25 Years
                             </apn>
                         </div>

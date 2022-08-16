@@ -42,6 +42,7 @@ export const ME_QUERY = `
  query CurrentUser {
   currentUser {
     id
+    user_id
     username
     email
     role

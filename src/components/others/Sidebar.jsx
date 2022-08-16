@@ -13,6 +13,7 @@ import { getDoctorAction } from "../../state/actions/doctors.action";
 
 const Sidebar = () => {
     const { user } = useSelector((state) => state.auth);
+     const { patient } = useSelector((state) => state.patient);
     const { doctor, loading } = useSelector((state) => state.doctor);
     const { sideBarOpen } = useContext(NavigationContext);
 
@@ -129,7 +130,7 @@ const Sidebar = () => {
                                         <div
                                             onClick={() =>
                                                 navigate(
-                                                    "/" + user?.role + link.toString().replace('/doctors/:id',`/doctors/${doctor?.id}` )
+                                                    "/" + user?.role + link.toString().replace('/doctors/:id',`/doctors/${doctor?.id}` ).replace('/patients/:id',`/patients/${patient?.id}` )
                                                 )
                                             }
                                             className="flex items-center cursor-pointer"

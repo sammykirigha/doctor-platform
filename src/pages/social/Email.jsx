@@ -38,8 +38,8 @@ const Email = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-row w-full mt-5">
-                <div className="w-[25%] bg-white rounded-md">
+            <div className="flex flex-col sm:flex-col md:flex-row w-full mt-5 gap-6 sm:gap-6">
+                <div className="w-full sm:w-full md:w-[25%] bg-white rounded-md">
                     <div className="bg-white flex flex-col items-center rounded-md border ">
                         <div className="flex flex-col justify-center  mt-6">
                             <button
@@ -54,13 +54,11 @@ const Email = () => {
                                 Compose
                             </button>
                         </div>
-                        <div className="flex flex-col mt-4 mb-5">
+                        <div className="grid flex-1 w-full  xs:grid-cols-2 md:grid-cols-1  xl:grid-cols-2 2xl:grid-cols-3 mt-4 mb-5 gap-5 px-5">
                             <NavLink
                                 to=""
-                                className={ ({ isActive }) =>
-                                    isActive
-                                        ? "inline-flex items-center text-lg bg-blue-600 text-white mb-4 cursor-pointer w-[150px] py-2 px-2 rounded-md"
-                                        : "inline-flex items-center text-lg text-gray-500 mb-4 cursor-pointer"
+                                className={({ isActive }) =>
+                                    `inline-flex items-center text-lg  cursor-pointer w-full ${isActive ? "bg-blue-600 text-white mb-4 py-2 px-2 rounded-md" : "text-gray-500 mb-4"} `
                                 }
                             >
                                 <BsInbox className="text-2xl mr-3" />
@@ -69,9 +67,7 @@ const Email = () => {
                             <NavLink
                                 to="starred"
                                 className={({ isActive }) =>
-                                    isActive
-                                        ? "inline-flex items-center text-lg bg-blue-600 text-white mb-4 cursor-pointer w-[150px] py-2 px-2 rounded-md"
-                                        : "inline-flex items-center text-lg text-gray-500 mb-4 cursor-pointer"
+                                    `inline-flex items-center text-lg  cursor-pointer w-full ${isActive ? "bg-blue-600 text-white mb-4 py-2 px-2 rounded-md" : "text-gray-500 mb-4"} `
                                 }
                             >
                                 <MdOutlineMail className="text-2xl mr-3" />
@@ -80,9 +76,7 @@ const Email = () => {
                             <NavLink
                                 to="spam"
                                 className={({ isActive }) =>
-                                    isActive
-                                        ? "inline-flex items-center text-lg bg-blue-600 text-white mb-4 cursor-pointer w-[150px] py-2 px-2 rounded-md"
-                                        : "inline-flex items-center text-lg text-gray-500 mb-4 cursor-pointer"
+                                    `inline-flex items-center text-lg  cursor-pointer w-full ${isActive ? "bg-blue-600 text-white mb-4 py-2 px-2 rounded-md" : "text-gray-500 mb-4"} `
                                 }
                             >
                                 <MdOutlineMail className="text-2xl mr-3" />
@@ -91,9 +85,7 @@ const Email = () => {
                             <NavLink
                                 to="sent"
                                 className={({ isActive }) =>
-                                    isActive
-                                        ? "inline-flex items-center text-lg bg-blue-600 text-white mb-4 cursor-pointer w-[150px] py-2 px-2 rounded-md"
-                                        : "inline-flex items-center text-lg text-gray-500 mb-4 cursor-pointer"
+                                    `inline-flex items-center text-lg  cursor-pointer w-full ${isActive ? "bg-blue-600 text-white mb-4 py-2 px-2 rounded-md" : "text-gray-500 mb-4"} `
                                 }
                             >
                                 <MdOutlineMarkEmailRead className="text-2xl mr-3" />
@@ -102,9 +94,7 @@ const Email = () => {
                             <NavLink
                                 to="drafts"
                                 className={({ isActive }) =>
-                                    isActive
-                                        ? "inline-flex items-center text-lg bg-blue-600 text-white mb-4 cursor-pointer w-[150px] py-2 px-2 rounded-md"
-                                        : "inline-flex items-center text-lg text-gray-500 mb-4 cursor-pointer"
+                                    `inline-flex items-center text-lg  cursor-pointer w-full ${isActive ? "bg-blue-600 text-white mb-4 py-2 px-2 rounded-md" : "text-gray-500 mb-4"} `
                                 }
                             >
                                 <MdOutlineDrafts className="text-2xl mr-3" />
@@ -113,9 +103,7 @@ const Email = () => {
                             <NavLink
                                 to="delete"
                                 className={({ isActive }) =>
-                                    isActive
-                                        ? "inline-flex items-center text-lg bg-blue-600 text-white mb-4 cursor-pointer w-[150px] py-2 px-2 rounded-md"
-                                        : "inline-flex items-center text-lg text-gray-500 mb-4 cursor-pointer"
+                                    `inline-flex items-center text-lg  cursor-pointer w-full ${isActive ? "bg-blue-600 text-white mb-4 py-2 px-2 rounded-md" : "text-gray-500 mb-4"} `
                                 }
                             >
                                 <AiOutlineDelete className="text-2xl mr-3" />
@@ -124,9 +112,7 @@ const Email = () => {
                             <NavLink
                                 to="notes"
                                 className={({ isActive }) =>
-                                    isActive
-                                        ? "inline-flex items-center text-lg bg-blue-600 text-white mb-4 cursor-pointer w-[150px] py-2 px-2 rounded-md"
-                                        : "inline-flex items-center text-lg text-gray-500 mb-4 cursor-pointer"
+                                    `inline-flex items-center text-lg  cursor-pointer w-full ${isActive ? "bg-blue-600 text-white mb-4 py-2 px-2 rounded-md" : "text-gray-500 mb-4"} `
                                 }
                             >
                                 <MdOutlineEventNote className="text-2xl mr-3" />
@@ -135,7 +121,7 @@ const Email = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-white flex-1 ml-2 rounded-md flex-1">
+                <div className="bg-white flex-1 ml-2 rounded-md ">
                     <Outlet />
                 </div>
             </div>

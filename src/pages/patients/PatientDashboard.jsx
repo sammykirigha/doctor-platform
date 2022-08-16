@@ -2,8 +2,14 @@ import React from "react";
 import DashboardCards from "../../components/others/DashboardCards";
 import Title from "../../components/others/Title";
 import welcome from "../../data/images/welcome.png";
+import useFetchPatient from "../../hooks/useFetchPatients";
+import { useSelector } from "react-redux";
 
 const PatientDashboard = () => {
+    const { patient } = useSelector((state) => state.patient)
+    
+    useFetchPatient()
+
     return (
         <div className="mx-5 sm:px-3 sm:pt-3 md:pt-0 lg:pb-3">
             <Title title={"Dashbord"} />
@@ -14,7 +20,7 @@ const PatientDashboard = () => {
                         Welcome back
                     </span>
                     <h2 className="text-2xl text-blue-600 tracking-wider font-bold mt-2">
-                        Samuel Kirigha
+                        {patient?.firstname} {patient?.lastname}
                     </h2>
                     <p className="text-xl mt-3 font-normal text-gray-700 pr-3">
                         We would like to take this opportunity to welcome you to

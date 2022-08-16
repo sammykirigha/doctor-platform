@@ -18,7 +18,9 @@ const useFetchPatient = () => {
 
                 const details = {
                     query: GET_ONE_PATIENT_QUERY,
-                    variables: inputValues,
+                    variables: {
+                        input: inputValues
+                    },
                 };
 
                 const getPatient = async () => {
@@ -32,6 +34,8 @@ const useFetchPatient = () => {
             }
         }
     }, [user?.role, dispatch, setPatient, user?.user_id]);
+
+    console.log('patient', patient);
 
     return [patient];
 };
