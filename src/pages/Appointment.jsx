@@ -11,11 +11,10 @@ import AppointmentTable from "../components/others/AppointmentTable";
 import { resetNotifications } from "../state/reducers/error.reducer";
 import useFetchPatient from "../hooks/useFetchPatients";
 
-const Appointment = ({ onClick }) => {
+const Appointment = ({ loading, appointments }) => {
     const params = useLocation();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const { doctor, loading } = useSelector((state) => state.doctor);
     const [selectedOption, setSelectedOption] = useState(null);
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
@@ -34,30 +33,6 @@ const Appointment = ({ onClick }) => {
     useFetchDoctor()
     useFetchPatient()
 
-    // useEffect(() => {
-    //     if (user?.email) {
-    //         const inputValues = {
-    //             email: user?.email,
-    //         };
-
-    //         const details = {
-    //             query: GET_DOCTOR_QUERY,
-    //             variables: {
-    //                 input: inputValues,
-    //             },
-    //         };
-
-    //         const getDoctor = async () => {
-    //             const { payload } = await dispatch(getDoctorAction(details));
-    //             // setDoctor(payload.doctor)
-    //             return payload
-    //         };
-    //         getDoctor();
-
-    //     }
-    // }, [user?.email, dispatch]);
-
-    console.log(doctor, loading);
     
      useEffect(() => {
         return ()=>dispatch(resetNotifications())
@@ -102,8 +77,8 @@ const Appointment = ({ onClick }) => {
                 <div className="flex items-center justify-center mt-5">
                     <FaSpinner className="h-24 w-24 bg-white text-blue-600 animate-spin" />
                 </div>
-            ) : doctor?.appointments?.length > 0 ? (
-                <AppointmentTable data={doctor?.appointments} />
+            ) : appointments?.length > 0 ? (
+                <AppointmentTable data={appointments} />
             ) : (
                 <div className="flex items-center justify-center">
                     <div className="bg-white border h-auto  rounded-md flex items-center justify-center w-auto py-3 sm:w-auto sm:py-auto md:w-[500px] lg:w-[500px] mx-autho">

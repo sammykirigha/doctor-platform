@@ -3,31 +3,32 @@ import { BsPerson, BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa";
 import { GiMedicalDrip } from "react-icons/gi"
-import React from "react";
+import React, { useEffect } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { NavLink, Outlet, useLocation, useNavigate, } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //Components
 import ProgressBar from "../../components/common/ProgressBar";
-import image1 from "../../data/images/01.jpg";
 import useFetchPatient from "../../hooks/useFetchPatients";
 import { FormatDateToDDMMYYYY } from "../../utils/formatDate";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const PatientsProfile = () => {
- const { patient } = useSelector((state) => state.patient)
+    const { patient } = useSelector((state) => state.patient)
 
     const params = useLocation();
-    const navigate = useNavigate();
-
+    const dispatch = useDispatch()
 
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
 
     const date = new Date(patient?.dateOfBirth.split('T')[0]) 
-    console.log(typeof date);
-
 
     useFetchPatient()
+
+    useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     return (
         <div className="mx-4 min-h-screen">

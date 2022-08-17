@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DashboardCards from "../../components/others/DashboardCards";
 import Title from "../../components/others/Title";
 import welcome from "../../data/images/welcome.png";
 import useFetchPatient from "../../hooks/useFetchPatients";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const PatientDashboard = () => {
     const { patient } = useSelector((state) => state.patient)
-    
+    const dispatch = useDispatch();
+
     useFetchPatient()
+
+    useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     return (
         <div className="mx-5 sm:px-3 sm:pt-3 md:pt-0 lg:pb-3">

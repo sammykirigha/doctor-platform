@@ -17,6 +17,7 @@ import Dashboard from "../pages/Dashboard";
 import Doctors from "../pages/doctors/Doctors";
 import DoctorsProfile from "../pages/doctors/Doctors-Profile";
 import AddPatient from "../pages/patients/Add-Patient";
+import PatientAppointments from "../pages/patients/PatientAppointments";
 import PatientDashboard from "../pages/patients/PatientDashboard";
 import Patients from "../pages/patients/Patients";
 import PatientsProfile from "../pages/patients/Patients-Profile";
@@ -33,7 +34,7 @@ export const patient_routes = [
 		children: [
             { path: "", component: PatientDashboard },
             { path: "dashboard", exact: true, component: PatientDashboard },
-            { path: "appointment", exact: true, component: Appointment },
+            { path: "appointment", exact: true, component: PatientAppointments },
             { path: "doctors", exact: true, component: Doctors },
             {
                 path: "patients/:id",

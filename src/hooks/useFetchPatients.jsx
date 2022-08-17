@@ -35,8 +35,6 @@ const useFetchPatient = () => {
         }
     }, [user?.role, dispatch, setPatient, user?.user_id]);
 
-    console.log('patient', patient);
-
     return [patient];
 };
 

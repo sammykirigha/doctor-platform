@@ -82,10 +82,9 @@ const AddDoctor = () => {
 
         await dispatch(createDoctorAction(details));
 
-        console.log(values);
+        
     };
 
-    console.log(user);
 
      useEffect(() => {
         return ()=>dispatch(resetNotifications())

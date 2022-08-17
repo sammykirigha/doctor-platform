@@ -5,7 +5,6 @@ import Button from "../../components/common/Button";
 import InputField from "../../components/Authentication/InputField";
 import { Field, Form, Formik, useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import useFetchDoctor from "../../hooks/useFetchDoctor";
 import useFetchAllDoctor from "../../hooks/useFetchAllDoctors";
 import fileUploader from "../../utils/file-uploader";
 import FormSelect from "../../components/others/Select";
@@ -67,7 +66,6 @@ const AddPatient = () => {
             }
         }
 
-        console.log('details',details);
 
         const res = await dispatch(createNewPatientAccountAction(details))
         if (res.payload.success) {
@@ -75,8 +73,7 @@ const AddPatient = () => {
         } 
     }
 
-
-    // useFetchAllDoctor();
+    
 
      useEffect(() => {
         return ()=>dispatch(resetNotifications())
