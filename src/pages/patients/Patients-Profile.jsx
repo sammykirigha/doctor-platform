@@ -65,10 +65,10 @@ const PatientsProfile = () => {
                             <h3 className="text-lg text-slate-900 font-semibold">
                                  {patient?.firstname} {patient?.lastname}
                             </h3>
-                            <apn className="text-md text-gray-500">
+                            <span className="text-md text-gray-500">
                                 {/* provide the age property */}
                                 25 Years
-                            </apn>
+                            </span>
                         </div>
                     </div>
                     <div className="my-8 mx-2">

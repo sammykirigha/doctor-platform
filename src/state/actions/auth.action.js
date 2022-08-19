@@ -95,7 +95,7 @@ export const resetPasswordAction = createAsyncThunk(
     }
 );
 
-//getcurrent user
+//logout user
 export const logoutUserAction = () => async (dispatch) => {
     try {
         localStorage.clear();
