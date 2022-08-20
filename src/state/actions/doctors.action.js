@@ -91,7 +91,8 @@ export const getAllDoctorsdAction = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             thunkAPI.dispatch(resetNotifications());
-            const response = await apiPost({query: FETCH_ALL_DOCTORS_QUERY});
+            const response = await apiPost({ query: FETCH_ALL_DOCTORS_QUERY });
+            console.log(response);
             return {
                 doctors: response.data.getDoctors,
                 success: true,

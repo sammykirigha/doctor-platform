@@ -1,26 +1,34 @@
-import React from "react";
-import { RiArrowRightSLine } from "react-icons/ri";
-import {
-    NavLink,
-    Outlet,
-    useLocation,
-    useNavigate,
-} from "react-router-dom";
+//Dependencies
 import { BsPerson, BsTelephone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa";
-import { GiMedicalDrip } from "react-icons/gi";
+import { GiMedicalDrip } from "react-icons/gi"
+import React, { useEffect } from "react";
+import { RiArrowRightSLine } from "react-icons/ri";
+import { NavLink, Outlet, useLocation, useNavigate, } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+//Components
 import ProgressBar from "../../components/common/ProgressBar";
-import image1 from "../../data/images/01.jpg";
 import useFetchPatient from "../../hooks/useFetchPatients";
+import { FormatDateToDDMMYYYY } from "../../utils/formatDate";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const PatientsProfile = () => {
+    const { patient } = useSelector((state) => state.patient)
+
     const params = useLocation();
-    const navigate = useNavigate();
+    const dispatch = useDispatch()
+
     const firstName = params.pathname.split("/")[1];
     const secondName = params.pathname.split("/")[2];
 
+    const date = new Date(patient?.dateOfBirth.split('T')[0]) 
+
     useFetchPatient()
+
+    useEffect(() => {
+        return ()=>dispatch(resetNotifications())
+    },[dispatch])
 
     return (
         <div className="mx-4 min-h-screen">
@@ -48,20 +56,19 @@ const PatientsProfile = () => {
                         <div className="bg-blue-600 h-[80px] relative rounded-t-md"></div>
                         <div className="ml-16 flex flex-row bt-white absolute top-[155px]">
                             <img
-                                src={image1}
-                                height="100px"
-                                width="100px"
-                                className="rounded-full drop-shadow-lg"
+                                src={patient?.image}
+                                className="h-24 w-24 rounded-full drop-shadow-lg"
                                 alt="doc"
                             />
                         </div>
                         <div className="flex flex-col mt-[110px] ml-16">
                             <h3 className="text-lg text-slate-900 font-semibold">
-                                Dr. Calvin Carlo
+                                 {patient?.firstname} {patient?.lastname}
                             </h3>
-                            <apn className="text-md text-gray-500">
+                            <span className="text-md text-gray-500">
+                                {/* provide the age property */}
                                 25 Years
-                            </apn>
+                            </span>
                         </div>
                     </div>
                     <div className="my-8 mx-2">
@@ -77,7 +84,7 @@ const PatientsProfile = () => {
                                     Gender
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    Female
+                                    {patient?.gender}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -86,7 +93,7 @@ const PatientsProfile = () => {
                                     Birthday
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    19th January 1995
+                                    {FormatDateToDDMMYYYY(date)}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -95,7 +102,7 @@ const PatientsProfile = () => {
                                     Phone No.
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    +(254) 707256013
+                                     {patient?.phone}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -104,7 +111,7 @@ const PatientsProfile = () => {
                                     Address
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    Nyeri, Kenya
+                                    {patient?.address}
                                 </span>
                             </div>
                             <div className="flex flex-row items-center  ">
@@ -113,7 +120,7 @@ const PatientsProfile = () => {
                                     Blood Group
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    B +
+                                    {patient?.bloodGroup}
                                 </span>
                             </div>
                              <div className="flex flex-row items-center  ">
@@ -122,7 +129,8 @@ const PatientsProfile = () => {
                                     Age
                                 </span>
                                 <span className="text-md text-gray-600">
-                                    30
+                                    {/* provide the age property */}
+                                    25
                                 </span>
                             </div>
                         </div>

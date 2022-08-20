@@ -1,5 +1,3 @@
-// import { gql } from "@apollo/client";
-
 export const LOGIN_USER = `
 mutation LoginUser($input: LoginUserInput!) {
   loginUser(input: $input) {
@@ -42,6 +40,7 @@ export const ME_QUERY = `
  query CurrentUser {
   currentUser {
     id
+    user_id
     username
     email
     role

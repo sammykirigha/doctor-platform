@@ -10,8 +10,8 @@ const useFetchDoctor = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // if (user?.role === "doctor") {
-            if (user?.role === "doctor" && user?.email) {
+        if (user?.role === "doctor") {
+            if (user?.email) {
                 const inputValues = {
                     email: user?.email,
                 };
@@ -32,7 +32,7 @@ const useFetchDoctor = () => {
                 };
                 getDoctor();
             }
-        // }
+        }
     }, [user?.email, dispatch, setDoctor, user?.role]);
 
     return [doctor];

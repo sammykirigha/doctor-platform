@@ -18,7 +18,9 @@ const useFetchPatient = () => {
 
                 const details = {
                     query: GET_ONE_PATIENT_QUERY,
-                    variables: inputValues,
+                    variables: {
+                        input: inputValues
+                    },
                 };
 
                 const getPatient = async () => {

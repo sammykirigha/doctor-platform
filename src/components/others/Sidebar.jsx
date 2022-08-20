@@ -3,43 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NavigationContext } from "../../contexts/navigation.context";
 import Logo from "../common/Logo";
-import { BiMessageRounded } from "react-icons/bi";
 import { links } from "../../data/AllLinks";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { IoMdArrowDropright } from "react-icons/io";
-import { useEffect } from "react";
-import { GET_DOCTOR_QUERY } from "../../queries/doctors";
-import { getDoctorAction } from "../../state/actions/doctors.action";
+import useFetchDoctor from "../../hooks/useFetchDoctor";
 
 const Sidebar = () => {
     const { user } = useSelector((state) => state.auth);
-    const { doctor, loading } = useSelector((state) => state.doctor);
+     const { patient } = useSelector((state) => state.patient);
+    const { doctor } = useSelector((state) => state.doctor);
     const { sideBarOpen } = useContext(NavigationContext);
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState("");
 
-    useEffect(() => {
-        if (user?.id) {
-            const inputValues = {
-                email: user?.email,
-            };
+    useFetchDoctor();
 
-            const details = {
-                query: GET_DOCTOR_QUERY,
-                variables: {
-                   input: inputValues,
-                },
-            };
-
-            dispatch(getDoctorAction(details));
-        }
-        console.log(user);
-    }, [user, dispatch]);
-
-    console.log(doctor);
-
+    
     return (
         <div
             className={`fixed w-[250px] top-[68px] bg-white border-r border-gray-200 h-screen lg:top-0 left-0 z-10 ${
@@ -129,7 +109,7 @@ const Sidebar = () => {
                                         <div
                                             onClick={() =>
                                                 navigate(
-                                                    "/" + user?.role + link.toString().replace('/doctors/:id',`/doctors/${doctor?.id}` )
+                                                    "/" + user?.role + link.toString().replace('/doctors/:id',`/doctors/${doctor?.id}`).replace('/patients/:id',`/patients/${patient?.id}`)
                                                 )
                                             }
                                             className="flex items-center cursor-pointer"

@@ -15,8 +15,9 @@ import Dropdown from "../common/Dropdown";
 import { MenuItem } from "../common/MenuItem";
 import SettingsModal from "../modals/SettingsModal";
 import image1 from "../../data/images/01.jpg";
-import image2 from "../../data/images/02.jpg";
-import image3 from "../../data/images/03.jpg";
+import {FaUser} from 'react-icons/fa'
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUserAction } from "../../state/actions/auth.action";
 
 export const Styles = {
     height: "27px",
@@ -27,7 +28,11 @@ export const Styles = {
 
 const Navbar = ({ onClick }) => {
     const { sideBarOpen, toggleSidebar } = useContext(NavigationContext);
-    const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
+    const { user } = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
+
+
+    console.log('loading the navbar page');
     return (
         <div
             className={`bg-white-900 py-[13px] flex flex-row border-b border-gray-200 border-l  fixed z-10 right-0 top-0 ${
@@ -51,52 +56,6 @@ const Navbar = ({ onClick }) => {
             </div>
 
             <div className="ml-auto flex mr-3">
-                <Dropdown
-                    width={200}
-                    activator={() => (
-                        <div className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2">
-                            <img
-                                src={flag}
-                                alt="logo"
-                                className="m-2 w-5 h-5 rounded-full cursor-pointer"
-                            />
-                        </div>
-                    )}
-                    items={[
-                        () => (
-                            <MenuItem image={flag}>
-                                <span>Kenya</span>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={tanz}>
-                                <span>Tanzania</span>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={ug}>
-                                <span>Uganda</span>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={rwad}>
-                                <span>Rwanda</span>
-                            </MenuItem>
-                        ),
-                    ]}
-                />
-                <div
-                    onClick={() => {
-                        setCreateUserModalOpen(!createUserModalOpen);
-                    }}
-                    className="bg-gray-300 hover:bg-blue-600 cursor-pointer w-9 h-9 rounded-full items-center ml-2"
-                >
-                    <img
-                        src={setting}
-                        alt="logo"
-                        className="m-2 w-5 h-5 text-blue-700 rounded-full cursor-pointer"
-                    />
-                </div>
 
                 <Dropdown
                     width={400}
@@ -129,106 +88,14 @@ const Navbar = ({ onClick }) => {
                                 </div>
                             </MenuItem>
                         ),
-                        () => (
-                            <MenuItem image={image2}>
-                                <div className="flex flex-col mb-3">
-                                    <h5>You have received a new email from</h5>
-                                    <div className="flex items-center justify-start">
-                                        <span className="text-lg text-gray-800 font-bold">
-                                            Kenya
-                                        </span>
-                                        <span className="text-gray-500 ml-1 mt-1">
-                                            1 hour ago
-                                        </span>
-                                    </div>
-                                </div>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={image3}>
-                                <div className="flex flex-col mb-3">
-                                    <h5>You have received a new email from</h5>
-                                    <div className="flex items-center justify-start">
-                                        <span className="text-lg text-gray-800 font-bold">
-                                            Kenya
-                                        </span>
-                                        <span className="text-gray-500 ml-1 mt-1">
-                                            1 hour ago
-                                        </span>
-                                    </div>
-                                </div>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={image3}>
-                                <div className="flex flex-col mb-3">
-                                    <h5>You have received a new email from</h5>
-                                    <div className="flex items-center justify-start">
-                                        <span className="text-lg text-gray-800 font-bold">
-                                            Kenya
-                                        </span>
-                                        <span className="text-gray-500 ml-1 mt-1">
-                                            1 hour ago
-                                        </span>
-                                    </div>
-                                </div>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={image3}>
-                                <div className="flex flex-col mb-3">
-                                    <h5>You have received a new email from</h5>
-                                    <div className="flex items-center justify-start">
-                                        <span className="text-lg text-gray-800 font-bold">
-                                            Kenya
-                                        </span>
-                                        <span className="text-gray-500 ml-1 mt-1">
-                                            1 hour ago
-                                        </span>
-                                    </div>
-                                </div>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={image3}>
-                                <div className="flex flex-col mb-3">
-                                    <h5>You have received a new email from</h5>
-                                    <div className="flex items-center justify-start">
-                                        <span className="text-lg text-gray-800 font-bold">
-                                            Kenya
-                                        </span>
-                                        <span className="text-gray-500 ml-1 mt-1">
-                                            1 hour ago
-                                        </span>
-                                    </div>
-                                </div>
-                            </MenuItem>
-                        ),
-                        () => (
-                            <MenuItem image={image3}>
-                                <div className="flex flex-col mb-3">
-                                    <h5>You have received a new email from</h5>
-                                    <div className="flex items-center justify-start">
-                                        <span className="text-lg text-gray-800 font-bold">
-                                            Kenya
-                                        </span>
-                                        <span className="text-gray-500 ml-1 mt-1">
-                                            1 hour ago
-                                        </span>
-                                    </div>
-                                </div>
-                            </MenuItem>
-                        ),
                     ]}
                 />
                 <Dropdown
                     width={200}
                     activator={() => (
-                        <div className="bg-gray-300  cursor-pointer w-9 h-9 rounded-full items-center ml-2">
-                            <img
-                                src={image1}
-                                alt="logo"
-                                className=" w-9 h-9 rounded-full cursor-pointer hover:border-blue-600"
+                        <div className="bg-blue-500 flex items-center justify-center  cursor-pointer w-9 h-9 rounded-full ml-3">
+                            <FaUser
+                                className=" w-6 h-6 rounded-full cursor-pointer text-center"
                             />
                         </div>
                     )}
@@ -236,14 +103,9 @@ const Navbar = ({ onClick }) => {
                         () => (
                             <div className="flex flex-col">
                                 <div className="flex flex-row items-center ml-4 mt-5 cursor-pointer">
-                                    <img
-                                        src={image1}
-                                        className="h-9 w-9 bg-gray-300 rounded-full"
-                                        alt="imagegtfhf"
-                                    />
                                     <div className=" ml-2">
                                         <div className="text-sm text-gray-700 uppercase">
-                                            Calvin Carlo
+                                            {user?.username}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-tighter">
                                             orthopedic
@@ -264,7 +126,7 @@ const Navbar = ({ onClick }) => {
                                 </div>
                                 <div className="flex items-center ml-4 mb-6  group border-t pt-3 cursor-pointer">
                                     <BiLogInCircle className="text-md h-5 w-5 text-gray-500 group-hover:text-blue-600 " />
-                                    <span className="text-gray-500  text-sm uppercase tracking-tighter ml-3 group-hover:text-blue-600">
+                                    <span className="text-gray-500  text-sm uppercase tracking-tighter ml-3 group-hover:text-blue-600" onClick={() => dispatch(logoutUserAction())}>
                                         log out
                                     </span>
                                 </div>
@@ -273,12 +135,6 @@ const Navbar = ({ onClick }) => {
                     ]}
                 />
             </div>
-            <SettingsModal
-                isOpen={createUserModalOpen}
-                closeModal={() => {
-                    setCreateUserModalOpen(false);
-                }}
-            />
         </div>
     );
 };
