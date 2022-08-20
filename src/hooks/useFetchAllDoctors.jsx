@@ -16,9 +16,6 @@ const useFetchAllDoctor = () => {
                 return payload
             };
             getDoctors();
-
-            
-        
 	}, [dispatch]);
 	
   return [doctors]
