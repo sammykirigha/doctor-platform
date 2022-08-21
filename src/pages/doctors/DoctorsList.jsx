@@ -11,8 +11,8 @@ const DoctorsList = ({doctors}) => {
                             key={index}
                             className="drop-shadow-md rounded-md bg-white flex flex-col items-center shadow-lg group w-full my-3 "
                         >
-                            <div className="flex items-center my-auto h-[200px] px-3">
-                                <img src={doc.image} alt="doc" style={{height: "90%", width: "90%"}} className="relative ml-5 rounded-md" />
+                            <div className="flex items-center my-5 px-3 h-[300px] ">
+                                <img src={doc.image} alt="doc" style={{height: "100%", width: "90%"}} className="relative ml-5 rounded-md my-5" />
                                 <div className='hidden group-hover:flex flex-col absolute left-2 gap-2'  >
                                         <span className="h-10 w-10 opacity-70 drop-shadow-md rounded-full border border-gray-300 bg-blue-100 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><TiSocialFacebook className=" text-blue-900"  /></span>
 										<span className="h-10 w-10 opacity-70 drop-shadow-md rounded-full border border-gray-300 bg-blue-100 flex items-center justify-center cursor-pointer group hover:bg-blue-600 "><TiSocialLinkedin className=" text-blue-900 "   /></span>

@@ -11,12 +11,20 @@
 }
 
 @layer components {
+     .btn {
+        @apply inline-block px-5 py-3 rounded-lg shadow-lg
+         bg-blue-500 hover:bg-blue-400 hover:-translate-y-0.5
+         focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 
+         focus:ring-opacity-50 active:bg-blue-500 transform transition
+         text-white uppercase tracking-wider font-semibold text-sm sm:text-base;
+    }
+
     .button {
         @apply px-4 py-2 font-medium tracking-wide rounded-md shadow-sm;
     }
 
     .button--action {
-        @apply bg-indigo-300 text-indigo-800 hover:bg-indigo-200;
+        @apply bg-blue-300 text-blue-800 hover:bg-blue-200;
     }
 
     .button--success {
@@ -27,7 +35,30 @@
         @apply bg-red-300 text-red-800 hover:bg-red-200;
     }
 
-    .btn {
-        @apply inline-block px-5 py-3 rounded-lg shadow-lg bg-indigo-500 hover:bg-indigo-400 hover:-translate-y-0.5 focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 focus:ring-opacity-50 active:bg-indigo-500 transform transition text-white uppercase tracking-wider font-semibold text-sm sm:text-base;
-    }
+   
+}
+
+
+@layer base {
+         [type='text'],
+          [type='email'],
+          [type='url'],
+          [type='password'],
+          [type='number'],
+          [type='date'],
+          [type='datetime-local'],
+          [type='month'],
+          [type='search'],
+          [type='tel'],
+          [type='time'],
+          [type='week'],
+          [multiple],
+          textarea,
+          select{
+             @apply rounded-md placeholder:italic placeholder:text-slate-300 bg-white
+          }
+
+           [type='checkbox']{
+              @apply rounded-sm 
+           }
 }

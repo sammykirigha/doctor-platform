@@ -29,7 +29,7 @@ const InputField = ({ label, type = "text", ...props }) => {
                                 : "password"
                             : "text"
                     }
-                    className="outline px-2 w-full placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
+                    className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
                 />
                 {type === "password" && (
                     <>

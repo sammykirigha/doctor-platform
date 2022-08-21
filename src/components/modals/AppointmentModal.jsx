@@ -24,7 +24,8 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                     <h4 className="text-gray-500 mb-2 ">Patient Name</h4>
                     <input
                         placeholder="Patient Name:"
-                        className="w-full h-10 placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
+                        className="w-ful"
+                        type="text"
                     />
                 </div>
                 <div className="w-full mt-4 flex flex-row items-center justify-between">
@@ -33,7 +34,7 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                         <input
                             type="text"
                             placeholder="Department name:"
-                            className="w-[200px] h-10 placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
+                            className="w-[200px]"
                         />
                     </div>
                     <div>
@@ -41,7 +42,7 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                         <input
                             type="text"
                             placeholder="Doctor's Name:"
-                            className="w-[200px] h-10 placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
+                            className="w-[200px]"
                         />
                     </div>
                     <div>
@@ -49,7 +50,7 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                         <input
                             type="email"
                             placeholder="Enter your emeil:"
-                            className="w-[200px] h-10 placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
+                            className="w-[200px]"
                         />
                     </div>
                 </div>
@@ -59,7 +60,7 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                         <input
                             type="text"
                             placeholder="Your Phone:"
-                            className="w-[200px] h-10 placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
+                            className="w-[200px]"
                         />
                     </div>
                     <div>
@@ -67,7 +68,7 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                         <input
                             type="date"
                             placeholder="Doctor's Name:"
-                            className="w-[200px] h-10 placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
+                            className="w-[200px]"
                         />
                     </div>
                     <div>
@@ -75,7 +76,7 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                         <input
                             type="time"
                             placeholder="Enter your emeil:"
-                            className=" w-[200px] h-10 placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
+                            className=" w-[200px]"
                         />
                     </div>
                 </div>
@@ -87,7 +88,7 @@ const AppointmentModal = ({ isOpen, closeModal }) => {
                         className="w-full h-[100px] placeholder:italic placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border focus:outline-none"
                     />
                 </div>
-               <button className="w-full h-9 text-lg bg-blue-700 text-white mt-5 rounded-md">Book An Appointment</button>
+               <button className="btn">Book An Appointment</button>
             </div>
         </Modal>
     );
