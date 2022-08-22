@@ -22,6 +22,7 @@ import {
     validateNewPassword,
     validatePassword,
 } from "../../utils/validationhelper";
+import FormSelect from "./Select";
 
 const departmentsOptions = [
     { value: "Eye Care", label: "Eye Care" },
@@ -282,26 +283,15 @@ const Settings = () => {
                                         </div>
                                         <div className=" gap-x-5 flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5 gap-2">
                                             <div className="flex flex-col sm:w-full ">
-                                                <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                    Departments
-                                                </label>
-                                                <select
-                                                    className="outline px-2 placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
-                                                    value={department}
-                                                    onChange={handleDepartment}
-                                                >
-                                                    {departmentsOptions?.map(
-                                                        (depart) => (
-                                                            <option
-                                                                value={
-                                                                    depart.value
-                                                                }
-                                                            >
-                                                                {depart.label}
-                                                            </option>
-                                                        )
-                                                    )}
-                                                </select>
+                                                <div className="flex flex-col sm:w-full ">
+                                        <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Departments
+                                        </label>
+                                        <FormSelect
+                                            name="department"
+                                            options={departmentsOptions}
+                                        />
+                                    </div>
                                             </div>
                                         </div>
                                         <div className="gap-x-5 flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5 gap-2">
