@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
-import Select from "react-select";
 
 import { Field, Form, Formik } from "formik";
 import InputField from "../../components/Authentication/InputField";
@@ -32,7 +31,6 @@ const genderOptions = [
 ];
 
 const AddDoctor = () => {
-    const { user } = useSelector((state) => state.auth);
     const [profileImage, setProfileImage] = useState("");
     const [uploading, setUploading] = useState(false);
 
@@ -46,7 +44,6 @@ const AddDoctor = () => {
 
     const onSubmit = async (values) => {
         // event.preventDefault();
-
         const inputValues = {
             firstname: values.firstname,
             lastname: values.lastname,
@@ -71,7 +68,6 @@ const AddDoctor = () => {
             },
         };
 
-        console.log("loading the page", details);
         const res =  await dispatch(createDoctorAction(details));
 
          if (res.payload.success) {
@@ -330,7 +326,7 @@ const AddDoctor = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="w-full mb-3 ml-3 pr-3 flex flex-col ">
+                                <div className="w-full mb-3 ml-3 pr-3 flex flex-col bg- ">
                                     <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
                                         Your Experience
                                     </label>

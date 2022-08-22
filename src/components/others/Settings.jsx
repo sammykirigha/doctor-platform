@@ -345,15 +345,12 @@ const Settings = () => {
                                             </div>
                                         </div>
                                         <div className="w-full mb-3 flex flex-col ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Your Experience
-                                            </label>
-                                            <Field
+                                            <InputField
+                                                label=" Your Experience"
                                                 name="experience"
-                                                onChange={handleExperience}
-                                                type="text"
+                                                type="textarea"
+                                                row={3}
                                                 placeholder="Your Experience:"
-                                                className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                             />
                                         </div>
                                         <div className="">

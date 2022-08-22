@@ -4,7 +4,8 @@ import { PageNavigation, Pagination } from "./Pagination";
 
 //add a filter method to filter data using names
 
-const AppointmentTable = ({data}) => {
+const AppointmentTable = ({ data }) => {
+    
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
 
@@ -37,6 +38,7 @@ const AppointmentTable = ({data}) => {
                         <th className="px-2">Patient Name</th>
                         <th className="px-2">Patient Email</th>
                         <th className="px-2">Patient Phone</th>
+                        <th className="px-2">Doctor's Name</th>
                         <th className="px-2">Time</th>
                         <th className="px-2">Date</th>
                         <th className="px-2">Department</th>
@@ -46,17 +48,18 @@ const AppointmentTable = ({data}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data?.getPage(currentPage).map((appnt, index) => {
+                    {myData?.getPage(currentPage).map((appnt, index) => {
                         return (
                             <tr className="" key={index}>
-                                <td className="px-2 py-2">{`${appnt.name} ${appnt.name}`}</td>
-                                <td className="px-2 py-2">{appnt.email}</td>
-                                <td className="px-2 py-2">{appnt.phone}</td>
+                                <td className="px-2 py-2">{`${appnt.patient_firstname} ${appnt.patient_lastname}`}</td>
+                                <td className="px-2 py-2">{appnt.patient_email}</td>
+                                <td className="px-2 py-2">{appnt.patient_phone}</td>
+                                <td className="px-2 py-2">{appnt.patient_phone}</td>
                                 <td className="px-2 py-2">{appnt.time}</td>
                                 <td className="px-2 py-2">{appnt.date}</td>
-                                <td className="px-2 py-2">{appnt.Department}</td>
+                                <td className="px-2 py-2">{appnt.department}</td>
                                 <td className="px-2 py-2">{appnt.status}</td>
-                                <td className="px-2 py-2">{appnt.Fees}</td>
+                                <td className="px-2 py-2">{appnt.fees}</td>
                                 <td className="px-2 py-2">{appnt.Action}</td>
                             </tr>
                         );

@@ -6,7 +6,7 @@ import { FaSpinner } from "react-icons/fa";
 import PatientsTable from '../../components/others/PatientsTable';
 
 const Patients = () => {
-  const { doctor, loading } = useSelector((state) => state.doctor);
+  const { patient, loading } = useSelector((state) => state.patient);
 
   const params = useLocation()
   const pathname = params.pathname.split("/")[2];
@@ -19,8 +19,8 @@ const Patients = () => {
                 <div className="flex items-center justify-center mt-5">
                     <FaSpinner className="h-24 w-24 bg-white text-blue-600 animate-spin" />
                 </div>
-            ) : doctor?.appointments?.length > 0 ? (
-                <PatientsTable data={doctor?.appointments} />
+            ) : patient?.appointments?.length > 0 ? (
+                <PatientsTable data={patient?.appointments} />
             ) : (
                 <div className="flex items-center justify-center">
                     <div className="bg-white border h-auto  rounded-md flex items-center justify-center w-auto py-3 sm:w-auto sm:py-auto md:w-[500px] lg:w-[500px] mx-autho">

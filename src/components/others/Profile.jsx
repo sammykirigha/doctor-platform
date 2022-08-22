@@ -35,7 +35,7 @@ const Profile = () => {
                                                 Patient Name
                                             </span>
                                             <span className="text-md text-slate-500">
-                                                Calvin Carlo
+                                                {appnt?.patient_firstname} {appnt?.patient_lastname}
                                             </span>
                                         </div>
                                         <div className="flex flex-col mx-2 py-3">

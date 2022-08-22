@@ -18,7 +18,7 @@ export const createNewPatientAccountAction = createAsyncThunk(
             };
         } catch (err) {
             const error = parseError(err);
-            thunkAPI.dispatch(setErrorNotification(err));
+            thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
             });
@@ -38,7 +38,7 @@ export const fetchSinglePatientAction = createAsyncThunk(
             };
         } catch (err) {
             const error = parseError(err);
-            thunkAPI.dispatch(setErrorNotification(err));
+            thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
             });

@@ -28,8 +28,7 @@ const useFetchPatient = () => {
                         fetchSinglePatientAction(details)
 					);
 					setPatient(payload.patient)
-				};
-				
+                };
 				getPatient()
             }
         }

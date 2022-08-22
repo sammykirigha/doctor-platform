@@ -15,6 +15,7 @@ const Appointment = ({ loading, appointments }) => {
     const params = useLocation();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
+    const { doctor } = useSelector((state) => state.doctor);
     const [selectedOption, setSelectedOption] = useState(null);
     const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
@@ -77,8 +78,8 @@ const Appointment = ({ loading, appointments }) => {
                 <div className="flex items-center justify-center mt-5">
                     <FaSpinner className="h-24 w-24 bg-white text-blue-600 animate-spin" />
                 </div>
-            ) : appointments?.length > 0 ? (
-                <AppointmentTable data={appointments} />
+            ) : doctor?.appointments.length > 0 ? (
+                <AppointmentTable data={doctor?.appointments} />
             ) : (
                 <div className="flex items-center justify-center">
                     <div className="bg-white border h-auto  rounded-md flex items-center justify-center w-auto py-3 sm:w-auto sm:py-auto md:w-[500px] lg:w-[500px] mx-autho">
