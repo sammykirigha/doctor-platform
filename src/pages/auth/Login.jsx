@@ -92,7 +92,7 @@ const LoginForm = (props) => {
     },[dispatch])
 
     return (
-        <div className="flex flex-col mt-[10%] ">
+        <div className="flex flex-col mt-10 ">
             <div className="mx-auto flex">
                 <img
                     src={logo}
@@ -125,7 +125,7 @@ const LoginForm = (props) => {
                         isSubmitting,
                     }) => (
                         <Form className="pb-5 px-10">
-                            <div className="my-12 w-full flex justify-center ">
+                            <div className="my-6 w-full flex justify-center ">
                                 <h3 className="px-auto text-2xl font-bold">
                                     Welcome Back
                                 </h3>
@@ -161,13 +161,13 @@ const LoginForm = (props) => {
                                 </ErrorMessage>
                             </div>
                             <div className="flex justify-between">
-                                <div className="flex flex-row gap-3 items-center mt-5">
+                                <div className="flex flex-row gap-3 items-center mt-3">
                                     <Field name="rememberMe" type="checkbox" />
                                     <span className="text-lg text-slate-900">
                                         Remember me
                                     </span>
                                 </div>
-                                <div className="flex flex-row gap-3 items-center mt-5">
+                                <div className="flex flex-row gap-3 items-center mt-3">
                                     <span onClick={() => navigate('/forgot-password')} className="text-lg text-slate-900 cursor-pointer font-medium hover:text-bluee-700 hover:text-blue-800">
                                         Forgot your passsword?
                                     </span>

@@ -91,7 +91,7 @@ const SignupForm = () => {
     }
 
     return (
-          <div className="flex flex-col mt-20 ">
+          <div className="flex flex-col mt-5 ">
                 <div className="mx-auto flex">
                     <img
                         src={logo}
@@ -131,7 +131,7 @@ const SignupForm = () => {
                                         <h3 className="py-2">{error}</h3>
                                     </div>
                                 )}
-                                <div className="my-12 w-full flex justify-center ">
+                                <div className="my-6 w-full flex justify-center ">
                                     <h3 className="px-auto text-2xl font-bold">
                                         Sign Up
                                     </h3>
@@ -188,7 +188,6 @@ const SignupForm = () => {
                                         <Field
                                             name="rememberMe"
                                             type="checkbox"
-                                            className="h-10"
                                         />
                                         <span className="text-lg text-slate-900">
                                             I Accept{" "}
