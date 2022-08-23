@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div className="mx-5 sm:px-3 sm:pt-3 md:pt-0 lg:pb-3">
             <Title title={"Dashbord"} />
             <DashboardCards />
-            <div className="flex flex-row gap-10 sm:w-[100%] sm:mt-3  md:w-[100%] lg:w-[100%]">
+            <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:mt-3  md:w-[100%] lg:w-[100%]">
                 <MyChart />
                 <Radial />
             </div>

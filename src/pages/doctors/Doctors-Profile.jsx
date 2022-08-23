@@ -33,7 +33,7 @@ const DoctorsProfile = () => {
                 </div>
             </div>
             <div className="w-full mt-5  bg-white rounded-md">
-                <div className="bg-blue-500 h-[100px] rounded-t-md relative"></div>
+                <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-[100px] rounded-t-md relative"></div>
                 <div className="ml-5 flex flex-row bt-white absolute top-48">
                     <span className="rounded-full sm:h-12 sm:w-10 md:h-20 md:w-20 flex items-center border border-gray-300 ">
                         <img
@@ -43,7 +43,7 @@ const DoctorsProfile = () => {
                         />
                     </span>
                 </div>
-                <div className="flex flex-col ml-[140px]">
+                <div className="flex flex-col ml-[120px] mt-6">
                     <h3 className="text-lg text-slate-900 font-semibold">
                         Dr. {doctor?.firstname} {doctor?.lastname}
                     </h3>
@@ -51,7 +51,7 @@ const DoctorsProfile = () => {
                         {doctor?.specialization}
                     </span>
                 </div>
-                <div className=" flex flex-col mt-7 mx-5">
+                <div className=" flex flex-col mt-12 mx-5">
                     <div className=" flex flex-col sm:flex-col sm:items-center sm:justify-between sm:h-[auto] md:flex-row md:items-center md:justify-between md:h-[50px] md:w-[100%] bg-gray-200 rounded-md   ">
                         <NavLink
                             to=""

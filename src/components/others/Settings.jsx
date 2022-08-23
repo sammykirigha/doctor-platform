@@ -358,7 +358,7 @@ const Settings = () => {
                 </div>
 
                 {/* account notification */}
-                <div className="border h-[500px] w-full rounded-md">
+                <div className="border h-[400px] w-full rounded-md">
                     <div className="border-b border-gray-200 pl-5 py-3 ">
                         <span className="text-lg text-slate-900 font-semibold pb-5">
                             Change your password:
@@ -416,7 +416,7 @@ const Settings = () => {
                                     </ErrorMessage>
                                 </div>
 
-                                <div className="flex flex-col gap-2 mt-4 w-full mb-5 relative">
+                                {/* <div className="flex flex-col gap-2 mt-4 w-full mb-5 relative">
                                     <InputField
                                         name="confirmnewPassword"
                                         validate={validateNewPassword}
@@ -432,7 +432,7 @@ const Settings = () => {
                                             </p>
                                         )}
                                     </ErrorMessage>
-                                </div>
+                                </div> */}
 
 
                                 <Button
