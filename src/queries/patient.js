@@ -45,9 +45,10 @@ query FetchSinglePatient($input: HandleSinglePatientInput!) {
       patient_phone
       department
       doctorId
+      patient_firstname
+      patient_lastname
       date
       time
-      comments
       fees
       status
       description

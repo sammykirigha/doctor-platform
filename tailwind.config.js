@@ -4,13 +4,10 @@ module.exports = {
         extend: {
             colors: {
                 brand: {
-                    light: "#FFFFFF",
-                    dark: "#FFFFFF",
-                    default: "#FFFFFF",
+                    light: "#0d6efd",
+                    dark: "#0b5ed7",
+                    default: "#396cfo",
                 },
-            },
-            fontFamily: {
-                headline: "Poppins, sans-serif",
             },
             backgroundImage: {},
             screens: {
@@ -23,5 +20,11 @@ module.exports = {
             backgroundColor: ["active"],
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require("daisyui")
+    ],
+    daisyui: {
+        themes: false
+    }
 };

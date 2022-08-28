@@ -11,6 +11,10 @@ export const parseError = (error) => {
         return error.response?.data?.message;
     }
 
+    if (error?.response?.data?.errors?.length > 0) {
+        return error?.response?.data?.errors[0].message
+    }
+
     if (error?.response?.data?.error?.message) {
         return error?.response?.data?.error?.message;
     }

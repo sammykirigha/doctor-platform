@@ -22,6 +22,7 @@ import {
     validateNewPassword,
     validatePassword,
 } from "../../utils/validationhelper";
+import FormSelect from "./Select";
 
 const departmentsOptions = [
     { value: "Eye Care", label: "Eye Care" },
@@ -282,26 +283,15 @@ const Settings = () => {
                                         </div>
                                         <div className=" gap-x-5 flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5 gap-2">
                                             <div className="flex flex-col sm:w-full ">
-                                                <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                    Departments
-                                                </label>
-                                                <select
-                                                    className="outline px-2 placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
-                                                    value={department}
-                                                    onChange={handleDepartment}
-                                                >
-                                                    {departmentsOptions?.map(
-                                                        (depart) => (
-                                                            <option
-                                                                value={
-                                                                    depart.value
-                                                                }
-                                                            >
-                                                                {depart.label}
-                                                            </option>
-                                                        )
-                                                    )}
-                                                </select>
+                                                <div className="flex flex-col sm:w-full ">
+                                        <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
+                                            Departments
+                                        </label>
+                                        <FormSelect
+                                            name="department"
+                                            options={departmentsOptions}
+                                        />
+                                    </div>
                                             </div>
                                         </div>
                                         <div className="gap-x-5 flex flex-col sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5 gap-2">
@@ -345,15 +335,12 @@ const Settings = () => {
                                             </div>
                                         </div>
                                         <div className="w-full mb-3 flex flex-col ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Your Experience
-                                            </label>
-                                            <Field
+                                            <InputField
+                                                label=" Your Experience"
                                                 name="experience"
-                                                onChange={handleExperience}
-                                                type="text"
+                                                type="textarea"
+                                                row={3}
                                                 placeholder="Your Experience:"
-                                                className="w-full mr-3 h-[100px]  placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                             />
                                         </div>
                                         <div className="">
@@ -371,7 +358,7 @@ const Settings = () => {
                 </div>
 
                 {/* account notification */}
-                <div className="border h-[500px] w-full rounded-md">
+                <div className="border h-[400px] w-full rounded-md">
                     <div className="border-b border-gray-200 pl-5 py-3 ">
                         <span className="text-lg text-slate-900 font-semibold pb-5">
                             Change your password:
@@ -429,7 +416,7 @@ const Settings = () => {
                                     </ErrorMessage>
                                 </div>
 
-                                <div className="flex flex-col gap-2 mt-4 w-full mb-5 relative">
+                                {/* <div className="flex flex-col gap-2 mt-4 w-full mb-5 relative">
                                     <InputField
                                         name="confirmnewPassword"
                                         validate={validateNewPassword}
@@ -445,7 +432,7 @@ const Settings = () => {
                                             </p>
                                         )}
                                     </ErrorMessage>
-                                </div>
+                                </div> */}
 
 
                                 <Button

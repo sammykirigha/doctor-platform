@@ -23,9 +23,10 @@ mutation CreateDoctor($input: CreateDoctorInput!) {
       patient_email
       patient_phone
       department
+      patient_firstname
+      patient_lastname
       date
       time
-      comments
       fees
       status
       description
@@ -59,10 +60,11 @@ export const GET_DOCTOR_QUERY = `
       patient_email
       patient_phone
       department
+      patient_firstname
+      patient_lastname
       doctorId
       date
       time
-      comments
       fees
       status
       description
@@ -110,9 +112,10 @@ query GetDoctors {
       patient_phone
       department
       doctorId
+      patient_firstname
+      patient_lastname
       date
       time
-      comments
       fees
       status
       description

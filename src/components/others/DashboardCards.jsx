@@ -1,54 +1,102 @@
 import React from "react";
-import { BiHomeAlt } from "react-icons/bi";
+import { RiScissorsFill } from "react-icons/ri";
+import { FaInternetExplorer } from "react-icons/fa";
+import { BsFillPersonFill, BsFillFileEarmarkDiffFill } from "react-icons/bs";
 
- const iconStyles = {
-    height: '28px',
-	width: '28px',
-
-}
+const iconStyles = {
+    height: "30px",
+    width: "30px",
+    color: "white",
+};
 
 const cardsInfo = [
     {
-        icon: <BiHomeAlt style={iconStyles} />,
-        amount: "558",
-        category: "Patients",
+        icon: <BsFillPersonFill style={iconStyles} />,
+        number: "558",
+        category: "Todays Patients",
+        percentageIncrease: "18% Higher Then Last Month",
     },
     {
-        icon: <BiHomeAlt style={iconStyles} />,
-        amount: "$2164",
-        category: "Avg.costs",
+        icon: <BsFillFileEarmarkDiffFill style={iconStyles} />,
+        number: "164",
+        category: "Appointments",
+        percentageIncrease: "21% Higher Then Last Month",
     },
     {
-        icon: <BiHomeAlt style={iconStyles} />,
-        amount: "112",
-        category: "Staff Members",
+        icon: <RiScissorsFill style={iconStyles} />,
+        number: "112",
+        category: "Today's Operations",
+        percentageIncrease: "37% Higher Then Last Month",
     },
     {
-        icon: <BiHomeAlt style={iconStyles} />,
-        amount: "16",
-        category: "Vehicles",
+        icon: <FaInternetExplorer style={iconStyles} />,
+        number: "16",
+        category: "Online Appointment",
+        percentageIncrease: "10% Higher Then Last Month",
     },
-
 ];
 
-
-
 const DashboardCards = () => {
-	return <div className="bg-gray-50 grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-3 mt-5 rounded-md">
-		{
-			cardsInfo?.map((item, index) => {
-				return (
-					<div key={index} className='drop-shadow-md rounded-md bg-white flex pl-3 py-5 overflow-hidden shadow-lg'>
-						<div className="bg-gray-100 p-3 rounded-md" ><span className=" h-8 w-8 text-sky-900" >{item.icon}</span></div>
-						<div className="flex flex-col px-3">
-							<span className="text-black-900 font-bold">{item.amount}</span>
-							<span className="text-gray-500">{ item.category}</span>
-						</div>
-					</div>
-				)
-			})
-		}
-	</div>;
+    return (
+        <div className="bg-gray-50 grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-3 mt-5 rounded-md">
+            <div className="drop-shadow-md rounded-md bg-gradient-to-r from-blue-500 to-cyan-500  flex py-5 overflow-hidden shadow-lg">
+                <div className="my-1 mx-3 w-full">
+                    <h4 className="text-white text-xl tracking-wide mb-2 font-semibold">
+                        Todays Patients
+                    </h4>
+                    <div className="flex flex-row items-center justify-between mb-2">
+                        <BsFillPersonFill style={iconStyles} />
+                        <span className="text-white text-lg tracking-wide font-semibold">558</span>
+                    </div>
+                    <span className="text-white text-lg">
+                        18% Higher Then Last Month
+                    </span>
+                </div>
+            </div>
+            <div className="drop-shadow-md rounded-md bg-gradient-to-r from-[#bb3767] to-[#222670]  flex py-5 overflow-hidden shadow-lg">
+                <div className="my-1 mx-3 w-full">
+                    <h4 className="text-white text-xl tracking-wide mb-2 font-semibold">
+                        Appointments
+                    </h4>
+                    <div className="flex flex-row items-center justify-between mb-2">
+                        <BsFillFileEarmarkDiffFill style={iconStyles} />
+                         <span className="text-white text-lg tracking-wide font-semibold">164</span>
+                    </div>
+                    <span className="text-white text-lg">
+                        18% Higher Then Last Month
+                    </span>
+                </div>
+            </div>
+            <div className="drop-shadow-md rounded-md bg-gradient-to-r from-[#6eaf7f] to-[#144f5e]  flex py-5 overflow-hidden shadow-lg">
+                <div className="my-1 mx-3 w-full">
+                    <h4 className="text-white text-xl tracking-wide mb-2 font-semibold">
+                       Today's Operations
+                    </h4>
+                    <div className="flex flex-row items-center justify-between mb-2">
+                        <RiScissorsFill style={iconStyles} />
+                        <span className="text-white text-lg tracking-wide font-semibold">112</span>
+                    </div>
+                    <span className="text-white text-lg">
+                        18% Higher Then Last Month
+                    </span>
+                </div>
+            </div>
+            <div className="drop-shadow-md rounded-md bg-gradient-to-r from-[#ad3c6c] to-[#d28017]  flex py-5 overflow-hidden shadow-lg">
+                <div className="my-1 mx-3 w-full">
+                    <h4 className="text-white text-xl tracking-wide mb-2 font-semibold">
+                        Online Appointment
+                    </h4>
+                    <div className="flex flex-row items-center justify-between mb-2">
+                        <FaInternetExplorer style={iconStyles} />
+                        <span className="text-white text-lg tracking-wide font-semibold">558</span>
+                    </div>
+                    <span className="text-white text-lg">
+                        10% Higher Then Last Month
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default DashboardCards;
