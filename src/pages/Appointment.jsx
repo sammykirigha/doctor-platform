@@ -10,6 +10,7 @@ import useFetchDoctor from "../hooks/useFetchDoctor";
 import AppointmentTable from "../components/others/AppointmentTable";
 import { resetNotifications } from "../state/reducers/error.reducer";
 import useFetchPatient from "../hooks/useFetchPatients";
+import GlobalModal from "../components/modals/GlobalModal";
 
 const Appointment = ({ loading, appointments }) => {
     const params = useLocation();

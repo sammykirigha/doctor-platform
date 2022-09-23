@@ -32,7 +32,6 @@ const AppointmentTable = ({ data }) => {
         setItemsPerPage(+num)
     }
 
-
     const totalPages = myData.getTotalPages()
 
     const handleClose = () => {
