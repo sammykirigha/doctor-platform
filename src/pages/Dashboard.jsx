@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Appointment from "../components/common/Appointment";
 import DashboardCards from "../components/others/DashboardCards";
 import MyChart from "../components/charts/MyChart";
 import Radial from "../components/charts/Radial";

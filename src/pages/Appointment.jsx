@@ -17,7 +17,6 @@ const Appointment = ({ loading, appointments }) => {
     const { user } = useSelector((state) => state.auth);
     const { doctor } = useSelector((state) => state.doctor);
     const [selectedOption, setSelectedOption] = useState(null);
-    const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
 
     const pathname = params.pathname.split("/")[1];
 
@@ -31,13 +30,12 @@ const Appointment = ({ loading, appointments }) => {
         setSelectedOption(selectedOption);
     };
 
-    useFetchDoctor()
-    useFetchPatient()
+    useFetchDoctor();
+    useFetchPatient();
 
-    
-     useEffect(() => {
-        return ()=>dispatch(resetNotifications())
-    },[dispatch])
+    useEffect(() => {
+        return () => dispatch(resetNotifications());
+    }, [dispatch]);
 
     return (
         <div className="flex flex-col mx-3">
@@ -65,18 +63,17 @@ const Appointment = ({ loading, appointments }) => {
                     />
 
                     {user?.role === "doctor" ? null : (
-                        <Button
-                            text="Appointment"
-                            onClick={() => {
-                                setCreateUserModalOpen(!createUserModalOpen);
-                            }}
-                        />
+                        <Button>
+                            <label for="new-appointment" class="modal-button">
+                                New Appointment
+                            </label>
+                        </Button>
                     )}
                 </div>
             </div>
             {loading ? (
                 <div className="flex items-center justify-center mt-5">
-                    <FaSpinner className="h-24 w-24 bg-white text-blue-600 animate-spin" />
+                    <FaSpinner className="h-24 w-24 text-blue-600 animate-spin" />
                 </div>
             ) : doctor?.appointments.length > 0 ? (
                 <AppointmentTable data={doctor?.appointments} />
@@ -90,12 +87,7 @@ const Appointment = ({ loading, appointments }) => {
                 </div>
             )}
 
-            <AppointmentModal
-                isOpen={createUserModalOpen}
-                closeModal={() => {
-                    setCreateUserModalOpen(false);
-                }}
-            />
+            <AppointmentModal id="new-appointment" />
         </div>
     );
 };

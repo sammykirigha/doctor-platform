@@ -1,9 +1,4 @@
-import React, { useContext, useState } from "react";
-import flag from "../../data/images/Flag-Kenya.jpg";
-import tanz from "../../data/images/Tanzania.png";
-import ug from "../../data/images/Uganda.png";
-import rwad from "../../data/images/Rwanda.png";
-import setting from "../../data/images/lg2.png";
+import React, { useContext } from "react";
 import email from "../../data/images/email.png";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { NavigationContext } from "../../contexts/navigation.context";
@@ -13,8 +8,6 @@ import { RiSettings5Line } from "react-icons/ri";
 import {BiLogInCircle} from 'react-icons/bi'
 import Dropdown from "../common/Dropdown";
 import { MenuItem } from "../common/MenuItem";
-import SettingsModal from "../modals/SettingsModal";
-import image1 from "../../data/images/01.jpg";
 import {FaUser} from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUserAction } from "../../state/actions/auth.action";
@@ -74,7 +67,7 @@ const Navbar = ({ onClick }) => {
                     )}
                     items={[
                         () => (
-                            <MenuItem image={image1}>
+                            <MenuItem >
                                 <div className="flex flex-col my-3 ">
                                     <h5>You have received a new email from</h5>
                                     <div className="flex items-center justify-start">

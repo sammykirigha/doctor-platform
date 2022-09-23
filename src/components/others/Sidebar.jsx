@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavigationContext } from "../../contexts/navigation.context";
 import Logo from "../common/Logo";
 import { links } from "../../data/AllLinks";

@@ -1,5 +1,4 @@
 import React from "react";
-import image1 from "../../data/images/01.jpg";
 import Button from "../common/Button";
 
 export const ProfileSettings = () => {
@@ -11,13 +10,13 @@ export const ProfileSettings = () => {
                 </div>
                 <div className="flex mt-3">
                     <div className=" flex flex-row ">
-                        <img
+                        {/* <img
                             src={image1}
                             height="100px"
                             width="100px"
                             className="rounded-full drop-shadow-lg"
                             alt="doc"
-                        />
+                        /> */}
                         <div className=" w-[300px] ml-4">
                             <h5 className="text-md">Upload your picture </h5>
                             <p className="text-gray-500">

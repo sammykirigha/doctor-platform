@@ -15,7 +15,7 @@ const DatePickerField = ({ ...props }) => {
       onChange={(value) => {
         setFieldValue(field.name, value);
       }}
-      className="outline px-2 w-full placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
+      className=" px-1 w-full placeholder:italic pl-2 placeholder:text-slate-300 outline-gray-200 h-[40px] rounded-md placeholder:pl-3  focus:border-0 focus:outline focus:outline-blue-600"
     />
   );
 };

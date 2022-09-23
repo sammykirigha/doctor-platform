@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { PageNavigation, Pagination } from "./Pagination";
+import { BsThreeDotsVertical, BsFillEyeFill } from 'react-icons/bs';
+import {MdDeleteForever} from 'react-icons/md'
+import GlobalModal from "../modals/GlobalModal";
+import { FormatDateToDDMMYYYY } from '../../utils/formatDate'
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 //add a filter method to filter data using names
 
@@ -8,6 +14,7 @@ const AppointmentTable = ({ data }) => {
     
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
+    const closeModalRef = useRef(null);
 
     const previousPage = () => {
         setCurrentPage(currentPage - 1);
@@ -25,10 +32,20 @@ const AppointmentTable = ({ data }) => {
         setItemsPerPage(+num)
     }
 
-    console.log(itemsPerPage);
 
     const totalPages = myData.getTotalPages()
 
+    const handleClose = () => {
+        if (closeModalRef.current) {
+            closeModalRef.current.click();
+        }
+    }
+
+
+    const onSubmit = () => {
+        //
+        handleClose()
+    }
 
     return (
         <div className="flex flex-col">
@@ -49,6 +66,7 @@ const AppointmentTable = ({ data }) => {
                 </thead>
                 <tbody>
                     {myData?.getPage(currentPage).map((appnt, index) => {
+                        console.log("my time",FormatDateToDDMMYYYY(appnt.date) ); 
                         return (
                             <tr className="" key={index}>
                                 <td className="px-2 py-2">{`${appnt.patient_firstname} ${appnt.patient_lastname}`}</td>
@@ -56,11 +74,19 @@ const AppointmentTable = ({ data }) => {
                                 <td className="px-2 py-2">{appnt.patient_phone}</td>
                                 <td className="px-2 py-2">{appnt.patient_phone}</td>
                                 <td className="px-2 py-2">{appnt.time}</td>
-                                <td className="px-2 py-2">{appnt.date}</td>
+                                <td className="px-2 py-2">{FormatDateToDDMMYYYY(appnt.date)}</td>
                                 <td className="px-2 py-2">{appnt.department}</td>
                                 <td className="px-2 py-2">{appnt.status}</td>
                                 <td className="px-2 py-2">{appnt.fees}</td>
-                                <td className="px-2 py-2">{appnt.Action}</td>
+                                <td className="px-2 py-2">
+                                    <div class="dropdown dropdown-left">
+                                        <label tabindex="0" class=" m-1 cursor-pointer"><BsThreeDotsVertical /></label>
+                                            <ul tabindex="0" class="dropdown-content menu shadow bg-gray-100 py-1 rounded-sm w-24 flex items-center justify-center">
+                                                <li><label for="my-modal-3" class="modal-button"><BsFillEyeFill className="text" /></label></li>
+                                                <li><a><MdDeleteForever className="text" /></a></li>
+                                            </ul>
+                                    </div>
+                                </td>
                             </tr>
                         );
                     })}
@@ -84,6 +110,14 @@ const AppointmentTable = ({ data }) => {
                 currentPage={currentPage}
                 totalPages={totalPages}
             ></PageNavigation>
+
+            <GlobalModal id="my-modal-3" ref={closeModalRef}  >
+                <h2>opening one appointment</h2>
+
+                <input type="text"  className="w-full my-2"/>
+                <input type="text" className="w-full my-2" />
+                <button onClick={onSubmit} className="btn">Submit</button>
+            </GlobalModal>
         </div>
     );
 };

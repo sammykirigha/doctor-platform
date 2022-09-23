@@ -3,7 +3,7 @@ import { ImSpinner10 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 
 
-const Button = ({ text, type, to = "", onClick = () => { }, loading = false, isSubmitting}) => {
+const Button = ({ text, type, to = "", onClick = () => { }, loading = false, isSubmitting, children}) => {
 	const navigate = useNavigate();
     return (
         <button
@@ -12,7 +12,8 @@ const Button = ({ text, type, to = "", onClick = () => { }, loading = false, isS
             disabled={loading}
             className={`btn  ${isSubmitting ? ' bg-opacity-75 hover:bg-opacity-75 cursor-not-allowed' : 'cursor-pointer'}`}
 		>
-			 {isSubmitting && <ImSpinner10 className='animate-spin' /> } {" "}<span>{text}</span>
+            {isSubmitting && <ImSpinner10 className='animate-spin' />} {" "}<span>{text}</span>
+            {children}
             
         </button>
     );
