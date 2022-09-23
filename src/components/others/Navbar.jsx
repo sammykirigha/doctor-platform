@@ -8,7 +8,6 @@ import { RiSettings5Line } from "react-icons/ri";
 import {BiLogInCircle} from 'react-icons/bi'
 import Dropdown from "../common/Dropdown";
 import { MenuItem } from "../common/MenuItem";
-import image1 from "../../data/images/01.jpg";
 import {FaUser} from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUserAction } from "../../state/actions/auth.action";
@@ -68,7 +67,7 @@ const Navbar = ({ onClick }) => {
                     )}
                     items={[
                         () => (
-                            <MenuItem image={image1}>
+                            <MenuItem >
                                 <div className="flex flex-col my-3 ">
                                     <h5>You have received a new email from</h5>
                                     <div className="flex items-center justify-start">

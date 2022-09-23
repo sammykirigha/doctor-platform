@@ -1,7 +1,6 @@
 import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
-import image1 from "../../data/images/01.jpg"
 import Dropdown from "../common/Dropdown";
 import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 // import { IoSendSharp } from "react-icons/io";
@@ -16,7 +15,7 @@ const ChatMessages = ({width='full', height}) => {
             <div className="flex flex-row items-center justify-between border-b">
                 <div className="flex flex-row items-center my-3 mx-5">
                     <img
-                        src={image1}
+                        // src={image1}
                         alt="logo"
                         className="m-2 w-10 h-10 rounded-full cursor-pointer"
                     />

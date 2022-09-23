@@ -4,6 +4,9 @@ import { PageNavigation, Pagination } from "./Pagination";
 import { BsThreeDotsVertical, BsFillEyeFill } from 'react-icons/bs';
 import {MdDeleteForever} from 'react-icons/md'
 import GlobalModal from "../modals/GlobalModal";
+import { FormatDateToDDMMYYYY } from '../../utils/formatDate'
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 //add a filter method to filter data using names
 
@@ -28,9 +31,6 @@ const AppointmentTable = ({ data }) => {
         const num = e.target.value
         setItemsPerPage(+num)
     }
-
-    console.log(itemsPerPage);
-    console.log(closeModalRef);
 
     const totalPages = myData.getTotalPages()
 
@@ -65,6 +65,7 @@ const AppointmentTable = ({ data }) => {
                 </thead>
                 <tbody>
                     {myData?.getPage(currentPage).map((appnt, index) => {
+                        console.log("my time",FormatDateToDDMMYYYY(appnt.date) ); 
                         return (
                             <tr className="" key={index}>
                                 <td className="px-2 py-2">{`${appnt.patient_firstname} ${appnt.patient_lastname}`}</td>
@@ -72,7 +73,7 @@ const AppointmentTable = ({ data }) => {
                                 <td className="px-2 py-2">{appnt.patient_phone}</td>
                                 <td className="px-2 py-2">{appnt.patient_phone}</td>
                                 <td className="px-2 py-2">{appnt.time}</td>
-                                <td className="px-2 py-2">{appnt.date}</td>
+                                <td className="px-2 py-2">{FormatDateToDDMMYYYY(appnt.date)}</td>
                                 <td className="px-2 py-2">{appnt.department}</td>
                                 <td className="px-2 py-2">{appnt.status}</td>
                                 <td className="px-2 py-2">{appnt.fees}</td>

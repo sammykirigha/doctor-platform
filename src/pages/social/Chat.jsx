@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
-import image1 from "../../data/images/01.jpg";
+// import image1 from "../../data/images/01.jpg";
 import { GoPrimitiveDot } from "react-icons/go";
 import  AvailableDoctors  from "../doctors/Doctors";
 import ChatMessages from "../../components/others/ChatMessages";
@@ -13,12 +13,12 @@ const Chat = () => {
     const secondName = params.pathname.split("/")[2];
 
     useEffect(() => {
-        setUser({
-            name: "Dr. Calvin Carlo",
-            department: "Orthopedic",
-            image: image1,
-            experirnce: "1 Years Experienced",
-        });
+        // setUser({
+        //     name: "Dr. Calvin Carlo",
+        //     department: "Orthopedic",
+        //     image: image1,
+        //     experirnce: "1 Years Experienced",
+        // });
     }, []);
 
     return (
