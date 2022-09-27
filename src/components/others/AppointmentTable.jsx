@@ -4,9 +4,8 @@ import { PageNavigation, Pagination } from "./Pagination";
 import { BsThreeDotsVertical, BsFillEyeFill } from 'react-icons/bs';
 import {MdDeleteForever} from 'react-icons/md'
 import GlobalModal from "../modals/GlobalModal";
-import { FormatDateToDDMMYYYY } from '../../utils/formatDate'
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import {FormatDateToDDMMYYYY} from '../../utils/formatDate'
+
 
 //add a filter method to filter data using names
 
@@ -32,6 +31,7 @@ const AppointmentTable = ({ data }) => {
         setItemsPerPage(+num)
     }
 
+
     const totalPages = myData.getTotalPages()
 
     const handleClose = () => {
@@ -47,8 +47,8 @@ const AppointmentTable = ({ data }) => {
     }
 
     return (
-        <div className="flex flex-col">
-            <table className="table w-full">
+        <div className="flex flex-col  overflow-x-auto">
+            <table className="table overflow-x-auto w-full">
                 <thead className="mx-2 bg-blue-300 w-full ">
                     <tr className="text-left px-2">
                         <th className="px-2">Patient Name</th>
