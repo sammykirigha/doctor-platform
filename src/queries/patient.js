@@ -56,3 +56,9 @@ query FetchSinglePatient($input: HandleSinglePatientInput!) {
   }
 }
 `
+
+export const UPDATE_PATIENT = `
+mutation UpdatePatientInfo($input: UpdatePatientInput!) {
+  updatePatientInfo(input: $input)
+}
+`

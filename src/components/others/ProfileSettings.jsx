@@ -1,11 +1,17 @@
 import { ErrorMessage, Form, Formik } from "formik";
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { UPDATE_PATIENT } from "../../queries/patient";
+import { updatePatientAction } from "../../state/actions/patient.action";
 import fileUploader from "../../utils/file-uploader";
-import { validateNewPassword, validatePassword } from "../../utils/validationhelper";
+import {
+    validateNewPassword,
+    validatePassword,
+} from "../../utils/validationhelper";
 import InputField from "../Authentication/InputField";
 import Button from "../common/Button";
 import FormSelect from "./Select";
+import { FaSpinner } from "react-icons/fa";
 
 const genderOptions = [
     { value: "Male", label: "Male" },
@@ -19,16 +25,15 @@ const maritalStatusOptions = [
 
 export const ProfileSettings = () => {
     const { patient } = useSelector((state) => state.patient);
-    const [profileImage, setProfileImage] = useState("");
+    const [profileImage, setProfileImage] = useState(patient?.image);
     const [uploading, setUploading] = useState(false);
 
     const imageUploadRef = useRef(null);
-    
-        const handleImageChange = async (e) => {
+    const dispatch = useDispatch();
+
+    const handleImageChange = async (e) => {
         if (e.target.files?.length === 0) return;
-
         const file = e.target.files[0];
-
         try {
             setUploading(true);
 
@@ -39,11 +44,7 @@ export const ProfileSettings = () => {
             setUploading(false);
             console.log(error);
         }
-
-        //url
     };
-
-    console.log("<<<<<patient>>>>>>", patient);
 
     const onSubmit = async (values) => {
         const inputValues = {
@@ -55,11 +56,22 @@ export const ProfileSettings = () => {
             phone: values.phone,
             address: values.address,
             // age: values.age,
-            gender: values.gender,
             maritalStatus: values.maritalStatus,
-            description: values.description
-        }
-    }
+            description: values.description,
+        };
+
+        const details = {
+            query: UPDATE_PATIENT,
+            variables: {
+                input: inputValues,
+            },
+        };
+
+        await dispatch(updatePatientAction(details));
+
+        console.log("<<<<<<<<<>>>>>>>", inputValues, details);
+    };
+
     return (
         <div className="mx-5">
             <div className="flex flex-col mt-5">
@@ -106,7 +118,7 @@ export const ProfileSettings = () => {
                                             </div>
                                         </div>
                                         <div className="flex flex-col gap-3">
-                                             <Button
+                                            <Button
                                                 onClick={() =>
                                                     imageUploadRef?.current?.click()
                                                 }
@@ -206,7 +218,7 @@ export const ProfileSettings = () => {
 
                                     <div className="flex flex-row items-center justify-between  mb-5 gap-16">
                                         <div className="flex flex-col w-full">
-                                             <InputField
+                                            <InputField
                                                 name="description"
                                                 validate=""
                                                 type="text"
@@ -225,7 +237,20 @@ export const ProfileSettings = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <Button text="Save Changes" />
+                                        <button
+                                            className={`mt-5 w-fit flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${
+                                                isSubmitting
+                                                    ? "cursor-not-allowed"
+                                                    : "cursor-pointer"
+                                            } `}
+                                            disabled={isSubmitting}
+                                            type="submit"
+                                        >
+                                            {isSubmitting && (
+                                                <FaSpinner className="animate-spin" />
+                                            )}{" "}
+                                            Save Changes
+                                        </button>
                                     </div>
                                 </Form>
                             )}
@@ -254,36 +279,36 @@ export const ProfileSettings = () => {
                                     </h4>
                                     <div className="flex flex-col mt-5 ">
                                         <InputField
-                                        name="password"
-                                        validate={validatePassword}
-                                        type="password"
-                                        label="Enter Old Password:"
+                                            name="password"
+                                            validate={validatePassword}
+                                            type="password"
+                                            label="Enter Old Password:"
                                         />
                                         <ErrorMessage name="password">
-                                        {(error) => (
-                                            <p className="text-md text-red-600">
-                                                {" "}
-                                                {error}
-                                            </p>
-                                        )}
-                                    </ErrorMessage>
+                                            {(error) => (
+                                                <p className="text-md text-red-600">
+                                                    {" "}
+                                                    {error}
+                                                </p>
+                                            )}
+                                        </ErrorMessage>
                                     </div>
                                     <div className="flex flex-col my-5 ">
-                                       <InputField
-                                        name="newPassword"
-                                        validate={validateNewPassword}
-                                        type="password"
-                                        label=" New Password:"
-                                    />
+                                        <InputField
+                                            name="newPassword"
+                                            validate={validateNewPassword}
+                                            type="password"
+                                            label=" New Password:"
+                                        />
 
-                                    <ErrorMessage name="confirmnewPassword">
-                                        {(error) => (
-                                            <p className="text-md text-red-600">
-                                                {" "}
-                                                {error}
-                                            </p>
-                                        )}
-                                    </ErrorMessage>
+                                        <ErrorMessage name="confirmnewPassword">
+                                            {(error) => (
+                                                <p className="text-md text-red-600">
+                                                    {" "}
+                                                    {error}
+                                                </p>
+                                            )}
+                                        </ErrorMessage>
                                     </div>
                                     {/* <div className="flex flex-col mt-5 ">
                                         <label className="after:content-['*'] after:ml-0.5 after:text-red-500 font-semibold">
@@ -295,12 +320,24 @@ export const ProfileSettings = () => {
                                             className="w-full h-10 placeholder:italic pl-2 placeholder:text-slate-300 bg-white border border-slate-300 rounded-md focus:border-0 focus:outline focus:outline-blue-600"
                                         />
                                     </div> */}
+
+                                    <div>
+                                        <button
+                                            className={`mt-5 w-fit flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${
+                                                isSubmitting
+                                                    ? "cursor-not-allowed"
+                                                    : "cursor-pointer"
+                                            } `}
+                                            disabled={isSubmitting}
+                                            type="submit"
+                                        >
+                                            {isSubmitting && (
+                                                <FaSpinner className="animate-spin" />
+                                            )}{" "}
+                                            Change Password
+                                        </button>
+                                    </div>
                                     
-                                <Button
-                                    type="submit"
-                                    text="Change Password"
-                                    loading={isSubmitting}
-                                />
                                 </Form>
                             )}
                         </Formik>

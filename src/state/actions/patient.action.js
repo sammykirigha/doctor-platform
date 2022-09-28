@@ -45,3 +45,24 @@ export const fetchSinglePatientAction = createAsyncThunk(
         }
     }
 );
+
+export const updatePatientAction = createAsyncThunk(
+    "patient/update-one",
+    async (data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost(data);
+            return {
+                patient: response.data.updatePatientInfo,
+                success: true,
+            };
+        } catch (err) {
+            const error = parseError(err);
+            thunkAPI.dispatch(setErrorNotification(error));
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
+    }
+);
+
