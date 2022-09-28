@@ -5,8 +5,8 @@ import Notes from "../components/emails/Notes";
 import Sent from "../components/emails/Sent";
 import Spam from "../components/emails/Spam";
 import Starred from "../components/emails/Starred";
+import PatientProfileSettings from "../components/others/PatientProfileSettings";
 import Profile from "../components/others/Profile";
-import { ProfileSettings } from "../components/others/ProfileSettings";
 import Doctors from "../pages/doctors/Doctors";
 import PatientAppointments from "../pages/patients/PatientAppointments";
 import PatientDashboard from "../pages/patients/PatientDashboard";
@@ -31,8 +31,9 @@ export const patient_routes = [
                 exact: true,
                 component: PatientsProfile,
                 children: [
+                    { path: "", component: Profile },
                     { path: "profile", exact: true, component: Profile },
-                    { path: "settings", exact: true, component: ProfileSettings },
+                    { path: "settings", exact: true, component: PatientProfileSettings },
                 ],
             },
             {

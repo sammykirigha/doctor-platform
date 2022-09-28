@@ -4,6 +4,7 @@ import { parseError } from "../../utils/parseError";
 import {
     resetNotifications,
     setErrorNotification,
+    setMessageNotification,
 } from "../reducers/error.reducer";
 
 export const createNewPatientAccountAction = createAsyncThunk(
@@ -52,8 +53,9 @@ export const updatePatientAction = createAsyncThunk(
         try {
             thunkAPI.dispatch(resetNotifications());
             const response = await apiPost(data);
+             thunkAPI.dispatch(setMessageNotification(response.data.changeDoctorsPassword));
             return {
-                patient: response.data.updatePatientInfo,
+                message: response.data.updatePatientInfo,
                 success: true,
             };
         } catch (err) {
@@ -64,5 +66,25 @@ export const updatePatientAction = createAsyncThunk(
             });
         }
     }
-);
+); 
+
+export const changePateintPasswordAction = createAsyncThunk(
+    "patient/change-password",
+    async (data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost(data);
+            return {
+                message: response.data.changePatientPassword,
+                success: true
+            }
+        } catch (err) {
+            const error = parseError(err);
+            thunkAPI.dispatch(setErrorNotification(error));
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
+    }
+)
 

@@ -58,8 +58,6 @@ const Settings = () => {
         document.documentElement.scrollTop = 0;
     };
 
-
-
     const handleImageChange = async (e) => {
         if (e.target.files?.length === 0) return;
 
@@ -135,10 +133,7 @@ const Settings = () => {
         if (doctor?.image) setProfileImage(doctor?.image);
     }, [doctor?.image]);
 
-    useEffect(() => {
-        return () => dispatch(resetNotifications());
-    }, [dispatch]);
-
+    
     useEffect(() => {
         window.onscroll = function () {
             handleScrollHandleBar();

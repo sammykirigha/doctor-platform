@@ -6,13 +6,13 @@ import DoctorsProfile from "../pages/doctors/Doctors-Profile";
 import AddPatient from "../pages/patients/Add-Patient";
 import PatientsProfile from "../pages/patients/Patients-Profile";
 import Profile from "../components/others/Profile";
-import { ProfileSettings } from "../components/others/ProfileSettings";
 import AddDoctor from "../pages/doctors/Add-Doctor";
 import Experience from "../components/others/Experience";
 import Overview from "../components/others/Overview";
 import Review from "../components/others/Review";
 import TimeTable from "../components/others/TimeTable";
 import Settings from "../components/others/Settings";
+import PatientProfileSettings  from "../components/others/PatientProfileSettings";
 
 export const admin_routes = [
     {
@@ -39,7 +39,7 @@ export const admin_routes = [
                     {
                         path: "settings",
                         exact: true,
-                        component: ProfileSettings,
+                        component: PatientProfileSettings,
                     },
                 ],
             },

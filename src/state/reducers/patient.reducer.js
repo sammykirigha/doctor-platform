@@ -1,7 +1,5 @@
-
-import build from "@date-io/date-fns";
 import { createSlice } from "@reduxjs/toolkit";
-import { createNewPatientAccountAction, fetchSinglePatientAction, updatePatientAction } from "../actions/patient.action";
+import { changePateintPasswordAction, createNewPatientAccountAction, fetchSinglePatientAction, updatePatientAction } from "../actions/patient.action";
 
 
 
@@ -9,7 +7,6 @@ const initialState = {
     patients: [],
     patient: null,
     loading: false,
-    message: ""
 };
 
 export const createPatientAccountdSlice = createSlice({
@@ -30,6 +27,10 @@ export const createPatientAccountdSlice = createSlice({
             state.loading = true;
         })
 
+        builder.addCase(changePateintPasswordAction.pending, (state, action) => {
+            state.loading = true
+        })
+
         //fullfilled
         builder.addCase(createNewPatientAccountAction.fulfilled, (state, action) => {
             state.loading = false;
@@ -40,6 +41,9 @@ export const createPatientAccountdSlice = createSlice({
             state.patient = action.payload.patient;
         });
         builder.addCase(updatePatientAction.fulfilled, (state, action) => {
+            state.loading = false;
+        })
+        builder.addCase(changePateintPasswordAction.fulfilled, (state, action) => {
             state.loading = false;
         })
 
@@ -54,6 +58,9 @@ export const createPatientAccountdSlice = createSlice({
         });
         builder.addCase(updatePatientAction.rejected, (state, action) => {
             state.loading = false;
+        })
+        builder.addCase(changePateintPasswordAction.rejected, (state, action) => {
+            state.loading = false
         })
 
     },

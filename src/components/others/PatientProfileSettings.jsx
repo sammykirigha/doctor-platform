@@ -1,8 +1,8 @@
 import { ErrorMessage, Form, Formik } from "formik";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_PATIENT } from "../../queries/patient";
-import { updatePatientAction } from "../../state/actions/patient.action";
+import { CHANGE_PATIENT_PASSWORD, UPDATE_PATIENT } from "../../queries/patient";
+import { changePateintPasswordAction, updatePatientAction } from "../../state/actions/patient.action";
 import fileUploader from "../../utils/file-uploader";
 import {
     validateNewPassword,
@@ -12,6 +12,7 @@ import InputField from "../Authentication/InputField";
 import Button from "../common/Button";
 import FormSelect from "./Select";
 import { FaSpinner } from "react-icons/fa";
+import { resetNotifications } from "../../state/reducers/error.reducer";
 
 const genderOptions = [
     { value: "Male", label: "Male" },
@@ -23,9 +24,9 @@ const maritalStatusOptions = [
     { value: "Married", label: "Married" },
 ];
 
-export const ProfileSettings = () => {
+const PatientProfileSettings = () => {
     const { patient } = useSelector((state) => state.patient);
-    const [profileImage, setProfileImage] = useState(patient?.image);
+    const [profileImage, setProfileImage] = useState("");
     const [uploading, setUploading] = useState(false);
 
     const imageUploadRef = useRef(null);
@@ -58,6 +59,8 @@ export const ProfileSettings = () => {
             // age: values.age,
             maritalStatus: values.maritalStatus,
             description: values.description,
+            nationality: values.nationality,
+            county: values.county,
         };
 
         const details = {
@@ -71,6 +74,33 @@ export const ProfileSettings = () => {
 
         console.log("<<<<<<<<<>>>>>>>", inputValues, details);
     };
+
+        const handlePasswordSubmit = async (values, { resetForm }) => {
+        const inputValues = {
+            id: patient?.id,
+            password: values.password,
+            newPassword: values.newPassword,
+        };
+
+        const details = {
+            query: CHANGE_PATIENT_PASSWORD,
+            variables: {
+                input: inputValues,
+            },
+        };
+
+        await dispatch(changePateintPasswordAction(details));
+
+        resetForm({ values: "" });
+    };
+
+    useEffect(() => {
+        if (patient?.image) setProfileImage(patient?.image);
+    }, [patient?.image]);
+
+    useEffect(() => {
+        return () => dispatch(resetNotifications());
+    }, [dispatch]);
 
     return (
         <div className="mx-5">
@@ -262,7 +292,7 @@ export const ProfileSettings = () => {
                                 password: "",
                                 newPassword: "",
                             }}
-                            // onSubmit={}
+                            onSubmit={handlePasswordSubmit}
                         >
                             {({
                                 values,
@@ -337,7 +367,6 @@ export const ProfileSettings = () => {
                                             Change Password
                                         </button>
                                     </div>
-                                    
                                 </Form>
                             )}
                         </Formik>
@@ -347,3 +376,5 @@ export const ProfileSettings = () => {
         </div>
     );
 };
+
+export default PatientProfileSettings;
