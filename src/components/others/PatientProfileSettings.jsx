@@ -71,8 +71,6 @@ const PatientProfileSettings = () => {
         };
 
         await dispatch(updatePatientAction(details));
-
-        console.log("<<<<<<<<<>>>>>>>", inputValues, details);
     };
 
         const handlePasswordSubmit = async (values, { resetForm }) => {

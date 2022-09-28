@@ -7,8 +7,10 @@ import Button from "../common/Button";
 import FormSelect from "../others/Select";
 import GlobalModal from "./GlobalModal";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import useFetchAllDoctor from "../../hooks/useFetchAllDoctors";
 
-const appointmentTypeOptions = [
+    const appointmentTypeOptions = [
     { value: "Diabetes", label: "Diabetes" },
     { value: "Back pain", label: "Back pain" },
     { value: "Coronavirus", label: "Coronavirus" },
@@ -17,9 +19,37 @@ const appointmentTypeOptions = [
     { value: "Highblood pressure", label: "Highblood pressure" },
     { value: "Follow up", label: "Urologist" },
     { value: "Body pain", label: "Neurologist" },
+    
 ];
 
+const departmentsOptions = [
+    { value: "Eye Care", label: "Eye Care" },
+    { value: "Gynecologist", label: "Gynecologist" },
+    { value: "Psychotherapist", label: "Psychotherapist" },
+    { value: "Orthopedic", label: "Orthopedic" },
+    { value: "Dentist", label: "Dentist" },
+    { value: "Gastrologist", label: "Gastrologist" },
+    { value: "Urologist", label: "Urologist" },
+    { value: "Neurologist", label: "Neurologist" },
+    { value: "others", label: "others" },
+];
+    
+const getDoctors = (value, lable) => {
+    return [
+        {value: value, label: lable}
+    ]
+} 
+
 const AppointmentModal = ({ isOpen, closeModal, id }) => {
+    const { doctors } = useSelector(state => state.doctor)
+    
+    const availableDoctors = doctors?.map(doctor => {
+        let fullName = `${doctor.firstname} ${doctor.lastname}`
+        return getDoctors(doctor.id, fullName)
+    })
+
+
+    
     const [showOthersInput, setShowOthersInput] = useState(false);
     const [time, setTime] = useState("false");
 
@@ -36,6 +66,12 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
     const onSubmit = async (values) => {
         console.log(values);
     };
+
+    
+    //fetchdoctors
+    useFetchAllDoctor();
+
+
     return (
         <GlobalModal size="sm" id={id}>
             <div className="rounded-md flex">
@@ -68,6 +104,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                 handleBlur,
                                 handleSubmit,
                                 isSubmitting,
+                                isValid,
                                 setFieldValue,
                             }) => (
                                 <Form className="flex flex-col w-[100%]">
@@ -164,23 +201,23 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                             </label>
                                             <FormSelect
                                                 name="practitioner"
-                                                options={appointmentTypeOptions}
+                                                options={availableDoctors[0]}
                                             />
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full ">
-                                            <InputField
+                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
+                                                Departments
+                                            </label>
+                                            <FormSelect
                                                 name="department"
-                                                value={values.department}
-                                                validate=""
-                                                type="text"
-                                                label="Department:"
-                                                placeholder="Department:"
+                                                options={departmentsOptions}
                                             />
+                                            
                                         </div>
                                         <div className="flex flex-col sm:w-full ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
+                                             <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
                                                 Appointment Type
                                             </label>
                                             <FormSelect
@@ -228,7 +265,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5  lg:gap-5">
                                         <div className="flex flex-col sm:w-full ">
                                             <InputField
-                                                name="Description"
+                                                name="description"
                                                 value={values.description}
                                                 validate=""
                                                 type="textarea"
@@ -238,7 +275,8 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-end justify-end gap-10   mb-5">
+                                    {isValid && (
+                                        <div className="flex items-end justify-end gap-10   mb-5">
                                         <div className="flex flex-col items-end justify-end ">
                                             <h1 className="text:lg font-bold">
                                                 Service Fees
@@ -248,6 +286,8 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                             </span>
                                         </div>
                                     </div>
+                                    )}
+                                    
 
                                     <div className="  ">
                                         <Button
