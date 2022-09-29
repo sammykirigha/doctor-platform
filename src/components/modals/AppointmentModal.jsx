@@ -85,7 +85,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                 phone: "",
                                 date: "",
                                 others: "",
-                                serviceFee: "$600",
+                                serviceFee: "Ksh1500",
                                 practitioner: "",
                                 picked: "",
                                 time: "",
@@ -282,7 +282,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                                 Service Fees
                                             </h1>
                                             <span className="text:lg font-semibold">
-                                                Total: $600
+                                                Total: Ksh 1500
                                             </span>
                                         </div>
                                     </div>

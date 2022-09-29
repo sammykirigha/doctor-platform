@@ -9,7 +9,8 @@ import { BsFillEmojiHeartEyesFill } from "react-icons/bs";
 import {  MdAttachFile, MdSend } from "react-icons/md";
 import UserMessage from "./UserMessage";
 
-const ChatMessages = ({width='full', height}) => {
+const ChatMessages = ({ width = 'full', height }) => {
+
     return (
         <div className={`bg-white sm:w-[100%] sm:ml-0 sm:mt-5 lg:mt-1  rounded-md w-[${width}]`}>
             <div className="flex flex-row items-center justify-between border-b">

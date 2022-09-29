@@ -6,8 +6,23 @@ import useFetchPatient from "../../hooks/useFetchPatients";
 import { useDispatch, useSelector } from "react-redux";
 import { resetNotifications } from "../../state/reducers/error.reducer";
 import UpcomingAppointments from "./UpcomingAppointments";
+import { gql, useSubscription } from "@apollo/client";
 
 const PatientDashboard = () => {
+            const MESSAGE_SUBSCRIPTION = gql`
+        subscription newNotification {
+            newNotification{
+                message {
+                    id
+                    message
+                }
+            }
+        }
+    `;
+
+    const { data } = useSubscription(MESSAGE_SUBSCRIPTION);
+    console.log("testing info",data);
+
     const { patient } = useSelector((state) => state.patient)
     const dispatch = useDispatch();
 
