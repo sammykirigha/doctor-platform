@@ -1,10 +1,5 @@
-
-import { BiHomeAlt, BiLogOutCircle, BiCube } from 'react-icons/bi';
-import { FaStethoscope, FaBlog, FaWheelchair } from 'react-icons/fa';
+import { FaStethoscope, FaWheelchair } from 'react-icons/fa';
 import { AiOutlineUser, AiOutlineAppstore } from 'react-icons/ai';
-import { HiOutlineShoppingCart } from 'react-icons/hi';
-import { MdOutlineRestorePage } from 'react-icons/md';
-import { IoTabletLandscapeOutline } from 'react-icons/io';
 import { GiAlarmClock } from 'react-icons/gi';
 
 

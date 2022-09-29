@@ -56,18 +56,11 @@ const ChatMessages = ({ width = 'full', height }) => {
                                     </span>
                                 </div>
                             ),
-                            () => (
-                                <div className="flex flex-row my-4 mx-4 pt-3 group cursor-pointer">
-                                    <RiDeleteBin7Line className="text-gray-700 h-5 w-5 group-hover:text-blue-700" />
-                                    <span className="text-gray-500 text-sm ml-2 group-hover:text-blue-700">
-                                        DELETE
-                                    </span>
-                                </div>
-                            ),
                         ]}
                     />
                 </span>
-        </div>
+            </div>
+            
         <div className="flex flex-col">
           <div className={`slim-scrollbar overflow-auto h-[${height}]`}>
             {

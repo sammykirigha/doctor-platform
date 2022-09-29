@@ -47,8 +47,6 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
         let fullName = `${doctor.firstname} ${doctor.lastname}`
         return getDoctors(doctor.id, fullName)
     })
-
-
     
     const [showOthersInput, setShowOthersInput] = useState(false);
     const [time, setTime] = useState("false");

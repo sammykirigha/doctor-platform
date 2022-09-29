@@ -9,28 +9,36 @@ import UpcomingAppointments from "./UpcomingAppointments";
 import { gql, useSubscription } from "@apollo/client";
 
 const PatientDashboard = () => {
-            const MESSAGE_SUBSCRIPTION = gql`
+    const MESSAGE_SUBSCRIPTION = gql`
         subscription newNotification {
-            newNotification{
+            newNotification {
                 message {
                     id
                     message
+                    sender_ {
+                        id
+                        username
+                    }
+                    receiver_ {
+                        username
+                        id
+                    }
                 }
             }
         }
     `;
 
     const { data } = useSubscription(MESSAGE_SUBSCRIPTION);
-    console.log("testing info",data);
+    console.log("testing info", data);
 
-    const { patient } = useSelector((state) => state.patient)
+    const { patient } = useSelector((state) => state.patient);
     const dispatch = useDispatch();
 
-    useFetchPatient()
+    useFetchPatient();
 
     useEffect(() => {
-        return ()=>dispatch(resetNotifications())
-    },[dispatch])
+        return () => dispatch(resetNotifications());
+    }, [dispatch]);
 
     return (
         <div className="mx-5 sm:px-3 sm:pt-3 md:pt-0 lg:pb-3">
