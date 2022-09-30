@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useChat } from "../../modules/chat/chat-context";
 
 const Chatts = () => {
-    const { chats } = useChat();
+    const { chats  } = useChat();
 	
     return (
         <div>
@@ -16,7 +16,8 @@ const Chatts = () => {
 };
 
 function ChatItem({ chat }) {
-	const {user} = useSelector(state => state.auth)
+	const { user } = useSelector(state => state.auth)
+	const {  selectedChat, setSelectedChat } = useChat();
 
 	const name = useMemo(() => {
 		if (chat?.last?.receiver_?.id === user?.id)
@@ -26,7 +27,10 @@ function ChatItem({ chat }) {
 	}, [chat, user?.id])
 	
     return (
-        <div className="flex flex-row items-center w-full border mb-3 mt-3 rounded-md bg-blue-50 pb-3 cursor-pointer">
+		<div onClick={() => setSelectedChat(chat)}
+			className={`flex flex-row items-center w-full border mb-3 mt-3 rounded-md ${selectedChat?.id === chat?.id ? 'bg-blue-100' : "bg-blue-50"} pb-3 cursor-pointer`}
+		
+		>
             <div className=" mt-3 ml-4 relative h-12 w-12 bg-blue-100 flex items-center justify-center rounded-full ">
                 <img
                     src="http://res.cloudinary.com/dkirigha18/image/upload/v1663954584/hhtgacbulprqat1x71xe.jpg"

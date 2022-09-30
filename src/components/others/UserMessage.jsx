@@ -3,7 +3,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { MdOutlineAvTimer } from "react-icons/md";
 // import image1 from "../../data/images/01.jpg"
 
-const UserMessage = ({ index }) => {
+const UserMessage = ({ index, message }) => {
     
     return (
         <div className={`flex flex-row ml-3 ${index % 2 === 0 && 'justify-start flex-row-reverse mr-2 gap-2'}`}>
@@ -20,10 +20,10 @@ const UserMessage = ({ index }) => {
             </div>
             <div className="max-w-[60%] bg-white flex flex-col mt-5 ml-2 ">
                 <h6 className="text-gray-400 border border-gray-300 mt-3 h-[35px] pt-1 pl-1 rounded-md px-2">
-                    Nice to meet you
+                    {message?.message}
                 </h6>
-                <div className="flex flex-row items-center">
-                    <MdOutlineAvTimer className="h-4 w-4 text-gray-500" />
+                <div className="flex flex-row items-center text-xs space-x-1">
+                    <MdOutlineAvTimer className="h-3 w-3 text-gray-500" />
                     <span className="text-gray-500">42 min ago</span>
                 </div>
             </div>
