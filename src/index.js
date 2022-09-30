@@ -9,20 +9,21 @@ import { AddEventProvider } from "./contexts/events.context";
 import { Provider } from "react-redux";
 import store from "./state/store";
 import client from "./apollo";
-
-
+import ChatProvider from "./modules/chat/chat-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
         <ApolloProvider client={client}>
-        <Provider store={store}>
-            <NavigationProvider>
-                <AddEventProvider>
-                    <App />
-                </AddEventProvider>
-            </NavigationProvider>
+            <Provider store={store}>
+                <NavigationProvider>
+                    <AddEventProvider>
+                        <ChatProvider>
+                            <App />
+                        </ChatProvider>
+                    </AddEventProvider>
+                </NavigationProvider>
             </Provider>
-            </ApolloProvider>
+        </ApolloProvider>
     </BrowserRouter>
 );

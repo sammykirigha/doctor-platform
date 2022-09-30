@@ -67,7 +67,7 @@ const Chat = () => {
                                     isActive ? "underline " : " "
                                 }
                             >
-                                Chatts
+                                Inbox
                             </NavLink>
                             <NavLink
                                 to="ready-to-chat"
@@ -78,7 +78,6 @@ const Chat = () => {
                                 Doctors
                             </NavLink>
                         </div>
-
                         <Outlet />
                     </div>
                 </div>

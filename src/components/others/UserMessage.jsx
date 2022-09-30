@@ -3,15 +3,16 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { MdOutlineAvTimer } from "react-icons/md";
 // import image1 from "../../data/images/01.jpg"
 
-const UserMessage = ({index}) => {
+const UserMessage = ({ index }) => {
+    
     return (
         <div className={`flex flex-row ml-3 ${index % 2 === 0 && 'justify-start flex-row-reverse mr-2 gap-2'}`}>
             <div className=" mt-6 relative h-12 w-12 bg-blue-100 flex items-center justify-center rounded-full ">
-                {/* <img
-                    src={image1}
+                <img
+                    src="http://res.cloudinary.com/dkirigha18/image/upload/v1663954584/hhtgacbulprqat1x71xe.jpg"
                     alt="logo"
                     className="m-2 w-12 h-12 rounded-full cursor-pointer "
-                /> */}
+                />
                 
                 <span className="absolute -top-2 right-7">
                     <GoPrimitiveDot className="text-green-700 h-6 w-6 " />{" "}
