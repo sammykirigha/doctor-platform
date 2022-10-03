@@ -49,15 +49,16 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
     })
     
     const [showOthersInput, setShowOthersInput] = useState(false);
-    const [time, setTime] = useState("false");
+    const [time, setTime] = useState("");
 
     const showInputHandle = (e) => {
         console.log(e.target.checked);
         setShowOthersInput(e.target.checked);
     };
 
+    
     const timeHandler = (e) => {
-        console.log(e.target.value);
+        console.log("selected time",e.target);
         setTime(e.target.value)
     }
 
@@ -85,11 +86,11 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                 others: "",
                                 serviceFee: "Ksh1500",
                                 practitioner: "",
-                                picked: "",
                                 time: "",
                                 otherType: "",
                                 description: "",
-                                department: ""
+                                department: "",
+                                age: 0
                             }}
                             onSubmit={onSubmit}
                             // validationSchema={createDoctorSchema}
@@ -164,7 +165,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                             <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
                                                 Date
                                             </label>
-                                            <DatePickerField name="dateOfBirth" />
+                                            <DatePickerField name="date" />
                                         </div>
 
                                         <div className="flex flex-col sm:w-full ">
@@ -264,6 +265,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                         <div className="flex flex-col sm:w-full ">
                                             <InputField
                                                 name="description"
+                                                row={3}
                                                 value={values.description}
                                                 validate=""
                                                 type="textarea"
@@ -286,7 +288,6 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     </div>
                                     )}
                                     
-
                                     <div className="  ">
                                         <Button
                                             className={`mt-5 w-[200px] bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer`}
