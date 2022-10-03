@@ -13,7 +13,7 @@ const FormSelect = ({ name, options }) => {
         <>
             <Select
                 name={name}
-                value={field.value}
+                value={field.value.value}
                 onChange={({ value }) => helpers.setValue(value)}
                 options={options}
                 styles={colourStyles}

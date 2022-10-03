@@ -47,7 +47,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
     });
 
     const [showOthersInput, setShowOthersInput] = useState(false);
-    const [time, setTime] = useState("");
+    const [selectedOption, setSElectedOption] = useState(null)
     const [state, setState] = useState({
         patientId: "",
         patient_firstname: "",
@@ -66,17 +66,21 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
     });
 
     const showInputHandle = (e) => {
-        console.log(e.target.checked);
         setShowOthersInput(e.target.checked);
     };
 
-    const timeHandler = (e) => {
-        console.log("selected time", e.target.value);
-        setTime(e.target.value);
+
+    const changeHandler = (e) => {
+         const { name, value } = e.target;
+        setState({
+            ...state,
+            [name]: value
+        })
     };
 
-    const onSubmit = async (values) => {
-        console.log(values);
+    const onSubmit =  (e) => {
+        e.preventDefault()
+        console.log(state);
     };
 
     //fetchdoctors
@@ -87,7 +91,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
             <div className="rounded-md flex">
                 <div className=" bg-white rounded-md sm:h-auto w-full">
                     <div className="mx-3 mt-5 mb-5">
-                        <form className="flex flex-col w-[100%]">
+                        <form onSubmit={onSubmit} className="flex flex-col w-[100%]">
                             <div className="flex flex-col items-center justify-center my-5 ">
                                 <h2 className="text-lg font-bold text-gray-600 uppercase">
                                     Book an Appointment
@@ -104,8 +108,8 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     </label>
                                     <input
                                         name="patient_firstname"
-                                        // value={patient_phone}
-                                        onChange={timeHandler}
+                                        value={state.patient_firstname}
+                                        onChange={changeHandler}
                                         validate=""
                                         type="text"
                                         className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -118,8 +122,8 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     </label>
                                     <input
                                         name="patient_lastname"
-                                        // value={patient_phone}
-                                        onChange={timeHandler}
+                                        value={state.patient_lastname}
+                                        onChange={changeHandler}
                                         validate=""
                                         type="text"
                                         className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -134,8 +138,8 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     </label>
                                     <input
                                         name="patient_email"
-                                        // value={patient_phone}
-                                        onChange={timeHandler}
+                                        value={state.patient_email}
+                                        onChange={changeHandler}
                                         validate=""
                                         type="text"
                                         className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -144,12 +148,12 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                 </div>
                                 <div className="flex flex-col sm:w-full">
                                     <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                        Time
+                                        Phone
                                     </label>
                                     <input
                                         name="patient_phone"
-                                        // value={patient_phone}
-                                        onChange={timeHandler}
+                                        value={state.patient_phone}
+                                        onChange={changeHandler}
                                         validate=""
                                         type="text"
                                         className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -163,9 +167,10 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                         Date
                                     </label>
                                     <input
-                                        name="time"
-                                        // value={date}
-                                        // onChange={timeHandler}
+                                        name="date"
+                                         min={new Date().toISOString().split('T')[0]}
+                                        value={state.date}
+                                        onChange={changeHandler}
                                         validate=""
                                         type="date"
                                         className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -179,8 +184,8 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     </label>
                                     <input
                                         name="time"
-                                        value={time}
-                                        onChange={timeHandler}
+                                        value={state.time}
+                                        onChange={changeHandler}
                                         validate=""
                                         type="time"
                                         className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -195,8 +200,8 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     </label>
                                     <input
                                         name="age"
-                                        // value={age}
-                                        onChange={timeHandler}
+                                        value={state.age}
+                                        onChange={changeHandler}
                                         validate=""
                                         type="number"
                                         className=" w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -207,7 +212,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
                                         Practitioner/Doctor
                                     </label>
-                                    <select>
+                                    <select value={state.doctorId} onChange={e => setState({...state, [e.target.name]: e.target.value})} >
                                         {availableDoctors[0]?.map(
                                             (item, index) => {
                                                 return (
@@ -288,7 +293,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                             <input
                                                 name="other_type"
                                                 // value={age}
-                                                onChange={timeHandler}
+                                                onChange={changeHandler}
                                                 validate=""
                                                 type="text"
                                                 className="  w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
@@ -301,15 +306,18 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
 
                             <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5  lg:gap-5">
                                 <div className="flex flex-col sm:w-full ">
-                                    <InputField
-                                        name="description"
-                                        row={3}
-                                        // value={description}
-                                        validate=""
-                                        type="textarea"
-                                        label="Description:"
-                                        placeholder="Description:"
-                                    />
+                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
+                                                Other Type
+                                            </label>
+                                            <input
+                                                name="description"
+                                                value={state.description}
+                                                onChange={changeHandler}
+                                                validate=""
+                                                type="text"
+                                                className="  w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
+                                                placeholder="Other Type:"
+                                            />
                                 </div>
                             </div>
 
