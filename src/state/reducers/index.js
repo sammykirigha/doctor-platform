@@ -7,6 +7,7 @@ import resetPassswordReducer from "./resetPassword.reducer";
 import confirmEmaildReducer from "./confirmEmail.reducer";
 import createPatientAccountdReducer from "./patient.reducer";
 import fetchSignlePatientReducer from "./patient.reducer";
+import createAppointment from "./appointments";
 
 export const rootReducer = combineReducers({
 	notifications: errorReducer,
@@ -16,7 +17,8 @@ export const rootReducer = combineReducers({
 	resetPasssword: resetPassswordReducer,
 	confirmEmail: confirmEmaildReducer,
 	createPatientAccount: createPatientAccountdReducer,
-	patient: fetchSignlePatientReducer
+	patient: fetchSignlePatientReducer,
+	appoinment: createAppointment
 })
 
 

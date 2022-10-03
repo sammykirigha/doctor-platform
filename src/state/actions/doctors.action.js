@@ -9,7 +9,6 @@ export const createDoctorAction = createAsyncThunk(
         try {
             thunkAPI.dispatch(resetNotifications());
             const response = await apiPost(data);
-            console.log("my response", response);
             return {
                 doctor: response.data.createDoctor,
                 success: true,
