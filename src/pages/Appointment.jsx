@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -10,7 +10,6 @@ import useFetchDoctor from "../hooks/useFetchDoctor";
 import AppointmentTable from "../components/others/AppointmentTable";
 import { resetNotifications } from "../state/reducers/error.reducer";
 import useFetchPatient from "../hooks/useFetchPatients";
-import GlobalModal from "../components/modals/GlobalModal";
 
 const Appointment = ({ loading, appointments }) => {
     const params = useLocation();

@@ -3,9 +3,11 @@ import Button from "../common/Button";
 import GlobalModal from "./GlobalModal";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useFetchAllDoctor from "../../hooks/useFetchAllDoctors";
 import { FaSpinner } from "react-icons/fa";
+import { CREATE_APPOINTMENT } from "../../queries/appointments";
+import { createAppointmentAction } from "../../state/actions/appointments";
 
 const appointmentTypeOptions = [
     { value: "Diabetes", label: "Diabetes" },
@@ -35,7 +37,8 @@ const getDoctors = (value, lable) => {
 };
 
 const AppointmentModal = ({ isOpen, closeModal, id }) => {
-     const params = useParams();
+    const params = useParams();
+    const dispatch = useDispatch();
     const [showOthersInput, setShowOthersInput] = useState(false);
     const { doctors } = useSelector((state) => state.doctor);
     const [loading, setLoading] = useState(false);
@@ -75,9 +78,17 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
         });
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        const inputVariables = { ...state, patientId: params.id, age: parseInt(state.age) };
+        const details = {
+            query: CREATE_APPOINTMENT,
+            variables: {
+            input: inputVariables
+            }
+        }
+        await dispatch(createAppointmentAction(details))
         console.log({...state, patientId: params.id});
         setLoading(false);
         setState({
@@ -331,7 +342,7 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                             </label>
                                             <input
                                                 name="other_type"
-                                                // value={age}
+                                                value={state.other_type}
                                                 onChange={changeHandler}
                                                 validate=""
                                                 type="text"

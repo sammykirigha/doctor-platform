@@ -25,7 +25,7 @@ export const AppointmentSlice = createSlice({
 	}
 })
 
-export const {  } = AppointmentSlice.actions;
+export const {} = AppointmentSlice.actions;
 const { reducer } = AppointmentSlice;
 
 export default reducer;
