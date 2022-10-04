@@ -13,7 +13,7 @@ export const links = [
 	{
 		icon: <FaStethoscope className='h-4.5 w-4.5' />,
 		name: 'Appointment',
-		link: '/appointment',
+		link: '/appointment/:id',
 		access: ["admin", "doctor", "patient","secretary"]
 	},
 	{

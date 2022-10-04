@@ -1,17 +1,13 @@
 import React from "react";
-import { IoMdClose } from "react-icons/io";
-import DatePickerField from "../others/DatePicker";
-import InputField from "../Authentication/InputField";
-import { Formik, Form, Field } from "formik";
 import Button from "../common/Button";
-import FormSelect from "../others/Select";
 import GlobalModal from "./GlobalModal";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useFetchAllDoctor from "../../hooks/useFetchAllDoctors";
+import { FaSpinner } from "react-icons/fa";
 
 const appointmentTypeOptions = [
-    { value: "", label: "Select type" },
     { value: "Diabetes", label: "Diabetes" },
     { value: "Back pain", label: "Back pain" },
     { value: "Coronavirus", label: "Coronavirus" },
@@ -39,15 +35,10 @@ const getDoctors = (value, lable) => {
 };
 
 const AppointmentModal = ({ isOpen, closeModal, id }) => {
-    const { doctors } = useSelector((state) => state.doctor);
-
-    const availableDoctors = doctors?.map((doctor) => {
-        let fullName = `${doctor.firstname} ${doctor.lastname}`;
-        return getDoctors(doctor.id, fullName);
-    });
-
+     const params = useParams();
     const [showOthersInput, setShowOthersInput] = useState(false);
-    const [selectedOption, setSElectedOption] = useState(null)
+    const { doctors } = useSelector((state) => state.doctor);
+    const [loading, setLoading] = useState(false);
     const [state, setState] = useState({
         patientId: "",
         patient_firstname: "",
@@ -61,26 +52,50 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
         patient_phone: "",
         description: "",
         appointment_type: "",
-        fees: "",
+        fees: "1500",
         other_type: "",
+    });
+
+   
+
+    const availableDoctors = doctors?.map((doctor) => {
+        let fullName = `${doctor.firstname} ${doctor.lastname}`;
+        return getDoctors(doctor.id, fullName);
     });
 
     const showInputHandle = (e) => {
         setShowOthersInput(e.target.checked);
     };
 
-
     const changeHandler = (e) => {
-         const { name, value } = e.target;
+        const { name, value } = e.target;
         setState({
             ...state,
-            [name]: value
-        })
+            [name]: value,
+        });
     };
 
-    const onSubmit =  (e) => {
-        e.preventDefault()
-        console.log(state);
+    const onSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        console.log({...state, patientId: params.id});
+        setLoading(false);
+        setState({
+            patientId: "",
+            patient_firstname: "",
+            patient_lastname: "",
+            age: 0,
+            department: "",
+            doctorId: "",
+            date: "",
+            time: "",
+            patient_email: "",
+            patient_phone: "",
+            description: "",
+            appointment_type: "",
+            fees: "",
+            other_type: "",
+        });
     };
 
     //fetchdoctors
@@ -91,7 +106,10 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
             <div className="rounded-md flex">
                 <div className=" bg-white rounded-md sm:h-auto w-full">
                     <div className="mx-3 mt-5 mb-5">
-                        <form onSubmit={onSubmit} className="flex flex-col w-[100%]">
+                        <form
+                            onSubmit={onSubmit}
+                            className="flex flex-col w-[100%]"
+                        >
                             <div className="flex flex-col items-center justify-center my-5 ">
                                 <h2 className="text-lg font-bold text-gray-600 uppercase">
                                     Book an Appointment
@@ -168,7 +186,11 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     </label>
                                     <input
                                         name="date"
-                                         min={new Date().toISOString().split('T')[0]}
+                                        min={
+                                            new Date()
+                                                .toISOString()
+                                                .split("T")[0]
+                                        }
                                         value={state.date}
                                         onChange={changeHandler}
                                         validate=""
@@ -212,7 +234,12 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
                                         Practitioner/Doctor
                                     </label>
-                                    <select value={state.doctorId} onChange={e => setState({...state, [e.target.name]: e.target.value})} >
+                                    <select
+                                        value={state.doctorId}
+                                        name="doctorId"
+                                        onChange={changeHandler}
+                                    >
+                                        <option value="">Select Doc</option>
                                         {availableDoctors[0]?.map(
                                             (item, index) => {
                                                 return (
@@ -233,7 +260,14 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
                                         Department
                                     </label>
-                                    <select>
+                                    <select
+                                        value={state.department}
+                                        name="department"
+                                        onChange={changeHandler}
+                                    >
+                                        <option value="">
+                                            Select Department
+                                        </option>
                                         {departmentsOptions?.map(
                                             (item, index) => {
                                                 return (
@@ -252,7 +286,12 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                                     <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500 mb-2">
                                         Appointment Type
                                     </label>
-                                    <select>
+                                    <select
+                                        value={state.appointment_type}
+                                        name="appointment_type"
+                                        onChange={changeHandler}
+                                    >
+                                        <option value="">Select type</option>
                                         {appointmentTypeOptions?.map(
                                             (item, index) => {
                                                 return (
@@ -306,18 +345,18 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
 
                             <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between  mb-5  lg:gap-5">
                                 <div className="flex flex-col sm:w-full ">
-                                            <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
-                                                Other Type
-                                            </label>
-                                            <input
-                                                name="description"
-                                                value={state.description}
-                                                onChange={changeHandler}
-                                                validate=""
-                                                type="text"
-                                                className="  w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
-                                                placeholder="Other Type:"
-                                            />
+                                    <label className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500">
+                                        Other Type
+                                    </label>
+                                    <input
+                                        name="description"
+                                        value={state.description}
+                                        onChange={changeHandler}
+                                        validate=""
+                                        type="text"
+                                        className="  w-full placeholder:italic placeholder:text-slate-300 placeholder:pl-3 focus:border-blue-500 focus:ring-blue-500 "
+                                        placeholder="Other Type:"
+                                    />
                                 </div>
                             </div>
 
@@ -333,12 +372,20 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
                             </div>
 
                             <div className="  ">
-                                <Button
-                                    className={`mt-5 w-[200px] bg-blue-500 text-white py-2 px-8 rounded-md cursor-pointer`}
-                                    // disabled={}
+                                <button
+                                    className={`mt-5 w-full flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${
+                                        loading
+                                            ? "cursor-not-allowed"
+                                            : "cursor-pointer"
+                                    } `}
+                                    disabled={loading}
                                     type="submit"
-                                    text="BOOK AN APPOINTMENT"
-                                />
+                                >
+                                    {loading && (
+                                        <FaSpinner className="animate-spin" />
+                                    )}{" "}
+                                    Book An Appointment
+                                </button>
                             </div>
                         </form>
                     </div>

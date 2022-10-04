@@ -27,7 +27,7 @@ export const patient_routes = [
 		children: [
             { path: "", component: PatientDashboard },
             { path: "dashboard", exact: true, component: PatientDashboard },
-            { path: "appointment", exact: true, component: PatientAppointments },
+            { path: "appointment/:id", exact: true, component: PatientAppointments },
             { path: "doctors", exact: true, component: Doctors },
             {
                 path: "patients/:id",
