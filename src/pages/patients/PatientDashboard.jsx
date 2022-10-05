@@ -5,8 +5,8 @@ import Title from "../../components/others/Title";
 import useFetchPatient from "../../hooks/useFetchPatients";
 import { useDispatch, useSelector } from "react-redux";
 import { resetNotifications } from "../../state/reducers/error.reducer";
-import UpcomingAppointments from "./UpcomingAppointments";
 import { gql, useSubscription } from "@apollo/client";
+import Appointments from "./Appointments";
 
 const PatientDashboard = () => {
     const MESSAGE_SUBSCRIPTION = gql`
@@ -64,7 +64,7 @@ const PatientDashboard = () => {
             </div>
             <DashboardCards />
             <div>
-                <UpcomingAppointments />
+                <Appointments />
             </div>
         </div>
     );

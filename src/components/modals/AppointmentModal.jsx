@@ -59,8 +59,6 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
         other_type: "",
     });
 
-   
-
     const availableDoctors = doctors?.map((doctor) => {
         let fullName = `${doctor.firstname} ${doctor.lastname}`;
         return getDoctors(doctor.id, fullName);

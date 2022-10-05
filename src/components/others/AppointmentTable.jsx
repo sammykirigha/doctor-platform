@@ -65,7 +65,6 @@ const AppointmentTable = ({ data }) => {
                 </thead>
                 <tbody>
                     {myData?.getPage(currentPage).map((appnt, index) => {
-                        console.log("my time",FormatDateToDDMMYYYY(appnt.date) ); 
                         return (
                             <tr className="" key={index}>
                                 <td className="px-2 py-2">{`${appnt.patient_firstname} ${appnt.patient_lastname}`}</td>

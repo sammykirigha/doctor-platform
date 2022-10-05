@@ -9,11 +9,11 @@ export const createAppointmentAction = createAsyncThunk(
             thunkAPI.dispatch(resetNotifications());
             const response = await apiPost(data);
             return {
-                doctor: response.data.createAppointment,
+                appointment: response.data.createAppointment,
                 success: true,
             };
         } catch (err) {
-            console.log("CREATE DOCTOR ERROR: ", { err });
+            console.log("CREATE APPOINTMENT ERROR: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,
@@ -21,3 +21,23 @@ export const createAppointmentAction = createAsyncThunk(
         }
     }
 );
+
+export const getAppointmentsByDate = createAsyncThunk(
+    "appointment/get",
+    async (data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications());
+            const response = await apiPost(data);
+            return {
+                appointments: response.data.getAppointmentsByDate,
+                success: true
+            }
+        } catch (error) {
+            console.log("CREATE APPOINTMENT ERROR: ", { error });
+            thunkAPI.dispatch(setErrorNotification(error));
+            return thunkAPI.rejectWithValue({
+                success: false
+            })
+        }
+    }
+)

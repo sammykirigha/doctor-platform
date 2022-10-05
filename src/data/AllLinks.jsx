@@ -16,6 +16,12 @@ export const links = [
 		link: '/appointment/:id',
 		access: ["admin", "doctor", "patient","secretary"]
 	},
+		{
+		icon: <FaStethoscope className='h-4.5 w-4.5' />,
+		name: 'Doctor-Appointment',
+		link: '/doctor-appointment/:id',
+		access: ["admin", "doctor","secretary"]
+	},
 	{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,
 		name: 'Doctors',
