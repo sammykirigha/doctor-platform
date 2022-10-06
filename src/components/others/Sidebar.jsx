@@ -109,7 +109,11 @@ const Sidebar = () => {
                                         <div
                                             onClick={() =>
                                                 navigate(
-                                                    "/" + user?.role + link.toString().replace('/doctors/:id',`/doctors/${doctor?.id}`).replace('/patients/:id',`/patients/${patient?.id}`)
+                                                    "/" + user?.role + link.toString()
+                                                        .replace('/doctors/:id', `/doctors/${doctor?.id}`)
+                                                        .replace('/patients/:id', `/patients/${patient?.id}`)
+                                                        .replace('/appointment/:id', `/appointment/${patient.id}`)
+                                                        .replace('doctor-appointment/:id', `/doctor-appointment/${doctor?.id}`)
                                                 )
                                             }
                                             className="flex items-center cursor-pointer"

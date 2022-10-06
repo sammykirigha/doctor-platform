@@ -38,14 +38,11 @@ const departmentsOptions = [
 const Settings = () => {
     const { doctor } = useSelector((state) => state.doctor);
     const [profileImage, setProfileImage] = useState("");
-    const [experience, setExperience] = useState("");
-    const [department, setDepartment] = useState("");
     const [uploading, setUploading] = useState(false);
     const [showScrollButton, setShowScrollButton] = useState(false);
 
     const dispatch = useDispatch();
     const imageUploadRef = useRef(null);
-    const params = useParams();
     
     const handleScrollHandleBar = () => {
         if (
@@ -59,14 +56,6 @@ const Settings = () => {
     const topScrollHandler = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-    };
-
-    const handleExperience = (event) => {
-        setExperience(event.target.value);
-    };
-
-    const handleDepartment = (event) => {
-        setDepartment(event.target.value);
     };
 
     const handleImageChange = async (e) => {
@@ -98,12 +87,12 @@ const Settings = () => {
             phone: values.phone,
             address: values.address,
             specialization: values.specialization,
-            department: department,
+            department: values.department,
             twitterlLink: values.twitterlLink,
             facebooklLink: values.facebooklLink,
             linkedinlLink: values.linkedinlLink,
             instagramlLink: values.instagramlLink,
-            experience: experience,
+            experience: values.experience,
         };
 
         const details = {
@@ -144,10 +133,7 @@ const Settings = () => {
         if (doctor?.image) setProfileImage(doctor?.image);
     }, [doctor?.image]);
 
-    useEffect(() => {
-        return () => dispatch(resetNotifications());
-    }, [dispatch]);
-
+    
     useEffect(() => {
         window.onscroll = function () {
             handleScrollHandleBar();

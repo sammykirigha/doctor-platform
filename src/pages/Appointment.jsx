@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -10,13 +10,11 @@ import useFetchDoctor from "../hooks/useFetchDoctor";
 import AppointmentTable from "../components/others/AppointmentTable";
 import { resetNotifications } from "../state/reducers/error.reducer";
 import useFetchPatient from "../hooks/useFetchPatients";
-import GlobalModal from "../components/modals/GlobalModal";
 
 const Appointment = ({ loading, appointments }) => {
     const params = useLocation();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const { doctor } = useSelector((state) => state.doctor);
     const [selectedOption, setSelectedOption] = useState(null);
 
     const pathname = params.pathname.split("/")[1];
@@ -62,7 +60,6 @@ const Appointment = ({ loading, appointments }) => {
                         value={selectedOption}
                         onChange={handleChange}
                     />
-
                     {user?.role === "doctor" ? null : (
                         <Button>
                             <label for="new-appointment" class="modal-button">
@@ -76,8 +73,8 @@ const Appointment = ({ loading, appointments }) => {
                 <div className="flex items-center justify-center mt-5">
                     <FaSpinner className="h-24 w-24 text-blue-600 animate-spin" />
                 </div>
-            ) : doctor?.appointments.length > 0 ? (
-                <AppointmentTable data={doctor?.appointments} />
+            ) : appointments?.length > 0 ? (
+                <AppointmentTable data={appointments} />
             ) : (
                 <div className="flex items-center justify-center">
                     <div className="bg-white border h-auto  rounded-md flex items-center justify-center w-auto py-3 sm:w-auto sm:py-auto md:w-[500px] lg:w-[500px] mx-autho">

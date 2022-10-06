@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 
 const Notifications = () => {
     const { error, message } = useSelector((state) => state.notifications);
-    console.log(error);
+    console.log({error, message});
 
     return (
         <div className="mt-16">
-            {error && (
+            {/* {error && (
 				<div className="bg-red-200 z-50 py-7 text-center">{error}
 			</div>
             )}
@@ -17,7 +17,7 @@ const Notifications = () => {
                 <div className="bg-green-400 bg-opacity-50 py-7 text-center">
                     {message}
             </div>
-            )}
+            )} */}
         </div>
     );
 };

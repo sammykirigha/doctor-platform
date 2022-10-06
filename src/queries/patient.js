@@ -56,3 +56,15 @@ query FetchSinglePatient($input: HandleSinglePatientInput!) {
   }
 }
 `
+
+export const UPDATE_PATIENT = `
+mutation UpdatePatientInfo($input: UpdatePatientInput!) {
+  updatePatientInfo(input: $input)
+}
+`
+
+export const CHANGE_PATIENT_PASSWORD = `
+mutation ChangePatientPassword($input: ChangePatientPasswordInput!) {
+  changePatientPassword(input: $input)
+}
+`

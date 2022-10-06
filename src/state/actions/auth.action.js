@@ -23,7 +23,7 @@ export const signinUserAction = createAsyncThunk(
             };
         } catch (err) {
             const error = parseError(err)
-            thunkAPI.dispatch(setErrorNotification(err));
+            thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
             });
@@ -44,7 +44,7 @@ export const signUpUserAction = createAsyncThunk(
             };
         } catch (err) {
            const error = parseError(err)
-            thunkAPI.dispatch(setErrorNotification(err));
+            thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
             });
@@ -65,8 +65,8 @@ export const forgotPasswordAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-            //  const error = parseError(err)
-            thunkAPI.dispatch(setErrorNotification(err));
+             const error = parseError(err)
+            thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
             });
@@ -87,7 +87,7 @@ export const resetPasswordAction = createAsyncThunk(
             };
         } catch (err) {
             const error = parseError(err)
-            thunkAPI.dispatch(setErrorNotification(err));
+            thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
             });
@@ -142,7 +142,8 @@ export const confirmEmailrAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-             thunkAPI.dispatch(setErrorNotification(err));
+            const error = parseError(err)
+             thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
             });

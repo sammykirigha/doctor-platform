@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { useMutation } from "@apollo/client";
 import logo from "../../data/images/logo3.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { LOGIN_USER } from "../../queries/auth";
@@ -63,7 +62,6 @@ const LoginForm = (props) => {
         return error;
     };
 
-    console.log('<<<<<>>>>', user);
 
     useEffect(() => {
         setError(message) 

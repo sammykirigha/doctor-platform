@@ -1,10 +1,5 @@
-
-import { BiHomeAlt, BiLogOutCircle, BiCube } from 'react-icons/bi';
-import { FaStethoscope, FaBlog, FaWheelchair } from 'react-icons/fa';
+import { FaStethoscope, FaWheelchair } from 'react-icons/fa';
 import { AiOutlineUser, AiOutlineAppstore } from 'react-icons/ai';
-import { HiOutlineShoppingCart } from 'react-icons/hi';
-import { MdOutlineRestorePage } from 'react-icons/md';
-import { IoTabletLandscapeOutline } from 'react-icons/io';
 import { GiAlarmClock } from 'react-icons/gi';
 
 
@@ -18,8 +13,14 @@ export const links = [
 	{
 		icon: <FaStethoscope className='h-4.5 w-4.5' />,
 		name: 'Appointment',
-		link: '/appointment',
+		link: '/appointment/:id',
 		access: ["admin", "doctor", "patient","secretary"]
+	},
+		{
+		icon: <FaStethoscope className='h-4.5 w-4.5' />,
+		name: 'Doctor-Appointment',
+		link: '/doctor-appointment/:id',
+		access: ["admin", "doctor","secretary"]
 	},
 	{
 		icon: <AiOutlineUser className='h-4.5 w-4.5' />,

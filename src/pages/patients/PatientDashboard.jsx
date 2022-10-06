@@ -5,17 +5,40 @@ import Title from "../../components/others/Title";
 import useFetchPatient from "../../hooks/useFetchPatients";
 import { useDispatch, useSelector } from "react-redux";
 import { resetNotifications } from "../../state/reducers/error.reducer";
-import UpcomingAppointments from "./UpcomingAppointments";
+import { gql, useSubscription } from "@apollo/client";
+import Appointments from "./Appointments";
 
 const PatientDashboard = () => {
-    const { patient } = useSelector((state) => state.patient)
+    const MESSAGE_SUBSCRIPTION = gql`
+        subscription newNotification {
+            newNotification {
+                message {
+                    id
+                    message
+                    sender_ {
+                        id
+                        username
+                    }
+                    receiver_ {
+                        username
+                        id
+                    }
+                }
+            }
+        }
+    `;
+
+    const { data } = useSubscription(MESSAGE_SUBSCRIPTION);
+    console.log("testing info", data);
+
+    const { patient } = useSelector((state) => state.patient);
     const dispatch = useDispatch();
 
-    useFetchPatient()
+    useFetchPatient();
 
     useEffect(() => {
-        return ()=>dispatch(resetNotifications())
-    },[dispatch])
+        return () => dispatch(resetNotifications());
+    }, [dispatch]);
 
     return (
         <div className="mx-5 sm:px-3 sm:pt-3 md:pt-0 lg:pb-3">
@@ -41,7 +64,7 @@ const PatientDashboard = () => {
             </div>
             <DashboardCards />
             <div>
-                <UpcomingAppointments />
+                <Appointments />
             </div>
         </div>
     );

@@ -19,21 +19,25 @@ mutation CreateDoctor($input: CreateDoctorInput!) {
     instagramlLink
     twitterlLink
     appointments {
-      patientId
-      patient_email
-      patient_phone
-      department
-      patient_firstname
-      patient_lastname
-      date
-      time
-      fees
-      status
-      description
+          patientId
+          patient_email
+          patient_phone
+          age
+          department
+          doctorId
+          date
+          time
+          patient_firstname
+          patient_lastname
+          fees
+          status
+          description
+          appointment_type
+          other_type
     }
   }
 }
-`
+`;
 
 export const GET_DOCTOR_QUERY = `
  query GetOneDoctor($input: GetSingleDoctorInputByEmail!) {
@@ -71,19 +75,19 @@ export const GET_DOCTOR_QUERY = `
     }
   }
 }
-`
+`;
 
 export const UPDATE_DOCTOR = `
 mutation UpdateDoctor($input: UpdateDoctorInput!) {
   updateDoctor(input: $input)
 }
-`
+`;
 
 export const CHANGE_DOCTOR_PASSWORD_QUERY = `
  mutation ChangeDoctorsPassword($input: ChangePasswordInput!) {
   changeDoctorsPassword(input: $input)
 }
-`
+`;
 
 export const FETCH_ALL_DOCTORS_QUERY = `
 query GetDoctors {
@@ -122,4 +126,4 @@ query GetDoctors {
     }
   }
 }
-`
+`;
