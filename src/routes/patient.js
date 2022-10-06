@@ -20,6 +20,7 @@ import Email from "../pages/social/Email";
 import ReadyToChat from "../pages/social/ReadyToChat";
 import DashboardRoutes from "./DashboardRoutes";
 import UpcomingAppointmnets from "../pages/patients/appointments/UpcomingAppointmnets";
+import SingleAppointment from "../pages/SingleAppointment";
 
 export const patient_routes = [
     {
@@ -52,6 +53,7 @@ export const patient_routes = [
                 component: PatientAppointments,
             },
             { path: "doctors", exact: true, component: Doctors },
+            { path: "single-appointment/:appointmentId", exact: true, component: SingleAppointment },
             {
                 path: "patients/:id",
                 exact: true,

@@ -28,6 +28,7 @@ export const getAppointmentsByDate = createAsyncThunk(
         try {
             thunkAPI.dispatch(resetNotifications());
             const response = await apiPost(data);
+            console.log("response", response.data.getAppointmentsByDate);
             return {
                 appointments: response.data.getAppointmentsByDate,
                 success: true

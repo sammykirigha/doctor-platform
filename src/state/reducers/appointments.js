@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import { createAppointmentAction, getAppointmentsByDate } from "../actions/appointments"
 
 const initialState = {
-	appoitments: [],
+	appointments: [],
 	appoitment: null,
 	loading: false
 }
@@ -25,16 +25,17 @@ export const AppointmentSlice = createSlice({
 		})
 		builder.addCase(getAppointmentsByDate.fulfilled, (state, action) => {
 			state.loading = false;
-			state.appoitments = action.payload
+			state.appointments = action.payload.appointments;
 		})
 
+		//rejected
 		builder.addCase(createAppointmentAction.rejected, (state, action) => {
 			state.loading = false;
-			state.appoitment = null
+			state.appoitment = null;
 		})
 		builder.addCase(getAppointmentsByDate.rejected, (state, action) => {
 			state.loading = false;
-			state.appoitments = []
+			state.appointments = [];
 		})
 	}
 })
