@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { GET_APPOINTMENTS_BY_DATE } from "../queries/appointments";
 import { getAppointmentsByDate } from "../state/actions/appointments";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const SingleAppointment = () => {
     const param = useParams();
@@ -18,7 +18,6 @@ const SingleAppointment = () => {
                 id: {
                    eq: param.appointmentId
                 },
-               
             };
 
             const details = {

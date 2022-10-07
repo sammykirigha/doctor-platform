@@ -38,6 +38,23 @@ query GetAppointmentsByDate($filters: AppointmentFilter) {
     description
     appointment_type
     other_type
+    doctor {
+      firstname
+      lastname
+      email
+      phone
+      gender
+      department
+      id
+    }
+    patient {
+      id
+      firstname
+      lastname
+      email
+      phone
+      gender
+    }
   }
 }
 `
