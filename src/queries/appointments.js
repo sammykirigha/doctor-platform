@@ -20,8 +20,8 @@ export const CREATE_APPOINTMENT = `
 `;
 
 export const GET_APPOINTMENTS_BY_DATE = `
-query GetAppointmentsByDate($input: GetAppointmentByDateInput!) {
-  getAppointmentsByDate(input: $input) {
+query GetAppointmentsByDate($filters: AppointmentFilter) {
+  getAppointmentsByDate(filters: $filters) {
     id
     patientId
     patient_email

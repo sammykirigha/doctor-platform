@@ -16,13 +16,27 @@ const UpcomingAppointmnets = () => {
     useEffect(() => {
         const fetchAppointments = async () => {
             const inputValue = {
-                patientID: patient?.id,
+                patientId: {
+                    eq: patient?.id
+                } ,
+                and: [
+                    {
+                        date: {
+                            gte: new Date().toISOString()
+                        }
+                    },
+                    {
+                        date: {
+                            lt: new Date(new Date().getTime() + (86400000 * 7)).toISOString()
+                        }
+                    }
+                ]
             };
 
             const details = {
                 query: GET_APPOINTMENTS_BY_DATE,
                 variables: {
-                    input: inputValue,
+                    filters: inputValue,
                 },
             };
             await dispatch(getAppointmentsByDate(details));
@@ -34,8 +48,8 @@ const UpcomingAppointmnets = () => {
     console.log("this state", appointments);
 
     return (
-        <div>
-            <AppointmentTable showAction={false} data={appointments} />
+        <div className="p-2">
+            <AppointmentTable showAction={false} showPagination={false} data={appointments} />
         </div>
     );
 };

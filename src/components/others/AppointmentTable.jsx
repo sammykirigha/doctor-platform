@@ -9,7 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 //add a filter method to filter data using names
 
-const AppointmentTable = ({ data, showAction = true }) => {
+const AppointmentTable = ({
+    data,
+    showAction = true,
+    showPagination = true,
+}) => {
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
@@ -125,23 +129,27 @@ const AppointmentTable = ({ data, showAction = true }) => {
                 </tbody>
             </table>
 
-            <div className="bg-white w-[150px] mt-12 px-3 h-[50px] py-2 ">
-                <select onChange={changeItemsPerPage}>
-                    <option>select size</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
-                </select>
-            </div>
-            <PageNavigation
-                nextPageHandler={nextPage}
-                previousPageHandler={previousPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
-            ></PageNavigation>
+            {showPagination && (
+                <>
+                    <div className="bg-white w-[150px] mt-12 px-3 h-[50px] py-2 ">
+                        <select onChange={changeItemsPerPage}>
+                            <option>select size</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <PageNavigation
+                        nextPageHandler={nextPage}
+                        previousPageHandler={previousPage}
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                    ></PageNavigation>
+                </>
+            )}
 
             <GlobalModal id="my-modal-3" ref={closeModalRef}>
                 <h2>opening one appointment</h2>
