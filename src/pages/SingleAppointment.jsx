@@ -1,74 +1,171 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { GET_APPOINTMENTS_BY_DATE } from "../queries/appointments";
+import { getAppointmentsByDate } from "../state/actions/appointments";
+import { useDispatch, useSelector } from "react-redux";
 
 const SingleAppointment = () => {
     const param = useParams();
+    const dispatch = useDispatch()
     const navigate = useNavigate();
-    const [state, setState] = useState({
-        patientId: "",
-        patient_firstname: "",
-        patient_lastname: "",
-        age: 0,
-        department: "",
-        doctorId: "",
-        date: "",
-        time: "",
-        patient_email: "",
-        patient_phone: "",
-        description: "",
-        appointment_type: "",
-        fees: "1500",
-        other_type: "",
-    });
+    const [appointment, setAppointment] = useState({})
+    
 
-    const changeHandler = (e) => {
-        const { name, value } = e.target;
-        setState({
-            ...state,
-            [name]: value,
-        });
-    };
+    useEffect(() => {
+        const fetchAppointment = async () => {
+            const inputValue = {
+                id: {
+                   eq: param.appointmentId
+                },
+               
+            };
 
-    console.log("param", param);
+            const details = {
+                query: GET_APPOINTMENTS_BY_DATE,
+                variables: {
+                    filters: inputValue,
+                },
+            };
+            let res = await dispatch(getAppointmentsByDate(details));
+            setAppointment(res?.payload?.appointments[0])
+        };
+
+        fetchAppointment();
+    }, [dispatch, param.appointmentId]);
+
+    console.log("appointment", appointment);
 
     return (
-        <div className="mx-auto ">
-            <div className="ml-10">
+        <div className="ml-10 ">
+            <div className="">
                 <span onClick={() => navigate(-1)}>
                     {" "}
                     <BsArrowLeftCircleFill className="text-blue-600 h-10 w-10 cursor-pointer" />{" "}
                 </span>
             </div>
-            <div>
-                <div>
-                    <span>Fullnames: Samuel Kirigha</span>
-                    <span>age:87 </span>
+            <div className="mt-10 mx-10 bg-white flex items-center justify-evenly flex-col ">
+                <div className="mt-7">
+                    <h2 className="text-xl leading-9 font-[600] my-3">
+                        Your Appointment Information
+                    </h2>
                 </div>
-                <div>
-                    <span>Email: dkirigha18@gmail.com</span>
-                    <span>Phone: 0707564356</span>
+                <div className=" pt-5 items-center ">
+                    <div className="flex pt-5 items-center ">
+                        <div className="">
+                            <div className=" ">
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Fullnames:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        Samuel Kirigha
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Phone:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        0707564356
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Appointment Date:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        12/12/2022
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Doctors Email:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        nvdblkjferil@gmail.com
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Doctors Name:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        John Katua
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Appointment Type:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        Back pain
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="ml-28">
+                            <div className="">
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    age:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        87
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Email:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        dkirigha18@gmail.com
+                                    </span>{" "}
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Time:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        30:40PM
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Department:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        Urologist
+                                    </span>{" "}
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Doctors Phone Number:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        00998767583
+                                    </span>
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Appointment Charges:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        1500
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                         <div className="flex items-center ">
+                                <span className="text-xl leading-9 font-[600] my-3">
+                                    Reasons for Appointment:{" "}
+                                    <span className="text-lg leading-7 font-[400]">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    </span>
+                                </span>
+                            </div>
+                    </div>
                 </div>
-                <div>
-                    <span>Appointment Date: 12/12/2022</span>
-                    <span>Time: 30:40PM</span>
-                </div>
-                <div>
-                    <span>
-                        Reasons for Appointment: I need a medical check up
-                    </span>
-                    <span>Department: Urologist</span>
-                </div>
-                <div>
-                    <span>Doctors Name: John Katua</span>
-                    <span>Doctors Phone Number: 00998767583</span>
-                </div>
-                <div>
-                    <span>Appointment Type: Back pain</span>
-                    <span>Appointment Charges: 1500</span>
-                </div>
-        </div>
-        <button>Update?</button>
+            </div>
+            <button className="ml-10 mt-10 py-2 px-4 text-lg text-white rounded-md bg-blue-700">Update?</button>
         </div>
     );
 };
