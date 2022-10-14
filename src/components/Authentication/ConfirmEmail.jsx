@@ -14,7 +14,7 @@ export const ConfirmEmail = () => {
 	const dispatch = useDispatch();
 	const [isSubmitting, setIsSubmittingv] =useState(false)
 
-    console.log(params.authToken);
+  
 
 	const onhandleSubmit = async () => {
 		const inputValue = {
@@ -28,7 +28,7 @@ export const ConfirmEmail = () => {
         };
 
 		let { payload } = await dispatch(confirmEmailrAction(details));
-		console.log('payload',payload);
+		
 		setIsSubmittingv(true)
 		if (payload.success) {
 			setIsSubmittingv(false)

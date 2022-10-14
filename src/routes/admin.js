@@ -5,7 +5,6 @@ import DashboardRoutes from "./DashboardRoutes";
 import DoctorsProfile from "../pages/doctors/Doctors-Profile";
 import AddPatient from "../pages/patients/Add-Patient";
 import PatientsProfile from "../pages/patients/Patients-Profile";
-import Profile from "../components/others/Profile";
 import AddDoctor from "../pages/doctors/Add-Doctor";
 import Experience from "../components/others/Experience";
 import Overview from "../components/others/Overview";
@@ -13,6 +12,7 @@ import Review from "../components/others/Review";
 import TimeTable from "../components/others/TimeTable";
 import Settings from "../components/others/Settings";
 import PatientProfileSettings  from "../components/others/PatientProfileSettings";
+import Profile from "../pages/patients/Profile";
 
 export const admin_routes = [
     {

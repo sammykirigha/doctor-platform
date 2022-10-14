@@ -183,7 +183,6 @@ const AddPatient = () => {
                                                             setFieldValue("image", url)
                                                         } catch (error) {
                                                             setUploading(false);
-                                                            console.log(error);
                                                         }
                                                     }
                                                     }

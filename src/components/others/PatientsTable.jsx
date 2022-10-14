@@ -22,7 +22,6 @@ const PatientsTable = ({data}) => {
         setItemsPerPage(+num)
     }
 
-    console.log(itemsPerPage);
 
     const totalPages = myData.getTotalPages()
 

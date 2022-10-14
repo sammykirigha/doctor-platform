@@ -87,7 +87,6 @@ const AppointmentModal = ({ isOpen, closeModal, id }) => {
             }
         }
         await dispatch(createAppointmentAction(details))
-        console.log({...state, patientId: params.id});
         setLoading(false);
         setState({
             patientId: "",

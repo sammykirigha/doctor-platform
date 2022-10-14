@@ -25,7 +25,7 @@ const Navbar = ({ onClick }) => {
     const dispatch = useDispatch()
 
 
-    console.log('loading the navbar page');
+  
     return (
         <div
             className={`bg-white-900 py-[13px] flex flex-row border-b border-gray-200 border-l  fixed z-10 right-0 top-0 ${

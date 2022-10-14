@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
-import { CREATE_APPOINTMENT, GET_APPOINTMENTS_BY_DATE } from "../queries/appointments";
-import { createAppointmentAction, getAppointmentsByDate } from "../state/actions/appointments";
+import {
+    CREATE_APPOINTMENT,
+    GET_APPOINTMENTS_BY_DATE,
+} from "../queries/appointments";
+import {
+    createAppointmentAction,
+    getAppointmentsByDate,
+} from "../state/actions/appointments";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctorsdAction } from "../state/actions/doctors.action";
 import useFetchAllDoctor from "../hooks/useFetchAllDoctors";
-import { FaSpinner } from "react-icons/fa";
+import { FaArrowLeft, FaSpinner } from "react-icons/fa";
 import InputField from "../components/Authentication/InputField";
 import { ErrorMessage, Form, Formik } from "formik";
 import FormSelect from "../components/others/Select";
@@ -34,16 +40,15 @@ const departmentsOptions = [
     { value: "others", label: "others" },
 ];
 
-
 const getDoctors = (value, lable) => {
     return [{ value: value, label: lable }];
 };
 
 const SingleAppointment = () => {
     const param = useParams();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [appointment, setAppointment] = useState({})
+    const [appointment, setAppointment] = useState({});
 
     const params = useParams();
     const [showOthersInput, setShowOthersInput] = useState(false);
@@ -66,37 +71,26 @@ const SingleAppointment = () => {
         other_type: "",
     });
 
-  const availableDoctors = doctors?.map((doctor) => {
+    const availableDoctors = doctors?.map((doctor) => {
         let fullName = `${doctor.firstname} ${doctor.lastname}`;
         return getDoctors(doctor.id, fullName);
     });
 
-
-
-    const showInputHandle = (e) => {
-        setShowOthersInput(e.target.checked);
-    };
-
-    const changeHandler = (e) => {
-        const { name, value } = e.target;
-        setState({
-            ...state,
-            [name]: value,
-        });
-    };
-
     const onSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        const inputVariables = { ...state, patientId: params.id, age: parseInt(state.age) };
+        const inputVariables = {
+            ...state,
+            patientId: params.id,
+            age: parseInt(state.age),
+        };
         const details = {
             query: CREATE_APPOINTMENT,
             variables: {
-            input: inputVariables
-            }
-        }
-        await dispatch(createAppointmentAction(details))
-        console.log({...state, patientId: params.id});
+                input: inputVariables,
+            },
+        };
+        await dispatch(createAppointmentAction(details));
         setLoading(false);
         setState({
             patientId: "",
@@ -122,7 +116,7 @@ const SingleAppointment = () => {
         const fetchAppointment = async () => {
             const inputValue = {
                 id: {
-                   eq: param.appointmentId
+                    eq: param.appointmentId,
                 },
             };
 
@@ -133,16 +127,19 @@ const SingleAppointment = () => {
                 },
             };
             let res = await dispatch(getAppointmentsByDate(details));
-            setAppointment(res?.payload?.appointments[0])
+            setAppointment(res?.payload?.appointments[0]);
         };
 
         fetchAppointment();
     }, [dispatch, param.appointmentId]);
 
     return (
-     <div className="rounded-md flex mx-10 ">
-                <div className=" bg-white rounded-md sm:h-auto w-full px-20">
-                    <div className="mt-5 mb-5">
+        <div className="rounded-md flex mx-10 mt-10 flex-col ">
+            <div className="mb-3">
+                <FaArrowLeft onClick={() => navigate(-1)} className="bg-blue-400 h-10 rounded-full text-blue-500 w-10 cursor-pointer" />
+            </div>
+            <div className=" bg-white rounded-md sm:h-auto w-full px-20">
+                <div className="mt-5 mb-5">
                     {appointment?.id && (
                         <Formik
                             initialValues={appointment}
@@ -160,7 +157,6 @@ const SingleAppointment = () => {
                                 setFieldValue,
                             }) => (
                                 <Form className="flex flex-col">
-                                    
                                     <div className="flex flex-row items-center justify-between mt-3  mb-5 gap-16">
                                         <div className="flex flex-col  w-full ">
                                             <InputField
@@ -252,7 +248,6 @@ const SingleAppointment = () => {
                                                 placeholder="Description:"
                                             />
                                         </div>
-                                        
                                     </div>
                                     <div>
                                         <button
@@ -275,8 +270,8 @@ const SingleAppointment = () => {
                         </Formik>
                     )}
                 </div>
-                </div>
             </div>
+        </div>
     );
 };
 

@@ -34,7 +34,6 @@ const ChatProvider = ({ children }) => {
         }
     }, [data?.fetchChats]);
     useEffect(() => {
-        console.log(messagesData?.fetchMessages);
         if (messagesData?.fetchMessages) {
             setMessages(messagesData?.fetchMessages);
         }

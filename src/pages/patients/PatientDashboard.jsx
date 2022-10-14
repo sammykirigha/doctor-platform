@@ -29,7 +29,7 @@ const PatientDashboard = () => {
     `;
 
     const { data } = useSubscription(MESSAGE_SUBSCRIPTION);
-    console.log("testing info", data);
+   
 
     const { patient } = useSelector((state) => state.patient);
     const dispatch = useDispatch();

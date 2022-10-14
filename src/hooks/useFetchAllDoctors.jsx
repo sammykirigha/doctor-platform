@@ -12,7 +12,6 @@ const useFetchAllDoctor = () => {
             const getDoctors = async () => {
                 const { payload } = await dispatch(getAllDoctorsdAction());
 				setDoctors(payload.doctors)
-				console.log(payload.doctors);
                 return payload
             };
             getDoctors();

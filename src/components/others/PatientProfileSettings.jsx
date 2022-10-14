@@ -43,7 +43,6 @@ const PatientProfileSettings = () => {
             setProfileImage(url);
         } catch (error) {
             setUploading(false);
-            console.log(error);
         }
     };
 

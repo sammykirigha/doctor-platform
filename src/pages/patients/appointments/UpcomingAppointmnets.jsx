@@ -45,7 +45,7 @@ const UpcomingAppointmnets = () => {
         fetchAppointments();
     }, [dispatch, patient?.id]);
 
-    console.log("this state", appointments);
+   
 
     return (
         <div className="p-2">

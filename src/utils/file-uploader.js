@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const fileUploader = async (file) => {
-	console.log(typeof file);
 
 	const formData = new FormData();
 	formData.append('upload_preset', 'test-upload')

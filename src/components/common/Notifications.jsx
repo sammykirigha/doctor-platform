@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const Notifications = () => {
     const { error, message } = useSelector((state) => state.notifications);
-    console.log({error, message});
+    
 
     return (
         <div className="mt-16">

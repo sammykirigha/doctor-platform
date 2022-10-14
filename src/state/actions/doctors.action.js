@@ -14,7 +14,6 @@ export const createDoctorAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-            console.log("CREATE DOCTOR ERROR: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,
@@ -34,7 +33,6 @@ export const getDoctorAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-            console.log("GET DOCTOR ERROR: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,
@@ -55,7 +53,6 @@ export const updateDoctorAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-            console.log("Update doctor: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,
@@ -77,7 +74,6 @@ export const changePasswordAction = createAsyncThunk(
                 success: true,
             };
         } catch (err) {
-            console.log("change password doctor: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,
@@ -92,13 +88,12 @@ export const getAllDoctorsdAction = createAsyncThunk(
         try {
             thunkAPI.dispatch(resetNotifications());
             const response = await apiPost({ query: FETCH_ALL_DOCTORS_QUERY });
-            console.log(response);
+            
             return {
                 doctors: response.data.getDoctors,
                 success: true,
             };
         } catch (err) {
-            console.log("get doctors: ", { err });
             thunkAPI.dispatch(setErrorNotification(err));
             return thunkAPI.rejectWithValue({
                 success: false,

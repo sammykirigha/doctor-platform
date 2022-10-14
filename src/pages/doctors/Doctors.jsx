@@ -17,7 +17,7 @@ const Doctors = () => {
     const { doctors } = useSelector(state => state.doctor)
     const { user } = useSelector(state => state.auth)
     
-    console.log('doctors', doctors);
+   
     useFetchAllDoctor()
     
      useEffect(() => {

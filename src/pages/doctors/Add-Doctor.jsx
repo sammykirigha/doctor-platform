@@ -187,7 +187,6 @@ const AddDoctor = () => {
                                                     setFieldValue("image", url);
                                                 } catch (error) {
                                                     setUploading(false);
-                                                    console.log(error);
                                                 }
                                             }}
                                             className="hidden"

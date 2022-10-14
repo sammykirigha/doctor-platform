@@ -7,7 +7,6 @@ import Spam from "../components/emails/Spam";
 import Starred from "../components/emails/Starred";
 import ChatMessages from "../components/others/ChatMessages";
 import PatientProfileSettings from "../components/others/PatientProfileSettings";
-import Profile from "../components/others/Profile";
 import Doctors from "../pages/doctors/Doctors";
 import PastAppointments from "../pages/patients/appointments/PastAppointments";
 import PatientAppointments from "../pages/patients/PatientAppointments";
@@ -21,6 +20,7 @@ import ReadyToChat from "../pages/social/ReadyToChat";
 import DashboardRoutes from "./DashboardRoutes";
 import UpcomingAppointmnets from "../pages/patients/appointments/UpcomingAppointmnets";
 import SingleAppointment from "../pages/SingleAppointment";
+import Profile from "../pages/patients/Profile";
 
 export const patient_routes = [
     {
