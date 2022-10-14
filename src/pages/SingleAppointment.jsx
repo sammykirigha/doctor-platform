@@ -1,17 +1,123 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
-import { GET_APPOINTMENTS_BY_DATE } from "../queries/appointments";
-import { getAppointmentsByDate } from "../state/actions/appointments";
-import { useDispatch } from "react-redux";
+import { CREATE_APPOINTMENT, GET_APPOINTMENTS_BY_DATE } from "../queries/appointments";
+import { createAppointmentAction, getAppointmentsByDate } from "../state/actions/appointments";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllDoctorsdAction } from "../state/actions/doctors.action";
+import useFetchAllDoctor from "../hooks/useFetchAllDoctors";
+import { FaSpinner } from "react-icons/fa";
+import InputField from "../components/Authentication/InputField";
+import { ErrorMessage, Form, Formik } from "formik";
+import FormSelect from "../components/others/Select";
+
+const appointmentTypeOptions = [
+    { value: "Diabetes", label: "Diabetes" },
+    { value: "Back pain", label: "Back pain" },
+    { value: "Coronavirus", label: "Coronavirus" },
+    { value: "Coughing", label: "Coughing" },
+    { value: "Dentist", label: "Dentist" },
+    { value: "Highblood pressure", label: "Highblood pressure" },
+    { value: "Follow up", label: "Urologist" },
+    { value: "Body pain", label: "Neurologist" },
+];
+
+const departmentsOptions = [
+    { value: "Eye Care", label: "Eye Care" },
+    { value: "Gynecologist", label: "Gynecologist" },
+    { value: "Psychotherapist", label: "Psychotherapist" },
+    { value: "Orthopedic", label: "Orthopedic" },
+    { value: "Dentist", label: "Dentist" },
+    { value: "Gastrologist", label: "Gastrologist" },
+    { value: "Urologist", label: "Urologist" },
+    { value: "Neurologist", label: "Neurologist" },
+    { value: "others", label: "others" },
+];
+
+
+const getDoctors = (value, lable) => {
+    return [{ value: value, label: lable }];
+};
 
 const SingleAppointment = () => {
     const param = useParams();
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const [appointment, setAppointment] = useState({})
-    
 
+    const params = useParams();
+    const [showOthersInput, setShowOthersInput] = useState(false);
+    const { doctors } = useSelector((state) => state.doctor);
+    const [loading, setLoading] = useState(false);
+    const [state, setState] = useState({
+        patientId: "",
+        patient_firstname: appointment.patient_firstname,
+        patient_lastname: appointment.patient_lastname,
+        age: 0,
+        department: "",
+        doctorId: "",
+        date: "",
+        time: "",
+        patient_email: "",
+        patient_phone: "",
+        description: "",
+        appointment_type: "",
+        fees: "1500",
+        other_type: "",
+    });
+
+  const availableDoctors = doctors?.map((doctor) => {
+        let fullName = `${doctor.firstname} ${doctor.lastname}`;
+        return getDoctors(doctor.id, fullName);
+    });
+
+
+
+    const showInputHandle = (e) => {
+        setShowOthersInput(e.target.checked);
+    };
+
+    const changeHandler = (e) => {
+        const { name, value } = e.target;
+        setState({
+            ...state,
+            [name]: value,
+        });
+    };
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const inputVariables = { ...state, patientId: params.id, age: parseInt(state.age) };
+        const details = {
+            query: CREATE_APPOINTMENT,
+            variables: {
+            input: inputVariables
+            }
+        }
+        await dispatch(createAppointmentAction(details))
+        console.log({...state, patientId: params.id});
+        setLoading(false);
+        setState({
+            patientId: "",
+            patient_firstname: "",
+            patient_lastname: "",
+            age: 0,
+            department: "",
+            doctorId: "",
+            date: "",
+            time: "",
+            patient_email: "",
+            patient_phone: "",
+            description: "",
+            appointment_type: "",
+            fees: "",
+            other_type: "",
+        });
+    };
+
+    //fetchdoctors
+    useFetchAllDoctor();
     useEffect(() => {
         const fetchAppointment = async () => {
             const inputValue = {
@@ -33,139 +139,144 @@ const SingleAppointment = () => {
         fetchAppointment();
     }, [dispatch, param.appointmentId]);
 
-    console.log("appointment", appointment);
-
     return (
-        <div className="ml-10 ">
-            <div className="">
-                <span onClick={() => navigate(-1)}>
-                    {" "}
-                    <BsArrowLeftCircleFill className="text-blue-600 h-10 w-10 cursor-pointer" />{" "}
-                </span>
-            </div>
-            <div className="mt-10 mx-10 bg-white flex items-center justify-evenly flex-col ">
-                <div className="mt-7">
-                    <h2 className="text-xl leading-9 font-[600] my-3">
-                        Your Appointment Information
-                    </h2>
+     <div className="rounded-md flex mx-10 ">
+                <div className=" bg-white rounded-md sm:h-auto w-full px-20">
+                    <div className="mt-5 mb-5">
+                    {appointment?.id && (
+                        <Formik
+                            initialValues={appointment}
+                            onSubmit={onSubmit}
+                            // validationSchema={createDoctorSchema}
+                        >
+                            {({
+                                values,
+                                errors,
+                                touched,
+                                handleChange,
+                                handleBlur,
+                                handleSubmit,
+                                isSubmitting,
+                                setFieldValue,
+                            }) => (
+                                <Form className="flex flex-col">
+                                    
+                                    <div className="flex flex-row items-center justify-between mt-3  mb-5 gap-16">
+                                        <div className="flex flex-col  w-full ">
+                                            <InputField
+                                                name="patient_firstname"
+                                                validate=""
+                                                type="text"
+                                                label="First Name"
+                                                placeholder="First Name:"
+                                            />
+                                        </div>
+                                        <div className="flex flex-col  w-full ">
+                                            <InputField
+                                                name="patient_lastname"
+                                                validate=""
+                                                type="text"
+                                                label="Last Name"
+                                                placeholder="Last Name:"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between  mb-5 gap-16">
+                                        <div className="flex flex-col w-full">
+                                            <InputField
+                                                name="patient_email"
+                                                validate=""
+                                                type="text"
+                                                label="Email"
+                                                placeholder="Email:"
+                                            />
+                                        </div>
+                                        <div className="flex flex-col w-full">
+                                            <InputField
+                                                name="patient_phone"
+                                                validate=""
+                                                type="text"
+                                                label="Phone Num"
+                                                placeholder="Phone:"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between  mb-5 gap-16">
+                                        <div className="flex flex-col w-full">
+                                            <InputField
+                                                name="appointment_type"
+                                                validate=""
+                                                type="text"
+                                                label="Appointment Type"
+                                                placeholder="Address:"
+                                            />
+                                        </div>
+                                        <div className="flex flex-col w-full">
+                                            <InputField
+                                                name="department"
+                                                validate=""
+                                                type="text"
+                                                label="Department"
+                                                placeholder="Address:"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between  mb-5 gap-16">
+                                        <div className="flex flex-col w-full">
+                                            <InputField
+                                                name="time"
+                                                validate=""
+                                                type="text"
+                                                label="Time"
+                                                placeholder="Time:"
+                                            />
+                                        </div>
+                                        <div className="flex flex-col w-full">
+                                            <InputField
+                                                name="date"
+                                                validate=""
+                                                type="text"
+                                                label="Date"
+                                                placeholder="Date:"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-row items-center justify-between  mb-5 gap-16">
+                                        <div className="flex flex-col w-full">
+                                            <InputField
+                                                name="description"
+                                                validate=""
+                                                type="text"
+                                                label="Description"
+                                                placeholder="Description:"
+                                            />
+                                        </div>
+                                        
+                                    </div>
+                                    <div>
+                                        <button
+                                            className={`mt-5 w-fit flex justify-center items-center gap-3 bg-blue-500 text-white py-2 px-8 rounded-md ${
+                                                isSubmitting
+                                                    ? "cursor-not-allowed"
+                                                    : "cursor-pointer"
+                                            } `}
+                                            disabled={isSubmitting}
+                                            type="submit"
+                                        >
+                                            {isSubmitting && (
+                                                <FaSpinner className="animate-spin" />
+                                            )}{" "}
+                                            Save Changes
+                                        </button>
+                                    </div>
+                                </Form>
+                            )}
+                        </Formik>
+                    )}
                 </div>
-                <div className=" pt-5 items-center ">
-                    <div className="flex pt-5 items-center ">
-                        <div className="">
-                            <div className=" ">
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Fullnames:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        Samuel Kirigha
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Phone:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        0707564356
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Appointment Date:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        12/12/2022
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Doctors Email:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        nvdblkjferil@gmail.com
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Doctors Name:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        John Katua
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Appointment Type:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        Back pain
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="ml-28">
-                            <div className="">
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    age:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        87
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Email:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        dkirigha18@gmail.com
-                                    </span>{" "}
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Time:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        30:40PM
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Department:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        Urologist
-                                    </span>{" "}
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Doctors Phone Number:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        00998767583
-                                    </span>
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Appointment Charges:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        1500
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                         <div className="flex items-center ">
-                                <span className="text-xl leading-9 font-[600] my-3">
-                                    Reasons for Appointment:{" "}
-                                    <span className="text-lg leading-7 font-[400]">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    </span>
-                                </span>
-                            </div>
-                    </div>
                 </div>
             </div>
-            <button className="ml-10 mt-10 py-2 px-4 text-lg text-white rounded-md bg-blue-700">Update?</button>
-        </div>
     );
 };
 
