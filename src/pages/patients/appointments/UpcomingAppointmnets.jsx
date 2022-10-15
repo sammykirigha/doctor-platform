@@ -4,7 +4,6 @@ import AppointmentTable from "../../../components/others/AppointmentTable";
 import useFetchPatient from "../../../hooks/useFetchPatients";
 import { GET_APPOINTMENTS_BY_DATE } from "../../../queries/appointments";
 import { getAppointmentsByDate } from "../../../state/actions/appointments";
-import Appointment from "../../Appointment";
 
 const UpcomingAppointmnets = () => {
     const dispatch = useDispatch();
